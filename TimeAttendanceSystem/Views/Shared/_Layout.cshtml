@@ -48,7 +48,7 @@ desired effect
        <header class="main-header">
 
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="@Url.Action("Create","ManualEntries")" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>S</b>UN</span>
                 <!-- logo for regular state and mobile devices -->
@@ -124,11 +124,11 @@ desired effect
                             <li>@Html.ActionLink("Auto Error Correction","Create", "ErrorCorrections")</li>
                             <li>@Html.ActionLink("Compile Attendance", "Create","Compiles")</li>
                             <li><a href="#">Error Management</a></li>
-                            <li><a href="#">RollBack Finalize</a></li>
-                            <li><a href="#">Manual Entry</a></li>
+                            <li>@Html.ActionLink("RollBack Finalize", "Create", "RollBacks")</li>
+                            <li>@Html.ActionLink("Manual Entry","Create","ManualEntries")</li>
                             <li><a href="#">RFID No Entry</a></li>
-                            <li><a href="#">Late Attendance Mail</a></li>
-                            <li><a href="#">Compile Individual</a></li>
+                            <li>@Html.ActionLink("Late Attendance Mail", "Create","AttendanceMails")</li>
+                            <li>@Html.ActionLink("Compile Individual", "Create","Individuals")</li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -156,10 +156,7 @@ desired effect
                     TAS
                     <small>Time Attendance System</small>
                 </h1>
-                @*<ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
-                </ol>*@
+                
             </section>
 
             <!-- Main content -->
@@ -197,9 +194,7 @@ desired effect
                                 <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                                 <div class="menu-info">
-                                    @*<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                    <p>Will be 23 on April 24th</p>*@
+                                    
                                 </div>
                             </a>
                         </li>

@@ -199,16 +199,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttendanceMailsController.cs" />
     <Compile Include="Controllers\CompilesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ErrorCorrectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManualEntriesController.cs" />
+    <Compile Include="Controllers\RollBacksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AttendanceMail.cs" />
     <Compile Include="Models\attendance_finalize_department_MHS.cs">
       <DependentUpon>SUNTASModel.tt</DependentUpon>
     </Compile>
@@ -260,6 +264,7 @@
     </Compile>
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\ErrorCorrection.cs" />
+    <Compile Include="Models\ErrorManagement.cs" />
     <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
       <DependentUpon>SUNTASModel.tt</DependentUpon>
     </Compile>
@@ -294,6 +299,7 @@
     <Compile Include="Models\iMealPay.cs">
       <DependentUpon>SUNTASModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Individual.cs" />
     <Compile Include="Models\iPassback.cs">
       <DependentUpon>SUNTASModel.tt</DependentUpon>
     </Compile>
@@ -326,6 +332,7 @@
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
+    <Compile Include="Models\RollBack.cs" />
     <Compile Include="Models\RRcompileSessionsByMonth_meena_Result.cs">
       <DependentUpon>SUNTASModel.tt</DependentUpon>
     </Compile>
@@ -1133,6 +1140,21 @@
     <Content Include="Views\ManualEntries\Details.cshtml" />
     <Content Include="Views\ManualEntries\Edit.cshtml" />
     <Content Include="Views\ManualEntries\Index.cshtml" />
+    <Content Include="Views\RollBacks\Create.cshtml" />
+    <Content Include="Views\RollBacks\Delete.cshtml" />
+    <Content Include="Views\RollBacks\Details.cshtml" />
+    <Content Include="Views\RollBacks\Edit.cshtml" />
+    <Content Include="Views\RollBacks\Index.cshtml" />
+    <Content Include="Views\Individuals\Create.cshtml" />
+    <Content Include="Views\Individuals\Delete.cshtml" />
+    <Content Include="Views\Individuals\Details.cshtml" />
+    <Content Include="Views\Individuals\Edit.cshtml" />
+    <Content Include="Views\Individuals\Index.cshtml" />
+    <Content Include="Views\AttendanceMails\Create.cshtml" />
+    <Content Include="Views\AttendanceMails\Delete.cshtml" />
+    <Content Include="Views\AttendanceMails\Details.cshtml" />
+    <Content Include="Views\AttendanceMails\Edit.cshtml" />
+    <Content Include="Views\AttendanceMails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

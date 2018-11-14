@@ -28,7 +28,7 @@ namespace TimeAttendanceSystem
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/admin-lte/css/AdminLTE.css",
-                      "~/admin-lte/css/skins/skin-blue.css"));
+                      "~/admin-lte/css/skins/skin-blue.min.css"));
         }
     }
 }

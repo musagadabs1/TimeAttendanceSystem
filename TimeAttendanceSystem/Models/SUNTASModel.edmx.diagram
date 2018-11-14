@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dce8edc9e0004a19a9e5d606670fdf16" Name="Diagram1">
+        <EntityTypeShape EntityType="UNISModel.cAccessArea" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.cAuthority" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.cPassback" Width="1.5" PointX="2.875" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.cTimezone" Width="1.5" PointX="4.875" PointY="1.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.dtproperty" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.HR_AccessDetails" Width="1.5" PointX="6.625" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.HR_AccessMaster" Width="1.5" PointX="3" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iMeal" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iPassback" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iUserCard" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iUserFace" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iUserFinger" Width="1.5" PointX="6.625" PointY="1.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iUserMobileKey" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.iUserPicture" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iWorkTime" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iZoneInfo" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tAccessGroupShift" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tAutoDown" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_Company" Width="1.5" PointX="12.625" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tb_department" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tb_designation" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_EmpRemarks" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tb_FinaliseError_Log" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.Tb_LoginUser" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.TB_MainMenu" Width="1.5" PointX="0.75" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tb_Presenttemp" Width="1.5" PointX="14.625" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.Tb_SessionRecord" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.Tb_ShiftDetail" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_ShiftMaster" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_StaticValues" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.TB_Submenu" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_UserRole" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tblEmployeeShift" Width="1.5" PointX="16.25" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tCmdDown" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tCommandDown" Width="1.5" PointX="16.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tEmploye" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tEnter" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tMapImage" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tMealEnter" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tMoney" Width="1.5" PointX="15.875" PointY="3.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tTerminal" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tTerminalStateLog" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tUser" Width="1.5" PointX="17.875" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.wTempWorkResult" Width="1.5" PointX="6.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.wWorkResult" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.wWorkSummary" Width="1.5" PointX="2.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.attendance_finalize_department_MHS" Width="1.5" PointX="8.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.attendance_log_department_MHS" Width="1.5" PointX="14.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.cAccessGroup" Width="1.5" PointX="16.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.cAccessTime" Width="1.5" PointX="17.625" PointY="1.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.cHoliday" Width="1.5" PointX="22.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.cOffice" Width="1.5" PointX="22.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.compilestatu" Width="1.5" PointX="22.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.cPost" Width="1.5" PointX="22.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.cStaff" Width="1.5" PointX="22.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iAccessArea" Width="1.5" PointX="18.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iAccessGroup" Width="1.5" PointX="22.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iAdminRestrict" Width="1.5" PointX="4.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iCantTerminal" Width="1.5" PointX="10.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iMealPay" Width="1.5" PointX="20.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iTerminalAdmin" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.iTimezone" Width="1.5" PointX="17.75" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tAccessShiftSchedule" Width="1.5" PointX="17.75" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tAuditServer" Width="1.5" PointX="24.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tAuditTerminal" Width="1.5" PointX="24.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_EmployeeMaster" Width="1.5" PointX="24.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tb_location" Width="1.5" PointX="24.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.Tb_PartimeFacultyAtt" Width="1.5" PointX="16.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.TBL_OUTDOOR_EVENTS" Width="1.5" PointX="19.5" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.TBL_RFID_CARDENTRY" Width="1.5" PointX="19.5" PointY="1.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.TBL_RFID_CARDENTRY_DELETED" Width="1.5" PointX="4.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.TBL_RFID_CARDENTRY_LOG" Width="1.5" PointX="26.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tblEmirate" Width="1.5" PointX="10.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tblEmployeeShiftDtl" Width="1.5" PointX="26.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tChangedInfo" Width="1.5" PointX="18.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tConnectServer" Width="1.5" PointX="26.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tDailyCount" Width="1.5" PointX="20.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tEnter_log" Width="1.5" PointX="26.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tEnter_OUTDOOR" Width="1.5" PointX="6.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.TESTING_COMP" Width="1.5" PointX="12.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tHourlyCount" Width="1.5" PointX="22.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tMealInfo" Width="1.5" PointX="19.5" PointY="2" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tMealType" Width="1.5" PointX="19.5" PointY="2.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="UNISModel.tVisitor" Width="1.5" PointX="28.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tWiegand" Width="1.5" PointX="28.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.tWorkType" Width="1.5" PointX="28.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.wExceptRecord" Width="1.5" PointX="24.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.wSpecialShift" Width="1.5" PointX="8.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.wWorkShift" Width="1.5" PointX="14.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.vAttendanceCompiled" Width="1.5" PointX="16.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNISModel.vtuser" Width="1.5" PointX="19.5" PointY="3" IsExpanded="false" />
+        <AssociationConnector Association="UNISModel.FK_HR_AccessMaster_TB_MainMenu" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

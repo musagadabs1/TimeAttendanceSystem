@@ -35,5 +35,7 @@ namespace TimeAttendanceSystem.Models
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.ErrorCorrection> ErrorCorrections { get; set; }
 
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Compile> Compiles { get; set; }
+
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.ManualEntry> ManualEntries { get; set; }
     }
 }

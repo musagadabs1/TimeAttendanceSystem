@@ -43,5 +43,7 @@ namespace TimeAttendanceSystem.Models
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Individual> Individuals { get; set; }
 
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.AttendanceMail> AttendanceMails { get; set; }
+
+        object placeHolderVariable;
     }
 }

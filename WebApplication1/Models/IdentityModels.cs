@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace TimeAttendanceSystem.Models
+namespace WebApplication1.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -29,22 +29,5 @@ namespace TimeAttendanceSystem.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Employee> Employees { get; set; }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.ErrorCorrection> ErrorCorrections { get; set; }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Compile> Compiles { get; set; }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.ManualEntry> ManualEntries { get; set; }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.RollBack> RollBacks { get; set; }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Individual> Individuals { get; set; }
-
-        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.AttendanceMail> AttendanceMails { get; set; }
-
-        //object placeHolderVariable;
-        //object placeHolderVariable;
     }
 }

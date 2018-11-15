@@ -11,11 +11,9 @@ namespace TimeAttendanceSystem.Models
 {
     using System;
     
-    public partial class GETEXTRADUTYDTL_Result
+    public partial class SP_GETDESIGNATION_Result
     {
-        public Nullable<int> Emp_Number { get; set; }
-        public string Weekday_Name { get; set; }
-        public Nullable<int> SessionCount { get; set; }
-        public string TYPE { get; set; }
+        public int JOB_ID { get; set; }
+        public string JOB_NAME { get; set; }
     }
 }

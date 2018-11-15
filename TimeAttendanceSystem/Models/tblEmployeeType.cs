@@ -12,19 +12,14 @@ namespace TimeAttendanceSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HR_AccessMaster
+    public partial class tblEmployeeType
     {
         public int Id { get; set; }
-        public Nullable<int> User_Id { get; set; }
-        public Nullable<int> Menu_Id { get; set; }
-        public Nullable<int> Role_Id { get; set; }
-        public Nullable<System.DateTime> Createddate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public string CreatedIP { get; set; }
-        public string Attribute3 { get; set; }
-        public string Attribute4 { get; set; }
-        public string Attribute5 { get; set; }
-    
-        public virtual TB_MainMenu TB_MainMenu { get; set; }
+        public string EmployeeType { get; set; }
+        public string Attr1 { get; set; }
+        public string Attr2 { get; set; }
+        public string Attr3 { get; set; }
+        public string Attr4 { get; set; }
+        public string Attr5 { get; set; }
     }
 }

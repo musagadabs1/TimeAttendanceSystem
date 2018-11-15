@@ -12,13 +12,12 @@ namespace TimeAttendanceSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HR_AccessDetails
+    public partial class tblWeekendScheduleApproval
     {
-        public int Access_Det_Id { get; set; }
-        public Nullable<int> Access_M_Id { get; set; }
-        public Nullable<int> Form_Id { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTime> Createddate { get; set; }
-        public string CreatedIP { get; set; }
+        public int ApprovalID { get; set; }
+        public System.DateTime FromDate { get; set; }
+        public System.DateTime ToDate { get; set; }
+        public int UserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     }
 }

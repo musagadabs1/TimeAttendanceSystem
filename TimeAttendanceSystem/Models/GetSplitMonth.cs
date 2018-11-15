@@ -10,16 +10,15 @@
 namespace TimeAttendanceSystem.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class GetSplitMonth
     {
-        public int EmpNo { get; set; }
-        public string Name { get; set; }
-        public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
-        public string Remarks { get; set; }
-        public string LastReported { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
+        public int ID { get; set; }
+        public int MonthNo { get; set; }
+        public string MonthName1 { get; set; }
+        public string MonthName2 { get; set; }
+        public Nullable<int> MonthCount1 { get; set; }
+        public Nullable<int> MonthCount2 { get; set; }
     }
 }

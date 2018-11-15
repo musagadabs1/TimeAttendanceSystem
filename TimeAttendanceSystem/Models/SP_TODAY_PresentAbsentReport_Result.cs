@@ -11,15 +11,17 @@ namespace TimeAttendanceSystem.Models
 {
     using System;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class SP_TODAY_PresentAbsentReport_Result
     {
-        public int EmpNo { get; set; }
+        public Nullable<int> EmpNumber { get; set; }
         public string Name { get; set; }
-        public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
-        public string Remarks { get; set; }
+        public string ShiftStart { get; set; }
+        public string FirstPunchTime { get; set; }
+        public Nullable<int> IsLate { get; set; }
         public string LastReported { get; set; }
+        public string Remarks { get; set; }
         public string Category { get; set; }
         public string SubCategory { get; set; }
+        public string IsPresentAbsent { get; set; }
     }
 }

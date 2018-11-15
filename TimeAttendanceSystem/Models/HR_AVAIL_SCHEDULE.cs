@@ -12,14 +12,13 @@ namespace TimeAttendanceSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tb_UserRole
+    public partial class HR_AVAIL_SCHEDULE
     {
-        public int ID { get; set; }
-        public Nullable<int> Emp_ID { get; set; }
-        public Nullable<int> Role_ID { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string CreatedIP { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public int SC_ID { get; set; }
+        public string SCHEDULE { get; set; }
+        public Nullable<System.DateTime> CREATEDON { get; set; }
+        public string HOST_N { get; set; }
+        public string Frequency { get; set; }
+        public string Weekids { get; set; }
     }
 }

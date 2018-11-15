@@ -13,6 +13,8 @@ namespace TimeAttendanceSystem.Controllers
     public class EmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UNISEntities _UnisContext = new UNISEntities();
+        private PayrollEntities _PayRollContext = new PayrollEntities();
 
         // GET: Employees
         public ActionResult Index()
@@ -38,9 +40,12 @@ namespace TimeAttendanceSystem.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.Departments = new SelectList(_UnisContext.SP_GetDepartment(), "Id", "Department");
+            ViewBag.Designations = new SelectList(_UnisContext.SP_Designation(), "Id", "Designation");
+            ViewBag.Companies = new SelectList(_UnisContext.SP_CompanyDetails(), "company_id", "company_name");
+            ViewBag.Shifts = new SelectList(_UnisContext.SP_Shift(), "Shift_ID", "Shift_Type");
             return View();
         }
-
         // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -52,7 +57,7 @@ namespace TimeAttendanceSystem.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             return View(employee);

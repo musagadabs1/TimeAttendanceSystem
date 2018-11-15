@@ -11,8 +11,16 @@ namespace TimeAttendanceSystem.Models
 {
     using System;
     
-    public partial class Split_Result
+    public partial class TAS_SP_TODAYLATEATTENDANCE_Result
     {
-        public string items { get; set; }
+        public Nullable<long> SNO { get; set; }
+        public string EMPNUMBER { get; set; }
+        public string EMPLOYEENAME { get; set; }
+        public Nullable<int> MONTHNAME { get; set; }
+        public string DEPARTMENTNAME { get; set; }
+        public string EMPLOYEETYPE { get; set; }
+        public string Late { get; set; }
+        public string ShiftStart { get; set; }
+        public string FirstPunchTime { get; set; }
     }
 }

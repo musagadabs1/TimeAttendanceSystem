@@ -12,13 +12,10 @@ namespace TimeAttendanceSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TB_Submenu
+    public partial class tblWeekendPaymentMaSter
     {
-        public int ID { get; set; }
-        public string SubCategory { get; set; }
-        public Nullable<int> MainCategory { get; set; }
-        public string URL { get; set; }
-        public Nullable<bool> Isactive { get; set; }
-        public Nullable<int> Order { get; set; }
+        public int id { get; set; }
+        public Nullable<int> Job_Id { get; set; }
+        public Nullable<double> Rate { get; set; }
     }
 }

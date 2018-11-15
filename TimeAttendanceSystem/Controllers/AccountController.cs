@@ -66,7 +66,7 @@ namespace TimeAttendanceSystem.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(FormCollection model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -75,7 +75,10 @@ namespace TimeAttendanceSystem.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password,isPersistent:false, shouldLockout: false);
+
+            string username = model["txtUsername"];
+            string password = model["txtPassword"];
+            var result = await SignInManager.PasswordSignInAsync(username, password,isPersistent:false, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -87,9 +90,38 @@ namespace TimeAttendanceSystem.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return RedirectToAction("Login");
             }
         }
+
+
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    // This doesn't count login failures towards account lockout
+        //    // To enable password failures to trigger account lockout, change to shouldLockout: true
+        //    var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, shouldLockout: false);
+        //    switch (result)
+        //    {
+        //        case SignInStatus.Success:
+        //            return RedirectToLocal(returnUrl);
+        //        case SignInStatus.LockedOut:
+        //            return View("Lockout");
+        //        case SignInStatus.RequiresVerification:
+        //            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+        //        case SignInStatus.Failure:
+        //        default:
+        //            ModelState.AddModelError("", "Invalid login attempt.");
+        //            return View(model);
+        //    }
+        //}
 
         //
         // GET: /Account/VerifyCode

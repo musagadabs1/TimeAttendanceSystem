@@ -13,6 +13,8 @@ namespace TimeAttendanceSystem.Controllers
     public class EmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UNISEntities _UnisContext = new UNISEntities();
+        private PayrollEntities _PayRollContext = new PayrollEntities();
 
         // GET: Employees
         public ActionResult Index()
@@ -38,6 +40,8 @@ namespace TimeAttendanceSystem.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.Departments = new SelectList(_UnisContext.SP_GetDepartment(), "Id", "Department");
+            //ViewBag.Designations= new SelectList(_PayRollContext.SP_Get)
             return View();
         }
 
@@ -52,7 +56,7 @@ namespace TimeAttendanceSystem.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             return View(employee);

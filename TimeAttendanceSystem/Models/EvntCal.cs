@@ -10,16 +10,17 @@
 namespace TimeAttendanceSystem.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class EvntCal
     {
-        public int EmpNo { get; set; }
-        public string Name { get; set; }
-        public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
-        public string Remarks { get; set; }
-        public string LastReported { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
+        public int Event_id { get; set; }
+        public string Evnt_title { get; set; }
+        public string Evnt_Name { get; set; }
+        public string Dept_name { get; set; }
+        public string EvntCatName { get; set; }
+        public Nullable<System.DateTime> From_Date { get; set; }
+        public Nullable<System.DateTime> To_Date { get; set; }
+        public Nullable<bool> Recurring { get; set; }
     }
 }

@@ -56,7 +56,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Department,(SelectList)ViewBag.Departments, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Designation, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -80,7 +80,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Company, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Company, (SelectList)ViewBag.Companies, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -88,8 +88,33 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Shift, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Shift, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Shift, (SelectList)ViewBag.Shifts, htmlAttributes: new { @class = "form-control", @id = "ddlShift" })
             @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12">
+            Shift Details
+        </label>
+        <div class="table-responsive">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <table id="ShiftDetails" border='1' style="display: none" class="table table-striped jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+
+                                <th>CODE</th>
+                                <th style="width:25%">TITLE</th>
+                                <th>START TIME</th>
+                                <th>END TIME</th>
+                                <th>TOLERENCE</th>
+                                <th>TYPE</th>
+                                <th>NEXT DAY</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <hr />
@@ -102,10 +127,16 @@
                 <input type="submit" value="Cancel" class="btn btn-primary" />
             </div>
         </div>
-        
+
     </div>
 </div>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script type="text/javascript">
+    $('#ddlShift').change(function () {
+        var selectedVal = $('#ddlShift option:selected').attr('value');          
+            GetShiftSchedule("SP_GetShiftDetails_Employee", selectedVal, "Code,Title,StartTime,EndTime,Tolerence,Type,NextDay");
+        });
+</script>

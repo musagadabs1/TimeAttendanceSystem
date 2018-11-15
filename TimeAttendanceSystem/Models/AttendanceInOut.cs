@@ -10,16 +10,18 @@
 namespace TimeAttendanceSystem.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class AttendanceInOut
     {
-        public int EmpNo { get; set; }
-        public string Name { get; set; }
-        public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
+        public long ID { get; set; }
+        public Nullable<long> EmpID { get; set; }
+        public string EmpCode { get; set; }
+        public string EDate { get; set; }
+        public string TimeIn { get; set; }
+        public string TimeOut { get; set; }
         public string Remarks { get; set; }
-        public string LastReported { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public string HostName { get; set; }
     }
 }

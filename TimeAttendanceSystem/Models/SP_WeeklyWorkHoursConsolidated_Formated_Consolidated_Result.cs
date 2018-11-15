@@ -11,15 +11,15 @@ namespace TimeAttendanceSystem.Models
 {
     using System;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class SP_WeeklyWorkHoursConsolidated_Formated_Consolidated_Result
     {
-        public int EmpNo { get; set; }
-        public string Name { get; set; }
+        public Nullable<long> SLNO { get; set; }
         public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
-        public string Remarks { get; set; }
-        public string LastReported { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
+        public Nullable<int> EmpNumber { get; set; }
+        public string Name { get; set; }
+        public string Month { get; set; }
+        public Nullable<int> ActualHrs { get; set; }
+        public Nullable<int> NoHRSWORKED { get; set; }
+        public Nullable<int> Varience { get; set; }
     }
 }

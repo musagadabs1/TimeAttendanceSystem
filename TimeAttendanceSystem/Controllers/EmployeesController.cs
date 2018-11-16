@@ -62,6 +62,30 @@ namespace TimeAttendanceSystem.Controllers
 
             return View(employee);
         }
+        public PartialViewResult GetShiftDetail(int? shiftId)
+        {
+            //var tasUtility = new TASUtility();
+            List<ShiftDetail> shfDetails = new List<ShiftDetail>();
+            var shiftDetails = TASUtility.GetShiftSchedule(shiftId);
+
+            foreach (var item in shiftDetails)
+            {
+                shfDetails.Add(new ShiftDetail
+                {
+                    Code = item.Code,
+                    Title=item.Title,
+                    StartTime=item.StartTime,
+                    EndTime=item.EndTime,
+                    Tolerence=item.Tolerence,
+                    Type=item.Type,
+                    NextDay=item.NextDay
+                });
+            }
+
+            ViewBag.ShiftDetails = shfDetails;
+
+            return PartialView("_ShiftDetailsPartialView.cshtml");
+        }
 
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)

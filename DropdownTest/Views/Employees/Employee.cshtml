@@ -20,7 +20,7 @@
         @*@Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })*@
         <div class="col-md-10">
             @*@Html.DropdownListFor(model => model.EmployeeId, Model.EmpListItems,"---Select Employee---", new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.DropDownList("EmployeeId",Model.EmpListItems,"EmpName", new { @class="form-control", onchange="SelectedIndexChanged()"})
+            @Html.DropDownList("EmployeeId",Model.EmpListItems,"EmpName", new { @class="form-control", @onchange="SelectedIndexChanged()"})
             
         </div>
     </div>

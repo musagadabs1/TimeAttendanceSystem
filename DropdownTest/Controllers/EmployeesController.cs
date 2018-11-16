@@ -23,7 +23,7 @@ namespace DropdownTest.Controllers
 
             //return View();
         }
-        public PartialViewResult GetEmpRecord(int EmployeeId)
+        public PartialViewResult GetEmpRecord(int? EmployeeId)
         {
             var emp = new Employee
             {
@@ -49,10 +49,25 @@ namespace DropdownTest.Controllers
 
         public ActionResult Employee()
         {
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+
             var empModel = new Employee
             {
                 GetEmployees = GetEmployeesFromDB()
             };
+            //var empViewBage=null;
+            foreach (var item in empModel.GetEmployees)
+            {
+                selectListItems.Add(new SelectListItem
+                {
+                    Text = item.EmpName,
+                    Value = item.EmployeeId.ToString()
+                });
+            }
+            
+            
+            ViewBag.Employees = selectListItems;
+
             empModel.EmployeeId = empModel.GetEmployees.First().EmployeeId;
             empModel.EmpName = empModel.GetEmployees.First().EmpName;
             empModel.Salary = empModel.GetEmployees.First().Salary;

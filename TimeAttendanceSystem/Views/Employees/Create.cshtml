@@ -1,7 +1,7 @@
 ﻿@model TimeAttendanceSystem.Models.Employee
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Update Employee";
 }
 
 @using (Html.BeginForm()) 
@@ -96,26 +96,8 @@
         <label class="control-label col-md-2 col-sm-2 col-xs-12">
             Shift Details
         </label>
-        <div class="table-responsive">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <table id="ShiftDetails" border='1' style="display: none" class="table table-striped jambo_table bulk_action">
-                        <thead>
-                            <tr class="headings">
 
-                                <th>CODE</th>
-                                <th style="width:25%">TITLE</th>
-                                <th>START TIME</th>
-                                <th>END TIME</th>
-                                <th>TOLERENCE</th>
-                                <th>TYPE</th>
-                                <th>NEXT DAY</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("~/Views/Employees/_ShiftDetailsPartialView.cshtml")
     </div>
     <hr />
     <div class="form-group">
@@ -134,9 +116,24 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
-    $('#ddlShift').change(function () {
-        var selectedVal = $('#ddlShift option:selected').attr('value');          
-            GetShiftSchedule("SP_GetShiftDetails_Employee", selectedVal, "Code,Title,StartTime,EndTime,Tolerence,Type,NextDay");
+
+    $(document).ready(function () {
+        $("#ddlShift").change(function () {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetShiftDetail")' + '?shiftId=' + $("#ddlShift").val(),
+                data: {},
+                success: function (result) {
+                    alert(result);
+                }
+                //,
+                //error: function () {
+                //    alert('Error');
+                //}
+            });
         });
+    });
+    
 </script>

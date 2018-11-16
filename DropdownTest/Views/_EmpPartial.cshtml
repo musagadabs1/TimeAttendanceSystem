@@ -1,0 +1,24 @@
+﻿
+@model DropdownTest.Models.Employee
+
+<fieldset>
+    <legend>EmployeeModel</legend>
+    <div class="display-label">
+        <strong> @Html.DisplayNameFor(model => model.EmployeeId) </strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeId)
+    </div>
+    <div class="display-label">
+        <strong> @Html.DisplayNameFor(model => model.EmpName) </strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmpName)
+    </div>
+    <div class="display-label">
+        <strong> @Html.DisplayNameFor(model => model.Salary) </strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Salary)
+    </div>
+</fieldset>  

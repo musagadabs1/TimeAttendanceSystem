@@ -1,0 +1,53 @@
+﻿@model DropdownTest.Models.Employee
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.DropDownListFor(model => model.EmployeeId, Model.EmpListItems, "---Select Employee---", new { @class = "form-control", @id = "ddlEmployee" })
+
+<div id="partialDiv">
+
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#ddlEmployee').on('change', function () {
+            $.ajax(
+                {
+                    url: '/Home/GetEmpRecord?EmployeeId=' + $(this).attr("value"),
+                    type: 'GET',
+                    data: "",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $("#partialDiv").html(data);
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+        });
+    });
+
+    //$(document).ready(function () {
+    //    $('#ddlEmployee').on("change", function () {
+    //        $.ajax(
+    //            url: '/Employees/GetEmpRecord?EmployeeId=' + $(this).attr("value"),
+    //            type: 'Get',
+    //            data: "",
+    //            contentType: 'application/json;charset=utf-8',
+    //            success: function (data) {
+    //                $('#partialDiv').html(data);
+    //            },
+    //            error: function () {
+    //                alert("error");
+    //            }
+    //        )
+    //    });
+    //});
+</script>
+

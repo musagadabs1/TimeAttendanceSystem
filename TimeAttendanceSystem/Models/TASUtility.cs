@@ -5,9 +5,9 @@ using System.Web;
 
 namespace TimeAttendanceSystem.Models
 {
-    public class TASUtility
+    public static class TASUtility
     {
-        public List<CommonData> GetShiftSchedule(int ID)
+        public static List<CommonData> GetShiftSchedule(int? ID)
         {
             List<CommonData> lst = new List<CommonData>();
 

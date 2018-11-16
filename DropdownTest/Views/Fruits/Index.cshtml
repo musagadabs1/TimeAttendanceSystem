@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DropdownTest.Models.Fruit>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Submit","Fruits",FormMethod.Post, new { @name="form1"}))
+{
+    @Html.DropDownList("FruitId",new SelectList(Model,"FruitId","FruitName"),"Please Select", new { @id="ddlFruits",@class="form-control"})
+    @Html.Hidden("FruitName",null, new { @id="hfFruitNAme",@class="form-control"})
+}
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+
+<script type="text/javascript">
+    $('body').on("change", "#ddlFruits", function () {
+        $("#hfFruitNAme").val($(this).find("option:selected").text());
+        document.forms["form1"].submit();
+    });
+</script>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        $(function () {
+            alert("@ViewBag.Message")
+        });
+    </script>
+}

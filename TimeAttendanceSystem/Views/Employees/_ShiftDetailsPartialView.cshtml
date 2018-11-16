@@ -1,0 +1,34 @@
+﻿<div class="table-responsive">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <table id="ShiftDetails" border='1' style="display: none" class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="headings">
+
+                        <th>CODE</th>
+                        <th style="width:25%">TITLE</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
+                        <th>TOLERENCE</th>
+                        <th>TYPE</th>
+                        <th>NEXT DAY</th>
+                    </tr>
+                </thead>
+                @foreach (var item in ViewBag.ShiftDetails)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@item.Code</td>
+                            <td>@item.Title</td>
+                            <td>@item.StartTime</td>
+                            <td>@item.Tolerence</td>
+                            <td>@item.Type</td>
+                            <td>@item.NextDay</td>
+                        </tr>
+                    </tbody>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

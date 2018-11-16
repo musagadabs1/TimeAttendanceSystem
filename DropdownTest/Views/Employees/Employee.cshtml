@@ -1,0 +1,64 @@
+﻿@model DropdownTest.Models.Employee
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>Employee</h2>
+
+
+@using (Html.BeginForm("Employee","Employees", FormMethod.Post,new { @id="demoForm",@name="demoForm"}))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Employee</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @*@Html.DropdownListFor(model => model.EmployeeId, Model.EmpListItems,"---Select Employee---", new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.DropDownList("EmployeeId",Model.EmpListItems,"EmpName", new { @class="form-control", @onchange="SelectedIndexChanged()"})
+            
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmpName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    function SelectedIndexChanged() {
+        document.demoForm.Submit();
+    }
+</script>

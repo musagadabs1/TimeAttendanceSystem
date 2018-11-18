@@ -10,12 +10,15 @@
 namespace TimeAttendanceSystem.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class TB_Submenu
     {
-        public int EmpNo { get; set; }
-        public string Name { get; set; }
-        public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
+        public int ID { get; set; }
+        public string SubCategory { get; set; }
+        public Nullable<int> MainCategory { get; set; }
+        public string URL { get; set; }
+        public Nullable<bool> Isactive { get; set; }
+        public Nullable<int> Order { get; set; }
     }
 }

@@ -288,6 +288,9 @@
     <Compile Include="Models\EvntCal.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETLevel_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -295,6 +298,12 @@
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetweeklySummary_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HR_AccessDetails.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HR_AccessMaster.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HR_ATTENDANCE.cs">
@@ -411,6 +420,9 @@
     <Compile Include="Models\SplitStrings_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Split_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_AbsentiesacademicsPT001_Result.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
@@ -433,10 +445,10 @@
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_AbsentiesNONacademics_Result.cs">
-      <DependentUpon>PayrollModel.tt</DependentUpon>
+      <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_AbsentiesTraniee_Result.cs">
-      <DependentUpon>PayrollModel.tt</DependentUpon>
+      <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_Absenties_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
@@ -724,7 +736,7 @@
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_TODAY_AbsentReport_Result.cs">
-      <DependentUpon>PayrollModel.tt</DependentUpon>
+      <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_TODAY_PresentAbsentReport_Result.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
@@ -943,6 +955,9 @@
     <Compile Include="Models\Tb_LoginUser.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TB_MainMenu.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tb_PartimeFacultyAtt.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -959,6 +974,12 @@
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_StaticValues.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TB_Submenu.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_UserRole.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tChangedInfo.cs">

@@ -13,6 +13,7 @@ namespace TimeAttendanceSystem.Controllers
     public class IndividualsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UNISEntities _context = new UNISEntities();
 
         // GET: Individuals
         public ActionResult Index()
@@ -38,6 +39,7 @@ namespace TimeAttendanceSystem.Controllers
         // GET: Individuals/Create
         public ActionResult Create()
         {
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
             return View();
         }
 

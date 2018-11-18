@@ -14,6 +14,6 @@ namespace TimeAttendanceSystem.Models
         public DateTime SelectDate { get; set; }
         [Display(Name = "Last Compiled")]
         [DataType(DataType.Date)]
-        public DateTime LastCompiled { get; set; }
+        public string LastCompiled { get; set; }
     }
 }

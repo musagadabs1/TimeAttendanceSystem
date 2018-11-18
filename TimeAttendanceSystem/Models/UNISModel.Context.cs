@@ -32,8 +32,8 @@ namespace TimeAttendanceSystem.Models
         public virtual DbSet<cPassback> cPassbacks { get; set; }
         public virtual DbSet<cTimezone> cTimezones { get; set; }
         public virtual DbSet<dtproperty> dtproperties { get; set; }
-        //public virtual DbSet<HR_AccessDetails> HR_AccessDetails { get; set; }
-        //public virtual DbSet<HR_AccessMaster> HR_AccessMaster { get; set; }
+        public virtual DbSet<HR_AccessDetails> HR_AccessDetails { get; set; }
+        public virtual DbSet<HR_AccessMaster> HR_AccessMaster { get; set; }
         public virtual DbSet<iMeal> iMeals { get; set; }
         public virtual DbSet<iPassback> iPassbacks { get; set; }
         public virtual DbSet<iUserCard> iUserCards { get; set; }
@@ -51,14 +51,14 @@ namespace TimeAttendanceSystem.Models
         public virtual DbSet<Tb_EmpRemarks> Tb_EmpRemarks { get; set; }
         public virtual DbSet<tb_FinaliseError_Log> tb_FinaliseError_Log { get; set; }
         public virtual DbSet<Tb_LoginUser> Tb_LoginUser { get; set; }
-        //public virtual DbSet<TB_MainMenu> TB_MainMenu { get; set; }
+        public virtual DbSet<TB_MainMenu> TB_MainMenu { get; set; }
         public virtual DbSet<tb_Presenttemp> tb_Presenttemp { get; set; }
         public virtual DbSet<Tb_SessionRecord> Tb_SessionRecord { get; set; }
         public virtual DbSet<Tb_ShiftDetail> Tb_ShiftDetail { get; set; }
         public virtual DbSet<Tb_ShiftMaster> Tb_ShiftMaster { get; set; }
         public virtual DbSet<Tb_StaticValues> Tb_StaticValues { get; set; }
-        //public virtual DbSet<TB_Submenu> TB_Submenu { get; set; }
-        //public virtual DbSet<Tb_UserRole> Tb_UserRole { get; set; }
+        public virtual DbSet<TB_Submenu> TB_Submenu { get; set; }
+        public virtual DbSet<Tb_UserRole> Tb_UserRole { get; set; }
         public virtual DbSet<tblEmployeeShift> tblEmployeeShifts { get; set; }
         public virtual DbSet<tCmdDown> tCmdDowns { get; set; }
         public virtual DbSet<tCommandDown> tCommandDowns { get; set; }
@@ -119,29 +119,29 @@ namespace TimeAttendanceSystem.Models
         public virtual DbSet<vAttendanceCompiled> vAttendanceCompileds { get; set; }
         public virtual DbSet<vtuser> vtusers { get; set; }
     
-        //[DbFunction("UNISEntities", "GETEXTRADUTYDTL")]
-        //public virtual IQueryable<GETEXTRADUTYDTL_Result> GETEXTRADUTYDTL(Nullable<System.DateTime> date)
-        //{
-        //    var dateParameter = date.HasValue ?
-        //        new ObjectParameter("Date", date) :
-        //        new ObjectParameter("Date", typeof(System.DateTime));
+        [DbFunction("UNISEntities", "GETEXTRADUTYDTL")]
+        public virtual IQueryable<GETEXTRADUTYDTL_Result> GETEXTRADUTYDTL(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GETEXTRADUTYDTL_Result>("[UNISEntities].[GETEXTRADUTYDTL](@Date)", dateParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GETEXTRADUTYDTL_Result>("[UNISEntities].[GETEXTRADUTYDTL](@Date)", dateParameter);
+        }
     
-        //[DbFunction("UNISEntities", "Split")]
-        //public virtual IQueryable<Split_Result> Split(string @string, string delimiter)
-        //{
-        //    var stringParameter = @string != null ?
-        //        new ObjectParameter("String", @string) :
-        //        new ObjectParameter("String", typeof(string));
+        [DbFunction("UNISEntities", "Split")]
+        public virtual IQueryable<Split_Result> Split(string @string, string delimiter)
+        {
+            var stringParameter = @string != null ?
+                new ObjectParameter("String", @string) :
+                new ObjectParameter("String", typeof(string));
     
-        //    var delimiterParameter = delimiter != null ?
-        //        new ObjectParameter("Delimiter", delimiter) :
-        //        new ObjectParameter("Delimiter", typeof(string));
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
     
-        //    return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Split_Result>("[UNISEntities].[Split](@String, @Delimiter)", stringParameter, delimiterParameter);
-        //}
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Split_Result>("[UNISEntities].[Split](@String, @Delimiter)", stringParameter, delimiterParameter);
+        }
     
         [DbFunction("UNISEntities", "SplitStrings")]
         public virtual IQueryable<SplitStrings_Result> SplitStrings(string list, string delimiter)

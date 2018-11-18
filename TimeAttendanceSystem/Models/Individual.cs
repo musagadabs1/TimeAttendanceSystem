@@ -10,7 +10,7 @@ namespace TimeAttendanceSystem.Models
     {
         public int Id { get; set; }
         [Display(Name = "Employee ID *")]
-        public EmployeeID EmployeeID { get; set; }
+        public string EmployeeID { get; set; }
         [Display(Name = "From Date")]
         [DataType(DataType.Date)]
         public DateTime FromDate { get; set; }

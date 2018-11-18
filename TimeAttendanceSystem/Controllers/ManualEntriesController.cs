@@ -147,6 +147,8 @@ namespace TimeAttendanceSystem.Controllers
             
         }
 
+        string msg = string.Empty;
+
         private string GetEmployeeNameByID(int id)
         {
             string empName = string.Empty;
@@ -171,12 +173,13 @@ namespace TimeAttendanceSystem.Controllers
                 var empName = _context.SP_GetEmployeeName(empID).FirstOrDefault(); 
                
                 _context.SP_Manual_Entry(manualEntry.Date, time, manualEntry.TerminalID,manualEntry.EmployeeID,empName, manualEntry.Mode, manualEntry.Remarks, "", "Insert");
-
-                _context.SaveChanges();
-                return RedirectToAction("Create");
+                msg = "Manual Entry Entered Successfully.";
+                //_context.SaveChanges();
+                ViewBag.Message = msg;
+                return PartialView("~/Views/_MessagePartialView.cshtml");
             }
-
-            return View(manualEntry);
+            ViewBag.Message = "Error has occured. Check and try again.";
+            return PartialView("~/Views/_MessagePartialView.cshtml");
         }
 
         // GET: ManualEntries/Edit/5

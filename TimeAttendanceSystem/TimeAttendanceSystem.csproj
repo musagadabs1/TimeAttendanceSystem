@@ -1487,6 +1487,9 @@
     <Content Include="Views\AttendanceMails\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Employees\_ShiftDetailsPartialView.cshtml" />
+    <Content Include="Views\Compiles\_CompiledViewPartial.cshtml" />
+    <Content Include="Views\RollBacks\_RollbackViewPartial.cshtml" />
+    <Content Include="Views\_MessagePartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

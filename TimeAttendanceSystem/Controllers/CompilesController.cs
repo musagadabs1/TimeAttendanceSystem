@@ -69,7 +69,7 @@ namespace TimeAttendanceSystem.Controllers
             if (ModelState.IsValid)
             {
                 //string dateSelected;
-                string selectedDate = compile.SelectDate.Date.ToShortDateString();
+                var selectedDate = compile.SelectDate.Date;
                 var oDate =TASUtility.GetStringDateFormat(compile.SelectDate);
                 var vDate = TASUtility.GetStringDateFormat(compile.SelectDate);
 
@@ -150,13 +150,13 @@ namespace TimeAttendanceSystem.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                //db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        //db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

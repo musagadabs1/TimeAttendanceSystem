@@ -284,10 +284,11 @@
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ErrorCorrection.cs" />
-    <Compile Include="Models\ErrorManagement.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\EvntCal.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FrmAutoErrorCorrection.cs" />
     <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -1490,6 +1491,11 @@
     <Content Include="Views\Compiles\_CompiledViewPartial.cshtml" />
     <Content Include="Views\RollBacks\_RollbackViewPartial.cshtml" />
     <Content Include="Views\_MessagePartialView.cshtml" />
+    <Content Include="Views\Errors\Create.cshtml" />
+    <Content Include="Views\Errors\Delete.cshtml" />
+    <Content Include="Views\Errors\Details.cshtml" />
+    <Content Include="Views\Errors\Edit.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

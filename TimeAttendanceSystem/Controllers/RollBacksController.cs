@@ -58,7 +58,7 @@ namespace TimeAttendanceSystem.Controllers
                     _context.SP_RemoveFinalized(oDate);
                     msg = "Rollback Successfully";
                     ViewBag.Message = msg;
-                    return PartialView("~/Views/RollBacks/_RollbackViewPartial.cshtml");
+                    return PartialView("~/Views/_MessagePartialView.cshtml");
                 }
                 catch (Exception ex)
                 {
@@ -70,7 +70,7 @@ namespace TimeAttendanceSystem.Controllers
             }
             ViewBag.Message = "Error has occured. Check and try again.";
 
-            return PartialView("~/Views/RollBacks/_RollbackViewPartial.cshtml");
+            return PartialView("~/Views/_MessagePartialView.cshtml");
         }
 
         // GET: RollBacks/Edit/5

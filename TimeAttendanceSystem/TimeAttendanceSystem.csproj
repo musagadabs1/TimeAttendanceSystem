@@ -201,8 +201,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendanceMailsController.cs" />
     <Compile Include="Controllers\CompilesController.cs" />
+    <Compile Include="Controllers\EditEntriesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ErrorCorrectionsController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -276,6 +278,7 @@
     <Compile Include="Models\dt_getpropertiesbyid_u_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EditEntry.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployerDetail.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
@@ -283,6 +286,7 @@
     <Compile Include="Models\EMPMASTER.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntryCheck.cs" />
     <Compile Include="Models\ErrorCorrection.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\EvntCal.cs">
@@ -1491,6 +1495,11 @@
     <Content Include="Views\Compiles\_CompiledViewPartial.cshtml" />
     <Content Include="Views\RollBacks\_RollbackViewPartial.cshtml" />
     <Content Include="Views\_MessagePartialView.cshtml" />
+    <Content Include="Views\EditEntries\Create.cshtml" />
+    <Content Include="Views\EditEntries\Delete.cshtml" />
+    <Content Include="Views\EditEntries\Details.cshtml" />
+    <Content Include="Views\EditEntries\Edit.cshtml" />
+    <Content Include="Views\EditEntries\Index.cshtml" />
     <Content Include="Views\Errors\Create.cshtml" />
     <Content Include="Views\Errors\Delete.cshtml" />
     <Content Include="Views\Errors\Details.cshtml" />

@@ -46,6 +46,10 @@ namespace TimeAttendanceSystem.Models
 
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Error> Errors { get; set; }
 
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.EntryCheck> EntryChecks { get; set; }
+
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.EditEntry> EditEntries { get; set; }
+
         //object placeHolderVariable;
         //object placeHolderVariable;
     }

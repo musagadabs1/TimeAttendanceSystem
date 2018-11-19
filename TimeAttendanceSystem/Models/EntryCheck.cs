@@ -6,11 +6,12 @@ using System.Web;
 
 namespace TimeAttendanceSystem.Models
 {
-    public class Error
+    public class EntryCheck
     {
         public int Id { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        public int Department { get; set; }
+        [Display(Name ="Employee Id")]
+        public int EmployeeId { get; set; }
     }
 }

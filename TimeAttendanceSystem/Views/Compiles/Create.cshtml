@@ -22,7 +22,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.LastCompiled, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.LastCompiled, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.EditorFor(model => model.LastCompiled, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input type="text" name="txtLast" disabled="disabled" value="@ViewBag.LastCompiledDate" class="form-control"/>
             @Html.ValidationMessageFor(model => model.LastCompiled, "", new { @class = "text-danger" })
         </div>
     </div>

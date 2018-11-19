@@ -84,7 +84,7 @@ namespace TimeAttendanceSystem.Controllers
 
             ViewBag.ShiftDetails = shfDetails;
 
-            return PartialView("_ShiftDetailsPartialView.cshtml");
+            return PartialView("_ShiftDetailsPartialView.cshtml", shfDetails);
         }
 
         // GET: Employees/Edit/5

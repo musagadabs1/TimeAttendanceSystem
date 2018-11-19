@@ -11,7 +11,7 @@ namespace TimeAttendanceSystem.Models
         public int Id { get; set; }
         [Display(Name ="Previous Date Compiled")]
         [DataType(DataType.Date)]
-        public DateTime PreviousDateCompiled { get; set; }
+        public string PreviousDateCompiled { get; set; }
         [Display(Name = "Select Date to Compile")]
         [DataType(DataType.Date)]
         public DateTime SelectDateToCompile { get; set; }

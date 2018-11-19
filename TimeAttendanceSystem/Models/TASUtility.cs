@@ -7,6 +7,7 @@ namespace TimeAttendanceSystem.Models
 {
     public static class TASUtility
     {
+        private static UNISEntities _context = new UNISEntities();
         public static List<CommonData> GetShiftSchedule(int? ID)
         {
             List<CommonData> lst = new List<CommonData>();
@@ -40,6 +41,49 @@ namespace TimeAttendanceSystem.Models
             }
             
             
+        }
+        public static string GetLastCompiledDate()
+        {
+            string compiledDate = string.Empty;
+            var dates = _context.SP_Get_LastCompiledDate();
+            if (dates != null)
+            {
+                compiledDate = dates.FirstOrDefault().Date;
+            }
+            return compiledDate;
+        }
+        public static string GetStringDateFormat(DateTime dateTime)
+        {
+            var selectedDate = dateTime.Date.ToShortDateString();
+            string[] selectDateArray = selectedDate.Split('/');
+            int d = int.Parse(selectDateArray[1]);
+            int m = int.Parse(selectDateArray[0]);
+            int yy = int.Parse(selectDateArray[2]);
+
+            string dd = string.Empty;
+            string mm = string.Empty;
+            //Determine of month of the year is within 1 to 9
+            // add leading zero if is within the range otherwise don't add
+            if (d >= 10)
+            {
+                dd = d.ToString();
+            }
+            else
+            {
+                dd = "0" + d.ToString();
+            }
+
+            if (m >= 10)
+            {
+                mm = m.ToString();
+            }
+            else
+            {
+                mm = "0" + m.ToString();
+            }
+            //concatenate the date to yyyymmdd formate
+            var oDate = yy.ToString() + mm.ToString() + dd.ToString();
+            return oDate;
         }
     }
 }

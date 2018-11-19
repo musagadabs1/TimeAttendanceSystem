@@ -11,11 +11,11 @@ namespace TimeAttendanceSystem.Models
 {
     using System;
     
-    public partial class SP_TODAY_AbsentReport_Result
+    public partial class GETEXTRADUTYDTL_Result
     {
-        public int EmpNo { get; set; }
-        public string Name { get; set; }
-        public string EmployeeType { get; set; }
-        public string DEPARTMENT_NAME { get; set; }
+        public Nullable<int> Emp_Number { get; set; }
+        public string Weekday_Name { get; set; }
+        public Nullable<int> SessionCount { get; set; }
+        public string TYPE { get; set; }
     }
 }

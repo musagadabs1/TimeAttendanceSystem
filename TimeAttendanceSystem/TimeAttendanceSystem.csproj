@@ -204,7 +204,6 @@
     <Compile Include="Controllers\EditEntriesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ErrorCorrectionsController.cs" />
-    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1495,16 +1494,17 @@
     <Content Include="Views\Compiles\_CompiledViewPartial.cshtml" />
     <Content Include="Views\RollBacks\_RollbackViewPartial.cshtml" />
     <Content Include="Views\_MessagePartialView.cshtml" />
-    <Content Include="Views\EditEntries\Create.cshtml" />
-    <Content Include="Views\EditEntries\Delete.cshtml" />
-    <Content Include="Views\EditEntries\Details.cshtml" />
-    <Content Include="Views\EditEntries\Edit.cshtml" />
-    <Content Include="Views\EditEntries\Index.cshtml" />
     <Content Include="Views\Errors\Create.cshtml" />
     <Content Include="Views\Errors\Delete.cshtml" />
     <Content Include="Views\Errors\Details.cshtml" />
     <Content Include="Views\Errors\Edit.cshtml" />
     <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\Errors\_EditEntryPartialView.cshtml" />
+    <Content Include="Views\EditEntries\Create.cshtml" />
+    <Content Include="Views\EditEntries\Delete.cshtml" />
+    <Content Include="Views\EditEntries\Details.cshtml" />
+    <Content Include="Views\EditEntries\Edit.cshtml" />
+    <Content Include="Views\EditEntries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

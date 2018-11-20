@@ -12,29 +12,29 @@ namespace TimeAttendanceSystem.Controllers
 {
     public class ManualEntriesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
         private UNISEntities _context = new UNISEntities();
 
         // GET: ManualEntries
-        public ActionResult Index()
-        {
-            return View(db.ManualEntries.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.ManualEntries.ToList());
+        //}
 
         // GET: ManualEntries/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ManualEntry manualEntry = db.ManualEntries.Find(id);
-            if (manualEntry == null)
-            {
-                return HttpNotFound();
-            }
-            return View(manualEntry);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
+        //    if (manualEntry == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(manualEntry);
+        //}
 
         // GET: ManualEntries/Create
         //[Authorize]
@@ -183,67 +183,68 @@ namespace TimeAttendanceSystem.Controllers
         }
 
         // GET: ManualEntries/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ManualEntry manualEntry = db.ManualEntries.Find(id);
-            if (manualEntry == null)
-            {
-                return HttpNotFound();
-            }
-            return View(manualEntry);
-        }
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
+        //    if (manualEntry == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(manualEntry);
+        //}
 
         // POST: ManualEntries/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EmployeeID,Name,TerminalID,Mode,TimeHH,TimeMM,Date,Remarks")] ManualEntry manualEntry)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(manualEntry).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(manualEntry);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "Id,EmployeeID,Name,TerminalID,Mode,TimeHH,TimeMM,Date,Remarks")] ManualEntry manualEntry)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(manualEntry).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(manualEntry);
+        //}
 
         // GET: ManualEntries/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ManualEntry manualEntry = db.ManualEntries.Find(id);
-            if (manualEntry == null)
-            {
-                return HttpNotFound();
-            }
-            return View(manualEntry);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
+        //    if (manualEntry == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(manualEntry);
+        //}
 
         // POST: ManualEntries/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            ManualEntry manualEntry = db.ManualEntries.Find(id);
-            db.ManualEntries.Remove(manualEntry);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
+        //    db.ManualEntries.Remove(manualEntry);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _context.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

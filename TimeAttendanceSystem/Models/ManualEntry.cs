@@ -8,7 +8,7 @@ namespace TimeAttendanceSystem.Models
 {
     public class ManualEntry
     {
-        private DateTime _date = DateTime.Now.Date;
+        //private DateTime _date = DateTime.Now.Date;
         public int Id { get; set; }
         [Display(Name= "Employee ID *")]
         public string EmployeeID { get; set; }

@@ -18,6 +18,7 @@
                     @Html.LabelFor(model => model.ErrorDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.ErrorDate, new { htmlAttributes = new { @class = "form-control" } })
+                        <input type="date" id="txtCompileDate" class="form-control" />
                         @Html.ValidationMessageFor(model => model.ErrorDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -31,7 +32,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Show" class="btn btn-primary" />
+                        <button class="btn btn-primary" onclick="Error()" id="btnSave">Show</button>
+                        @*<input type="submit" value="Show" class="btn btn-primary" />*@
                     </div>
                 </div>
 
@@ -39,7 +41,7 @@
                     <table id="location" border='1' class="table table-bordered" style="width: 100%;
                             max-height: 125px; overflow-y: scroll; display:inline-block">
                         <tr>
-                            
+
                             <th>
                                 NAME
                             </th>
@@ -145,9 +147,21 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
-   
-    
-    
 }
+<script type="text/javascript">
+    $("#btnsave").click(function () {
+        if ($("#txtCompileDate").val() == "") {
+            alert("Please Enter the date to Show thw Data");
+            return false;
+        }
+        else {
+            var selectedVal = $('#MainContent_ddlDepartment option:selected').attr('value');
+
+            FrmErrors_LoadGrid("SP_Load_Error", "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", $("#MainContent_txtCompileDate").val(), selectedVal, 0, "#location");
+        }
+    });
+</script>
+
+

@@ -14,6 +14,7 @@ namespace TimeAttendanceSystem.Controllers
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
         private UNISEntities _context = new UNISEntities();
+       private LoadErrorViewModel loadErrorViewModel = new LoadErrorViewModel();
 
         // GET: EditEntries
         //public ActionResult Index()
@@ -155,12 +156,29 @@ namespace TimeAttendanceSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                loadErrorViewModel.Date = TASUtility.GetStringDateFormat( editEntry.ErrorDate.Date);
+                loadErrorViewModel.DepartmentId = editEntry.EmployeeID;
                 //db.EditEntries.Add(editEntry);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(editEntry);
+        }
+        public ActionResult LoadError()
+        {
+            try
+            {
+                var errors = _context.SP_Load_Error(0, loadErrorViewModel.Date,0);
+                ViewBag.Errors = errors;
+            }
+            catch (Exception ex)
+            {
+
+                throw  ex;
+            }
+            return View("~/Views/EditEntries/ErrorPartialView.cshtml");
         }
 
         // GET: EditEntries/Edit/5

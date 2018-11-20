@@ -292,6 +292,7 @@
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FrmAutoErrorCorrection.cs" />
+    <Compile Include="Models\FrmError.cs" />
     <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -399,6 +400,7 @@
     <Compile Include="Models\iZoneInfo.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoadErrorViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
     <Compile Include="Models\PayrollModel.Context.cs">
@@ -1505,6 +1507,7 @@
     <Content Include="Views\EditEntries\Details.cshtml" />
     <Content Include="Views\EditEntries\Edit.cshtml" />
     <Content Include="Views\EditEntries\Index.cshtml" />
+    <Content Include="Views\EditEntries\ErrorPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

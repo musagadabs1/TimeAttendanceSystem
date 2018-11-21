@@ -27,7 +27,7 @@ namespace LoginWithExistingDatabase
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
                 LogoutPath = new PathString("/Account/Logout"),
-                ExpireTimeSpan = TimeSpan.FromMinutes(5.0);
+                ExpireTimeSpan = TimeSpan.FromMinutes(5.0),
                 //Provider = new CookieAuthenticationProvider
                 //{
                     // Enables the application to validate the security stamp when the user logs in.
@@ -37,7 +37,7 @@ namespace LoginWithExistingDatabase
                        // regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 //}
             });            
-            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
             //app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));

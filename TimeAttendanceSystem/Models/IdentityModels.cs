@@ -50,6 +50,8 @@ namespace TimeAttendanceSystem.Models
 
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.EditEntry> EditEntries { get; set; }
 
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Finalize> Finalizes { get; set; }
+
         //object placeHolderVariable;
         //object placeHolderVariable;
     }

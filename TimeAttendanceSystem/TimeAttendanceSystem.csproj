@@ -203,7 +203,9 @@
     <Compile Include="Controllers\CompilesController.cs" />
     <Compile Include="Controllers\EditEntriesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EntryChecksController.cs" />
     <Compile Include="Controllers\ErrorCorrectionsController.cs" />
+    <Compile Include="Controllers\FinalizesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -291,6 +293,7 @@
     <Compile Include="Models\EvntCal.cs">
       <DependentUpon>PayrollModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Finalize.cs" />
     <Compile Include="Models\FrmAutoErrorCorrection.cs" />
     <Compile Include="Models\FrmError.cs" />
     <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
@@ -1508,6 +1511,16 @@
     <Content Include="Views\EditEntries\Edit.cshtml" />
     <Content Include="Views\EditEntries\Index.cshtml" />
     <Content Include="Views\EditEntries\ErrorPartialView.cshtml" />
+    <Content Include="Views\EntryChecks\Create.cshtml" />
+    <Content Include="Views\EntryChecks\Delete.cshtml" />
+    <Content Include="Views\EntryChecks\Details.cshtml" />
+    <Content Include="Views\EntryChecks\Edit.cshtml" />
+    <Content Include="Views\EntryChecks\Index.cshtml" />
+    <Content Include="Views\Finalizes\Create.cshtml" />
+    <Content Include="Views\Finalizes\Delete.cshtml" />
+    <Content Include="Views\Finalizes\Details.cshtml" />
+    <Content Include="Views\Finalizes\Edit.cshtml" />
+    <Content Include="Views\Finalizes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

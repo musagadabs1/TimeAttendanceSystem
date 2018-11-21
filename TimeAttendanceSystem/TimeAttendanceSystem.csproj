@@ -1398,19 +1398,19 @@
     <Content Include="Content\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
-    <EntityDeploy Include="Models\UNISModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UNISModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\UNISModel.edmx.diagram">
-      <DependentUpon>UNISModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\PayrollModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PayrollModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\PayrollModel.edmx.diagram">
       <DependentUpon>PayrollModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\UNISModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UNISModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UNISModel.edmx.diagram">
+      <DependentUpon>UNISModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

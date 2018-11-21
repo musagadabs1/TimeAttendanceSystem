@@ -10,6 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
+    //[Authorize]
     public class FinalizesController : Controller
     {
         private UNISEntities _context = new UNISEntities();
@@ -38,7 +39,33 @@ namespace TimeAttendanceSystem.Controllers
         // GET: Finalizes/Create
         public ActionResult Create()
         {
+            ViewBag.Finalize = new SelectList(_context.GetAllFinalizedDates(), "FinalizeDate");
+            var variance = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "+", Text = "+" },
+                new SelectListItem{Value = "-", Text = "-"}
+            };
+            ViewBag.Variance = variance;
             return View();
+        }
+        private List<string> GetAllFinalizedAttendance()
+        {
+            try
+            {
+                List<string> finalizes = new List<string>();
+                //var atts=(from a in _con)
+                finalizes = _context.GetAllFinalizedDates().ToList(); ;
+                //foreach (var item in atts)
+                //{
+                //    finalizes.Add(item.FirstOrDefault());
+                //}
+                return finalizes;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // POST: Finalizes/Create

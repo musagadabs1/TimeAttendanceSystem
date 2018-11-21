@@ -10,6 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
+    //[Authorize]
     public class ErrorCorrectionsController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();

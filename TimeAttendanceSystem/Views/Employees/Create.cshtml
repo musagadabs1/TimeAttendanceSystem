@@ -7,7 +7,10 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+<div class="alert-heading">
+    <h2 style="text-align:center; color:#0094ff">Update Employee Details</h2>
+</div>
+
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -121,7 +124,7 @@
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function () {
+    @*$(document).ready(function () {
         $("#ddlShift").change(function () {
             $.ajax({
                 type: "GET",
@@ -136,6 +139,6 @@
                 }
             });
         });
-    });
+    });*@
     
 </script>

@@ -11,38 +11,36 @@ using TimeAttendanceSystem.Models;
 namespace TimeAttendanceSystem.Controllers
 {
     //[Authorize]
-    public class ManualEntriesController : Controller
+    public class EntryChecksController : Controller
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
         private UNISEntities _context = new UNISEntities();
 
-        // GET: ManualEntries
+        // GET: EntryChecks
         //public ActionResult Index()
         //{
-        //    return View(db.ManualEntries.ToList());
+        //    return View(db.EntryChecks.ToList());
         //}
 
-        // GET: ManualEntries/Details/5
+        // GET: EntryChecks/Details/5
         //public ActionResult Details(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
-        //    if (manualEntry == null)
+        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
+        //    if (entryCheck == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(manualEntry);
+        //    return View(entryCheck);
         //}
 
-        // GET: ManualEntries/Create
-        //[Authorize]
+        // GET: EntryChecks/Create
         public ActionResult Create()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
-            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0,""), "id", "Employee_Name");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
 
             var mode = new List<SelectListItem>
             {
@@ -141,101 +139,82 @@ namespace TimeAttendanceSystem.Controllers
                 new SelectListItem{Value="57" ,Text="57"},
                 new SelectListItem{Value="58", Text="58"},
                 new SelectListItem{Value="59" ,Text="59"}
-                
+
             };
             ViewBag.TimeMM = timeMM;
             return View();
-            
         }
 
-        string msg = string.Empty;
-
-        private string GetEmployeeNameByID(int id)
-        {
-            string empName = string.Empty;
-            empName = _context.SP_GetEmployeeName(id).FirstOrDefault();
-
-            return empName;
-
-        }
-
-        // POST: ManualEntries/Create
+        // POST: EntryChecks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize]
-        public ActionResult Create([Bind(Include = "Id,EmployeeID,Name,TerminalID,Mode,TimeHH,TimeMM,Date,Remarks")] ManualEntry manualEntry)
+        public ActionResult Create([Bind(Include = "Id,Date,EmployeeId,TerminalID,Mode,TimeHH,TimeMM,DateEntry")] EntryCheck entryCheck)
         {
             if (ModelState.IsValid)
             {
-                var time = manualEntry.TimeHH + manualEntry.TimeMM + "00";
-                int empID = int.Parse( manualEntry.EmployeeID);
-                var empName = _context.SP_GetEmployeeName(empID).FirstOrDefault(); 
-               
-                _context.SP_Manual_Entry(manualEntry.Date, time, manualEntry.TerminalID,manualEntry.EmployeeID,empName, manualEntry.Mode, manualEntry.Remarks, "", "Insert");
-                msg = "Manual Entry Entered Successfully.";
-                //_context.SaveChanges();
-                ViewBag.Message = msg;
-                return PartialView("~/Views/_MessagePartialView.cshtml");
+                //db.EntryChecks.Add(entryCheck);
+                //db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            ViewBag.Message = "Error has occured. Check and try again.";
-            return PartialView("~/Views/_MessagePartialView.cshtml");
+
+            return View(entryCheck);
         }
 
-        // GET: ManualEntries/Edit/5
+        // GET: EntryChecks/Edit/5
         //public ActionResult Edit(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
-        //    if (manualEntry == null)
+        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
+        //    if (entryCheck == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(manualEntry);
+        //    return View(entryCheck);
         //}
 
-        // POST: ManualEntries/Edit/5
+        // POST: EntryChecks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,EmployeeID,Name,TerminalID,Mode,TimeHH,TimeMM,Date,Remarks")] ManualEntry manualEntry)
+        //public ActionResult Edit([Bind(Include = "Id,Date,EmployeeId,TerminalID,Mode,TimeHH,TimeMM,DateEntry")] EntryCheck entryCheck)
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        db.Entry(manualEntry).State = EntityState.Modified;
+        //        db.Entry(entryCheck).State = EntityState.Modified;
         //        db.SaveChanges();
         //        return RedirectToAction("Index");
         //    }
-        //    return View(manualEntry);
+        //    return View(entryCheck);
         //}
 
-        // GET: ManualEntries/Delete/5
+        // GET: EntryChecks/Delete/5
         //public ActionResult Delete(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
-        //    if (manualEntry == null)
+        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
+        //    if (entryCheck == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(manualEntry);
+        //    return View(entryCheck);
         //}
 
-        // POST: ManualEntries/Delete/5
+        // POST: EntryChecks/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
         //public ActionResult DeleteConfirmed(int id)
         //{
-        //    ManualEntry manualEntry = db.ManualEntries.Find(id);
-        //    db.ManualEntries.Remove(manualEntry);
+        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
+        //    db.EntryChecks.Remove(entryCheck);
         //    db.SaveChanges();
         //    return RedirectToAction("Index");
         //}
@@ -245,7 +224,6 @@ namespace TimeAttendanceSystem.Controllers
             if (disposing)
             {
                 _context.Dispose();
-                //db.Dispose();
             }
             base.Dispose(disposing);
         }

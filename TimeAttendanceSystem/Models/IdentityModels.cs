@@ -44,6 +44,14 @@ namespace TimeAttendanceSystem.Models
 
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.AttendanceMail> AttendanceMails { get; set; }
 
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Error> Errors { get; set; }
+
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.EntryCheck> EntryChecks { get; set; }
+
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.EditEntry> EditEntries { get; set; }
+
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Finalize> Finalizes { get; set; }
+
         //object placeHolderVariable;
         //object placeHolderVariable;
     }

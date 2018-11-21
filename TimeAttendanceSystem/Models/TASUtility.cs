@@ -85,5 +85,35 @@ namespace TimeAttendanceSystem.Models
             var oDate = yy.ToString() + mm.ToString() + dd.ToString();
             return oDate;
         }
+        public static List<FrmError> GetLoad_Error(int id, string date,  int empId)
+        {
+
+            //var PassingDate = TASUtility.GetStringDateFormat(date.Date); //GetProperStringDate(Date);
+            List<FrmError> lst = new List<FrmError>();
+            try
+            {
+                var errors = _context.SP_Load_Error(id, date, empId).ToList();
+                foreach (var item in errors)
+                {
+                    lst.Add(new FrmError
+                    {
+                        EMPID =item.EMPID,
+                        Name = item.Name,
+                        Count = item.Count.ToString(),
+
+                    });
+                }
+
+                
+                        
+                return lst;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+        }
     }
 }

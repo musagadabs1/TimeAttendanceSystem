@@ -4,34 +4,37 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.SelectDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SelectDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SelectDate, "", new { @class = "text-danger" })
-        </div>
+    <div class="alert-heading">
+        <h2 style="text-align:center; color:#0094ff">Late Attendance Mail</h2>
     </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-1 col-md-offset-2 ">
-                <input type="submit" value="Previous Day Late" class="btn btn-primary" style="margin-left:60px; text-align:center;" />
-            </div>
-            <div class=" col-md-offset-1 col-md-1">
-                <input type="submit" value="Send Mail" class="btn btn-primary"  style="padding-right:5px;" />
-            </div>
-            <div class="col-md-0 col-md-offset-3">
-                <input type="submit" value="Today Late" class="btn btn-primary" />
+    <br />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SelectDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SelectDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SelectDate, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 col-md-offset-2 ">
+                    <input type="submit" value="Previous Day Late" class="btn btn-primary" style="margin-left:60px; text-align:center;" />
+                </div>
+                <div class=" col-md-offset-1 col-md-1">
+                    <input type="submit" value="Send Mail" class="btn btn-primary" style="padding-right:5px;" />
+                </div>
+                <div class="col-md-0 col-md-offset-3">
+                    <input type="submit" value="Today Late" class="btn btn-primary" />
+                </div>
+            </div>
 
+        </div>
     </div>
-</div>
 }
 
 @section Scripts {

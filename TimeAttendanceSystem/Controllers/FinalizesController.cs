@@ -11,108 +11,133 @@ using TimeAttendanceSystem.Models;
 namespace TimeAttendanceSystem.Controllers
 {
     //[Authorize]
-    public class AttendanceMailsController : Controller
+    public class FinalizesController : Controller
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
-        UNISEntities _context = new UNISEntities();
+        private UNISEntities _context = new UNISEntities();
 
-        // GET: AttendanceMails
+        // GET: Finalizes
         //public ActionResult Index()
         //{
-        //    return View(db.AttendanceMails.ToList());
+        //    return View(db.Finalizes.ToList());
         //}
 
-        // GET: AttendanceMails/Details/5
+        // GET: Finalizes/Details/5
         //public ActionResult Details(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    AttendanceMail attendanceMail = db.AttendanceMails.Find(id);
-        //    if (attendanceMail == null)
+        //    Finalize finalize = db.Finalizes.Find(id);
+        //    if (finalize == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(attendanceMail);
+        //    return View(finalize);
         //}
 
-        // GET: AttendanceMails/Create
+        // GET: Finalizes/Create
         public ActionResult Create()
         {
+            ViewBag.Finalize = new SelectList(_context.GetAllFinalizedDates(), "FinalizeDate");
+            var variance = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "+", Text = "+" },
+                new SelectListItem{Value = "-", Text = "-"}
+            };
+            ViewBag.Variance = variance;
             return View();
         }
+        private List<string> GetAllFinalizedAttendance()
+        {
+            try
+            {
+                List<string> finalizes = new List<string>();
+                //var atts=(from a in _con)
+                finalizes = _context.GetAllFinalizedDates().ToList(); ;
+                //foreach (var item in atts)
+                //{
+                //    finalizes.Add(item.FirstOrDefault());
+                //}
+                return finalizes;
+            }
+            catch (Exception ex)
+            {
 
-        // POST: AttendanceMails/Create
+                throw ex;
+            }
+        }
+
+        // POST: Finalizes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SelectDate")] AttendanceMail attendanceMail)
+        public ActionResult Create([Bind(Include = "Id,VarianceSetting,Hours,SendEmail,AttendanceDate")] Finalize finalize)
         {
             if (ModelState.IsValid)
             {
-                //db.AttendanceMails.Add(attendanceMail);
+                //db.Finalizes.Add(finalize);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(attendanceMail);
+            return View(finalize);
         }
 
-        // GET: AttendanceMails/Edit/5
+        // GET: Finalizes/Edit/5
         //public ActionResult Edit(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    AttendanceMail attendanceMail = db.AttendanceMails.Find(id);
-        //    if (attendanceMail == null)
+        //    Finalize finalize = db.Finalizes.Find(id);
+        //    if (finalize == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(attendanceMail);
+        //    return View(finalize);
         //}
 
-        // POST: AttendanceMails/Edit/5
+        // POST: Finalizes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,SelectDate")] AttendanceMail attendanceMail)
+        //public ActionResult Edit([Bind(Include = "Id,VarianceSetting,Hours,SendEmail,AttendanceDate")] Finalize finalize)
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        db.Entry(attendanceMail).State = EntityState.Modified;
+        //        db.Entry(finalize).State = EntityState.Modified;
         //        db.SaveChanges();
         //        return RedirectToAction("Index");
         //    }
-        //    return View(attendanceMail);
+        //    return View(finalize);
         //}
 
-        // GET: AttendanceMails/Delete/5
+        // GET: Finalizes/Delete/5
         //public ActionResult Delete(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    AttendanceMail attendanceMail = db.AttendanceMails.Find(id);
-        //    if (attendanceMail == null)
+        //    Finalize finalize = db.Finalizes.Find(id);
+        //    if (finalize == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(attendanceMail);
+        //    return View(finalize);
         //}
 
-        // POST: AttendanceMails/Delete/5
+        // POST: Finalizes/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
         //public ActionResult DeleteConfirmed(int id)
         //{
-        //    AttendanceMail attendanceMail = db.AttendanceMails.Find(id);
-        //    db.AttendanceMails.Remove(attendanceMail);
+        //    Finalize finalize = db.Finalizes.Find(id);
+        //    db.Finalizes.Remove(finalize);
         //    db.SaveChanges();
         //    return RedirectToAction("Index");
         //}

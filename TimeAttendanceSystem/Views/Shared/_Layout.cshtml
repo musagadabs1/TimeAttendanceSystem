@@ -120,15 +120,27 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li>@Html.ActionLink("Employee Management","Create","Employees")</li>
-                            <li>@Html.ActionLink("Auto Error Correction","Create", "ErrorCorrections")</li>
-                            <li>@Html.ActionLink("Compile Attendance", "Create","Compiles")</li>
-                            <li><a href="#">Error Management</a></li>
+                            <li>@Html.ActionLink("Employee Management", "Create", "Employees")</li>
+                            <li>@Html.ActionLink("Auto Error Correction", "Create", "ErrorCorrections")</li>
+                            <li>@Html.ActionLink("Compile Attendance", "Create", "Compiles")</li>
                             <li>@Html.ActionLink("RollBack Finalize", "Create", "RollBacks")</li>
-                            <li>@Html.ActionLink("Manual Entry","Create","ManualEntries")</li>
+                            <li>@Html.ActionLink("Manual Entry", "Create", "ManualEntries")</li>
                             <li><a href="#">RFID No Entry</a></li>
-                            <li>@Html.ActionLink("Late Attendance Mail", "Create","AttendanceMails")</li>
-                            <li>@Html.ActionLink("Compile Individual", "Create","Individuals")</li>
+                            <li>@Html.ActionLink("Late Attendance Mail", "Create", "AttendanceMails")</li>
+                            <li>@Html.ActionLink("Compile Individual", "Create", "Individuals")</li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-link"></i> <span>Error Managements</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink("Punch Errors", "Create", "EditEntries")</li>
+                            <li>@Html.ActionLink("Finalize", "Create", "Finalizes")</li>
+                            <li>@Html.ActionLink("Check Entry", "Create", "EntryChecks")</li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -139,7 +151,12 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Over All Reports</a></li>
+                            <li><a href="#">ABSENTEES REPORT</a></li>
+                            <li><a href="#">PRESENT REPORT</a></li>
+                            <li><a href="#">DAILY IN OUT REPORT</a></li>
+                            <li><a href="#">WEEKEND SUMMARY REPORT</a></li>
+                            <li><a href="#">LATE ATTENDANCE REPORT</a></li>
+                            <li><a href="#">MONTHLY WEEKWISE REPORT</a></li>
                         </ul>
                     </li>
                 </ul>

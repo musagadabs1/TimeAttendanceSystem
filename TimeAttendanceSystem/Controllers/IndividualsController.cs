@@ -10,6 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
+    //[Authorize]
     public class IndividualsController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -59,6 +60,13 @@ namespace TimeAttendanceSystem.Controllers
                     var startDate = individual.FromDate;
                     var endDate = individual.ToDate;
 
+
+                    if (startDate.Date != null && endDate.Date !=null && startDate.Date > endDate.Date)
+                    {
+                        msg = "Please ensure that the End Date is greater than or equal to the Start Date.";
+                        ViewBag.Message = msg;
+                        return PartialView("~/Views/_MessagePartialView.cshtml");
+                    }
                     var fromDate = TASUtility.GetStringDateFormat(startDate);
                     var toDate = TASUtility.GetStringDateFormat(endDate);
 

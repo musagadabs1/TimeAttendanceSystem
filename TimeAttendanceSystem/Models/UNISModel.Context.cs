@@ -732,6 +732,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetCountOfDaysByDayNameInAMonth", currentDateParameter, flagParameter);
         }
     
+        public virtual ObjectResult<string> GetEmployeeById(Nullable<int> empId)
+        {
+            var empIdParameter = empId.HasValue ?
+                new ObjectParameter("EmpId", empId) :
+                new ObjectParameter("EmpId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetEmployeeById", empIdParameter);
+        }
+    
         public virtual ObjectResult<GETLevel_Result> GETLevel(Nullable<int> degreeid)
         {
             var degreeidParameter = degreeid.HasValue ?
@@ -3216,6 +3225,11 @@ namespace TimeAttendanceSystem.Models
         public virtual int Vw_Manual_Entry_tenter()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Vw_Manual_Entry_tenter");
+        }
+    
+        public virtual ObjectResult<string> GetAllFinalizedDates()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllFinalizedDates");
         }
     }
 }

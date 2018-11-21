@@ -2004,11 +2004,15 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="fid" Type="int" Mode="In" />
           <Parameter Name="semesterid" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetAllFinalizedDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetCountOfDaysByDayNameInAMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentDate" Type="datetime" Mode="In" />
           <Parameter Name="flag" Type="char" Mode="In" />
         </Function>
         <Function Name="GetDepartmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="EmpId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetEmployeeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EmpId" Type="int" Mode="In" />
         </Function>
         <Function Name="getexamdatesdisplay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
@@ -5653,6 +5657,9 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="CurrentDate" Mode="In" Type="DateTime" />
             <Parameter Name="flag" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetEmployeeById" ReturnType="Collection(String)">
+          <Parameter Name="EmpId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="GETLevel" ReturnType="Collection(UNISModel.GETLevel_Result)">
           <Parameter Name="degreeid" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -6370,6 +6377,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="userid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Vw_Manual_Entry_tenter" />
+          <FunctionImport Name="GetAllFinalizedDates" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -9097,6 +9105,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <FunctionImportMapping FunctionImportName="Error_Entry_Check" FunctionName="UNISModel.Store.Error_Entry_Check" />
           <FunctionImportMapping FunctionImportName="Error_Entry_Check_NewtimeAttendance" FunctionName="UNISModel.Store.Error_Entry_Check_NewtimeAttendance" />
           <FunctionImportMapping FunctionImportName="GetCountOfDaysByDayNameInAMonth" FunctionName="UNISModel.Store.GetCountOfDaysByDayNameInAMonth" />
+          <FunctionImportMapping FunctionImportName="GetEmployeeById" FunctionName="UNISModel.Store.GetEmployeeById" />
           <FunctionImportMapping FunctionImportName="GETLevel" FunctionName="UNISModel.Store.GETLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="UNISModel.GETLevel_Result">
@@ -10471,6 +10480,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Vw_Manual_Entry_tenter" FunctionName="UNISModel.Store.Vw_Manual_Entry_tenter" />
+          <FunctionImportMapping FunctionImportName="GetAllFinalizedDates" FunctionName="UNISModel.Store.GetAllFinalizedDates" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

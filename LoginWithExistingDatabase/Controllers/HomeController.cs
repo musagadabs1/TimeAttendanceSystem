@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LoginWithExistingDatabase.Models;
 
 namespace LoginWithExistingDatabase.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         // GET: Home
@@ -29,13 +30,13 @@ namespace LoginWithExistingDatabase.Controllers
 
         // POST: Home/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(UserModel model)
         {
             try
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                return Json(model,JsonRequestBehavior.AllowGet);
             }
             catch
             {

@@ -16,9 +16,16 @@ namespace JqueryTutorial.Controllers
         }
         public ActionResult ViewAll()
         {
-            return View();
+            return View(GetAllEmployee());
         }
-        public ActionResult AddOrEdit(int id)
+        IEnumerable<Employee> GetAllEmployee()
+        {
+            using (TestDbEntities _context=new TestDbEntities())
+            {
+                return _context.Employees.ToList<Employee>();
+            }
+        }
+        public ActionResult AddOrEdit(int? id)
         {
             return View();
         }
@@ -29,7 +36,7 @@ namespace JqueryTutorial.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             return View();
         }

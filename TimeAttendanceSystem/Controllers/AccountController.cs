@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -15,44 +16,44 @@ namespace TimeAttendanceSystem.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-        private UNISEntities _context;
+        //private ApplicationSignInManager _signInManager;
+        //private ApplicationUserManager _userManager;
+        private readonly UNISEntities _context = new UNISEntities();
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,UNISEntities context )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-            _context = context;
-        }
+        //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,UNISEntities context )
+        //{
+        //    UserManager = userManager;
+        //    SignInManager = signInManager;
+        //    _context = context;
+        //}
 
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
+        //public ApplicationSignInManager SignInManager
+        //{
+        //    get
+        //    {
+        //        return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+        //    }
+        //    private set 
+        //    { 
+        //        _signInManager = value; 
+        //    }
+        //}
 
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+        //public ApplicationUserManager UserManager
+        //{
+        //    get
+        //    {
+        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        //    }
+        //    private set
+        //    {
+        //        _userManager = value;
+        //    }
+        //}
 
         //
         // GET: /Account/Login
@@ -61,6 +62,37 @@ namespace TimeAttendanceSystem.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+        private List<LoginVM> GetLogins(string username,string password)
+        {
+            List<LoginVM> loginVMs = new List<LoginVM>();
+            try
+            {
+                UNISEntities db = new UNISEntities();
+
+                var getUsers = _context.Tb_LoginUser.Where(u => u.UserName == username && u.Password == password).Select(u => new LoginVM
+                {
+                    Username = u.UserName,
+                    Password = u.Password
+                });
+
+                foreach (var item in getUsers)
+                {
+                    loginVMs.Add(new LoginVM
+                    {
+                        Username = item.Username,
+                        Password = item.Password
+                    });
+                }
+                
+                return loginVMs;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
         private bool IsLogin(string username,string password)
         {
@@ -106,19 +138,34 @@ namespace TimeAttendanceSystem.Controllers
 
             //_context.Tb_LoginUser(username, password);
             //var result = await SignInManager.PasswordSignInAsync(username, password,isPersistent:false, shouldLockout: false);
-            var login = IsLogin(username, password);
-            if (login)
+            var loginInfo = GetLogins(username, password);
+            if (loginInfo !=null && loginInfo.Count()>0)
             {
+                var loginDetails = loginInfo.FirstOrDefault();
+                this.SignInUser(loginDetails.Username, false);
                 return RedirectToLocal(returnUrl);
             }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-
-            
+            return View(model);
+                       
         }
-        
+        private void SignInUser(string username, bool isPersistent)
+        {
+            var claims = new List<Claim>();
+            try
+            {
+                claims.Add(new Claim(ClaimTypes.Name, username));
+                var claimIdentities = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
+                var ctx = Request.GetOwinContext();
+                var authenticationManager = ctx.Authentication;
+                authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, claimIdentities);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
@@ -129,31 +176,31 @@ namespace TimeAttendanceSystem.Controllers
 
         //
         // POST: /Account/ForgotPassword
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
-                {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
-                }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await UserManager.FindByNameAsync(model.Email);
+        //        if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+        //        {
+        //            // Don't reveal that the user does not exist or is not confirmed
+        //            return View("ForgotPasswordConfirmation");
+        //        }
 
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
-            }
+        //        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        //        // Send an email with this link
+        //        // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+        //        // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+        //        // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+        //        // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ForgotPasswordConfirmation
@@ -173,29 +220,29 @@ namespace TimeAttendanceSystem.Controllers
 
         //
         // POST: /Account/ResetPassword
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
-            {
-                // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            AddErrors(result);
-            return View();
-        }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+        //    var user = await UserManager.FindByNameAsync(model.Email);
+        //    if (user == null)
+        //    {
+        //        // Don't reveal that the user does not exist
+        //        return RedirectToAction("ResetPasswordConfirmation", "Account");
+        //    }
+        //    var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+        //    if (result.Succeeded)
+        //    {
+        //        return RedirectToAction("ResetPasswordConfirmation", "Account");
+        //    }
+        //    AddErrors(result);
+        //    return View();
+        //}
 
         //
         // GET: /Account/ResetPasswordConfirmation
@@ -211,25 +258,38 @@ namespace TimeAttendanceSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login", "Account");
+            try
+            {
+                var ctx = Request.GetOwinContext();
+                var authenticationManager = ctx.Authentication;
+                authenticationManager.SignOut();
+                return this.RedirectToAction("Login", "Account");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //return RedirectToAction("Login", "Account");
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                if (_userManager != null)
-                {
-                    _userManager.Dispose();
-                    _userManager = null;
-                }
+                //if (_userManager != null)
+                //{
+                //    _userManager.Dispose();
+                //    _userManager = null;
+                //}
 
-                if (_signInManager != null)
-                {
-                    _signInManager.Dispose();
-                    _signInManager = null;
-                }
+                //if (_signInManager != null)
+                //{
+                //    _signInManager.Dispose();
+                //    _signInManager = null;
+                //}
             }
 
             base.Dispose(disposing);
@@ -257,11 +317,26 @@ namespace TimeAttendanceSystem.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
+            try
             {
-                return Redirect(returnUrl);
+                if (Url.IsLocalUrl(returnUrl))
+                {
+                    return this.Redirect(returnUrl);
+                }
             }
-            return RedirectToAction("Create", "ManualEntries");
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return this.RedirectToAction("Create", "ManualEntries");
+
+
+            //if (Url.IsLocalUrl(returnUrl))
+            //{
+            //    return Redirect(returnUrl);
+            //}
+            //return RedirectToAction("Create", "ManualEntries");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

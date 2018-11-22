@@ -404,6 +404,7 @@
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoadErrorViewModel.cs" />
+    <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
     <Compile Include="Models\PayrollModel.Context.cs">

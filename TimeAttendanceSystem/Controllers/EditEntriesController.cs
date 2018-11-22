@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EditEntriesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();

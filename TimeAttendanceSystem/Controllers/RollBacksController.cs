@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class RollBacksController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();

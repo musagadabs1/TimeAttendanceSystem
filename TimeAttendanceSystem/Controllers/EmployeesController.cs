@@ -14,7 +14,7 @@ namespace TimeAttendanceSystem.Controllers
     public class EmployeesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
-        private UNISEntities _UnisContext = new UNISEntities();
+        private UNISEntities _context = new UNISEntities();
         //private PayrollEntities _PayRollContext = new PayrollEntities();
 
         // GET: Employees
@@ -37,14 +37,21 @@ namespace TimeAttendanceSystem.Controllers
         //    }
         //    return View(employee);
         //}
-
+        string msg = string.Empty;
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.Departments = new SelectList(_UnisContext.SP_GetDepartment(), "Id", "Department");
-            ViewBag.Designations = new SelectList(_UnisContext.SP_Designation(), "Id", "Designation");
-            ViewBag.Companies = new SelectList(_UnisContext.SP_CompanyDetails(), "company_id", "company_name");
-            ViewBag.Shifts = new SelectList(_UnisContext.SP_Shift(), "Shift_ID", "Shift_Type");
+            ViewBag.Departments = new SelectList(_context.SP_GetDepartment(), "Id", "Department");
+            ViewBag.Designations = new SelectList(_context.SP_Designation(), "Id", "Designation");
+            ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
+            ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
+            var staffType = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "Staff", Text = "Staff" },
+                new SelectListItem{Value = "Faculty", Text = "Faculty"},
+                new SelectListItem{Value = "Other", Text = "Other"}
+            };
+            ViewBag.StaffType = staffType;
             return View();
         }
         // POST: Employees/Create
@@ -56,14 +63,44 @@ namespace TimeAttendanceSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                try
+                {
+                    var staffType = "S";
+                    var status = "Y";
+                    var branch = 1;
+                    var saveRecord = _context.SP_Update_save_EmployeeMaster(employee.Department, employee.Designation,branch, employee.Shift, staffType, status, employee.FirstName, employee.MiddleName, employee.LastName, 0);
+
+                    if (saveRecord.FirstOrDefault()=="Success")
+                    {
+                        msg = "Employee Record Updated Successfully.";
+                        //_context.SaveChanges();
+                        ViewBag.Message = msg;
+                        return PartialView("~/Views/_MessagePartialView.cshtml");
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Error has occured. Check and try again.";
+                        return PartialView("~/Views/_MessagePartialView.cshtml");
+                    }
+
+        
+                }
+                catch (Exception ex)
+                {
+
+                    ViewBag.Message = ex.Message;
+                    return PartialView("~/Views/_MessagePartialView.cshtml");
+                }
+
+
                 //db.Employees.Add(employee);
                 //db.SaveChanges();
-                return RedirectToAction("Create");
+                //return RedirectToAction("Create");
             }
 
             return View(employee);
         }
-        public PartialViewResult GetShiftDetail(int? shiftId)
+        public JsonResult GetShiftDetail(int? shiftId)
         {
             //var tasUtility = new TASUtility();
             List<ShiftDetail> shfDetails = new List<ShiftDetail>();
@@ -85,7 +122,7 @@ namespace TimeAttendanceSystem.Controllers
 
             ViewBag.ShiftDetails = shfDetails;
 
-            return PartialView("_ShiftDetailsPartialView.cshtml", shfDetails);
+            return Json(shfDetails,JsonRequestBehavior.AllowGet);
         }
 
         // GET: Employees/Edit/5
@@ -145,13 +182,13 @@ namespace TimeAttendanceSystem.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

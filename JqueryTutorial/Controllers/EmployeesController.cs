@@ -27,7 +27,15 @@ namespace JqueryTutorial.Controllers
         }
         public ActionResult AddOrEdit(int? id)
         {
-            return View();
+            var emp = new Employee();
+            if (id !=0)
+            {
+                using (var _context=new TestDbEntities())
+                {
+                    emp = _context.Employees.Where(e => e.Id == id).FirstOrDefault<Employee>();
+                }
+            }
+            return View(emp);
         }
         [HttpPost]
         public ActionResult AddOrEdit(Employee employee)

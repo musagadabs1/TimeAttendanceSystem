@@ -45,6 +45,7 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.Designations = new SelectList(_context.SP_Designation(), "Id", "Designation");
             ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
             ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
+            ViewBag.EmployeeNames = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "MachineCode", "EmpData");
             var staffType = new List<SelectListItem>
             {
                 new SelectListItem {Value = "Staff", Text = "Staff" },
@@ -123,6 +124,24 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.ShiftDetails = shfDetails;
 
             return Json(shfDetails,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEmployeeName(string prefix)
+        {
+            try
+            {
+                var name = _context.SP_GetEmployee(prefix);
+                if (name !=null && name.Count()>0)
+                {
+                    return Json(name, JsonRequestBehavior.AllowGet);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // GET: Employees/Edit/5

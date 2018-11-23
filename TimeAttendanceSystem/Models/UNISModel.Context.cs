@@ -3231,5 +3231,10 @@ namespace TimeAttendanceSystem.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllFinalizedDates");
         }
+    
+        public virtual ObjectResult<string> SP_GetEmployeeNameAndMachineAndEmpNumber()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_GetEmployeeNameAndMachineAndEmpNumber");
+        }
     }
 }

@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.EmployeeNames, "---Select Employee---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -143,6 +143,26 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        $('#MachineId').keyup(function () {
+            var name = $('#MachineId').val();
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '@Url.Action("GetEmployeeName")' + '?MachineId=' + $('#MachineId').val(),
+                success: function () {
+                    alert("hit the Method");
+                },
+                error: function () {
+                    alert('Error')
+                }
+            });
+        });
+    });
+
+
+
+
+    @*$(document).ready(function () {
         $("#ddlShift").change(function () {
 
           var  colNames = ("Code,Title,StartTime,EndTime,Tolerence,Type,NextDay");
@@ -168,7 +188,7 @@
         }
     });
 
-            @*$.ajax({
+            $.ajax({
                 type: "GET",
                 url: '@Url.Action("GetShiftDetail")' + '?shiftId=' + $("#ddlShift").val(),
                 data: {},
@@ -179,8 +199,8 @@
                 error: function () {
                     alert('Error');
                 }
-            });*@
+            });
         });
-    });
+    });*@
 
 </script>

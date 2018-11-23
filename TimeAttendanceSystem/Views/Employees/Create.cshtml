@@ -4,129 +4,171 @@
     ViewBag.Title = "Update Employee";
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div class="alert-heading">
-    <h2 style="text-align:center; color:#0094ff">Update Employee Details</h2>
-</div>
+    <div class="alert-heading">
+        <h2 style="text-align:center; color:#0094ff">Update Employee Details</h2>
+    </div>
 
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.IsActive)
-                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, "---Select Department---", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, "---Select Designation---", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.StaffType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.StaffType, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.StaffType, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StaffType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StaffType,new SelectList(ViewBag.StaffType,"Value","Text"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StaffType, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Company, (SelectList)ViewBag.Companies, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Company, (SelectList)ViewBag.Companies, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Shift, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Shift, (SelectList)ViewBag.Shifts, htmlAttributes: new { @class = "form-control", @id = "ddlShift" })
-            @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2 col-sm-2 col-xs-12">
-            Shift Details
-        </label>
-        <div id="shiftPartialView">
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.Shift, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Shift, (SelectList)ViewBag.Shifts, htmlAttributes: new { @class = "form-control", @id = "ddlShift" })
+                @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
+            </div>
         </div>
         
-    </div>
-    <hr />
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-1">
-                <input type="submit" value="Update" class="btn btn-primary" />
-            </div>
-            <div class="col-md-4 col-md-2">
-                <input type="submit" value="Cancel" class="btn btn-primary" />
-            </div>
-        </div>
+        @*<div class="form-group">
+            <label class="control-label col-md-2 col-sm-4 col-xs-12">
+                Shift Details
+            </label>
+            <div class="table-responsive">
+                <div class="col-md-10 col-sm-8 col-xs-12">
+                    <div class="col-md-10 col-sm-8 col-xs-12">
+                        <table id="ShiftDetails" border='1' style="display: none" class="table table-striped jambo_table bulk_action">
+                            <thead>
+                                <tr class="headings">
 
+                                    <th>CODE</th>
+                                    <th style="width:25%">TITLE</th>
+                                    <th>START TIME</th>
+                                    <th>END TIME</th>
+                                    <th>TOLERENCE</th>
+                                    <th>TYPE</th>
+                                    <th>NEXT DAY</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <hr />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-1">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+                <div class="col-md-4 col-md-2">
+                    <input type="submit" value="Cancel" class="btn btn-primary" />
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script src="~/Scripts/CustomScripts/CustomScripts.js"></script>*@
 <script type="text/javascript">
 
-    @*$(document).ready(function () {
+    $(document).ready(function () {
         $("#ddlShift").change(function () {
+
+          var  colNames = ("Code,Title,StartTime,EndTime,Tolerence,Type,NextDay");
+            array = ColNames.split(',');
+
             $.ajax({
+                    type: "Get",
+                    Contenttype: "application/json",
+                    url: '@Url.Action("GetShiftDetail")' + '?shiftId=' + $("#ddlShift").val(),
+                    success: function (data) {
+                    var trHTML = '';
+                    var td = "";
+                    $(data.response).each(function (key, value) {
+                    var obj = '';
+                    for (var i = 0; i < array.length; i++) {
+                        obj += '<td>' + value[array[i]] + '</td>';
+                    }
+                    trHTML += '<tr>' + obj + '</tr >';
+            });
+            $("#ShiftDetails").find("tr:gt(0)").remove();
+            $('#ShiftDetails').append(trHTML);
+            $("#ShiftDetails").css("display", "block");
+        }
+    });
+
+            @*$.ajax({
                 type: "GET",
                 url: '@Url.Action("GetShiftDetail")' + '?shiftId=' + $("#ddlShift").val(),
                 data: {},
@@ -137,8 +179,8 @@
                 error: function () {
                     alert('Error');
                 }
-            });
+            });*@
         });
-    });*@
-    
+    });
+
 </script>

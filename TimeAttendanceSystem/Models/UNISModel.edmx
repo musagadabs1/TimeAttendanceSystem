@@ -2565,6 +2565,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         <Function Name="SP_GetEmployeeName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="LUID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_GetEmployeeNameAndMachineAndEmpNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GetEmployeeType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -6378,6 +6379,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           </FunctionImport>
           <FunctionImport Name="Vw_Manual_Entry_tenter" />
           <FunctionImport Name="GetAllFinalizedDates" ReturnType="Collection(String)" />
+          <FunctionImport Name="SP_GetEmployeeNameAndMachineAndEmpNumber" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -10481,6 +10483,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Vw_Manual_Entry_tenter" FunctionName="UNISModel.Store.Vw_Manual_Entry_tenter" />
           <FunctionImportMapping FunctionImportName="GetAllFinalizedDates" FunctionName="UNISModel.Store.GetAllFinalizedDates" />
+          <FunctionImportMapping FunctionImportName="SP_GetEmployeeNameAndMachineAndEmpNumber" FunctionName="UNISModel.Store.SP_GetEmployeeNameAndMachineAndEmpNumber" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

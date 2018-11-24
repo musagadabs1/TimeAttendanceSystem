@@ -45,6 +45,8 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.Designations = new SelectList(_context.SP_Designation(), "Id", "Designation");
             ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
             ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
+            //ViewBag.EmployeeNames = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "MachineCode", "EmpData");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
             var staffType = new List<SelectListItem>
             {
                 new SelectListItem {Value = "Staff", Text = "Staff" },
@@ -123,6 +125,52 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.ShiftDetails = shfDetails;
 
             return Json(shfDetails,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEmployeeName(string prefix)
+        {
+            try
+            {
+                var name = _context.SP_GetEmployee(prefix).FirstOrDefault();
+                if (name !=null && name.Count()>0)
+                {
+                    return Json(name, JsonRequestBehavior.AllowGet);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public JsonResult GetEmployeeDetailsByMachineCode(int machineCode)
+        {
+            try
+            {
+                EmployeeViewModel employee = new EmployeeViewModel();
+
+                var getEmployee = _context.SP_EmployeeEdit_Complete_Deatils(machineCode).FirstOrDefault();
+                if (getEmployee !=null)
+                {
+                    employee.BranchId =int.Parse( getEmployee.Branch_Id.ToString());
+                    employee.DepartmentId = int.Parse(getEmployee.E_DEPT_ID.ToString());
+                    employee.DesignationId = int.Parse(getEmployee.E_DES_ID.ToString());
+                    employee.EmployeeType = getEmployee.E_EType;
+                    employee.FirstName = getEmployee.First_Name;
+                    employee.LastName = getEmployee.Last_Name;
+                    employee.MiddleName = getEmployee.Middle_Name;
+                    employee.ShiftId=int.Parse(getEmployee.Shift_Id.ToString());
+                    employee.Status = getEmployee.E_STATUS;
+                    employee.MachineCode = int.Parse(getEmployee.L_UID.ToString());
+                }
+                return Json(employee, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // GET: Employees/Edit/5

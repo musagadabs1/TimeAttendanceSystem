@@ -13,7 +13,7 @@ namespace TimeAttendanceSystem.Models
         public bool IsActive { get; set; }
         [Required(ErrorMessage ="Machine Code is Required.")]
         [Display(Name ="Machine Code")]
-        public int MachineId { get; set; }
+        public string MachineId { get; set; }
         [Required(ErrorMessage ="First Name is Required.")]
         [Display(Name ="First Name")]
         public string FirstName { get; set; }

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "CompileIndividual";
 }
-
+<link href="~/Content/css/select2.css" rel="stylesheet" />
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -49,3 +49,12 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/select2.js"></script>
+<script type="text/javascript">
+    $('#EmployeeID').select2({
+        //placeholder: "---Select Employee---",
+        allowClear: true
+
+    });
+</script>

@@ -46,7 +46,7 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
             ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
             //ViewBag.EmployeeNames = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "MachineCode", "EmpData");
-            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "Id", "EmpData");
             var staffType = new List<SelectListItem>
             {
                 new SelectListItem {Value = "Staff", Text = "Staff" },
@@ -67,12 +67,17 @@ namespace TimeAttendanceSystem.Controllers
             {
                 try
                 {
+                    var status = "N";
+                    if (employee.IsActive==true)
+                    {
+                        status = "Y";
+                    }
                     var staffType = "S";
-                    var status = "Y";
+                    
                     var branch = 1;
-                    var saveRecord = _context.SP_Update_save_EmployeeMaster(employee.Department, employee.Designation,branch, employee.Shift, staffType, status, employee.FirstName, employee.MiddleName, employee.LastName, 0);
+                    var saveRecord = _context.SP_Update_save_EmployeeMaster(employee.Department, employee.Designation,branch, employee.Shift, staffType, status, employee.FirstName, employee.MiddleName, employee.LastName,  int.Parse(employee.MachineId));
 
-                    if (saveRecord.FirstOrDefault()=="Success")
+                    if (saveRecord.FirstOrDefault()== "Success!!")
                     {
                         msg = "Employee Record Updated Successfully.";
                         //_context.SaveChanges();

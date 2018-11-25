@@ -72,10 +72,14 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="rdbGroup">
             @Html.LabelFor(model => model.StaffType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.StaffType, new SelectList(ViewBag.StaffType, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @*<input type="radio"  name="rdbStaff" title="Staff" checked="checked" class="form-control" />
+                <input type="radio" name="rdbFaculty" title="Faculty" class="form-control" />
+                <input type="radio" name="rdbOther" title="Other"  class="form-control" />*@
+                @*@Html.RadioButtonFor(model => model.StaffType,htmlAttributes: new { @class="form-control"})*@
                 @Html.ValidationMessageFor(model => model.StaffType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -95,32 +99,6 @@
                 @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-                <label class="control-label col-md-2 col-sm-4 col-xs-12">
-                    Shift Details
-                </label>
-                <div class="table-responsive">
-                    <div class="col-md-10 col-sm-8 col-xs-12">
-                        <div class="col-md-10 col-sm-8 col-xs-12">
-                            <table id="ShiftDetails" border='1' style="display: none" class="table table-striped jambo_table bulk_action">
-                                <thead>
-                                    <tr class="headings">
-
-                                        <th>CODE</th>
-                                        <th style="width:25%">TITLE</th>
-                                        <th>START TIME</th>
-                                        <th>END TIME</th>
-                                        <th>TOLERENCE</th>
-                                        <th>TYPE</th>
-                                        <th>NEXT DAY</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
         <hr />
         <div class="form-group">
             <div class="row">
@@ -128,7 +106,7 @@
                     <input type="submit" value="Update" class="btn btn-primary" />
                 </div>
                 <div class="col-md-4 col-md-2">
-                    <input type="submit" value="Cancel" class="btn btn-primary" />
+                    <input type="button" value="Cancel" class="btn btn-primary" onclick="reset();" />
                 </div>
             </div>
 
@@ -144,8 +122,12 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $('#MachineId').change(function () {
+        //var $eventSelect = $('#MachineId');
+        //$eventSelect.select2();
+        $('#MachineId').on("change",function () {
+        //$eventSelect.on("change", function () {
             //var name = $('#MachineId').val();
+            //debugger;
             $.ajax({
                 type: 'GET',
                 contentType: 'application/json',
@@ -153,15 +135,33 @@
                 //data: {},
                 success: function (data) {
                     $("#Department").append($("<option></option>").val("0").html("Select"));
-                    if (data.status == true) {
+                    //if (data.status == 'Y') {
                         $('#MachineId').val(data.MachineCode);
                         $('#FirstName').val(data.FirstName);
                         $('#MiddleName').val(data.MiddleName);
                         $('#LastName').val(data.LastName);
-                        $("#Department").val(data.DepartmentId);
-                        $("#Company").val(data.BranchId);
-                        $("#Designation").val(data.DesignationId);
-                        $("#Shift").val(data.ShiftId);
+                        $("#Department").select2().val(data.DepartmentId);
+                        $("#Company").select2().val(data.BranchId);
+                        $("#Designation").select2().val(data.DesignationId);
+
+                    if (data.EmployeeType == "S") {
+                        $("#StaffType").val("Staff");
+                        //$("#EmployeeShifttr").css("display", "none");
+                    }
+                    else if (data.EmployeeType == "P") {
+                        //$("#MainContent_RadPartTime").prop('checked', true);
+                        //$("#MainContent_RadFullTime").prop('checked', false);
+                        $("#StaffType").val("Faculty");
+                        //$("#EmployeeShifttr").css("display", "block");
+                    }
+                    else if (data.EmployeeType == "F") {
+                        //$("#MainContent_RadPartTime").prop('checked', false);
+                        //$("#MainContent_RadFullTime").prop('checked', true);
+                        $("#StaffType").val("Faculty");
+                        //$("#EmployeeShifttr").css("display", "block");
+                    }
+
+                        $("#Shift").select2().val(data.ShiftId);
 
                         if (data.Status == "Y") {
                             $("#IsActive").prop('checked', true);
@@ -169,7 +169,7 @@
                         else {
                             $("#IsActive").prop('checked', false);
                         }
-                    }
+                    //}
 
                 },
                 error: function () {
@@ -179,11 +179,10 @@
         });
     });
 
-    $('#MachineId').select2({
-        //placeholder: "---Select Employee---",
-        allowClear:true
-
-    });
+    //$('#MachineId').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear:true
+    //});
 
     $('#Department').select2({
         //placeholder: "---Select Employee---",
@@ -195,47 +194,4 @@
         allowClear: true
 
     });
-
-
-    @*$(document).ready(function () {
-        $("#ddlShift").change(function () {
-
-          var  colNames = ("Code,Title,StartTime,EndTime,Tolerence,Type,NextDay");
-            array = ColNames.split(',');
-
-            $.ajax({
-                    type: "Get",
-                    Contenttype: "application/json",
-                    url: '@Url.Action("GetShiftDetail")' + '?shiftId=' + $("#ddlShift").val(),
-                    success: function (data) {
-                    var trHTML = '';
-                    var td = "";
-                    $(data.response).each(function (key, value) {
-                    var obj = '';
-                    for (var i = 0; i < array.length; i++) {
-                        obj += '<td>' + value[array[i]] + '</td>';
-                    }
-                    trHTML += '<tr>' + obj + '</tr >';
-            });
-            $("#ShiftDetails").find("tr:gt(0)").remove();
-            $('#ShiftDetails').append(trHTML);
-            $("#ShiftDetails").css("display", "block");
-        }
-    });
-
-            $.ajax({
-                type: "GET",
-                url: '@Url.Action("GetShiftDetail")' + '?shiftId=' + $("#ddlShift").val(),
-                data: {},
-                success: function (result) {
-                    //alert(result);
-                    $('#shiftPartialView').load(@Html.Partial("~/Views/Employees/_ShiftDetailsPartialView.cshtml");
-                },
-                error: function () {
-                    alert('Error');
-                }
-            });
-        });
-    });*@
-
 </script>

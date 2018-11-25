@@ -17,7 +17,7 @@ namespace TimeAttendanceSystem.Models
         [Required(ErrorMessage ="First Name is Required.")]
         [Display(Name ="First Name")]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "Middle Name is Required.")]
+        //[Required(ErrorMessage = "Middle Name is Required.")]
         [Display(Name ="Middle Name")]
         public string MiddleName { get; set; }
         [Display(Name ="Last Name")]

@@ -719,6 +719,11 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Error_Entry_Check_NewtimeAttendance", oDateParameter, oNewDateParameter);
         }
     
+        public virtual ObjectResult<string> GetAllFinalizedDates()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllFinalizedDates");
+        }
+    
         public virtual int GetCountOfDaysByDayNameInAMonth(Nullable<System.DateTime> currentDate, string flag)
         {
             var currentDateParameter = currentDate.HasValue ?
@@ -2219,6 +2224,11 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_GetEmployeeName", lUIDParameter);
         }
     
+        public virtual ObjectResult<SP_GetEmployeeNameAndMachineAndEmpNumber_Result> SP_GetEmployeeNameAndMachineAndEmpNumber()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetEmployeeNameAndMachineAndEmpNumber_Result>("SP_GetEmployeeNameAndMachineAndEmpNumber");
+        }
+    
         public virtual ObjectResult<SP_GetEmployeeType_Result> SP_GetEmployeeType(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -3225,16 +3235,6 @@ namespace TimeAttendanceSystem.Models
         public virtual int Vw_Manual_Entry_tenter()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Vw_Manual_Entry_tenter");
-        }
-    
-        public virtual ObjectResult<string> GetAllFinalizedDates()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllFinalizedDates");
-        }
-    
-        public virtual ObjectResult<string> SP_GetEmployeeNameAndMachineAndEmpNumber()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_GetEmployeeNameAndMachineAndEmpNumber");
         }
     }
 }

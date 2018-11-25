@@ -11,9 +11,9 @@ namespace TimeAttendanceSystem.Models
 {
     using System;
     
-    public partial class SP_GETDESIGNATION_Result
+    public partial class SP_GetEmployeeNameAndMachineAndEmpNumber_Result
     {
-        public int JOB_ID { get; set; }
-        public string JOB_NAME { get; set; }
+        public Nullable<int> Id { get; set; }
+        public string EmpData { get; set; }
     }
 }

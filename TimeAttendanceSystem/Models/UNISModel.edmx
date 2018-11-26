@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UNISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UNISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.attendance_finalize_department_MHS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="attendance_finalize_department_MHS">
@@ -274,27 +274,6 @@ warning 6002: The table/view 'UNIS.dbo.cStaff' does not have a primary key defin
           <Property Name="lvalue" Type="image" />
           <Property Name="version" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.error_entry_department' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="error_entry_department">
-          <Property Name="e_id" Type="varchar" MaxLength="10" />
-          <Property Name="e_name" Type="varchar" MaxLength="50" />
-          <Property Name="e_date" Type="char" MaxLength="8" />
-          <Property Name="e_time" Type="char" MaxLength="6" />
-          <Property Name="e_timenext" Type="char" MaxLength="6" />
-          <Property Name="cnt" Type="int" />
-          <Property Name="manual_correction" Type="char" MaxLength="1" />
-          <Property Name="hrs" Type="char" MaxLength="2" />
-          <Property Name="mts" Type="char" MaxLength="2" />
-          <Property Name="lnmode" Type="int" />
-          <Property Name="lcmode" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.holidayDays' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="holidayDays">
-          <Property Name="leavedayname" Type="varchar" MaxLength="1000" />
-          <Property Name="leavedays" Type="int" />
-        </EntityType>-->
         <EntityType Name="HR_AccessDetails">
           <Key>
             <PropertyRef Name="Access_Det_Id" />
@@ -362,61 +341,6 @@ warning 6002: The table/view 'UNIS.dbo.iCantTerminal' does not have a primary ke
           <Property Name="L_UID" Type="int" Nullable="false" />
           <Property Name="L_TID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iCardInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iCardInfo">
-          <Property Name="L_CardSize" Type="int" />
-          <Property Name="L_CardType" Type="int" />
-          <Property Name="L_ReadType" Type="int" />
-          <Property Name="L_TemplateSize" Type="int" />
-          <Property Name="L_TemplateCount" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iCardLayout' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iCardLayout">
-          <Property Name="L_Index" Type="int" />
-          <Property Name="L_Sector" Type="int" />
-          <Property Name="L_Block" Type="int" />
-          <Property Name="L_Start" Type="int" />
-          <Property Name="L_Length" Type="int" />
-          <Property Name="L_KeyType" Type="int" />
-          <Property Name="C_KeyValue" Type="nvarchar" MaxLength="12" />
-          <Property Name="C_AIDCode" Type="nvarchar" MaxLength="16" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iDVRInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iDVRInfo">
-          <Property Name="L_DVRID" Type="int" />
-          <Property Name="C_DVRIP" Type="nvarchar" MaxLength="100" />
-          <Property Name="L_DVRPort" Type="int" />
-          <Property Name="C_DVRLoginID" Type="nvarchar" MaxLength="100" />
-          <Property Name="C_DVRLoginPW" Type="nvarchar" MaxLength="100" />
-          <Property Name="L_PrevTime" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iHoliday' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iHoliday">
-          <Property Name="C_Code" Type="nvarchar" MaxLength="4" />
-          <Property Name="C_Holiday" Type="nvarchar" MaxLength="4" />
-          <Property Name="C_DayName" Type="nvarchar" MaxLength="30" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iMapDrawing' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iMapDrawing">
-          <Property Name="C_MapCode" Type="nvarchar" MaxLength="4" />
-          <Property Name="L_PosX" Type="int" />
-          <Property Name="L_PosY" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iMapTerminal' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iMapTerminal">
-          <Property Name="C_MapCode" Type="nvarchar" MaxLength="4" />
-          <Property Name="L_TID" Type="int" />
-          <Property Name="L_Type" Type="int" />
-          <Property Name="L_PosX" Type="int" />
-          <Property Name="L_PosY" Type="int" />
-          <Property Name="L_Size" Type="int" />
-        </EntityType>-->
         <EntityType Name="iMeal">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -441,32 +365,6 @@ warning 6002: The table/view 'UNIS.dbo.iMealPay' does not have a primary key def
           <Property Name="L_Menu3" Type="int" />
           <Property Name="L_Menu4" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iMobileKeyAdmin' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iMobileKeyAdmin">
-          <Property Name="C_ServerDNS" Type="nvarchar" MaxLength="100" />
-          <Property Name="C_ClientID" Type="nvarchar" MaxLength="45" />
-          <Property Name="C_Secret" Type="nvarchar" MaxLength="100" />
-          <Property Name="C_EMail" Type="nvarchar" MaxLength="100" />
-          <Property Name="C_Password" Type="nvarchar" MaxLength="20" />
-          <Property Name="C_CountryCode" Type="nvarchar" MaxLength="4" />
-          <Property Name="C_PhoneNo" Type="nvarchar" MaxLength="12" />
-          <Property Name="C_SiteCode" Type="nvarchar" MaxLength="5" />
-          <Property Name="C_MacAddr" Type="nvarchar" MaxLength="12" />
-          <Property Name="L_tzIndex" Type="int" />
-          <Property Name="L_tzBias" Type="int" />
-          <Property Name="C_tzKeyName" Type="nvarchar" MaxLength="100" />
-          <Property Name="C_TimeZone" Type="varchar" MaxLength="10" />
-          <Property Name="C_Company" Type="nvarchar" MaxLength="100" />
-          <Property Name="C_Country" Type="nvarchar" MaxLength="4" />
-          <Property Name="L_SiteCode" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.iNecessityField' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="iNecessityField">
-          <Property Name="L_Type" Type="int" />
-          <Property Name="L_Index" Type="int" />
-        </EntityType>-->
         <EntityType Name="iPassback">
           <Key>
             <PropertyRef Name="L_TID" />
@@ -572,27 +470,6 @@ warning 6002: The table/view 'UNIS.dbo.iTimezone' does not have a primary key de
           <Property Name="L_Zone" Type="int" Nullable="false" />
           <Property Name="C_Name" Type="nvarchar" MaxLength="30" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.monthly_attend' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="monthly_attend">
-          <Property Name="tdate" Type="varchar" MaxLength="10" />
-          <Property Name="eid" Type="int" />
-          <Property Name="ename" Type="varchar" MaxLength="300" />
-          <Property Name="timein" Type="varchar" MaxLength="10" />
-          <Property Name="timeout" Type="varchar" MaxLength="10" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.parttimedaily_attend' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="parttimedaily_attend">
-          <Property Name="tdate" Type="varchar" MaxLength="10" />
-          <Property Name="eid" Type="int" />
-          <Property Name="ename" Type="varchar" MaxLength="100" />
-          <Property Name="timein" Type="varchar" MaxLength="10" />
-          <Property Name="timein1" Type="varchar" MaxLength="10" />
-          <Property Name="timeout" Type="varchar" MaxLength="10" />
-          <Property Name="timeout1" Type="varchar" MaxLength="10" />
-          <Property Name="dept" Type="varchar" MaxLength="50" />
-        </EntityType>-->
         <EntityType Name="tAccessGroupShift">
           <Key>
             <PropertyRef Name="L_AdminID" />
@@ -670,11 +547,6 @@ warning 6002: The table/view 'UNIS.dbo.tAuditTerminal' does not have a primary k
           <Property Name="L_RetryCount" Type="int" Nullable="false" />
           <Property Name="L_DataCheck" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tb_Autocomplete' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Autocomplete">
-          <Property Name="ADate" Type="datetime" />
-        </EntityType>-->
         <EntityType Name="Tb_Company">
           <Key>
             <PropertyRef Name="Company_ID" />
@@ -817,14 +689,6 @@ warning 6002: The table/view 'UNIS.dbo.tb_location' does not have a primary key 
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="ModifiedIP" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tb_operation_status' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_operation_status">
-          <Property Name="e_date" Type="char" MaxLength="8" />
-          <Property Name="is_process" Type="char" MaxLength="1" />
-          <Property Name="foremanid" Type="varchar" MaxLength="10" />
-          <Property Name="variance" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.Tb_PartimeFacultyAtt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Tb_PartimeFacultyAtt">
@@ -1032,15 +896,6 @@ warning 6002: The table/view 'UNIS.dbo.TBL_RFID_CARDENTRY_LOG' does not have a p
           <Property Name="OPERATION" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tblContactDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblContactDetails">
-          <Property Name="SId" Type="nvarchar(max)" />
-          <Property Name="AName" Type="nvarchar(max)" />
-          <Property Name="EName" Type="nvarchar(max)" />
-          <Property Name="Contact1" Type="nvarchar(max)" />
-          <Property Name="Contact2" Type="nvarchar(max)" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.tblEmirates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblEmirates">
           <Key>
@@ -1096,14 +951,6 @@ warning 6002: The table/view 'UNIS.dbo.tChangedInfo' does not have a primary key
           <Property Name="C_TargetCode" Type="nvarchar" MaxLength="30" />
           <Property Name="L_ClientID" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tClientLog' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tClientLog">
-          <Property Name="C_EventTime" Type="nvarchar" MaxLength="14" />
-          <Property Name="L_LogonID" Type="int" />
-          <Property Name="L_Type" Type="int" />
-          <Property Name="L_Result" Type="int" />
-        </EntityType>-->
         <EntityType Name="tCmdDown">
           <Key>
             <PropertyRef Name="C_RegTime" />
@@ -1139,74 +986,6 @@ warning 6013: The table/view 'UNIS.dbo.tClientLog' does not have a primary key d
           <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tConfig' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tConfig">
-          <Property Name="C_MasterPwd" Type="nvarchar" MaxLength="30" />
-          <Property Name="L_UniqueType" Type="int" />
-          <Property Name="L_AutoDown" Type="int" />
-          <Property Name="C_DownTime" Type="nvarchar" MaxLength="4" />
-          <Property Name="L_AutoUp" Type="int" />
-          <Property Name="L_RegSameFp" Type="int" />
-          <Property Name="L_FpNum" Type="int" />
-          <Property Name="L_UidCipher" Type="int" />
-          <Property Name="L_TidCipher" Type="int" />
-          <Property Name="L_UniqueCipher" Type="int" />
-          <Property Name="L_MinVID" Type="int" />
-          <Property Name="L_MaxVID" Type="int" />
-          <Property Name="L_tSockPort" Type="int" />
-          <Property Name="L_PollTime" Type="int" />
-          <Property Name="L_SaveMode" Type="int" />
-          <Property Name="L_FirstTime" Type="int" />
-          <Property Name="L_AccessLogDays" Type="int" />
-          <Property Name="L_EventLogDays" Type="int" />
-          <Property Name="L_CmdDownDays" Type="int" />
-          <Property Name="L_Blacklist" Type="int" />
-          <Property Name="L_FireRange" Type="int" />
-          <Property Name="L_FireOpen" Type="int" />
-          <Property Name="L_FireAlarm" Type="int" />
-          <Property Name="L_FireFinish" Type="int" />
-          <Property Name="L_PanicRange" Type="int" />
-          <Property Name="L_PanicOpen" Type="int" />
-          <Property Name="L_PanicAlarm" Type="int" />
-          <Property Name="L_PanicFinish" Type="int" />
-          <Property Name="L_CrisisRange" Type="int" />
-          <Property Name="L_CrisisOpen" Type="int" />
-          <Property Name="L_CrisisAlarm" Type="int" />
-          <Property Name="L_CrisisFinish" Type="int" />
-          <Property Name="L_TransPicture" Type="int" />
-          <Property Name="L_DoorEvent" Type="int" />
-          <Property Name="C_DBVersion" Type="nvarchar" MaxLength="128" />
-          <Property Name="L_IsUserOverwrite" Type="int" />
-          <Property Name="L_TemplateFormat" Type="int" />
-          <Property Name="L_FingerFormat" Type="int" />
-          <Property Name="L_IsAuthorizedFingerSave" Type="int" />
-          <Property Name="L_IsUnAuthorizedFingerSave" Type="int" />
-          <Property Name="C_FingerPath" Type="nvarchar" MaxLength="255" />
-          <Property Name="B_MainLogoPicture" Type="image" />
-          <Property Name="C_PicturePath" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_JpegPath" Type="nvarchar" MaxLength="255" />
-          <Property Name="L_FillFingerEmploye" Type="int" />
-          <Property Name="L_DownFpNum" Type="int" />
-          <Property Name="L_CryptoPWD" Type="int" />
-          <Property Name="C_FingerOrder" Type="nvarchar" MaxLength="10" />
-          <Property Name="L_BlockingTime" Type="int" />
-          <Property Name="L_DDNS" Type="int" />
-          <Property Name="C_HostName" Type="nvarchar" MaxLength="32" />
-          <Property Name="C_ContractNo" Type="nvarchar" MaxLength="12" />
-          <Property Name="L_UpdateTerm" Type="int" />
-          <Property Name="L_EncryptedPacket" Type="int" />
-          <Property Name="L_EncryptedUserinfo" Type="int" />
-          <Property Name="L_UseVID" Type="int" />
-          <Property Name="L_PanicDuress" Type="int" />
-          <Property Name="L_DefaultNotAccess" Type="int" />
-          <Property Name="L_ServerLanguage" Type="int" />
-          <Property Name="L_AuthData" Type="int" />
-          <Property Name="C_WebOpen" Type="nvarchar" MaxLength="30" />
-          <Property Name="C_MobileOpen" Type="nvarchar" MaxLength="30" />
-          <Property Name="L_AdminRestrict" Type="int" />
-          <Property Name="L_FindUserByFP" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.tConnectServer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tConnectServer">
           <Key>
@@ -1232,28 +1011,6 @@ warning 6002: The table/view 'UNIS.dbo.tDailyCount' does not have a primary key 
           <Property Name="L_InCount" Type="int" />
           <Property Name="L_OutCount" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.TempExamDays' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TempExamDays">
-          <Property Name="dayname1" Type="varchar" MaxLength="1000" />
-          <Property Name="nodays" Type="int" />
-          <Property Name="batchcode" Type="varchar" MaxLength="1000" />
-          <Property Name="statusattend" Type="varchar" MaxLength="100" />
-          <Property Name="examdate" Type="datetime" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tempholidayDays' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tempholidayDays">
-          <Property Name="dayname1" Type="varchar" MaxLength="1000" />
-          <Property Name="nodays" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.templeavedays' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="templeavedays">
-          <Property Name="id" Type="int" />
-          <Property Name="leavetype" Type="varchar" MaxLength="1000" />
-          <Property Name="noofdays" Type="float" />
-        </EntityType>-->
         <EntityType Name="tEmploye">
           <Key>
             <PropertyRef Name="L_UID" />
@@ -1273,40 +1030,6 @@ warning 6013: The table/view 'UNIS.dbo.templeavedays' does not have a primary ke
           <Property Name="C_Address" Type="nvarchar" MaxLength="255" />
           <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tempprint' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tempprint">
-          <Property Name="currentdate" Type="varchar" MaxLength="50" />
-          <Property Name="userid" Type="varchar" MaxLength="50" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="dept" Type="varchar" MaxLength="50" />
-          <Property Name="dtname" Type="varchar" MaxLength="50" />
-          <Property Name="fromdate" Type="varchar" MaxLength="50" />
-          <Property Name="todate" Type="varchar" MaxLength="50" />
-          <Property Name="designation" Type="varchar" MaxLength="50" />
-          <Property Name="InTime" Type="varchar" MaxLength="10" />
-          <Property Name="attr2" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tempprint1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tempprint1">
-          <Property Name="currentdate" Type="varchar" MaxLength="50" />
-          <Property Name="userid" Type="varchar" MaxLength="50" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="dept" Type="varchar" MaxLength="50" />
-          <Property Name="dtname" Type="varchar" MaxLength="50" />
-          <Property Name="fromdate" Type="varchar" MaxLength="50" />
-          <Property Name="todate" Type="varchar" MaxLength="50" />
-          <Property Name="designation" Type="varchar" MaxLength="50" />
-          <Property Name="InTime" Type="varchar" MaxLength="10" />
-          <Property Name="attr2" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tempweekcount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tempweekcount">
-          <Property Name="weekdayname" Type="varchar" MaxLength="100" />
-          <Property Name="weekcount" Type="int" />
-        </EntityType>-->
         <EntityType Name="tEnter">
           <Key>
             <PropertyRef Name="C_Date" />
@@ -1449,45 +1172,6 @@ warning 6002: The table/view 'UNIS.dbo.tHourlyCount' does not have a primary key
           <Property Name="L_OutCount" Type="int" />
           <Property Name="C_CreateDate" Type="nvarchar" MaxLength="14" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tLogonHistory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tLogonHistory">
-          <Property Name="C_DateTime" Type="nvarchar" MaxLength="14" />
-          <Property Name="C_AccessType" Type="nvarchar" MaxLength="3" />
-          <Property Name="L_UID" Type="int" />
-          <Property Name="C_IP" Type="nvarchar" MaxLength="15" />
-          <Property Name="C_LogonSuccess" Type="nvarchar" MaxLength="1" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tMailConfig' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tMailConfig">
-          <Property Name="L_MailFlag" Type="int" />
-          <Property Name="C_MailServer" Type="nvarchar" MaxLength="125" />
-          <Property Name="L_MailPort" Type="int" />
-          <Property Name="C_MailID" Type="nvarchar" MaxLength="127" />
-          <Property Name="C_MailPWD" Type="nvarchar" MaxLength="127" />
-          <Property Name="C_MailSender" Type="nvarchar" MaxLength="127" />
-          <Property Name="C_MailFROM" Type="nvarchar" MaxLength="127" />
-          <Property Name="C_MailTO" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_MailCC" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_MailBCC" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_MailAttach" Type="nvarchar" MaxLength="255" />
-          <Property Name="L_Disconnect" Type="int" />
-          <Property Name="L_CoverOpen" Type="int" />
-          <Property Name="L_DoorPick" Type="int" />
-          <Property Name="L_NotClose" Type="int" />
-          <Property Name="L_LockError" Type="int" />
-          <Property Name="L_Emergency" Type="int" />
-          <Property Name="L_External" Type="int" />
-          <Property Name="L_Blacklist" Type="int" />
-          <Property Name="L_CounterError" Type="int" />
-          <Property Name="L_TailGateError" Type="int" />
-          <Property Name="L_Security" Type="int" />
-          <Property Name="L_MatchingFail" Type="int" />
-          <Property Name="L_AttachPicture" Type="int" />
-          <Property Name="L_DuressFinger" Type="int" />
-          <Property Name="L_ACU" Type="int" />
-        </EntityType>-->
         <EntityType Name="tMapImage">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -1555,79 +1239,6 @@ warning 6002: The table/view 'UNIS.dbo.tMealType' does not have a primary key de
           <Property Name="D_WT6Money" Type="float" />
           <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tOrganization' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tOrganization">
-          <Property Name="L_PatternID" Type="int" />
-          <Property Name="C_PatternName" Type="nvarchar" MaxLength="30" />
-          <Property Name="C_ParentName" Type="nvarchar" MaxLength="30" />
-          <Property Name="C_Name" Type="nvarchar" MaxLength="30" />
-          <Property Name="L_Depth" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tPasswdHistory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tPasswdHistory">
-          <Property Name="L_UID" Type="int" />
-          <Property Name="C_OldRemotePW" Type="varchar" MaxLength="64" />
-          <Property Name="C_NewRemotePW" Type="varchar" MaxLength="64" />
-          <Property Name="C_Action" Type="nvarchar" MaxLength="1" />
-          <Property Name="L_AdminID" Type="int" />
-          <Property Name="C_UDateTime" Type="nvarchar" MaxLength="14" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tPeopleCountConfig' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tPeopleCountConfig">
-          <Property Name="C_CompanyName" Type="nvarchar" MaxLength="255" />
-          <Property Name="B_CompanyLogo" Type="image" />
-          <Property Name="L_DataProcess" Type="int" />
-          <Property Name="L_InColor" Type="int" />
-          <Property Name="L_OutColor" Type="int" />
-          <Property Name="L_Zone1Color" Type="int" />
-          <Property Name="L_Zone2Color" Type="int" />
-          <Property Name="L_AutoBatch" Type="int" />
-          <Property Name="L_BatchTime" Type="int" />
-          <Property Name="L_ProcessDay" Type="int" />
-          <Property Name="L_ProcessTotalSum" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tPWConfig' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tPWConfig">
-          <Property Name="L_LengthMin" Type="int" />
-          <Property Name="L_LengthMax" Type="int" />
-          <Property Name="L_DayLimit" Type="int" />
-          <Property Name="C_NotAllowOldPW" Type="nvarchar" MaxLength="1" />
-          <Property Name="L_WrongLimit" Type="int" />
-          <Property Name="C_NotAllowDupChar" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_FirstChgPW" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_UpperLowerSame" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_NotAllowSameID" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_CreateOpt" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_OptUpper" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_OptLower" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_OptNumeric" Type="nvarchar" MaxLength="1" />
-          <Property Name="C_OptSymbol" Type="nvarchar" MaxLength="1" />
-          <Property Name="L_InitValue" Type="int" />
-          <Property Name="C_InitPwd" Type="nvarchar" MaxLength="30" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tStatusCheck' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tStatusCheck">
-          <Property Name="L_Status" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tSynchUser' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tSynchUser">
-          <Property Name="C_EventTime" Type="nvarchar" MaxLength="14" />
-          <Property Name="L_JobClass" Type="int" />
-          <Property Name="L_JobProc" Type="int" />
-          <Property Name="L_UID" Type="int" />
-          <Property Name="C_Name" Type="nvarchar" MaxLength="30" />
-          <Property Name="C_Unique" Type="nvarchar" MaxLength="20" />
-          <Property Name="C_CardNum" Type="nvarchar" MaxLength="24" />
-          <Property Name="C_UpdateTime" Type="nvarchar" MaxLength="14" />
-          <Property Name="L_Result" Type="int" />
-          <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="tTerminal">
           <Key>
             <PropertyRef Name="L_ID" />
@@ -1688,13 +1299,6 @@ warning 6013: The table/view 'UNIS.dbo.tSynchUser' does not have a primary key d
           <Property Name="L_Chnl1" Type="int" />
           <Property Name="L_Chnl2" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tTerminalLog' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tTerminalLog">
-          <Property Name="C_EventTime" Type="nvarchar" MaxLength="14" />
-          <Property Name="L_TID" Type="int" />
-          <Property Name="L_Type" Type="int" />
-        </EntityType>-->
         <EntityType Name="tTerminalStateLog">
           <Key>
             <PropertyRef Name="C_EventTime" />
@@ -1762,20 +1366,6 @@ warning 6013: The table/view 'UNIS.dbo.tTerminalLog' does not have a primary key
           <Property Name="C_MustChgPwd" Type="nvarchar" MaxLength="1" />
           <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tVisited' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tVisited">
-          <Property Name="C_Name" Type="nvarchar" MaxLength="30" />
-          <Property Name="C_Unique" Type="nvarchar" MaxLength="20" />
-          <Property Name="C_RegDate" Type="nvarchar" MaxLength="14" />
-          <Property Name="C_LastDate" Type="nvarchar" MaxLength="8" />
-          <Property Name="C_Company" Type="nvarchar" MaxLength="30" />
-          <Property Name="C_Info" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_Phone" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_Address" Type="nvarchar" MaxLength="255" />
-          <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.tVisitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tVisitor">
@@ -1910,12 +1500,6 @@ warning 6002: The table/view 'UNIS.dbo.tWorkType' does not have a primary key de
           <Property Name="L_ST6Trans" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.unis' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="unis">
-          <Property Name="table_name" Type="varchar" MaxLength="255" />
-          <Property Name="row_count" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.wExceptRecord' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="wExceptRecord">
           <Key>
@@ -1960,21 +1544,6 @@ warning 6002: The table/view 'UNIS.dbo.wSpecialShift' does not have a primary ke
           <Property Name="L_AccessTime" Type="int" Nullable="false" />
           <Property Name="L_Mode" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.wWorkConfig' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="wWorkConfig">
-          <Property Name="L_MoneyDigit" Type="int" />
-          <Property Name="L_TimeShape" Type="int" />
-          <Property Name="L_MinuteDigit" Type="int" />
-          <Property Name="L_SumPeriodType" Type="int" />
-          <Property Name="L_SumStartDay" Type="int" />
-          <Property Name="L_AutoExecTime" Type="int" />
-          <Property Name="C_LastResultDate" Type="nvarchar" MaxLength="8" />
-          <Property Name="C_LastSumDate" Type="nvarchar" MaxLength="8" />
-          <Property Name="L_LastSumWeek" Type="int" />
-          <Property Name="C_NeisSavePath" Type="nvarchar" MaxLength="100" />
-          <Property Name="L_NeisUsed" Type="int" />
-        </EntityType>-->
         <EntityType Name="wWorkResult">
           <Key>
             <PropertyRef Name="C_WorkDate" />
@@ -2168,47 +1737,6 @@ warning 6002: The table/view 'UNIS.dbo.wWorkShift' does not have a primary key d
           <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
           <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.qr_inout_error_department' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="qr_inout_error_department">
-          <Property Name="e_id" Type="varchar" MaxLength="10" />
-          <Property Name="e_name" Type="varchar" MaxLength="50" />
-          <Property Name="e_date" Type="char" MaxLength="8" />
-          <Property Name="e_time" Type="char" MaxLength="6" />
-          <Property Name="e_timenext" Type="char" MaxLength="6" />
-          <Property Name="cnt" Type="int" />
-          <Property Name="manual_correction" Type="char" MaxLength="1" />
-          <Property Name="hrs" Type="char" MaxLength="2" />
-          <Property Name="mts" Type="char" MaxLength="2" />
-          <Property Name="lnmode" Type="int" />
-          <Property Name="lcmode" Type="int" />
-          <Property Name="DEPT_ID" Type="int" />
-          <Property Name="Department" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'UNIS.dbo.tblSkylineLogo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblSkylineLogo">
-          <Property Name="Id" Type="int" />
-          <Property Name="Header1" Type="nvarchar" MaxLength="500" />
-          <Property Name="Header2" Type="nvarchar" MaxLength="500" />
-          <Property Name="Header3" Type="nvarchar" MaxLength="500" />
-          <Property Name="Footer1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Footer2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Footer3" Type="nvarchar" MaxLength="100" />
-          <Property Name="Updateddate" Type="datetime" />
-          <Property Name="Logo" Type="varbinary(max)" />
-          <Property Name="deptemail" Type="nvarchar" MaxLength="500" />
-          <Property Name="pobox" Type="nvarchar" MaxLength="100" />
-          <Property Name="telno" Type="nvarchar" MaxLength="100" />
-          <Property Name="faxno" Type="nvarchar" MaxLength="100" />
-          <Property Name="finfooter" Type="nvarchar" MaxLength="100" />
-          <Property Name="finupdateddate" Type="datetime" />
-          <Property Name="postbox1" Type="nvarchar" MaxLength="1000" />
-          <Property Name="mktfooter" Type="varchar" MaxLength="1000" />
-          <Property Name="standardLogo" Type="varbinary(max)" />
-          <Property Name="mktupdateddate" Type="datetime" />
-          <Property Name="policyupdateddate" Type="datetime" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'UNIS.dbo.vAttendanceCompiled' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vAttendanceCompiled">
@@ -2483,6 +2011,10 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         </Function>
         <Function Name="GetDepartmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
           <Parameter Name="EmpId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDepartmentWithDeptId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetDesignationByDeptId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="deptId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetEmployeeById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EmpId" Type="int" Mode="In" />
@@ -4149,8 +3681,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <End Role="HR_AccessMaster" EntitySet="HR_AccessMaster" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UNISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -5952,7 +5483,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <End Role="HR_AccessMaster" EntitySet="HR_AccessMaster" />
           </AssociationSet>
           <FunctionImport Name="GETEXTRADUTYDTL" IsComposable="true" ReturnType="Collection(UNISModel.GETEXTRADUTYDTL_Result)">
-            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(UNISModel.Split_Result)">
             <Parameter Name="String" Mode="In" Type="String" />
@@ -5968,7 +5499,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="var" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DEL">
-            <Parameter Name="oDate" Mode="In" Type="String" />
+          <Parameter Name="oDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_addtosourcecontrol">
             <Parameter Name="vchSourceSafeINI" Mode="In" Type="String" />
@@ -5986,7 +5517,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           </FunctionImport>
           <FunctionImport Name="dt_adduserobject" />
           <FunctionImport Name="dt_adduserobject_vcs">
-            <Parameter Name="vchProperty" Mode="In" Type="String" />
+          <Parameter Name="vchProperty" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_checkinobject">
             <Parameter Name="chObjectType" Mode="In" Type="String" />
@@ -6043,10 +5574,10 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_dropuserobjectbyid">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="dt_generateansiname">
-            <Parameter Name="name" Mode="InOut" Type="String" />
+          <Parameter Name="name" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_getobjwithprop" ReturnType="Collection(Int32)">
             <Parameter Name="property" Mode="In" Type="String" />
@@ -6133,10 +5664,10 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="flag" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetEmployeeById" ReturnType="Collection(String)">
-            <Parameter Name="EmpId" Mode="In" Type="Int32" />
+          <Parameter Name="EmpId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GETLevel" ReturnType="Collection(UNISModel.GETLevel_Result)">
-            <Parameter Name="degreeid" Mode="In" Type="Int32" />
+          <Parameter Name="degreeid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetMonthlyAttendance">
             <Parameter Name="Type" Mode="In" Type="Int32" />
@@ -6151,7 +5682,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="Month" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetSessionDateWise">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetWeeklyAttendance">
             <Parameter Name="Type" Mode="In" Type="Int32" />
@@ -6189,13 +5720,13 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="nDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessions">
-            <Parameter Name="vDate" Mode="In" Type="String" />
+          <Parameter Name="vDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessions_FOR_MANUALRUN_Fazeel">
-            <Parameter Name="vDate" Mode="In" Type="String" />
+          <Parameter Name="vDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessionsALLdates" ReturnType="Collection(String)">
-            <Parameter Name="checkdate" Mode="In" Type="DateTime" />
+          <Parameter Name="checkdate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessionsbyempid" ReturnType="Collection(String)">
             <Parameter Name="vDate" Mode="In" Type="String" />
@@ -6203,10 +5734,10 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="uid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessionsByMonth">
-            <Parameter Name="vDate" Mode="In" Type="String" />
+          <Parameter Name="vDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessionsByMonth_Fazeel">
-            <Parameter Name="vDate" Mode="In" Type="String" />
+          <Parameter Name="vDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RRcompileSessionsByMonth_meena" ReturnType="Collection(UNISModel.RRcompileSessionsByMonth_meena_Result)">
             <Parameter Name="empid" Mode="In" Type="Int32" />
@@ -6216,7 +5747,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           </FunctionImport>
           <FunctionImport Name="RRcompileSessionsSchd" />
           <FunctionImport Name="RRcompileSessionstest">
-            <Parameter Name="vDate" Mode="In" Type="String" />
+          <Parameter Name="vDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_Absenties" ReturnType="Collection(UNISModel.sp_Absenties_Result)">
             <Parameter Name="vDate" Mode="In" Type="String" />
@@ -6410,7 +5941,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="EmpNumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_DAILYABSENTIES" ReturnType="Collection(UNISModel.SP_DAILYABSENTIES_Result)">
-            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_DailyPresent" ReturnType="Collection(UNISModel.sp_DailyPresent_Result)">
             <Parameter Name="vDate" Mode="In" Type="DateTime" />
@@ -6475,14 +6006,14 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="LoginUser" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_DELETERFIDCARD" ReturnType="Collection(String)">
-            <Parameter Name="CardId" Mode="In" Type="Int32" />
+          <Parameter Name="CardId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Designation" ReturnType="Collection(UNISModel.SP_Designation_Result)" />
           <FunctionImport Name="SP_DISPLAY_RFIDDETAILS" ReturnType="Collection(UNISModel.SP_DISPLAY_RFIDDETAILS_Result)">
-            <Parameter Name="STUD_ID" Mode="In" Type="String" />
+          <Parameter Name="STUD_ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_EDITRFIDCARD" ReturnType="Collection(UNISModel.SP_EDITRFIDCARD_Result)">
-            <Parameter Name="CARDID" Mode="In" Type="Int32" />
+          <Parameter Name="CARDID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_EMPEXCEl" ReturnType="Collection(UNISModel.SP_EMPEXCEl_Result)">
             <Parameter Name="vDate" Mode="In" Type="String" />
@@ -6509,7 +6040,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="weekend" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_EmployeeEdit_Complete_Deatils" ReturnType="Collection(UNISModel.SP_EmployeeEdit_Complete_Deatils_Result)">
-            <Parameter Name="MachineID" Mode="In" Type="Int32" />
+          <Parameter Name="MachineID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EMployeeShiftdetails" ReturnType="Collection(UNISModel.sp_EMployeeShiftdetails_Result)">
             <Parameter Name="empnumber" Mode="In" Type="Int32" />
@@ -6526,10 +6057,10 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="deptno" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_FILLSTUDENTDETAILS" ReturnType="Collection(UNISModel.SP_FILLSTUDENTDETAILS_Result)">
-            <Parameter Name="STUD_ID" Mode="In" Type="String" />
+          <Parameter Name="STUD_ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_FILLSTUDENTDETAILS_TEST" ReturnType="Collection(UNISModel.SP_FILLSTUDENTDETAILS_TEST_Result)">
-            <Parameter Name="STUD_ID" Mode="In" Type="String" />
+          <Parameter Name="STUD_ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_ForwardingStatistics_AbsentReport">
             <Parameter Name="vDate" Mode="In" Type="String" />
@@ -6549,25 +6080,25 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="EDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_ForwardingStatistics_COEC_PRESENTREPORT_International">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Get_LastCompiledDate" ReturnType="Collection(UNISModel.SP_Get_LastCompiledDate_Result)" />
           <FunctionImport Name="SP_Get_LastFinalizedDate" ReturnType="Collection(UNISModel.SP_Get_LastFinalizedDate_Result)" />
           <FunctionImport Name="SP_GetDepartment" ReturnType="Collection(UNISModel.SP_GetDepartment_Result)" />
           <FunctionImport Name="SP_GETEMIRATES" ReturnType="Collection(UNISModel.SP_GETEMIRATES_Result)" />
           <FunctionImport Name="SP_GetEmployee" ReturnType="Collection(String)">
-            <Parameter Name="Perfixtext" Mode="In" Type="String" />
+          <Parameter Name="Perfixtext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_GetEmployee_Names" ReturnType="Collection(UNISModel.SP_GetEmployee_Names_Result)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
             <Parameter Name="EType" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_GetEmployeeName" ReturnType="Collection(String)">
-            <Parameter Name="LUID" Mode="In" Type="Int32" />
+          <Parameter Name="LUID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_GetEmployeeNameAndMachineAndEmpNumber" ReturnType="Collection(UNISModel.SP_GetEmployeeNameAndMachineAndEmpNumber_Result)" />
           <FunctionImport Name="SP_GetEmployeeType" ReturnType="Collection(UNISModel.SP_GetEmployeeType_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getexamdays">
             <Parameter Name="CurrentDate" Mode="In" Type="DateTime" />
@@ -6583,12 +6114,12 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="vEMPID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_GetShiftDetails_Employee" ReturnType="Collection(UNISModel.SP_GetShiftDetails_Employee_Result)">
-            <Parameter Name="ShiftID" Mode="In" Type="Int32" />
+          <Parameter Name="ShiftID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_GetTerminal" ReturnType="Collection(UNISModel.SP_GetTerminal_Result)" />
           <FunctionImport Name="SP_GETUSERDETAILS" ReturnType="Collection(UNISModel.SP_GETUSERDETAILS_Result)" />
           <FunctionImport Name="SP_GrtEmployee_ForManualEntry" ReturnType="Collection(UNISModel.SP_GrtEmployee_ForManualEntry_Result)">
-            <Parameter Name="Role" Mode="In" Type="String" />
+          <Parameter Name="Role" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_holidaydays">
             <Parameter Name="CurrentDate" Mode="In" Type="DateTime" />
@@ -6610,25 +6141,25 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           </FunctionImport>
           <FunctionImport Name="sp_iNSERT_TENTERmANUALLY" />
           <FunctionImport Name="SP_INSERTEMPLOYEELOG">
-            <Parameter Name="L_UID" Mode="In" Type="Int32" />
+          <Parameter Name="L_UID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_INSERTEMPLOYEELOGmeena" ReturnType="Collection(UNISModel.SP_INSERTEMPLOYEELOGmeena_Result)">
-            <Parameter Name="L_UID" Mode="In" Type="Int32" />
+          <Parameter Name="L_UID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_InsertFinalise_ErrorLog">
-            <Parameter Name="Message" Mode="In" Type="String" />
+          <Parameter Name="Message" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Is_Fianalized" ReturnType="Collection(Int32)">
-            <Parameter Name="EDate" Mode="In" Type="String" />
+          <Parameter Name="EDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_ISFinalized" ReturnType="Collection(Int32)">
-            <Parameter Name="FinalizeDate" Mode="In" Type="DateTime" />
+          <Parameter Name="FinalizeDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_LateAttendance_Monthly" ReturnType="Collection(UNISModel.SP_LateAttendance_Monthly_Result)" />
           <FunctionImport Name="SP_LateAttendance_Weekly" ReturnType="Collection(UNISModel.SP_LateAttendance_Weekly_Result)" />
           <FunctionImport Name="SP_LateAttendance_Weekly_15102017" ReturnType="Collection(UNISModel.SP_LateAttendance_Weekly_15102017_Result)" />
           <FunctionImport Name="SP_LATECOMERSMAILE" ReturnType="Collection(UNISModel.SP_LATECOMERSMAILE_Result)">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_LATEEMPLOYEES_DETAILS">
             <Parameter Name="Date" Mode="In" Type="String" />
@@ -6774,16 +6305,16 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="deptno" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_PRESENTREPORT" ReturnType="Collection(UNISModel.SP_PRESENTREPORT_Result)">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_PRESENTREPORT_EVENING" ReturnType="Collection(UNISModel.SP_PRESENTREPORT_EVENING_Result)">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_PRESENTREPORT_INTERNATIONAL_OFFICE" ReturnType="Collection(UNISModel.SP_PRESENTREPORT_INTERNATIONAL_OFFICE_Result)">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_PRESENTREPORT001" ReturnType="Collection(UNISModel.SP_PRESENTREPORT001_Result)">
-            <Parameter Name="Date" Mode="In" Type="String" />
+          <Parameter Name="Date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_PresentWithoutNotice" ReturnType="Collection(UNISModel.sp_PresentWithoutNotice_Result)">
             <Parameter Name="vDate" Mode="In" Type="DateTime" />
@@ -6791,13 +6322,13 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           </FunctionImport>
           <FunctionImport Name="SP_proc_mail_outdoor_events" />
           <FunctionImport Name="SP_RemoveFinalized">
-            <Parameter Name="FinalizeDate" Mode="In" Type="String" />
+          <Parameter Name="FinalizeDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_RemoveFinalized_new">
-            <Parameter Name="FinalizeDate" Mode="In" Type="String" />
+          <Parameter Name="FinalizeDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_RFIDENTRY_COUNTDETAILS" ReturnType="Collection(Int32)">
-            <Parameter Name="STUD_ID" Mode="In" Type="String" />
+          <Parameter Name="STUD_ID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_rollback">
             <Parameter Name="vDate" Mode="In" Type="String" />
@@ -6816,7 +6347,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="FromTime" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_TODAY_AbsentReport" ReturnType="Collection(UNISModel.SP_TODAY_AbsentReport_Result)">
-            <Parameter Name="vDate" Mode="In" Type="String" />
+          <Parameter Name="vDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Update_save_EmployeeMaster" ReturnType="Collection(String)">
             <Parameter Name="DeptID" Mode="In" Type="Int32" />
@@ -6840,7 +6371,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="ENDDATE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="test123">
-            <Parameter Name="Month" Mode="In" Type="String" />
+          <Parameter Name="Month" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="testGetGrandweekendTotalHours">
             <Parameter Name="fdate" Mode="In" Type="String" />
@@ -6853,6 +6384,10 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="userid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Vw_Manual_Entry_tenter" />
+          <FunctionImport Name="GetDesignationByDeptId" ReturnType="Collection(UNISModel.GetDesignationByDeptId_Result)">
+          <Parameter Name="deptId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDepartmentWithDeptId" ReturnType="Collection(UNISModel.GetDepartmentWithDeptId_Result)" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -7803,6 +7338,14 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Property Type="String" Name="Column5" Nullable="true" MaxLength="10" />
           <Property Type="Int32" Name="Column6" Nullable="true" />
           <Property Type="String" Name="Column7" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetDesignationByDeptId_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Designation" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetDepartmentWithDeptId_Result">
+          <Property Type="String" Name="deptID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -10968,6 +10511,22 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Vw_Manual_Entry_tenter" FunctionName="UNISModel.Store.Vw_Manual_Entry_tenter" />
+          <FunctionImportMapping FunctionImportName="GetDesignationByDeptId" FunctionName="UNISModel.Store.GetDesignationByDeptId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UNISModel.GetDesignationByDeptId_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDepartmentWithDeptId" FunctionName="UNISModel.Store.GetDepartmentWithDeptId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UNISModel.GetDepartmentWithDeptId_Result">
+                <ScalarProperty Name="deptID" ColumnName="deptID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

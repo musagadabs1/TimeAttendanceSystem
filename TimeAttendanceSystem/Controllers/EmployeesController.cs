@@ -41,7 +41,7 @@ namespace TimeAttendanceSystem.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.Departments = new SelectList(_context.SP_GetDepartment(), "Id", "Department");
+            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
             ViewBag.Designations = new SelectList(_context.SP_Designation(), "Id", "Designation");
             ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
             ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
@@ -170,6 +170,33 @@ namespace TimeAttendanceSystem.Controllers
                     employee.MachineCode = int.Parse(getEmployee.L_UID.ToString());
                 }
                 return Json(employee, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public JsonResult GetDesignationByDeptId(int deptId)
+        {
+            try
+            {
+                List<DesignationViewModel> designationViews = new List<DesignationViewModel>();
+                var designations = _context.GetDesignationByDeptId(deptId).ToList();
+                if (designations != null && designations.Count() > 0)
+                {
+                    foreach (var item in designations)
+                    {
+                        designationViews.Add(new DesignationViewModel
+                        {
+                            id=item.id,
+                            Designation=item.Designation
+                        });
+                    }
+
+                    return Json(designationViews, JsonRequestBehavior.AllowGet);
+                }
+                return null;
             }
             catch (Exception ex)
             {

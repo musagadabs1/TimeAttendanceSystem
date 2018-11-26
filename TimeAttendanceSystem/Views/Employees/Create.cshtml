@@ -67,7 +67,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, "---Select Designation---", htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, "---Select Designation---", htmlAttributes: new { @class = "form-control" })*@
+                <select id="designationId" name="designationID" class="form-control"></select>
                 @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -135,6 +136,9 @@
                 //data: {},
                 success: function (data) {
                     $("#Department").append($("<option></option>").val("0").html("Select"));
+                    //if (data ==null) {
+                    //    $('#MachineId').val('#MachineId');
+                    //}
                     //if (data.status == 'Y') {
                         $('#MachineId').val(data.MachineCode);
                         $('#FirstName').val(data.FirstName);
@@ -179,19 +183,37 @@
         });
     });
 
+
+    $(document).ready(function () {
+        $('#Department').on('change', function () {
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '@Url.Action("GetDesignationByDeptId")' + '?deptId=' + $('#Department').val(),
+                success: function (data) {
+                    var items = '<option>Select a Designation</option>';
+                    $.each(data, function (i, design) {
+                        items += "<option value='" + design.id + "'>" + design.Designation + "</option>"; 
+                    });
+                    $('#designationId').html(items);
+                }
+            });
+        });
+    });
+
     //$('#MachineId').select2({
     //    //placeholder: "---Select Employee---",
     //    allowClear:true
     //});
 
-    $('#Department').select2({
-        //placeholder: "---Select Employee---",
-        allowClear: true
+    //$('#Department').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear: true
 
-    });
-    $('#Designation').select2({
-        //placeholder: "---Select Employee---",
-        allowClear: true
+    //});
+    //$('#Designation').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear: true
 
-    });
+    //});
 </script>

@@ -1,4 +1,4 @@
-﻿using JqueryTutorial.Models;
+﻿//using JqueryTutorial.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,34 +14,34 @@ namespace JqueryTutorial.Controllers
         {
             return View();
         }
-        public ActionResult ViewAll()
-        {
-            return View(GetAllEmployee());
-        }
-        IEnumerable<Employee> GetAllEmployee()
-        {
-            using (TestDbEntities _context=new TestDbEntities())
-            {
-                return _context.Employees.ToList<Employee>();
-            }
-        }
-        public ActionResult AddOrEdit(int? id)
-        {
-            var emp = new Employee();
-            if (id !=0)
-            {
-                using (var _context=new TestDbEntities())
-                {
-                    emp = _context.Employees.Where(e => e.Id == id).FirstOrDefault<Employee>();
-                }
-            }
-            return View(emp);
-        }
-        [HttpPost]
-        public ActionResult AddOrEdit(Employee employee)
-        {
-            return View(employee);
-        }
+        //public ActionResult ViewAll()
+        //{
+        //    return View(GetAllEmployee());
+        //}
+        //IEnumerable<Employee> GetAllEmployee()
+        //{
+           // using (TestDbEntities _context=new TestDbEntities())
+            //{
+               // return _context.Employees.ToList<Employee>();
+            //}
+       // }
+        //public ActionResult AddOrEdit(int? id)
+        //{
+            //var emp = new Employee();
+            //if (id !=0)
+            //{
+                //using (var _context=new TestDbEntities())
+                //{
+                //    emp = _context.Employees.Where(e => e.Id == id).FirstOrDefault<Employee>();
+                //}
+            //}
+            //return View(emp);
+        //}
+        //[HttpPost]
+        //public ActionResult AddOrEdit(Employee employee)
+        //{
+        //    return View(employee);
+        //}
 
         [HttpPost]
         public ActionResult Delete(int? id)

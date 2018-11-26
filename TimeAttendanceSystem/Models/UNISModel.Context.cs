@@ -3236,5 +3236,19 @@ namespace TimeAttendanceSystem.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Vw_Manual_Entry_tenter");
         }
+    
+        public virtual ObjectResult<GetDesignationByDeptId_Result> GetDesignationByDeptId(Nullable<int> deptId)
+        {
+            var deptIdParameter = deptId.HasValue ?
+                new ObjectParameter("deptId", deptId) :
+                new ObjectParameter("deptId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDesignationByDeptId_Result>("GetDesignationByDeptId", deptIdParameter);
+        }
+    
+        public virtual ObjectResult<GetDepartmentWithDeptId_Result> GetDepartmentWithDeptId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDepartmentWithDeptId_Result>("GetDepartmentWithDeptId");
+        }
     }
 }

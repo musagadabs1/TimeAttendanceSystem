@@ -276,6 +276,12 @@
     <Compile Include="Models\Finalize.cs" />
     <Compile Include="Models\FrmAutoErrorCorrection.cs" />
     <Compile Include="Models\FrmError.cs" />
+    <Compile Include="Models\GetDepartmentWithDeptId_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetDesignationByDeptId_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>

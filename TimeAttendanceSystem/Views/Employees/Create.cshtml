@@ -67,7 +67,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, "---Select Designation---", htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, "---Select Designation---", htmlAttributes: new { @class = "form-control" })*@
+                <select id="designationId" name="designationID" class="form-control"></select>
                 @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -135,6 +136,9 @@
                 //data: {},
                 success: function (data) {
                     $("#Department").append($("<option></option>").val("0").html("Select"));
+                    //if (data ==null) {
+                    //    $('#MachineId').val('#MachineId');
+                    //}
                     //if (data.status == 'Y') {
                         $('#MachineId').val(data.MachineCode);
                         $('#FirstName').val(data.FirstName);
@@ -184,14 +188,14 @@
     //    allowClear:true
     //});
 
-    $('#Department').select2({
-        //placeholder: "---Select Employee---",
-        allowClear: true
+    //$('#Department').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear: true
 
-    });
-    $('#Designation').select2({
-        //placeholder: "---Select Employee---",
-        allowClear: true
+    //});
+    //$('#Designation').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear: true
 
-    });
+    //});
 </script>

@@ -24,14 +24,20 @@ namespace JqueryTutorial.Controllers
                 new City{Id=3,CityName="kano"},
                 new City{Id=4,CityName="Abuja"}
             };
+            //cities.Add(new City { Id = 1, CityName = "Test" });
             var cityList = (from n in cities where n.CityName.StartsWith(prefix) select new { n.CityName });
 
             return Json(cityList,JsonRequestBehavior.AllowGet);
         }
+        // Complete the compareTriplets function below.
+        
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            //List<int> a = new List<int>();
+            //a.Count();
+
 
             return View();
         }

@@ -2,9 +2,13 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<link href="~/Content/jquery-ui.css" rel="stylesheet" />
-<link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+@*<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"/>*@
+@*<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -18,7 +22,12 @@
     </div>
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery-ui.js"></script>
+@*<script src="~/Scripts/jquery-ui.js"></script>*@
+
+@*<script src="YourJquery source path"></script>*@
+@*<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>*@
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.23.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -36,7 +45,7 @@
                     },
                 });
             },
-            message: {noResults:"",results:""}
+            message: { noResults: "", results: "" }
         });
     });
 

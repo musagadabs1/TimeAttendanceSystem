@@ -181,10 +181,20 @@ namespace TimeAttendanceSystem.Controllers
         {
             try
             {
-                var designations = _context.GetDesignationByDeptId(deptId);
+                List<DesignationViewModel> designationViews = new List<DesignationViewModel>();
+                var designations = _context.GetDesignationByDeptId(deptId).ToList();
                 if (designations != null && designations.Count() > 0)
                 {
-                    return Json(designations, JsonRequestBehavior.AllowGet);
+                    foreach (var item in designations)
+                    {
+                        designationViews.Add(new DesignationViewModel
+                        {
+                            id=item.id,
+                            Designation=item.Designation
+                        });
+                    }
+
+                    return Json(designationViews, JsonRequestBehavior.AllowGet);
                 }
                 return null;
             }

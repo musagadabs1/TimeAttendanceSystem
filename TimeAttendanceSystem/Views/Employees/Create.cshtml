@@ -183,6 +183,24 @@
         });
     });
 
+
+    $(document).ready(function () {
+        $('#Department').on('change', function () {
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '@Url.Action("GetDesignationByDeptId")' + '?deptId=' + $('#Department').val(),
+                success: function (data) {
+                    var items = '<option>Select a Designation</option>';
+                    $.each(data, function (i, design) {
+                        items += "<option value='" + design.id + "'>" + design.Designation + "</option>"; 
+                    });
+                    $('#designationId').html(items);
+                }
+            });
+        });
+    });
+
     //$('#MachineId').select2({
     //    //placeholder: "---Select Employee---",
     //    allowClear:true

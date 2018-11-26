@@ -160,24 +160,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee.cs">
-      <DependentUpon>JQueryModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JQueryModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JQueryModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JQueryModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JQueryModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JQueryModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JQueryModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\City.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -343,31 +326,23 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\JQueryModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>JQueryModel.Context.cs</LastGenOutput>
-      <DependentUpon>JQueryModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\JQueryModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JQueryModel.edmx</DependentUpon>
-      <LastGenOutput>JQueryModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\JQueryModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JQueryModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\JQueryModel.edmx.diagram">
-      <DependentUpon>JQueryModel.edmx</DependentUpon>
     </Content>
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
@@ -454,6 +429,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

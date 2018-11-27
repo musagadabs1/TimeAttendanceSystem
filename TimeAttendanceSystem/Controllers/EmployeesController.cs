@@ -17,11 +17,22 @@ namespace TimeAttendanceSystem.Controllers
         private UNISEntities _context = new UNISEntities();
         //private PayrollEntities _PayRollContext = new PayrollEntities();
 
-        // GET: Employees
-        //public ActionResult Index()
-        //{
-        //    return View(db.Employees.ToList());
-        //}
+        //GET: Employees
+        public ActionResult Index()
+        {
+
+            return View();
+        }
+        private long aVeryBigSum(long[] ar)
+        {
+            long result = 0;
+            for (var i = 0; i < ar.Length; i++)
+            {
+                result += ar[i];
+            }
+            return result;
+
+        }
 
         // GET: Employees/Details/5
         //public ActionResult Details(int? id)

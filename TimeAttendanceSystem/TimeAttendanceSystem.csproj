@@ -1124,6 +1124,24 @@
     <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\my-login.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\AUTHORS.txt" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\index.html" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.structure.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.structure.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\LICENSE.txt" />
     <Content Include="Models\UNISModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UNISModel.edmx</DependentUpon>
@@ -1161,6 +1179,7 @@
     <Content Include="Models\UNISModel.edmx.diagram">
       <DependentUpon>UNISModel.edmx</DependentUpon>
     </Content>
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\package.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CustomScripts\CustomScripts.js" />
     <Content Include="Scripts\i18n\af.js" />

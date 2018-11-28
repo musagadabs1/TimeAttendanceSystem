@@ -123,9 +123,8 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 <script src="~/Scripts/select2.js"></script>
-@*<script src="~/Scripts/CustomScripts/CustomScripts.js"></script>*@
 <script type="text/javascript">
 
     @*$(document).ready(function () {
@@ -197,7 +196,7 @@
 
     $(document).ready(function () {
         $('#MachineId').autocomplete({
-            source: '@Url.Action("GetEmployeeName")' + '?prefix=' + $('#MachineId').val(),
+            source: '@Url.Action("GetEmployeeName")'// + '?prefix=' + $('#MachineId').val(),
         })
     });
     //$('#MachineId').select2({

@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <br />
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, "---Select All---", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -37,8 +37,58 @@
             </div>
         </div>
         <div class="col-md-7">
-           @Html.Partial("~/Views/Errors/_EditEntryPartialView.cshtml")
+            @Html.Partial("~/Views/Errors/_EditEntryPartialView.cshtml")
         </div>
     </div>
-    
+
 }
+    <script>
+        function FrmErrors_LoadGrid(MethodName, ColNames, Update, UpdateColName, UpdateClassName, Delete, DeleteColName, DeleteClassname, Date, ID, EMPID, GridID) {
+            try {
+
+
+                var array = ColNames.split(',');
+
+                $.ajax({
+                    type: "GET",
+                    url: base_url + "Handler.ashx?method=" + MethodName + "&Date=" + Date + "&ID=" + ID + "&EMPID=" + EMPID,
+                    datatype: "JSON",
+                    cache: false,
+                    success: function (data) {
+                        var trHTML = '';
+                        var td = "";
+
+
+                        $(data.response).each(function (key, value) {
+                            var obj = '';
+                            if (Delete == "Delete") {
+                                obj += '<td><input class="' + DeleteClassname + '" type="button" id=' + value[DeleteColName] + ' value="DELETE" /></td>';
+                            }
+
+                            for (var i = 0; i < array.length; i++) {
+                                obj += '<td>' + value[array[i]] + '</td>';
+                            }
+                            if (Update == "Update") {
+                                obj += '<td><input class="' + UpdateClassName + '" type="button" id=' + value[UpdateColName] + ' value="EDIT" /></td>';
+                            }
+                            trHTML += '<tr>' + obj + '</tr>';
+                        });
+                        $(GridID).find("tr:gt(0)").remove();
+                        if (trHTML != '') {
+                            $(GridID).css("display", "block");
+                            $(GridID).append(trHTML);
+                        }
+                        else {
+                            $(GridID).css("display", "none");
+                            alert("There is no Record on the Selected Date");
+                        }
+
+
+                    },
+                });
+            }
+            catch (e) {
+
+            }
+        }
+    </script>

@@ -14,7 +14,7 @@ namespace TimeAttendanceSystem.Controllers
     public class ErrorCorrectionsController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
-
+        UNISEntities _context = new UNISEntities();
         // GET: ErrorCorrections
         //public ActionResult Index()
         //{

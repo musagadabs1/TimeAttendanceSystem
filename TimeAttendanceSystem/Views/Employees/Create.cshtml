@@ -31,8 +31,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.Employees, "---Select Employee---", htmlAttributes: new { @class = "form-control" })*@
+                @*@Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.Employees, "---Select Employee---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -127,7 +127,7 @@
 <script src="~/Scripts/select2.js"></script>
 <script type="text/javascript">
 
-    @*$(document).ready(function () {
+    $(document).ready(function () {
         
         $('#MachineId').on("change",function () {
         
@@ -174,7 +174,7 @@
                 }
             });
         });
-    });*@
+    });
 
 
     $(document).ready(function () {

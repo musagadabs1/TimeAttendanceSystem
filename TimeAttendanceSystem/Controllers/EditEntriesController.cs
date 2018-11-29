@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EditEntriesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -43,7 +43,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
-            ViewBag.Departments = new SelectList(_context.SP_GetDepartment(), "Id", "Department");
+            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
 
             var mode = new List<SelectListItem>
             {
@@ -53,7 +53,7 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.Mode = mode;
             var timeHH = new List<SelectListItem>
             {
-               new SelectListItem{ Value = "00",Text ="00"},
+               new SelectListItem{Value = "00",Text ="00"},
                new SelectListItem{Value = "01",Text = "01"},
                new SelectListItem{Value = "02", Text = "02"},
                new SelectListItem{Value = "03", Text = "03"},
@@ -167,19 +167,22 @@ namespace TimeAttendanceSystem.Controllers
 
             return View(editEntry);
         }
-        public ActionResult LoadError()
+        public JsonResult LoadError(FormCollection form)
         {
             try
             {
-                var errors = _context.SP_Load_Error(0, loadErrorViewModel.Date,0);
+                DateTime compiledDate =Convert.ToDateTime( form["ErrorDate"]);
+                var date = TASUtility.GetStringDateFormat(compiledDate);
+                var errors = _context.SP_Load_Error(0, date, 0);
                 ViewBag.Errors = errors;
+                return Json(errors, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
 
                 throw  ex;
             }
-            return View("~/Views/EditEntries/ErrorPartialView.cshtml");
+            //return Json(errors, JsonRequestBehavior.AllowGet); //View("~/Views/EditEntries/ErrorPartialView.cshtml");
         }
 
         // GET: EditEntries/Edit/5

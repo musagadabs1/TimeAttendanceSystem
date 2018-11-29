@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EntryChecksController : Controller
     {
         private UNISEntities _context = new UNISEntities();

@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CompilesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -78,7 +78,7 @@ namespace TimeAttendanceSystem.Controllers
                 if (!IsCompile(oDate))
                 {
                     _context.RRcompile(oDate, vDate);
-                    msg = "Compiled Successfully";
+                    msg = "Compiled Successfully for " + compile.SelectDate.ToLongDateString();
                     ViewBag.Message = msg;
                 }
                 else
@@ -88,10 +88,11 @@ namespace TimeAttendanceSystem.Controllers
                 }
                 //ViewBag.Message = msg;
                 //return RedirectToAction("Create");
-                return PartialView("~/Views_MessagePartialView.cshtml");
+                return PartialView("~/Views/_MessagePartialView.cshtml");
             }
             ViewBag.Message = "Error has occured. Check and try again.";
-            return PartialView("~/Views_MessagePartialView.cshtml");
+            return PartialView("~/Views/_MessagePartialView.cshtml");
+            //return PartialView("~/Views/_MessagePartialView.cshtml");
         }
 
         // GET: Compiles/Edit/5

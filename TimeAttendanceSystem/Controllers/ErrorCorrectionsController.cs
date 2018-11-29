@@ -10,11 +10,11 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ErrorCorrectionsController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
-
+        UNISEntities _context = new UNISEntities();
         // GET: ErrorCorrections
         //public ActionResult Index()
         //{
@@ -42,7 +42,7 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.LastCompiledDate = TASUtility.GetLastCompiledDate();
             return View();
         }
-
+        string msg = string.Empty;
         // POST: ErrorCorrections/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -52,9 +52,27 @@ namespace TimeAttendanceSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                try
+                {
+                    var seletedDate = TASUtility.GetStringDateFormat(errorCorrection.SelectDateToCompile);
+
+                    ViewBag.Message = "Error Corrected Successfully for " + errorCorrection.SelectDateToCompile.ToLongDateString();
+
+                    return PartialView("~/Views/_MessagePartialView.cshtml");
+                    //_context.err
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message;
+
+                    return PartialView("~/Views/_MessagePartialView.cshtml");
+                }
                 //db.ErrorCorrections.Add(errorCorrection);
                 //db.SaveChanges();
-                return RedirectToAction("Index");
+                //msg = "Error Corrected Successfully.";
+                //_context.SaveChanges();
+                //ViewBag.Message = msg;
+                //return PartialView("~/Views/_MessagePartialView.cshtml");
             }
 
             return View(errorCorrection);

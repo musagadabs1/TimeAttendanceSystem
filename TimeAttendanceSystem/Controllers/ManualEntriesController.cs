@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ManualEntriesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -171,13 +171,27 @@ namespace TimeAttendanceSystem.Controllers
             {
                 var time = manualEntry.TimeHH + manualEntry.TimeMM + "00";
                 int empID = int.Parse( manualEntry.EmployeeID);
-                var empName = _context.SP_GetEmployeeName(empID).FirstOrDefault(); 
-               
-                _context.SP_Manual_Entry(manualEntry.Date, time, manualEntry.TerminalID,manualEntry.EmployeeID,empName, manualEntry.Mode, manualEntry.Remarks, "", "Insert");
-                msg = "Manual Entry Entered Successfully.";
-                //_context.SaveChanges();
-                ViewBag.Message = msg;
-                return PartialView("~/Views/_MessagePartialView.cshtml");
+                var empName = _context.SP_GetEmployeeName(empID).FirstOrDefault();
+                DateTime date =Convert.ToDateTime( manualEntry.Date);
+                var dateString = TASUtility.GetStringDateFormat(date);
+                var terminal = manualEntry.TerminalID;
+                var empId = manualEntry.EmployeeID;
+                var mode = manualEntry.Mode;
+                var remark = manualEntry.Remarks;
+                try
+                {
+                    _context.SP_Manual_Entry(dateString, time, terminal, empId, empName, mode, remark, "", "Insert");
+                    msg = "Manual Entry Entered Successfully.";
+                    //_context.SaveChanges();
+                    ViewBag.Message = msg;
+                    return PartialView("~/Views/_MessagePartialView.cshtml");
+                }
+                catch (Exception ex)
+                {
+
+                    ViewBag.Message=ex.Message;
+                }
+                
             }
             ViewBag.Message = "Error has occured. Check and try again.";
             return PartialView("~/Views/_MessagePartialView.cshtml");

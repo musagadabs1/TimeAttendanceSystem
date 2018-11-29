@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication2.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="margin:10px;">
+    <input type="text" class="form-control" id="searchTerm" />
+</div>
+
+
+<table class="table table-bordered table-responsive table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+
+        </tr>
+    }
+
+</table>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchTerm").autocomplete({
+            source:'@Url.Action("GetEmployeesInfo")'
+        })
+    });
+</script>

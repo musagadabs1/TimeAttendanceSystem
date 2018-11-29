@@ -26,13 +26,13 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments,"Select All", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button class="btn btn-primary" onclick="Error()" id="btnSave">Show</button>
+                        <button class="btn btn-primary" onclick="Error();" id="btnSave">Show</button>
                         @*<input type="submit" value="Show" class="btn btn-primary" />*@
                     </div>
                 </div>
@@ -152,16 +152,66 @@
 }
 <script type="text/javascript">
     $("#btnsave").click(function () {
-        if ($("#txtCompileDate").val() == "") {
+        if ($("#ErrorDate").val() == "") {
             alert("Please Enter the date to Show thw Data");
             return false;
         }
         else {
-            var selectedVal = $('#MainContent_ddlDepartment option:selected').attr('value');
+            var selectedVal = $('#Department option:selected').attr('value');
 
-            FrmErrors_LoadGrid("SP_Load_Error", "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", $("#MainContent_txtCompileDate").val(), selectedVal, 0, "#location");
+            FrmErrors_LoadGrid('@Url.Action("LoadError")', "Name,Count", "Update", "EMPID", "Editbuttons",$("#ErrorDate").val(), selectedVal, 0, "#location");
         }
     });
+
+
+    function FrmErrors_LoadGrid(MethodName, ColNames, Update, UpdateColName, UpdateClassName, Date, ID, EMPID, GridID) {
+        try {
+
+
+            var array = ColNames.split(',');
+
+            $.ajax({
+                type: "GET",
+                url: MethodName + "&Date=" + Date + "&ID=" + ID + "&EMPID=" + EMPID,
+                datatype: "JSON",
+                //cache: false,
+                success: function (data) {
+                    var trHTML = '';
+                    var td = "";
+
+
+                    $(data.response).each(function (key, value) {
+                        var obj = '';
+                        //if (Delete == "Delete") {
+                        //    obj += '<td><input class="' + DeleteClassname + '" type="button" id=' + value[DeleteColName] + ' value="DELETE" /></td>';
+                        //}
+
+                        for (var i = 0; i < array.length; i++) {
+                            obj += '<td>' + value[array[i]] + '</td>';
+                        }
+                        if (Update == "Update") {
+                            obj += '<td><input class="' + UpdateClassName + '" type="button" id=' + value[UpdateColName] + ' value="EDIT" /></td>';
+                        }
+                        trHTML += '<tr>' + obj + '</tr>';
+                    });
+                    $(GridID).find("tr:gt(0)").remove();
+                    if (trHTML != '') {
+                        $(GridID).css("display", "block");
+                        $(GridID).append(trHTML);
+                    }
+                    else {
+                        $(GridID).css("display", "none");
+                        alert("There is no Record on the Selected Date");
+                    }
+
+
+                },
+            });
+        }
+        catch (e) {
+
+        }
+    }
 </script>
 
 

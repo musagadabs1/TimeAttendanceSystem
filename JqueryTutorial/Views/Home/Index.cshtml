@@ -1,4 +1,52 @@
-﻿@{
+﻿@model JqueryTutorial.Models.City
+@{
     ViewBag.Title = "Home Page";
 }
+@*<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"/>*@
+@*<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.structure.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.CityName, new { htmAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script src="~/Scripts/jquery-ui.js"></script>*@
 
+@*<script src="YourJquery source path"></script>*@
+@*<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>*@
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.23.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#CityName').autocomplete({
+            source: function (req, res) {
+                $.ajax({
+                    url: "/Home/Index",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { Prefix: req.term },
+                    success: function (data) {
+                        res($.map(data, function (item) {
+                            return { Label: item.CityName, value: item.CityName };
+                        }));
+                    },
+                });
+            },
+            message: { noResults: "", results: "" }
+        });
+    });
+
+</script>

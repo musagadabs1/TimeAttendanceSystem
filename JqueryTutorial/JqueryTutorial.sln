@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JqueryTutorial", "JqueryTutorial.csproj", "{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "..\WebApplication2\WebApplication2.csproj", "{C81F0676-13F2-4046-8893-431192B8B70D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81F0676-13F2-4046-8893-431192B8B70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81F0676-13F2-4046-8893-431192B8B70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81F0676-13F2-4046-8893-431192B8B70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81F0676-13F2-4046-8893-431192B8B70D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {880BB3FE-C90B-4DFC-98C8-DBAC782CE186}
+	EndGlobalSection
+EndGlobal

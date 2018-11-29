@@ -4,6 +4,10 @@
     ViewBag.Title = "Update Employee";
 }
 <link href="~/Content/css/select2.css" rel="stylesheet" />
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.structure.css" rel="stylesheet" />
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" />
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -27,6 +31,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                @*@Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.Employees, "---Select Employee---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
             </div>
@@ -78,8 +83,8 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.StaffType, new SelectList(ViewBag.StaffType, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
                 @*<input type="radio"  name="rdbStaff" title="Staff" checked="checked" class="form-control" />
-                <input type="radio" name="rdbFaculty" title="Faculty" class="form-control" />
-                <input type="radio" name="rdbOther" title="Other"  class="form-control" />*@
+                    <input type="radio" name="rdbFaculty" title="Faculty" class="form-control" />
+                    <input type="radio" name="rdbOther" title="Other"  class="form-control" />*@
                 @*@Html.RadioButtonFor(model => model.StaffType,htmlAttributes: new { @class="form-control"})*@
                 @Html.ValidationMessageFor(model => model.StaffType, "", new { @class = "text-danger" })
             </div>
@@ -118,28 +123,20 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 <script src="~/Scripts/select2.js"></script>
-@*<script src="~/Scripts/CustomScripts/CustomScripts.js"></script>*@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        //var $eventSelect = $('#MachineId');
-        //$eventSelect.select2();
+        
         $('#MachineId').on("change",function () {
-        //$eventSelect.on("change", function () {
-            //var name = $('#MachineId').val();
-            //debugger;
+        
             $.ajax({
                 type: 'GET',
                 contentType: 'application/json',
                 url: '@Url.Action("GetEmployeeDetailsByMachineCode")' + '?machineCode=' + $('#MachineId').val(),
-                //data: {},
                 success: function (data) {
                     $("#Department").append($("<option></option>").val("0").html("Select"));
-                    //if (data ==null) {
-                    //    $('#MachineId').val('#MachineId');
-                    //}
-                    //if (data.status == 'Y') {
                         $('#MachineId').val(data.MachineCode);
                         $('#FirstName').val(data.FirstName);
                         $('#MiddleName').val(data.MiddleName);
@@ -147,7 +144,6 @@
                         $("#Department").select2().val(data.DepartmentId);
                         $("#Company").select2().val(data.BranchId);
                         $("#Designation").select2().val(data.DesignationId);
-
                     if (data.EmployeeType == "S") {
                         $("#StaffType").val("Staff");
                         //$("#EmployeeShifttr").css("display", "none");
@@ -164,8 +160,7 @@
                         $("#StaffType").val("Faculty");
                         //$("#EmployeeShifttr").css("display", "block");
                     }
-
-                        $("#Shift").select2().val(data.ShiftId);
+                    $("#Shift").select2().val(data.ShiftId);
 
                         if (data.Status == "Y") {
                             $("#IsActive").prop('checked', true);
@@ -173,8 +168,6 @@
                         else {
                             $("#IsActive").prop('checked', false);
                         }
-                    //}
-
                 },
                 error: function () {
                     alert('Error')
@@ -193,7 +186,7 @@
                 success: function (data) {
                     var items = '<option>Select a Designation</option>';
                     $.each(data, function (i, design) {
-                        items += "<option value='" + design.id + "'>" + design.Designation + "</option>"; 
+                        items += "<option value='" + design.id + "'>" + design.Designation + "</option>";
                     });
                     $('#designationId').html(items);
                 }
@@ -201,6 +194,11 @@
         });
     });
 
+    $(document).ready(function () {
+        $('#MachineId').autocomplete({
+            source: '@Url.Action("GetEmployeeName")'// + '?prefix=' + $('#MachineId').val(),
+        })
+    });
     //$('#MachineId').select2({
     //    //placeholder: "---Select Employee---",
     //    allowClear:true

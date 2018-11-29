@@ -5,10 +5,6 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeAttendanceSystem", "TimeAttendanceSystem\TimeAttendanceSystem.csproj", "{B5682278-95F5-4D60-BC05-905ABFDF370D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginWithExistingDatabase", "LoginWithExistingDatabase\LoginWithExistingDatabase.csproj", "{B7FC7276-247B-4DA7-9AEA-D688ED40C658}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JqueryTutorial", "JqueryTutorial\JqueryTutorial.csproj", "{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{B5682278-95F5-4D60-BC05-905ABFDF370D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5682278-95F5-4D60-BC05-905ABFDF370D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5682278-95F5-4D60-BC05-905ABFDF370D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7FC7276-247B-4DA7-9AEA-D688ED40C658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7FC7276-247B-4DA7-9AEA-D688ED40C658}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7FC7276-247B-4DA7-9AEA-D688ED40C658}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7FC7276-247B-4DA7-9AEA-D688ED40C658}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E90E25D2-3D62-4CBC-A08A-0AB361A0E1F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

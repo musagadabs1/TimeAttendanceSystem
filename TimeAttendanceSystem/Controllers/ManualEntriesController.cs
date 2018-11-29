@@ -170,17 +170,18 @@ namespace TimeAttendanceSystem.Controllers
             if (ModelState.IsValid)
             {
                 var time = manualEntry.TimeHH + manualEntry.TimeMM + "00";
-                int empID = int.Parse( manualEntry.EmployeeID);
+                int empID = manualEntry.EmployeeID;
                 var empName = _context.SP_GetEmployeeName(empID).FirstOrDefault();
                 DateTime date =Convert.ToDateTime( manualEntry.Date);
                 var dateString = TASUtility.GetStringDateFormat(date);
+                TASUtility.DateString = dateString;
                 var terminal = manualEntry.TerminalID;
                 var empId = manualEntry.EmployeeID;
                 var mode = manualEntry.Mode;
                 var remark = manualEntry.Remarks;
                 try
                 {
-                    _context.SP_Manual_Entry(dateString, time, terminal, empId, empName, mode, remark, "", "Insert");
+                    _context.SP_Manual_Entry(dateString, time, terminal, empId.ToString(), empName, mode, remark, "", "Insert");
                     msg = "Manual Entry Entered Successfully.";
                     //_context.SaveChanges();
                     ViewBag.Message = msg;
@@ -195,6 +196,24 @@ namespace TimeAttendanceSystem.Controllers
             }
             ViewBag.Message = "Error has occured. Check and try again.";
             return PartialView("~/Views/_MessagePartialView.cshtml");
+        }
+
+        public JsonResult GetManualEntry()
+        {
+            try
+            {
+                List<ManualEntry> manualEntries = TASUtility.GetManuelEntry(TASUtility.DateString);
+                if (manualEntries.Count>0 && manualEntries !=null)
+                {
+                    return Json(manualEntries, JsonRequestBehavior.AllowGet);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // GET: ManualEntries/Edit/5

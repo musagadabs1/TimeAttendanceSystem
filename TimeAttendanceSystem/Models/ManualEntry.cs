@@ -11,9 +11,9 @@ namespace TimeAttendanceSystem.Models
         //private DateTime _date = DateTime.Now.Date;
         public int Id { get; set; }
         [Display(Name= "Employee ID *")]
-        public string EmployeeID { get; set; }
-        //[Display(Name="Name *")]
-        //public string Name { get; set; }
+        public int EmployeeID { get; set; }
+        [Display(Name="Name *")]
+        public string Name { get; set; }
         [Display(Name ="Terminal ID")]
         public int TerminalID { get; set; }
         [Display(Name ="Mode")]
@@ -24,6 +24,11 @@ namespace TimeAttendanceSystem.Models
         public string TimeMM { get; set; }
         [Display(Name = "Date"), DataType(DataType.Date)]
         public string Date { get; set; }
+        public string User { get; set; }
+        public string Modified { get; set; }
+        public string Terminal { get; set; }
+        public string TerminalName { get; set; }
+        public string ModeName { get; set; }
         [Display(Name ="Remarks")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }

@@ -43,7 +43,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
-            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
+            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId().ToList(), "deptID", "Department");
 
             var mode = new List<SelectListItem>
             {
@@ -159,7 +159,7 @@ namespace TimeAttendanceSystem.Controllers
             {
                 
                 loadErrorViewModel.Date = TASUtility.GetStringDateFormat( editEntry.ErrorDate.Date);
-                loadErrorViewModel.DepartmentId = editEntry.EmployeeID;
+                loadErrorViewModel.DepartmentId = Convert.ToInt32(editEntry.Department);
                 //db.EditEntries.Add(editEntry);
                 //db.SaveChanges();
                 return RedirectToAction("Index");

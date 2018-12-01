@@ -149,12 +149,13 @@ namespace TimeAttendanceSystem.Controllers
         }
 
         string msg = string.Empty;
-
+        //readonly int[,] arr = new int[2,3];
+        
         private string GetEmployeeNameByID(int id)
         {
             string empName = string.Empty;
             empName = _context.SP_GetEmployeeName(id).FirstOrDefault();
-
+            //arr.GetLength(0);
             return empName;
 
         }

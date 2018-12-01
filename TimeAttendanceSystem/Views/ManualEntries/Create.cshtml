@@ -139,12 +139,11 @@
         allowClear: true
 
     });
-
-
+    
     $(function).ready(function () {
         $("#btnSave").blur(function () {
-            LoadGridDetails('@Url.Action("GetManualEntry")', "EMPID,Name,Time,Date,Remarks,TerminalName,ModeName,User,Modified", "Update", "EMPID","#TenterDetails")
-        })
+            LoadGridDetails('@Url.Action("GetManualEntry")', "EMPID,Name,Time,Date,Remarks,TerminalName,ModeName,User,Modified", "Update", "EMPID", "#TenterDetails")
+        });
     });
 
     function LoadGridDetails(MethodName, ColNames, VieworUpdate, VieworUpdateColName,GridID) {

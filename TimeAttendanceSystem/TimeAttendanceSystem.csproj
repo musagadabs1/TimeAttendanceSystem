@@ -917,6 +917,12 @@
       <DependentUpon>DailyPresentReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyPresentReport001.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyPresentReport001.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\LateAttendance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1446,6 +1452,7 @@
     <Content Include="Views\Finalizes\Edit.cshtml" />
     <Content Include="Views\Finalizes\Index.cshtml" />
     <Content Include="Views\Reports\Absentee.cshtml" />
+    <Content Include="Views\Reports\PresenceReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1516,6 +1523,10 @@
     <EmbeddedResource Include="Reports\DailyPresentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyPresentReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyPresentReport001.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyPresentReport001.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\LateAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

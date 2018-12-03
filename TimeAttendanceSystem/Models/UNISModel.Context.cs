@@ -1121,15 +1121,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Absentiesbackup_Result>("sp_Absentiesbackup", vDateParameter, vEdateParameter, deptnoParameter, weekendParameter);
         }
     
-        public virtual ObjectResult<sp_AbsentiesEmpWise_Result> sp_AbsentiesEmpWise(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, Nullable<int> deptno, string weekend)
+        public virtual ObjectResult<sp_AbsentiesEmpWise_Result> sp_AbsentiesEmpWise(string vDate, string vEdate, Nullable<int> deptno, string weekend)
         {
-            var vDateParameter = vDate.HasValue ?
+            var vDateParameter = vDate != null ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(System.DateTime));
+                new ObjectParameter("vDate", typeof(string));
     
-            var vEdateParameter = vEdate.HasValue ?
+            var vEdateParameter = vEdate != null ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(System.DateTime));
+                new ObjectParameter("vEdate", typeof(string));
     
             var deptnoParameter = deptno.HasValue ?
                 new ObjectParameter("deptno", deptno) :

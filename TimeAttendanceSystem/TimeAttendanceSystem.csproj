@@ -219,10 +219,12 @@
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManualEntriesController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\RollBacksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Absentee.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttendanceMail.cs" />
     <Compile Include="Models\attendance_finalize_department_MHS.cs">
@@ -361,6 +363,7 @@
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
+    <Compile Include="Models\Presence.cs" />
     <Compile Include="Models\RollBack.cs" />
     <Compile Include="Models\RRcompileSessionsByMonth_meena_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
@@ -1442,6 +1445,7 @@
     <Content Include="Views\Finalizes\Details.cshtml" />
     <Content Include="Views\Finalizes\Edit.cshtml" />
     <Content Include="Views\Finalizes\Index.cshtml" />
+    <Content Include="Views\Reports\Absentee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

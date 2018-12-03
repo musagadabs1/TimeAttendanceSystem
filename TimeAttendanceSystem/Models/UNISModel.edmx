@@ -2253,8 +2253,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="Weekend" Type="char" Mode="In" />
         </Function>
         <Function Name="sp_AbsentiesEmpWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vDate" Type="datetime" Mode="In" />
-          <Parameter Name="vEdate" Type="datetime" Mode="In" />
+          <Parameter Name="vDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEdate" Type="nvarchar" Mode="In" />
           <Parameter Name="deptno" Type="int" Mode="In" />
           <Parameter Name="Weekend" Type="char" Mode="In" />
         </Function>
@@ -5780,8 +5780,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="Weekend" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_AbsentiesEmpWise" ReturnType="Collection(UNISModel.sp_AbsentiesEmpWise_Result)">
-            <Parameter Name="vDate" Mode="In" Type="DateTime" />
-            <Parameter Name="vEdate" Mode="In" Type="DateTime" />
+            <Parameter Name="vDate" Mode="In" Type="String" />
+            <Parameter Name="vEdate" Mode="In" Type="String" />
             <Parameter Name="deptno" Mode="In" Type="Int32" />
             <Parameter Name="Weekend" Mode="In" Type="String" />
           </FunctionImport>

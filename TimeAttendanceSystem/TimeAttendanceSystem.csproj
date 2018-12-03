@@ -268,6 +268,7 @@
     <Compile Include="Models\cTimezone.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DailyInOutReport.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\DesignationViewModel.cs" />
     <Compile Include="Models\dtproperty.cs">
@@ -923,10 +924,22 @@
       <DependentUpon>DailyPresentReport001.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyPresentReportEmpWise.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyPresentReportEmpWise.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\LateAttendance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LateAttendance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PresentReportEmpTypeWise.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PresentReportEmpTypeWise.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\WeeklyAttendance.cs">
@@ -1528,9 +1541,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyPresentReport001.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyPresentReportEmpWise.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyPresentReportEmpWise.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\LateAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LateAttendance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PresentReportEmpTypeWise.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PresentReportEmpTypeWise.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\WeeklyAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

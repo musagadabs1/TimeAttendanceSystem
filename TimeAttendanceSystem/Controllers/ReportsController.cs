@@ -59,14 +59,6 @@ namespace TimeAttendanceSystem.Controllers
                  
                  
                  */
-
-
-
-
-                
-
-
-
                     //Response.ClearContent();
                     //Response.ClearHeaders();
                     //Response.ContentType = "application/pdf";
@@ -210,7 +202,7 @@ namespace TimeAttendanceSystem.Controllers
             {
                 new SelectListItem {Value = "S", Text = "All" },
                 new SelectListItem{Value = "S", Text = "Staff"},
-                new SelectListItem{Value = "F", Text = "Staff"}
+                new SelectListItem{Value = "F", Text = "Faculty"}
             };
             ViewBag.EmployeeType = EmployeeType;
             var timeHH = new List<SelectListItem>
@@ -332,21 +324,21 @@ namespace TimeAttendanceSystem.Controllers
 
                 if (empWise)
                 {
-                     var result = _context.sp_DailyPresentEmpTypeWise(fromDate,toDate,empType,fromTime, toTime, days);
+                     //var result = _context.sp_DailyPresentEmpTypeWise(fromDate,toDate,empType,fromTime, toTime, days);
                     
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReportEmpWise.rpt");
 
 
                     myReportDocument.Load(Path);
-                    myReportDocument.SetDataSource(result.ToList());
+                    //myReportDocument.SetDataSource(result.ToList());
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
-                    myReportDocument.SetParameterValue("@deptno", departmentId);
+                    myReportDocument.SetParameterValue("@EmpId", employeeId);
+                    myReportDocument.SetParameterValue("@FromTime", fromTime);
+                    myReportDocument.SetParameterValue("@ToTime", toTime);
                     myReportDocument.SetParameterValue("@Weekend", days);
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
-
-
                     System.IO.Stream oStream = null;
                     byte[] byteArray = null;
                     oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
@@ -369,7 +361,9 @@ namespace TimeAttendanceSystem.Controllers
                     myReportDocument.SetDataSource(result.ToList());
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
-                    myReportDocument.SetParameterValue("@deptno", departmentId);
+                    myReportDocument.SetParameterValue("@EmpType", departmentId);
+                    myReportDocument.SetParameterValue("@FromTime", toTime);
+                    myReportDocument.SetParameterValue("@ToTime", toTime);
                     myReportDocument.SetParameterValue("@Weekend", days);
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
 
@@ -386,17 +380,20 @@ namespace TimeAttendanceSystem.Controllers
                 }
                 else
                 {
-                    var result = _context.sp_DailyPresent_Test_Nisha(fromDate,toDate, departmentId,fromTime, toTime, days);
+                   // var result = _context.sp_DailyPresent_Test_Nisha(fromDate,toDate, departmentId,fromTime, toTime, days);
+
                     //AbsenteeReportFromCrystal(fromDate, toDAte, departmentId, days);
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReport001.rpt");
                     //string Path = Server.MapPath("~/ReportFiles/AbsenteesReportnew.rpt");
                     myReportDocument.Load(Path);
-                    myReportDocument.SetDataSource(result);
+                    //myReportDocument.SetDataSource(result);
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
                     myReportDocument.SetParameterValue("@deptno", departmentId);
-                    myReportDocument.SetParameterValue("@Weekend", days);
+                    myReportDocument.SetParameterValue("@FromTime", fromTime);
+                    myReportDocument.SetParameterValue("@ToTime", toTime);
+                    myReportDocument.SetParameterValue("@Days", days);
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
 
 

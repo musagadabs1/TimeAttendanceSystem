@@ -413,9 +413,9 @@ namespace TimeAttendanceSystem.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Msg = ex.Message;
+                ViewBag.Message = ex.Message;
 
-                throw ex;
+                return PartialView("~/Views/_MessagePartialView.cshtml");
             }
 
 

@@ -115,5 +115,50 @@ namespace TimeAttendanceSystem.Models
             }
             
         }
+        public static List<ManualEntry> GetManuelEntry(string vDate, string role = "HR")
+        {
+
+            List<ManualEntry> lst = new List<ManualEntry>();
+
+            try
+            {
+                var manualEntries = _context.SP_GetManuelEntry(vDate, role).ToList();
+
+                if (manualEntries.Count>0 && manualEntries != null)
+                {
+                    foreach (var item in manualEntries)
+                    {
+                        lst.Add(new ManualEntry
+                        {
+                            EmployeeID=item.EMPID,
+                            Name = item.Name,
+                            TimeHH=item.Time,
+                            TerminalID=Convert.ToInt32( item.Terminal),
+                            TimeMM=item.Time,
+                            Date = item.Date,
+                            Remarks = item.Remarks,
+                            Mode =Convert.ToInt32( item.Mode),
+                            User = item.USER,
+                            Modified = item.Modified,
+                            TerminalName = item.TerminalName,
+                            ModeName = item.ModeName,
+                        });
+
+
+
+                        
+                    }
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+                
+                    
+        }
+        public static string DateString { get; set; }
     }
 }

@@ -219,10 +219,12 @@
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManualEntriesController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\RollBacksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Absentee.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttendanceMail.cs" />
     <Compile Include="Models\attendance_finalize_department_MHS.cs">
@@ -361,6 +363,7 @@
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
+    <Compile Include="Models\Presence.cs" />
     <Compile Include="Models\RollBack.cs" />
     <Compile Include="Models\RRcompileSessionsByMonth_meena_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
@@ -914,6 +917,12 @@
       <DependentUpon>DailyPresentReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyPresentReport001.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyPresentReport001.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\LateAttendance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1442,6 +1451,8 @@
     <Content Include="Views\Finalizes\Details.cshtml" />
     <Content Include="Views\Finalizes\Edit.cshtml" />
     <Content Include="Views\Finalizes\Index.cshtml" />
+    <Content Include="Views\Reports\Absentee.cshtml" />
+    <Content Include="Views\Reports\PresenceReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1512,6 +1523,10 @@
     <EmbeddedResource Include="Reports\DailyPresentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyPresentReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyPresentReport001.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyPresentReport001.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\LateAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

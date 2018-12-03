@@ -23,16 +23,16 @@ namespace TimeAttendanceSystem.Controllers
 
             return View();
         }
-        private long aVeryBigSum(long[] ar)
-        {
-            long result = 0;
-            for (var i = 0; i < ar.Length; i++)
-            {
-                result += ar[i];
-            }
-            return result;
+        //private long aVeryBigSum(long[] ar)
+        //{
+        //    long result = 0;
+        //    for (var i = 0; i < ar.Length; i++)
+        //    {
+        //        result += ar[i];
+        //    }
+        //    return result;
 
-        }
+        //}
 
         // GET: Employees/Details/5
         //public ActionResult Details(int? id)

@@ -2253,8 +2253,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="Weekend" Type="char" Mode="In" />
         </Function>
         <Function Name="sp_AbsentiesEmpWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vDate" Type="datetime" Mode="In" />
-          <Parameter Name="vEdate" Type="datetime" Mode="In" />
+          <Parameter Name="vDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEdate" Type="nvarchar" Mode="In" />
           <Parameter Name="deptno" Type="int" Mode="In" />
           <Parameter Name="Weekend" Type="char" Mode="In" />
         </Function>
@@ -2429,8 +2429,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="DateTo" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_DailyPresent_Test_Nisha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vDate" Type="datetime" Mode="In" />
-          <Parameter Name="vEdate" Type="datetime" Mode="In" />
+          <Parameter Name="vDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEdate" Type="nvarchar" Mode="In" />
           <Parameter Name="deptno" Type="int" Mode="In" />
           <Parameter Name="FromTime" Type="int" Mode="In" />
           <Parameter Name="ToTime" Type="int" Mode="In" />
@@ -2445,8 +2445,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="Days" Type="char" Mode="In" />
         </Function>
         <Function Name="sp_DailyPresentEmpTypeWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vDate" Type="datetime" Mode="In" />
-          <Parameter Name="vEdate" Type="datetime" Mode="In" />
+          <Parameter Name="vDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="vEdate" Type="nvarchar" Mode="In" />
           <Parameter Name="EmpType" Type="varchar" Mode="In" />
           <Parameter Name="FromTime" Type="int" Mode="In" />
           <Parameter Name="ToTime" Type="int" Mode="In" />
@@ -5780,8 +5780,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="Weekend" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_AbsentiesEmpWise" ReturnType="Collection(UNISModel.sp_AbsentiesEmpWise_Result)">
-            <Parameter Name="vDate" Mode="In" Type="DateTime" />
-            <Parameter Name="vEdate" Mode="In" Type="DateTime" />
+            <Parameter Name="vDate" Mode="In" Type="String" />
+            <Parameter Name="vEdate" Mode="In" Type="String" />
             <Parameter Name="deptno" Mode="In" Type="Int32" />
             <Parameter Name="Weekend" Mode="In" Type="String" />
           </FunctionImport>
@@ -5956,8 +5956,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="DateTo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_DailyPresent_Test_Nisha">
-            <Parameter Name="vDate" Mode="In" Type="DateTime" />
-            <Parameter Name="vEdate" Mode="In" Type="DateTime" />
+            <Parameter Name="vDate" Mode="In" Type="String" />
+            <Parameter Name="vEdate" Mode="In" Type="String" />
             <Parameter Name="deptno" Mode="In" Type="Int32" />
             <Parameter Name="FromTime" Mode="In" Type="Int32" />
             <Parameter Name="ToTime" Mode="In" Type="Int32" />
@@ -5972,8 +5972,8 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
             <Parameter Name="Days" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_DailyPresentEmpTypeWise" ReturnType="Collection(UNISModel.sp_DailyPresentEmpTypeWise_Result)">
-            <Parameter Name="vDate" Mode="In" Type="DateTime" />
-            <Parameter Name="vEdate" Mode="In" Type="DateTime" />
+            <Parameter Name="vDate" Mode="In" Type="String" />
+            <Parameter Name="vEdate" Mode="In" Type="String" />
             <Parameter Name="EmpType" Mode="In" Type="String" />
             <Parameter Name="FromTime" Mode="In" Type="Int32" />
             <Parameter Name="ToTime" Mode="In" Type="Int32" />

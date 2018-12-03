@@ -52,6 +52,10 @@ namespace TimeAttendanceSystem.Models
 
         public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Finalize> Finalizes { get; set; }
 
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Absentee> Absentees { get; set; }
+
+        public System.Data.Entity.DbSet<TimeAttendanceSystem.Models.Presence> Presences { get; set; }
+
         //object placeHolderVariable;
         //object placeHolderVariable;
     }

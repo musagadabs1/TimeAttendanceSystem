@@ -417,7 +417,25 @@ namespace TimeAttendanceSystem.Controllers
 
 
         }
-
+        public ActionResult DailyInOutReport()
+        {
+            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
+            var Days = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "WA", Text = "All" },
+                new SelectListItem{Value = "WD", Text = "WeekDays Only"},
+                new SelectListItem{Value = "WE", Text = "WeekEnds Only"}
+            };
+            ViewBag.Days = Days;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DailyInOutReport(DailyInOutReport dailyInOutReport)
+        {
+            
+            return View();
+        }
         // POST: Reports/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)

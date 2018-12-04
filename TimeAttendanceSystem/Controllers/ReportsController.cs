@@ -25,7 +25,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             return View();
         }
-
+        string msg = string.Empty;
         // GET: Reports/Create
         public ActionResult Create()
         {
@@ -433,8 +433,69 @@ namespace TimeAttendanceSystem.Controllers
         [HttpPost]
         public ActionResult DailyInOutReport(DailyInOutReport dailyInOutReport)
         {
-            
-            return View();
+            string fromDate = string.Empty;
+            //string country = "Nigeria";
+            string days = "WA";
+            fromDate = TASUtility.GetStringDateFormat(dailyInOutReport.FromDate.Date);
+            if (TASUtility.isCompiled(fromDate))
+            {
+                string toDate = string.Empty;
+                toDate = TASUtility.GetStringDateFormat(dailyInOutReport.FromDate.Date);
+                int deptid = 0;
+
+                if (dailyInOutReport.DepartmentWise)
+                {
+                    deptid = dailyInOutReport.Department;
+                }
+                if (dailyInOutReport.EmployeeWise)
+                {
+                    int empId = dailyInOutReport.Employee;
+
+                    System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
+                    string Path = Server.MapPath("~/Reports/DailyPresentReportEmpWise.rpt");
+
+                    //var dataSourceLoad = _context.sp_compiledreportEmpWise11(fromDate, toDate, empId,days, country);
+
+                    myReportDocument.Load(Path);
+                    myReportDocument.SetParameterValue("@vDate", fromDate);
+                    myReportDocument.SetParameterValue("@vEdate", toDate);
+                    myReportDocument.SetParameterValue("@EmpId", empId);
+                    myReportDocument.SetParameterValue("@Weekend", days);
+                    myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
+                    System.IO.Stream oStream = null;
+                    byte[] byteArray = null;
+                    oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    byteArray = new byte[oStream.Length];
+                    oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+                    oStream.Seek(0, SeekOrigin.Begin);
+                    return File(oStream, "application/pdf", string.Format("DailyInOutReportEmp{0}.pdf", DateTime.Now.ToLongTimeString()));
+                }
+                else
+                {
+                    string Path = Server.MapPath("~/Reports/DailyInOutReport.rpt");
+                    myReportDocument.Load(Path);
+                    myReportDocument.SetParameterValue("@vDate", fromDate);
+                    myReportDocument.SetParameterValue("@vEdate", toDate);
+                    myReportDocument.SetParameterValue("@deptno", deptid);
+                    myReportDocument.SetParameterValue("@Weekend", days);
+                    myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
+                    System.IO.Stream oStream = null;
+                    byte[] byteArray = null;
+                    oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    byteArray = new byte[oStream.Length];
+                    oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+                    oStream.Seek(0, SeekOrigin.Begin);
+                    return File(oStream, "application/pdf", string.Format("DailyInOutReport{0}.pdf", DateTime.Now.ToLongTimeString()));
+                }
+            }
+            else
+            {
+                msg = "Data is not yet compiled for this date.";
+                ViewBag.Message = msg;
+                return PartialView("~/Views/_MessagePartialView.cshtml");
+            }
+
+            //return View();
         }
         // POST: Reports/Create
         [HttpPost]

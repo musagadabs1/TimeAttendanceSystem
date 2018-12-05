@@ -759,6 +759,7 @@
     <Compile Include="Models\tEnter.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TenterModel.cs" />
     <Compile Include="Models\tEnter_log.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -1317,6 +1318,7 @@
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\package.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CustomScripts\CustomScripts.js" />
+    <Content Include="Scripts\CustomScripts\EntryCheck.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />

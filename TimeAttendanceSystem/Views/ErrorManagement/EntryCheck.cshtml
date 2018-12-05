@@ -12,9 +12,9 @@
     <div class="row">
         <div class="col-md-5">
             <div class="form-horizontal">
-                <div class="panel panel-primary" >
+                <div class="panel panel-primary">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group"style="padding-top:10px;">
+                    <div class="form-group" style="padding-top:10px;">
                         @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
@@ -31,17 +31,17 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="button" value="Submit" class="btn btn-primary" />
+                            <input type="button" value="Submit" id="btnEntryCheckShow" class="btn btn-primary" />
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <div class="col-md-7">
             <div class="form-horizontal">
                 <div class="panel panel-primary" style="text-align:center;">
-                    <div class="form-group"style="padding-top:10px; ">
+                    <div class="form-group" style="padding-top:10px; ">
                         @Html.LabelFor(model => model.TerminalID, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.DropDownListFor(model => model.TerminalID, (SelectList)ViewBag.Terminals, htmlAttributes: new { @class = "form-control" })
@@ -86,8 +86,75 @@
                         </div>
                     </div>
                 </div>
-                
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="form-group">
+                    <div class="table-responsive">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="tenterDetails" border='0' style="display: none" class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th style="width: 15%">
+                                            EMPID
+                                        </th>
+                                        <th style="width: 25%">
+                                            NAME
+                                        </th>
+                                        <th style="width: 15%">
+                                            TIME
+                                        </th>
+                                        <th style="width: 15%">
+                                            STATUS
+                                        </th>
+                                        <th style="width: 15%">
+                                            TERMINAL
+                                        </th>
+                                        <th style="width: 15%">
+                                            MODE
+                                        </th>
+                                        <th style="width: 15%">
+                                            DETAILS
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 }
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/CustomScripts/EntryCheck.js"></script>
+<script>
+    $("#btnEntryCheckShow").click(function () {
+
+        var date = $('#Date').val();
+        var empNumber = $('#EmployeeId').val();
+
+        if ($('#Date').val() == "") {
+            alert("Please Enter the Date");
+            return false;
+        }
+        else if ($('#EmployeeId').val() == "") {
+            alert("Please select the Employee");
+            return false;
+        }
+        else {
+            var MethodName = "GetNextEntry";
+
+            var MethodeNameWithParam = MethodName + "&Date=" + date + "&EMPID=" + empNumber;
+
+            GetNextEntry(MethodeNameWithParam, "EMPID,Name,Time,Status,Terminal,Mode", "View", "EMPID", "", "", "#tenterDetails");
+
+        }
+    });
+
+</script>
+

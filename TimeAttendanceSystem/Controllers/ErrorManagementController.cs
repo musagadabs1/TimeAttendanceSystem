@@ -15,7 +15,18 @@ namespace TimeAttendanceSystem.Controllers
         {
             return View();
         }
+        public JsonResult GetNextEntry(DateTime date, string empId)
+        {
+            try
+            {
+                return Json(TASUtility.GetNextEntry(date, empId), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
         public ActionResult EntryCheck()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");

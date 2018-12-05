@@ -1,43 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    //[Authorize]
-    public class EntryChecksController : Controller
+    public class ErrorManagementController : Controller
     {
         private UNISEntities _context = new UNISEntities();
+        // GET: ErrorManagement
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-        // GET: EntryChecks
-        //public ActionResult Index()
-        //{
-        //    return View(db.EntryChecks.ToList());
-        //}
-
-        // GET: EntryChecks/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    if (entryCheck == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // GET: EntryChecks/Create
-        public ActionResult Create()
+        public ActionResult EntryCheck()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
@@ -144,88 +123,82 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.TimeMM = timeMM;
             return View();
         }
-
-        // POST: EntryChecks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,EmployeeId,TerminalID,Mode,TimeHH,TimeMM,DateEntry")] EntryCheck entryCheck)
+        public ActionResult EntryCheck(EntryCheck entryCheck)
         {
-            if (ModelState.IsValid)
-            {
-                //db.EntryChecks.Add(entryCheck);
-                //db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(entryCheck);
+            return View();
         }
 
-        // GET: EntryChecks/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    if (entryCheck == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // POST: EntryChecks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Date,EmployeeId,TerminalID,Mode,TimeHH,TimeMM,DateEntry")] EntryCheck entryCheck)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(entryCheck).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // GET: EntryChecks/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    if (entryCheck == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // POST: EntryChecks/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    db.EntryChecks.Remove(entryCheck);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        protected override void Dispose(bool disposing)
+        // GET: ErrorManagement/Details/5
+        public ActionResult Details(int id)
         {
-            if (disposing)
+            return View();
+        }
+
+        // GET: ErrorManagement/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: ErrorManagement/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
             {
-                _context.Dispose();
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
             }
-            base.Dispose(disposing);
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: ErrorManagement/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: ErrorManagement/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: ErrorManagement/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: ErrorManagement/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

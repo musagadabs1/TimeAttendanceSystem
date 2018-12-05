@@ -1691,15 +1691,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DAILYABSENTIES_Result>("SP_DAILYABSENTIES", dateParameter);
         }
     
-        public virtual ObjectResult<sp_DailyPresent_Result> sp_DailyPresent(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, Nullable<int> deptno, Nullable<int> fromTime, Nullable<int> toTime, string days)
+        public virtual ObjectResult<sp_DailyPresent_Result> sp_DailyPresent(string vDate, string vEdate, Nullable<int> deptno, Nullable<int> fromTime, Nullable<int> toTime, string days)
         {
-            var vDateParameter = vDate.HasValue ?
+            var vDateParameter = vDate != null ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(System.DateTime));
+                new ObjectParameter("vDate", typeof(string));
     
-            var vEdateParameter = vEdate.HasValue ?
+            var vEdateParameter = vEdate != null ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(System.DateTime));
+                new ObjectParameter("vEdate", typeof(string));
     
             var deptnoParameter = deptno.HasValue ?
                 new ObjectParameter("deptno", deptno) :
@@ -1820,15 +1820,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DailyPresentEmpTypeWise_Result>("sp_DailyPresentEmpTypeWise", vDateParameter, vEdateParameter, empTypeParameter, fromTimeParameter, toTimeParameter, weekendParameter);
         }
     
-        public virtual ObjectResult<sp_DailyPresentEmpWise_Result> sp_DailyPresentEmpWise(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, Nullable<int> empId, Nullable<int> fromTime, Nullable<int> toTime, string weekend)
+        public virtual ObjectResult<sp_DailyPresentEmpWise_Result> sp_DailyPresentEmpWise(string vDate, string vEdate, Nullable<int> empId, Nullable<int> fromTime, Nullable<int> toTime, string weekend)
         {
-            var vDateParameter = vDate.HasValue ?
+            var vDateParameter = vDate != null ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(System.DateTime));
+                new ObjectParameter("vDate", typeof(string));
     
-            var vEdateParameter = vEdate.HasValue ?
+            var vEdateParameter = vEdate != null ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(System.DateTime));
+                new ObjectParameter("vEdate", typeof(string));
     
             var empIdParameter = empId.HasValue ?
                 new ObjectParameter("EmpId", empId) :

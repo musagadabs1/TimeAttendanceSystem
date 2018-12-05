@@ -140,7 +140,7 @@ desired effect
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink("Punch Errors", "Create", "EditEntries")</li>
                             <li>@Html.ActionLink("Finalize", "Create", "Finalizes")</li>
-                            <li>@Html.ActionLink("Check Entry", "Create", "EntryChecks")</li>
+                            <li>@Html.ActionLink("Check Entry", "EntryCheck", "ErrorManagement")</li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -152,11 +152,10 @@ desired effect
                         </a>
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink("ABSENTEES REPORT", "Absentee", "Reports")</li>
-                            <li>@Html.ActionLink("PRESENCE REPORT", "PresenceReport","Reports")</li>
-                            <li><a href="#">DAILY IN OUT REPORT</a></li>
-                            <li><a href="#">WEEKEND SUMMARY REPORT</a></li>
-                            <li><a href="#">LATE ATTENDANCE REPORT</a></li>
-                            <li><a href="#">MONTHLY WEEKWISE REPORT</a></li>
+                            <li>@Html.ActionLink("PRESENCE REPORT", "PresenceReport", "Reports")</li>
+                            <li>@Html.ActionLink("DAILY IN OUT REPORT", "DailyInOutReport", "Reports")</li>
+                            <li>@Html.ActionLink("WEEKEND SUMMARY REPORT", "WeekEndSummary", "Reports")</li>
+                            <li>@Html.ActionLink("MONTHLY WEEKWISE REPORT", "MonthlyWeekWise", "Reports")</li>
                         </ul>
                     </li>
                 </ul>

@@ -25,7 +25,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             return View();
         }
-
+        string msg = string.Empty;
         // GET: Reports/Create
         public ActionResult Create()
         {
@@ -59,14 +59,6 @@ namespace TimeAttendanceSystem.Controllers
                  
                  
                  */
-
-
-
-
-                
-
-
-
                     //Response.ClearContent();
                     //Response.ClearHeaders();
                     //Response.ContentType = "application/pdf";
@@ -210,7 +202,7 @@ namespace TimeAttendanceSystem.Controllers
             {
                 new SelectListItem {Value = "S", Text = "All" },
                 new SelectListItem{Value = "S", Text = "Staff"},
-                new SelectListItem{Value = "F", Text = "Staff"}
+                new SelectListItem{Value = "F", Text = "Faculty"}
             };
             ViewBag.EmployeeType = EmployeeType;
             var timeHH = new List<SelectListItem>
@@ -332,21 +324,21 @@ namespace TimeAttendanceSystem.Controllers
 
                 if (empWise)
                 {
-                     var result = _context.sp_DailyPresentEmpTypeWise(fromDate,toDate,empType,fromTime, toTime, days);
+                     //var result = _context.sp_DailyPresentEmpTypeWise(fromDate,toDate,empType,fromTime, toTime, days);
                     
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReportEmpWise.rpt");
 
 
                     myReportDocument.Load(Path);
-                    myReportDocument.SetDataSource(result.ToList());
+                    //myReportDocument.SetDataSource(result.ToList());
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
-                    myReportDocument.SetParameterValue("@deptno", departmentId);
+                    myReportDocument.SetParameterValue("@EmpId", employeeId);
+                    myReportDocument.SetParameterValue("@FromTime", fromTime);
+                    myReportDocument.SetParameterValue("@ToTime", toTime);
                     myReportDocument.SetParameterValue("@Weekend", days);
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
-
-
                     System.IO.Stream oStream = null;
                     byte[] byteArray = null;
                     oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
@@ -369,7 +361,9 @@ namespace TimeAttendanceSystem.Controllers
                     myReportDocument.SetDataSource(result.ToList());
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
-                    myReportDocument.SetParameterValue("@deptno", departmentId);
+                    myReportDocument.SetParameterValue("@EmpType", departmentId);
+                    myReportDocument.SetParameterValue("@FromTime", toTime);
+                    myReportDocument.SetParameterValue("@ToTime", toTime);
                     myReportDocument.SetParameterValue("@Weekend", days);
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
 
@@ -386,17 +380,20 @@ namespace TimeAttendanceSystem.Controllers
                 }
                 else
                 {
-                    var result = _context.sp_DailyPresent_Test_Nisha(fromDate,toDate, departmentId,fromTime, toTime, days);
+                   // var result = _context.sp_DailyPresent_Test_Nisha(fromDate,toDate, departmentId,fromTime, toTime, days);
+
                     //AbsenteeReportFromCrystal(fromDate, toDAte, departmentId, days);
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReport001.rpt");
                     //string Path = Server.MapPath("~/ReportFiles/AbsenteesReportnew.rpt");
                     myReportDocument.Load(Path);
-                    myReportDocument.SetDataSource(result);
+                    //myReportDocument.SetDataSource(result);
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
                     myReportDocument.SetParameterValue("@deptno", departmentId);
-                    myReportDocument.SetParameterValue("@Weekend", days);
+                    myReportDocument.SetParameterValue("@FromTime", fromTime);
+                    myReportDocument.SetParameterValue("@ToTime", toTime);
+                    myReportDocument.SetParameterValue("@Days", days);
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
 
 
@@ -420,7 +417,262 @@ namespace TimeAttendanceSystem.Controllers
 
 
         }
+        public ActionResult DailyInOutReport()
+        {
+            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
+            var Days = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "WA", Text = "All" },
+                new SelectListItem{Value = "WD", Text = "WeekDays Only"},
+                new SelectListItem{Value = "WE", Text = "WeekEnds Only"}
+            };
+            ViewBag.Days = Days;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DailyInOutReport(DailyInOutReport dailyInOutReport)
+        {
+            string fromDate = string.Empty;
+            //string country = "Nigeria";
+            string days = "WA";
+            fromDate = TASUtility.GetStringDateFormat(dailyInOutReport.FromDate.Date);
+            if (TASUtility.isCompiled(fromDate))
+            {
+                string toDate = string.Empty;
+                toDate = TASUtility.GetStringDateFormat(dailyInOutReport.FromDate.Date);
+                int deptid = 0;
 
+                if (dailyInOutReport.DepartmentWise)
+                {
+                    deptid = dailyInOutReport.Department;
+                }
+                if (dailyInOutReport.EmployeeWise)
+                {
+                    int empId = dailyInOutReport.Employee;
+
+                    System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
+                    string Path = Server.MapPath("~/Reports/DailyPresentReportEmpWise.rpt");
+
+                    //var dataSourceLoad = _context.sp_compiledreportEmpWise11(fromDate, toDate, empId,days, country);
+
+                    myReportDocument.Load(Path);
+                    myReportDocument.SetParameterValue("@vDate", fromDate);
+                    myReportDocument.SetParameterValue("@vEdate", toDate);
+                    myReportDocument.SetParameterValue("@EmpId", empId);
+                    myReportDocument.SetParameterValue("@Weekend", days);
+                    myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
+                    System.IO.Stream oStream = null;
+                    byte[] byteArray = null;
+                    oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    byteArray = new byte[oStream.Length];
+                    oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+                    oStream.Seek(0, SeekOrigin.Begin);
+                    return File(oStream, "application/pdf", string.Format("DailyInOutReportEmp{0}.pdf", DateTime.Now.ToLongTimeString()));
+                }
+                else
+                {
+                    string Path = Server.MapPath("~/Reports/DailyInOutReport.rpt");
+                    myReportDocument.Load(Path);
+                    myReportDocument.SetParameterValue("@vDate", fromDate);
+                    myReportDocument.SetParameterValue("@vEdate", toDate);
+                    myReportDocument.SetParameterValue("@deptno", deptid);
+                    myReportDocument.SetParameterValue("@Weekend", days);
+                    myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
+                    System.IO.Stream oStream = null;
+                    byte[] byteArray = null;
+                    oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    byteArray = new byte[oStream.Length];
+                    oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+                    oStream.Seek(0, SeekOrigin.Begin);
+                    return File(oStream, "application/pdf", string.Format("DailyInOutReport{0}.pdf", DateTime.Now.ToLongTimeString()));
+                }
+            }
+            else
+            {
+                msg = "Data is not yet compiled for this date.";
+                ViewBag.Message = msg;
+                return PartialView("~/Views/_MessagePartialView.cshtml");
+            }
+
+            //return View();
+        }
+
+
+        public ActionResult WeekEndSummary()
+        {
+            var Staff = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "2", Text = "STAFF" },
+                new SelectListItem{Value = "4", Text = "PART TIME FACULTY"},
+                new SelectListItem{Value = "1", Text = "FACULTY"}
+            };
+            ViewBag.Staff = Staff;
+            var Months = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "01", Text = "JANUARY" },
+                new SelectListItem{Value = "02", Text = "FEBRUARY"},
+                new SelectListItem{Value = "03", Text = "MARCH"},
+                new SelectListItem {Value = "04", Text = "APRIL" },
+                new SelectListItem{Value = "05", Text = "MAY"},
+                new SelectListItem{Value = "06", Text = "JUNE"},
+                new SelectListItem {Value = "07", Text = "JULY" },
+                new SelectListItem{Value = "08", Text = "AUGUST"},
+                new SelectListItem{Value = "09", Text = "SEPTEMBER"},
+                new SelectListItem {Value = "10", Text = "OCTOBER" },
+                new SelectListItem{Value = "11", Text = "NOVEMBER"},
+                new SelectListItem{Value = "12", Text = "DECEMBER"}
+            };
+            ViewBag.Months = Months;
+            var Years = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "2018", Text = "2018" },
+                new SelectListItem{Value = "2019", Text = "2019"},
+                new SelectListItem{Value = "2020", Text = "2020"},
+                new SelectListItem {Value = "2021", Text = "2021" },
+                new SelectListItem{Value = "2022", Text = "2022"},
+                new SelectListItem{Value = "2023", Text = "2023"},
+                new SelectListItem {Value = "2024", Text = "2024" },
+                new SelectListItem{Value = "2025", Text = "2025"}
+                
+            };
+            ViewBag.Years = Years;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult WeekEndSummary(WeekEndSummary weekEndSummary)
+        {
+            try
+            {
+                string month = weekEndSummary.Month;
+                int type = weekEndSummary.StaffType;
+
+                //int empId = dailyInOutReport.Employee;
+
+                System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
+                string Path = Server.MapPath("~/Reports/MonthlyWeekendAttendance.rpt");
+
+                //var dataSourceLoad = _context.sp_compiledreportEmpWise11(fromDate, toDate, empId,days, country);
+
+                myReportDocument.Load(Path);
+                myReportDocument.SetParameterValue("@Type", type);
+                myReportDocument.SetParameterValue("@Month", month);
+                myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
+                System.IO.Stream oStream = null;
+                byte[] byteArray = null;
+                oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                byteArray = new byte[oStream.Length];
+                oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+                oStream.Seek(0, SeekOrigin.Begin);
+                return File(oStream, "application/pdf", string.Format("MonthlyWeekendAttendance{0}.pdf", DateTime.Now.ToLongTimeString()));
+
+                //if (hdnMonth.Value != "0" && hdnYear.Value != "0" && hdnType.Value != "0")
+                //{
+                //    string Month = hdnYear.Value + hdnMonth.Value + "01";
+                //    Session["ReportName"] = "MonthlyWeekendAttendance.rpt";
+                //    Session["ReportSource"] = CGernealFunctions.fillDataWithProceduremonthly("GetMonthlyAttendanceWeekend", Convert.ToInt32(hdnType.Value), Month);
+                //    Session["Type"] = Convert.ToInt32(hdnType.Value);
+                //    Session["Month"] = Month;
+                //    Response.Redirect("~/Report/frmReportViewer1.aspx?ss=1", false);
+                //}
+            }
+            catch (Exception)
+
+            { }
+            return View();
+        }
+
+        public ActionResult MonthlyWeekWise()
+        {
+            var WeekType = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "Week1", Text = "Week1" },
+                new SelectListItem{Value = "Week2", Text = "Week2"},
+                new SelectListItem{Value = "Week3", Text = "Week3"},
+                new SelectListItem{Value = "Week4", Text = "Week4"}
+            };
+            ViewBag.Staff = WeekType;
+            var Months = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "01", Text = "JANUARY" },
+                new SelectListItem{Value = "02", Text = "FEBRUARY"},
+                new SelectListItem{Value = "03", Text = "MARCH"},
+                new SelectListItem {Value = "04", Text = "APRIL" },
+                new SelectListItem{Value = "05", Text = "MAY"},
+                new SelectListItem{Value = "06", Text = "JUNE"},
+                new SelectListItem {Value = "07", Text = "JULY" },
+                new SelectListItem{Value = "08", Text = "AUGUST"},
+                new SelectListItem{Value = "09", Text = "SEPTEMBER"},
+                new SelectListItem {Value = "10", Text = "OCTOBER" },
+                new SelectListItem{Value = "11", Text = "NOVEMBER"},
+                new SelectListItem{Value = "12", Text = "DECEMBER"}
+            };
+            ViewBag.Months = Months;
+            var Years = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "2018", Text = "2018" },
+                new SelectListItem{Value = "2019", Text = "2019"},
+                new SelectListItem{Value = "2020", Text = "2020"},
+                new SelectListItem {Value = "2021", Text = "2021" },
+                new SelectListItem{Value = "2022", Text = "2022"},
+                new SelectListItem{Value = "2023", Text = "2023"},
+                new SelectListItem {Value = "2024", Text = "2024" },
+                new SelectListItem{Value = "2025", Text = "2025"}
+
+            };
+            ViewBag.Years = Years;
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MonthlyWeekWise(MonthWeekWise monthWeekWise)
+        {
+            try
+            {
+                string path = string.Empty;
+                string reportType = string.Empty;
+                string reportName = string.Empty;
+                if (monthWeekWise.Month !=null && monthWeekWise.Year !=null)
+                {
+                    var  month = monthWeekWise.Month;
+                    if (monthWeekWise.IsWeekly)
+                    {
+                       path = Server.MapPath("~/Reports/WeekWiseConsolidated.rpt");
+                        reportName = "WeekWiseConsolidated";
+                        reportType = "WEEKLY";
+                    }
+                    else
+                    {
+                        path= Server.MapPath("~/Reports/MonthlyWeekWiseConsolidated.rpt");
+                        reportName = "MonthlyWeekWiseConsolidated";
+                        reportType = "MONTHLY";
+                    }
+
+                    System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
+                    myReportDocument.Load(path);
+                    myReportDocument.SetParameterValue("@Month", monthWeekWise.Month);
+                    myReportDocument.SetParameterValue("@Year", monthWeekWise.Year);
+                    myReportDocument.SetParameterValue("@Type", "A");
+                    if (reportType == "WEEKLY")
+                    {
+                        myReportDocument.SetParameterValue("@WeekName", reportType);
+                    }
+                    myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
+                    System.IO.Stream oStream = null;
+                    byte[] byteArray = null;
+                    oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    byteArray = new byte[oStream.Length];
+                    oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+                    oStream.Seek(0, SeekOrigin.Begin);
+                    return File(oStream, "application/pdf", string.Format("{0}{1}.pdf",reportName, DateTime.Now.ToLongTimeString()));
+
+                }
+            }
+            catch (Exception)
+
+            { }
+            return View();
+        }
         // POST: Reports/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)

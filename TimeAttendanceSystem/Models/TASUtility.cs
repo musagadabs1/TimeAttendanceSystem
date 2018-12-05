@@ -160,5 +160,25 @@ namespace TimeAttendanceSystem.Models
                     
         }
         public static string DateString { get; set; }
+        public static bool isCompiled(string date)
+        {
+            try
+            {
+                //int lid = 0;
+                var compileStatus = (from c in _context.compilestatus where c.e_date == date select c).FirstOrDefault();
+                if (compileStatus != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

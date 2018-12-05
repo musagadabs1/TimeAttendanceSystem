@@ -364,6 +364,7 @@
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
+    <Compile Include="Models\MonthWeekWise.cs" />
     <Compile Include="Models\Presence.cs" />
     <Compile Include="Models\RollBack.cs" />
     <Compile Include="Models\RRcompileSessionsByMonth_meena_Result.cs">
@@ -827,6 +828,7 @@
     <Compile Include="Models\vtuser.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\WeekEndSummary.cs" />
     <Compile Include="Models\wExceptRecord.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -940,6 +942,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LateAttendance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthlyWeekendAttendance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyWeekendAttendance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthlyWeekWiseConsolidated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyWeekWiseConsolidated.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\PresentReportEmpTypeWise.cs">
@@ -1473,6 +1487,8 @@
     <Content Include="Views\Reports\Absentee.cshtml" />
     <Content Include="Views\Reports\PresenceReport.cshtml" />
     <Content Include="Views\Reports\DailyInOutReport.cshtml" />
+    <Content Include="Views\Reports\WeekEndSummary.cshtml" />
+    <Content Include="Views\Reports\MonthlyWeekWise.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1559,6 +1575,14 @@
     <EmbeddedResource Include="Reports\LateAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LateAttendance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthlyWeekendAttendance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyWeekendAttendance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthlyWeekWiseConsolidated.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyWeekWiseConsolidated.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\PresentReportEmpTypeWise.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

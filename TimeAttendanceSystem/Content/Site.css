@@ -15,6 +15,9 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+#border {
+    border:5px thick black;
+}
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,

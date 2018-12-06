@@ -139,6 +139,35 @@ namespace TimeAttendanceSystem.Controllers
         {
             return View();
         }
+        public JsonResult GetManualEntry(DateTime date,string time,int terminal,string empId,int mode)
+        {
+            try
+            {
+                //var time = entryCheck.TimeHH + entryCheck.TimeMM + "00";
+                //var empID = entryCheck.EmployeeId;
+                var empName = _context.SP_GetEmployeeName(int.Parse(empId)).FirstOrDefault();
+                //DateTime date = Convert.ToDateTime(entryCheck.Date);
+                var dateString = TASUtility.GetStringDateFormat(date);
+                TASUtility.DateString = dateString;
+                //var terminal = entryCheck.TerminalID;
+                //var empId = entryCheck.EmpId;
+                //var mode = entryCheck.Mode;
+                var remark = string.Empty;
+
+                var manualEntry = _context.SP_Manual_Entry(dateString,time,terminal,empId.ToString(),empName,mode,"Inserted","", "Insert");
+                if (manualEntry !=null)
+                {
+                    return Json(manualEntry, JsonRequestBehavior.AllowGet);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+        }
 
         // GET: ErrorManagement/Details/5
         public ActionResult Details(int id)

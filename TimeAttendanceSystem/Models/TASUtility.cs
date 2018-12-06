@@ -180,5 +180,34 @@ namespace TimeAttendanceSystem.Models
                 throw ex;
             }
         }
+        public static List<TenterModel> GetNextEntry(DateTime Date, string EmpID)
+        {
+            string vDate = GetStringDateFormat(Date);
+
+            List<TenterModel> lst = new List<TenterModel>();
+            try
+            {
+                var getEntry = _context.SP_getNextEntry(vDate, EmpID).ToList();
+
+                foreach (var item in getEntry)
+                {
+                    lst.Add(new TenterModel
+                    {
+                        EmpID = item.EMPID.ToString(),
+                        Name = item.Name,
+                        Time = item.Time,
+                        Status = item.Status,
+                        Terminal = item.Terminal.ToString(),
+                        Mode = item.Mode.ToString()
+                    });
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

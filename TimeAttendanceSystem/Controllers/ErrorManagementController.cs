@@ -10,11 +10,6 @@ namespace TimeAttendanceSystem.Controllers
     public class ErrorManagementController : Controller
     {
         private UNISEntities _context = new UNISEntities();
-        // GET: ErrorManagement
-        public ActionResult Index()
-        {
-            return View();
-        }
         public JsonResult GetNextEntry(DateTime date, string empId)
         {
             try
@@ -139,77 +134,35 @@ namespace TimeAttendanceSystem.Controllers
         {
             return View();
         }
-
-        // GET: ErrorManagement/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ErrorManagement/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ErrorManagement/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public JsonResult GetManualEntry(DateTime date,string time,int terminal,string empId,int mode)
         {
             try
             {
-                // TODO: Add insert logic here
+                //var time = entryCheck.TimeHH + entryCheck.TimeMM + "00";
+                //var empID = entryCheck.EmployeeId;
+                var empName = _context.SP_GetEmployeeName(int.Parse(empId)).FirstOrDefault();
+                //DateTime date = Convert.ToDateTime(entryCheck.Date);
+                var dateString = TASUtility.GetStringDateFormat(date);
+                TASUtility.DateString = dateString;
+                //var terminal = entryCheck.TerminalID;
+                //var empId = entryCheck.EmpId;
+                //var mode = entryCheck.Mode;
+                var remark = string.Empty;
 
-                return RedirectToAction("Index");
+                var manualEntry = _context.SP_Manual_Entry(dateString,time,terminal,empId.ToString(),empName,mode,"Inserted","", "Insert");
+                if (manualEntry !=null)
+                {
+                    return Json(manualEntry, JsonRequestBehavior.AllowGet);
+                }
+                return null;
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+
+                throw ex;
             }
+            
         }
 
-        // GET: ErrorManagement/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ErrorManagement/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ErrorManagement/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ErrorManagement/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

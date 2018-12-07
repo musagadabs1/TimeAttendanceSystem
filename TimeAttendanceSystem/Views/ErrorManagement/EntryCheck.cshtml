@@ -236,31 +236,6 @@
         var empId = $('#EmployeeId').val();
         var mode = $('#Mode').val();
 
-        //SaveData($('#DateEntry').val(), $('#TimeHH').val() + $('#TimeMM').val() + '00', $('#Terminal').val(), $('#EmpId').val(), $('#Name').val(), $('#Mode').val(), '', "ABC", "DELETE");
-        //$('#EmpId').val("");
-        //$('#Name').val("");
-        //$('#TimeHH').val('00');
-        //$('#TimeMM').val('00');
-        //$('#Mode').val(0);
-        //$('#Terminal').val(0);
-        //$('#DateEntry').val("");
-
-
-
-        //function SaveData(VDATE, ETIME, TERMINALID, EMPID, ENAME, MODE, REMARKS, LOGINUSER, Operation, SendMail) //{
-            //var data = {
-
-            //    VDATE: VDATE,
-            //    Time: ETIME,
-            //    Terminal: TERMINALID,
-            //    EMPID: EMPID,
-            //    Name: ENAME,
-            //    Mode: MODE,
-            //    Remarks: REMARKS,
-            //    LoginUser: LOGINUSER,
-            //    Operation: Operation,
-            //    SendMail: SendMail,
-            //}
             $.ajax({
                 type: "POST",
                 contenttype: "application/json",

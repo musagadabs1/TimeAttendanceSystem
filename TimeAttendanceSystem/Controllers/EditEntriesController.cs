@@ -17,33 +17,12 @@ namespace TimeAttendanceSystem.Controllers
         private UNISEntities _context = new UNISEntities();
        private LoadErrorViewModel loadErrorViewModel = new LoadErrorViewModel();
 
-        // GET: EditEntries
-        //public ActionResult Index()
-        //{
-        //    return View(db.EditEntries.ToList());
-        //}
-
-        // GET: EditEntries/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EditEntry editEntry = db.EditEntries.Find(id);
-        //    if (editEntry == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(editEntry);
-        //}
-
-        // GET: EditEntries/Create
-        public ActionResult Create()
+        public ActionResult EditEntry()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
             ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
+            //ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
 
             var mode = new List<SelectListItem>
             {
@@ -148,99 +127,31 @@ namespace TimeAttendanceSystem.Controllers
             return View();
         }
 
-        // POST: EditEntries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ErrorDate,Department,EmployeeID,TerminalID,Mode,TimeHH,TimeMM,Date")] EditEntry editEntry)
-        {
-            if (ModelState.IsValid)
-            {
-                
-                loadErrorViewModel.Date = TASUtility.GetStringDateFormat( editEntry.ErrorDate.Date);
-                loadErrorViewModel.DepartmentId = Convert.ToInt32(editEntry.Department);
-                //db.EditEntries.Add(editEntry);
-                //db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(editEntry);
-        }
-        public JsonResult LoadError(FormCollection form)
+        //[HttpPost]
+        //public ActionResult EditEntry(EditEntry editEntry)
+        //{
+        //    //loadErrorViewModel.Date = TASUtility.GetStringDateFormat(editEntry.ErrorDate.Date);
+        //    //loadErrorViewModel.DepartmentId = Convert.ToInt32(editEntry.Department);
+        //    //ViewBag.Message = "It's functioning but not hiting JS";
+        //    return View();
+        //}
+        public JsonResult LoadError(DateTime date)
         {
             try
             {
-                DateTime compiledDate =Convert.ToDateTime( form["ErrorDate"]);
-                var date = TASUtility.GetStringDateFormat(compiledDate);
-                var errors = _context.SP_Load_Error(0, date, 0);
-                ViewBag.Errors = errors;
+                //DateTime compiledDate = editEntry.ErrorDate.Date;
+                var sDate = TASUtility.GetStringDateFormat(date);
+                var errors = _context.SP_Load_Error(0, sDate, 0);
+                //ViewBag.Errors = errors;
                 return Json(errors, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
 
-                throw  ex;
+                throw ex;
             }
-            //return Json(errors, JsonRequestBehavior.AllowGet); //View("~/Views/EditEntries/ErrorPartialView.cshtml");
         }
-
-        // GET: EditEntries/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EditEntry editEntry = db.EditEntries.Find(id);
-        //    if (editEntry == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(editEntry);
-        //}
-
-        // POST: EditEntries/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,ErrorDate,Department,EmployeeID,TerminalID,Mode,TimeHH,TimeMM,Date")] EditEntry editEntry)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(editEntry).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(editEntry);
-        //}
-
-        // GET: EditEntries/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EditEntry editEntry = db.EditEntries.Find(id);
-        //    if (editEntry == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(editEntry);
-        //}
-
-        // POST: EditEntries/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    EditEntry editEntry = db.EditEntries.Find(id);
-        //    db.EditEntries.Remove(editEntry);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+            
 
         protected override void Dispose(bool disposing)
         {

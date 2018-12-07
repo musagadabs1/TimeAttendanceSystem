@@ -1,0 +1,218 @@
+﻿@model TimeAttendanceSystem.Models.EditEntry
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="alert-heading">
+        <h2 style="text-align:center; color:#0094ff">Correct Punches Errors</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ErrorDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ErrorDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ErrorDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.deptID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.deptID, (SelectList)ViewBag.Departments, "Select All", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.deptID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-primary" onclick="Error();" id="btnError">Show</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <table id="location" border='1' class="table table-bordered" style="width: 100%;
+                            max-height: 125px; overflow-y: scroll; display:none">
+                        <tr>
+
+                            <th>
+                                NAME
+                            </th>
+                            <th>
+                                COUNT
+                            </th>
+                            <th>
+                                EDIT
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.DropDownListFor(model => model.EmployeeID, (SelectList)ViewBag.Employees, htmlAttributes: new { @class = "form-control" })*@
+                        @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TerminalID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.TerminalID, (SelectList)ViewBag.Terminals, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TerminalID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Mode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Mode, new SelectList(ViewBag.Mode, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Mode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TimeHH, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.TimeHH, new SelectList(ViewBag.TimeHH, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TimeHH, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TimeMM, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.TimeMM, new SelectList(ViewBag.TimeMM, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TimeMM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-1">
+                        <input type="submit" value="Add" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" value="Delete" class="btn btn-primary" />
+                    </div>
+                    <div class="col-md-0">
+                        <input type="submit" value="Recompile" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div class="form-group">
+                        <table id="Details" border='1' class="table table-striped jambo_table bulk_action"
+                               style="width: 100%; max-height: 250px; overflow-y: scroll;">
+                            <tr>
+                                <th>
+                                    EMPID
+                                </th>
+                                <th>
+                                    TERMINAL
+                                </th>
+                                <th>
+                                    NAME
+                                </th>
+                                <th>
+                                    TIME
+                                </th>
+                                <th>
+                                    MODE
+                                </th>
+                                <th>
+                                    STATUS
+                                </th>
+                                <th>
+                                    DETAILS
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $("#btnError").click(function () {
+
+
+
+        var date = $('#ErrorDate').val();
+        var empNumber = $('#EmployeeId').val();
+        var colNames = "Name,Count";
+        var array = colNames.split(',');
+        var deleteCol = '';
+        var updateColName = 'EmpID';
+        var updateClassName = "Editbuttons";
+        var vieworUpdateColName = "EMPID";
+        var gridID = '#location';
+        //var selectedVal = $('#Department').val();
+        //var update = "Update";
+        //var  = "";
+        //var  = "";
+        //var gridId = "";
+        //var empId = 0;
+        //var id = selectedVal; 
+
+        if ($("#ErrorDate").val() == "") {
+            alert("Please Enter the date to Show the Data");
+            return false;
+        }
+        else {
+            //alert('Normal')
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '@Url.Action("LoadError")' + '?date=' + date,
+                success: function (data) {
+
+                    //alert(data)
+                    $(gridId).append(data);
+                    //var trHTML = '';
+                    //var td = "";
+                    //$(data).each(function (key, value) {
+                    //    var obj = '';
+                    //    for (var i = 0; i < array.length; i++) {
+                    //        obj += '<td>' + value[array[i]] + '</td>';
+                    //    }
+                    //    if (update == "Update") {
+                    //        obj += '<td><input class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT" /></td>';
+                    //    }
+                    //    trHTML += '<tr>' + obj + '</tr>';
+                    //});
+                    //$(gridId).find("tr:gt(0)").remove();
+                    //if (trHTML != '') {
+                    //    $(gridId).css("display", "block");
+                    //    $(gridId).append(trHTML);
+                    //}
+                    //else {
+                    //    $(gridId).css("display", "none");
+                    //    alert("There is no Record on the Selected Date");
+                    //}
+                },
+                error: function (e) {
+                    alert(e);
+                }
+            });
+        }
+    });
+</script>
+
+

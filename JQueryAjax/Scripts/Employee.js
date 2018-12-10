@@ -176,4 +176,11 @@ function validate() {
     else {
         $('#position').css('border-color', 'lightgrey');
     }
+    if ($('#salary').val().trim() == "") {
+        $('#salary').css('border-color', 'Red');
+        isValide = false;
+    }
+    else {
+        $('#salary').css('border-color', 'lightgrey');
+    }
 }

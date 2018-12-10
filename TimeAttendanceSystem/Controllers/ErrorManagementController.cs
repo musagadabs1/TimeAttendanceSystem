@@ -1,43 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    //[Authorize]
-    public class EntryChecksController : Controller
+    public class ErrorManagementController : Controller
     {
         private UNISEntities _context = new UNISEntities();
+        public JsonResult GetNextEntry(DateTime date, string empId)
+        {
+            try
+            {
+                return Json(TASUtility.GetNextEntry(date, empId), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
 
-        // GET: EntryChecks
-        //public ActionResult Index()
-        //{
-        //    return View(db.EntryChecks.ToList());
-        //}
-
-        // GET: EntryChecks/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    if (entryCheck == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // GET: EntryChecks/Create
-        public ActionResult Create()
+                throw ex;
+            }
+        }
+        public ActionResult EntryCheck()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
@@ -144,88 +129,40 @@ namespace TimeAttendanceSystem.Controllers
             ViewBag.TimeMM = timeMM;
             return View();
         }
-
-        // POST: EntryChecks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,EmployeeId,TerminalID,Mode,TimeHH,TimeMM,DateEntry")] EntryCheck entryCheck)
+        public ActionResult EntryCheck(EntryCheck entryCheck)
         {
-            if (ModelState.IsValid)
+            return View();
+        }
+        public JsonResult GetManualEntry(DateTime date,string time,int terminal,string empId,int mode)
+        {
+            try
             {
-                //db.EntryChecks.Add(entryCheck);
-                //db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                //var time = entryCheck.TimeHH + entryCheck.TimeMM + "00";
+                //var empID = entryCheck.EmployeeId;
+                var empName = _context.SP_GetEmployeeName(int.Parse(empId)).FirstOrDefault();
+                //DateTime date = Convert.ToDateTime(entryCheck.Date);
+                var dateString = TASUtility.GetStringDateFormat(date);
+                TASUtility.DateString = dateString;
+                //var terminal = entryCheck.TerminalID;
+                //var empId = entryCheck.EmpId;
+                //var mode = entryCheck.Mode;
+                var remark = string.Empty;
 
-            return View(entryCheck);
+                var manualEntry = _context.SP_Manual_Entry(dateString,time,terminal,empId.ToString(),empName,mode,"Inserted","", "Insert");
+                if (manualEntry !=null)
+                {
+                    return Json(manualEntry, JsonRequestBehavior.AllowGet);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
-        // GET: EntryChecks/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    if (entryCheck == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // POST: EntryChecks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Date,EmployeeId,TerminalID,Mode,TimeHH,TimeMM,DateEntry")] EntryCheck entryCheck)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(entryCheck).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // GET: EntryChecks/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    if (entryCheck == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(entryCheck);
-        //}
-
-        // POST: EntryChecks/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    EntryCheck entryCheck = db.EntryChecks.Find(id);
-        //    db.EntryChecks.Remove(entryCheck);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

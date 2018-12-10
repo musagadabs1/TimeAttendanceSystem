@@ -212,8 +212,8 @@
     <Compile Include="Controllers\CompilesController.cs" />
     <Compile Include="Controllers\EditEntriesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
-    <Compile Include="Controllers\EntryChecksController.cs" />
     <Compile Include="Controllers\ErrorCorrectionsController.cs" />
+    <Compile Include="Controllers\ErrorManagementController.cs" />
     <Compile Include="Controllers\FinalizesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
@@ -268,6 +268,7 @@
     <Compile Include="Models\cTimezone.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DailyInOutReport.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\DesignationViewModel.cs" />
     <Compile Include="Models\dtproperty.cs">
@@ -363,6 +364,7 @@
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManualEntry.cs" />
+    <Compile Include="Models\MonthWeekWise.cs" />
     <Compile Include="Models\Presence.cs" />
     <Compile Include="Models\RollBack.cs" />
     <Compile Include="Models\RRcompileSessionsByMonth_meena_Result.cs">
@@ -757,6 +759,7 @@
     <Compile Include="Models\tEnter.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TenterModel.cs" />
     <Compile Include="Models\tEnter_log.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -826,6 +829,7 @@
     <Compile Include="Models\vtuser.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\WeekEndSummary.cs" />
     <Compile Include="Models\wExceptRecord.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
@@ -887,6 +891,12 @@
       <DependentUpon>DailyErrorReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyInOutReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyInOutReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\DailyInOutReportEmpWise.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -917,10 +927,40 @@
       <DependentUpon>DailyPresentReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyPresentReport001.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyPresentReport001.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DailyPresentReportEmpWise.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyPresentReportEmpWise.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\LateAttendance.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LateAttendance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthlyWeekendAttendance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyWeekendAttendance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthlyWeekWiseConsolidated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyWeekWiseConsolidated.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PresentReportEmpTypeWise.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PresentReportEmpTypeWise.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\WeeklyAttendance.cs">
@@ -1278,6 +1318,7 @@
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\package.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CustomScripts\CustomScripts.js" />
+    <Content Include="Scripts\CustomScripts\EntryCheck.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -1435,17 +1476,18 @@
     <Content Include="Views\EditEntries\Edit.cshtml" />
     <Content Include="Views\EditEntries\Index.cshtml" />
     <Content Include="Views\EditEntries\ErrorPartialView.cshtml" />
-    <Content Include="Views\EntryChecks\Create.cshtml" />
-    <Content Include="Views\EntryChecks\Delete.cshtml" />
-    <Content Include="Views\EntryChecks\Details.cshtml" />
-    <Content Include="Views\EntryChecks\Edit.cshtml" />
-    <Content Include="Views\EntryChecks\Index.cshtml" />
     <Content Include="Views\Finalizes\Create.cshtml" />
     <Content Include="Views\Finalizes\Delete.cshtml" />
     <Content Include="Views\Finalizes\Details.cshtml" />
     <Content Include="Views\Finalizes\Edit.cshtml" />
     <Content Include="Views\Finalizes\Index.cshtml" />
     <Content Include="Views\Reports\Absentee.cshtml" />
+    <Content Include="Views\Reports\PresenceReport.cshtml" />
+    <Content Include="Views\Reports\DailyInOutReport.cshtml" />
+    <Content Include="Views\Reports\WeekEndSummary.cshtml" />
+    <Content Include="Views\Reports\MonthlyWeekWise.cshtml" />
+    <Content Include="Views\ErrorManagement\EntryCheck.cshtml" />
+    <Content Include="Views\EditEntries\EditEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1497,6 +1539,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyErrorReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyInOutReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyInOutReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\DailyInOutReportEmpWise.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyInOutReportEmpWise.cs</LastGenOutput>
@@ -1517,9 +1563,29 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyPresentReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyPresentReport001.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyPresentReport001.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyPresentReportEmpWise.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyPresentReportEmpWise.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\LateAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LateAttendance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthlyWeekendAttendance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyWeekendAttendance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthlyWeekWiseConsolidated.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyWeekWiseConsolidated.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PresentReportEmpTypeWise.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PresentReportEmpTypeWise.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\WeeklyAttendance.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

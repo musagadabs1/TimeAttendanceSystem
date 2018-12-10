@@ -11,7 +11,8 @@ namespace TimeAttendanceSystem.Models
         public int Id { get; set; }
         [DataType(DataType.Date),Display(Name ="Date")]
         public DateTime ErrorDate { get; set; }
-        public int Department { get; set; }
+        [Display(Name ="Department")]
+        public int deptID { get; set; }
 
         [Display(Name = "Employee ID ")]
         public int EmployeeID { get; set; }

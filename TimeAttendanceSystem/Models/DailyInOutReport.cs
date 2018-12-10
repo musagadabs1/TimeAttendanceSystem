@@ -7,7 +7,7 @@ using System.Web;
 
 namespace TimeAttendanceSystem.Models
 {
-    public class Presence
+    public class DailyInOutReport
     {
         public int Id { get; set; }
         [DisplayName("Department Wise")]
@@ -15,25 +15,15 @@ namespace TimeAttendanceSystem.Models
         public bool DepartmentWise { get; set; }
         [DisplayName("Employee Wise")]
         public bool EmployeeWise { get; set; }
-        [Display(Name ="Employee Type ?")]
-        public bool EmployeeTypeCheck { get; set; }
         public int Department { get; set; }
         public int Employee { get; set; }
         public string Days { get; set; }
-        [Display(Name ="Employee Type")]
-        public string EmployeeType { get; set; }
         [Display(Name = "From Date")]
         [DataType(DataType.Date)]
         public DateTime FromDate { get; set; }
         [Display(Name = "To Date")]
         [DataType(DataType.Date)]
         public DateTime ToDate { get; set; }
-        [Display(Name ="Before")]
-        public string BeforeH { get; set; }
-        public string BeforeM { get; set; }
-        [Display(Name ="After")]
-        public string AfterH { get; set; }
-        public string AfterM { get; set; }
         [Display(Name = "Send Email ?")]
         public bool SendEmail { get; set; }
     }

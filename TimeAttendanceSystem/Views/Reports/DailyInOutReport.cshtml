@@ -1,14 +1,15 @@
-﻿@model TimeAttendanceSystem.Models.Absentee
+﻿@model TimeAttendanceSystem.Models.DailyInOutReport
 
 @{
-    ViewBag.Title = "Absentee";
+    ViewBag.Title = "DailyInOutReport";
 }
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="alert-heading">
-        <h2 style="text-align:center; color:#0094ff">Absentee Report</h2>
+        <h2 style="text-align:center; color:#0094ff">Daily In Out Report</h2>
     </div>
 
     <div class="form-horizontal">
@@ -33,6 +34,7 @@
                 </div>
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

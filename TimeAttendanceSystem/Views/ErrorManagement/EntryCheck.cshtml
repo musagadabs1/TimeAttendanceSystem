@@ -1,0 +1,259 @@
+﻿@model TimeAttendanceSystem.Models.EntryCheck
+
+@{
+    ViewBag.Title = "EntryCheck";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="alert-heading">
+        <h2 style="text-align:center; color:#0094ff">Check Entry</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-horizontal">
+                <div class="panel panel-primary">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group" style="padding-top:10px;">
+                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.EmployeeId, (SelectList)ViewBag.Employees, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="button" value="Submit" id="btnEntryCheckShow" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="form-horizontal">
+                <div class="panel panel-primary" style="text-align:center;">
+                    <div class="form-group" style="padding-top:10px;">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmpId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.EmpId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmpId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TerminalID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.TerminalID, (SelectList)ViewBag.Terminals, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TerminalID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Mode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Mode, new SelectList(ViewBag.Mode, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Mode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TimeHH, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.TimeHH, new SelectList(ViewBag.TimeHH, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TimeHH, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TimeMM, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.TimeMM, new SelectList(ViewBag.TimeMM, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TimeMM, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateEntry, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateEntry, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DateEntry, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="button" value="Delete" id="btnDelete" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="form-group">
+                    <div class="table-responsive">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="tenterDetails" border='0' style="display: none" class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th style="width: 15%">
+                                            EMPID
+                                        </th>
+                                        <th style="width: 25%">
+                                            NAME
+                                        </th>
+                                        <th style="width: 15%">
+                                            TIME
+                                        </th>
+                                        <th style="width: 15%">
+                                            STATUS
+                                        </th>
+                                        <th style="width: 15%">
+                                            TERMINAL
+                                        </th>
+                                        <th style="width: 15%">
+                                            MODE
+                                        </th>
+                                        <th style="width: 15%">
+                                            DETAILS
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script src="~/Scripts/CustomScripts/EntryCheck.js"></script>*@
+<script>
+    $(document).ready(function () {
+
+        $('#btnEntryCheckShow').click(function () {
+            if ($('#Date').val() == "") {
+                alert("Please Enter the Date");
+                return false;
+            }
+            else if ($('#EmployeeId').val() == "") {
+                alert("Please select the Employee");
+                return false;
+            }
+            else {
+                var date = $('#Date').val();
+                var empNumber = $('#EmployeeId').val();
+                var colNames = "EMPID,Name,Time,Status,Terminal,Mode";
+                var array = colNames.split(',');
+                var deleteCol = '';
+                var deleteColName = '';
+                var vieworUpdate = "View";
+                var vieworUpdateColName = "EMPID";
+                var gridID = '#tenterDetails';
+                //alert("Save to go")
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: '@Url.Action("GetNextEntry")' + '?date=' + date + '&empId=' + empNumber,
+                    success: function (data) {
+                        var trHTML = '';
+                        var td = "";
+                        $(data).each(function (key, value) {
+                            var obj = '';
+                            for (var i = 0; i < array.length; i++) {
+                                obj += '<td>' + value[array[i]] + '</td>';
+                            }
+                            if (deleteCol == "Delete") {
+                                obj += '<td><input  class="Deletebuttons btn btn-primary" type="button" id=' + value[deleteColName] + ' value="DELETE"/></td>';
+                            }
+                            if (vieworUpdate == "View") {
+                                obj += '<td><input  class="Editbuttons btn btn-primary" type="button" id=' + value[vieworUpdateColName] + ' value="VIEW"/></td>';
+                            }
+                            trHTML += '<tr>' + obj + '</tr >';
+
+                        });
+                        $(gridID).find("tr:gt(0)").remove();
+                        if (trHTML != '') {
+                            $(gridID).css("display", "block");
+                            $(gridID).append(trHTML);
+                        }
+                        else {
+                            $(gridID).css("display", "none");
+                            alert("There is no Record on the Selected Date");
+                        }
+                        //alert(data);
+                    }
+                })
+
+            }
+        });
+    })
+
+    $(document).on('click', ".Viewbuttons", function (event) {
+
+        var cells = $(this).closest("tr").children("td");
+        var cell1 = cells.eq(0).text();
+        var cell2 = cells.eq(1).text();
+        var cell3 = cells.eq(2).text();
+        var cell4 = cells.eq(4).text();
+        var cell5 = cells.eq(5).text();
+
+        var HR = cell3.substring(0, 2);
+        var MIN = cell3.substring(2, 4);
+
+        $('#').val(cell1);
+        $('#Name').val(cell2);
+        $('#TimeHH').val(HR);
+        $('#TimeMM').val(MIN);
+        $('#TerminalID').val(cell4);
+        $('#Mode').val(cell5);
+        var array = $('#DateEntry').val().split('/');
+        $('#DateEntry').val(array[2] + array[1] + array[0]);
+    });
+
+    $("#btnDelete").click(function () {
+
+        var time = $('#TimeHH').val() + $('#TimeMM').val() + '00';
+        var terminal = $('#Terminal').val();
+        var empId = $('#EmployeeId').val();
+        var mode = $('#Mode').val();
+
+            $.ajax({
+                type: "POST",
+                contenttype: "application/json",
+                url: '@Url.Action("GetManualEntry")' + '?date=' + date + '&time=' + time + '&terminal=' + terminal + '&empId=' + empId + '&mode=' + mode,
+                data: JSON.stringify(data),
+                success: function (data) {
+                    if (data.status == true) {
+                        if (Operation == "INSERT") { alert("Manual Punch added Successfully!!"); }
+                        else { alert("Deleted Successfully!!"); }
+
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                }
+            });
+        
+
+    });
+</script>
+

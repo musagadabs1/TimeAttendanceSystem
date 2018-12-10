@@ -11,12 +11,14 @@ namespace TimeAttendanceSystem.Models
         public int Id { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        [Display(Name ="Employee Id")]
+        [Display(Name ="Employee")]
         public int EmployeeId { get; set; }
+        public string Name { get; set; }
 
-        
         [Display(Name = "Terminal ID")]
         public int TerminalID { get; set; }
+        [Display(Name ="Emp Id")]
+        public int EmpId { get; set; }
         [Display(Name = "Mode")]
         public int Mode { get; set; }
         [Display(Name = "Time (HH)")]

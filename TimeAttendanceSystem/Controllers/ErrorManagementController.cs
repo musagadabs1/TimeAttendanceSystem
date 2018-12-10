@@ -7,6 +7,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
+    [Authorize]
     public class ErrorManagementController : Controller
     {
         private UNISEntities _context = new UNISEntities();

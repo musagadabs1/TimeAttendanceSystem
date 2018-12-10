@@ -1260,6 +1260,7 @@
     <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\my-login.js" />
+    <Content Include="Images\loader-2.gif" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\AUTHORS.txt" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />

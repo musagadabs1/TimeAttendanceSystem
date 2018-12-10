@@ -12,8 +12,10 @@ namespace TimeAttendanceSystem.Models
         [DataType(DataType.Date),Display(Name ="Date")]
         public DateTime ErrorDate { get; set; }
         [Display(Name ="Department")]
-        public int deptID { get; set; }
+        public int DeptId { get; set; }
 
+
+        public string Name { get; set; }
         [Display(Name = "Employee ID ")]
         public int EmployeeID { get; set; }
         [Display(Name = "Terminal ID")]
@@ -25,7 +27,11 @@ namespace TimeAttendanceSystem.Models
         [Display(Name = "Time (MM)")]
         public string TimeMM { get; set; }
         [Display(Name = "Date"), DataType(DataType.Date)]
-        public string Date { get; set; }
-        
+        public DateTime Date { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Remark { get; set; }
+        [Display(Name="Send mail ?")]
+        public bool SendMail { get; set; }
+
     }
 }

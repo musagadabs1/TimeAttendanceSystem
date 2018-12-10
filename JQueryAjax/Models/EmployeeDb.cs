@@ -30,7 +30,7 @@ namespace JQueryAjax.Models
                             Name = reader["Name"].ToString(),
                             Position = reader["Position"].ToString(),
                             Office = reader["Office"].ToString(),
-                            Salary = Convert.ToSingle(reader["Salary"])
+                            Salary = Convert.ToInt32(reader["Salary"])
                         });
                     }
                 }

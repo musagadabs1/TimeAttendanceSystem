@@ -14,7 +14,7 @@ namespace JQueryAjax.Models
         public string Name { get; set; }
         public string Position { get; set; }
         public string Office { get; set; }
-        public float Salary { get; set; }
+        public int Salary { get; set; }
 
         
     }

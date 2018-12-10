@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EditEntriesController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -151,7 +151,72 @@ namespace TimeAttendanceSystem.Controllers
                 throw ex;
             }
         }
-            
+        [HttpPost]
+        public JsonResult SaveEntries(EditEntry editEntry)
+        {
+            try
+            {
+                var operation = "INSERT";
+                var loginUser = "ABC";
+                var time = editEntry.TimeHH + editEntry.TimeMM + "00";
+                var terminal = editEntry.TerminalID;
+                var empId = editEntry.EmployeeID;
+                var name = editEntry.Name;
+                var mode = editEntry.Mode;
+                var remarks = editEntry.Remark;
+
+                var sDate = TASUtility.GetStringDateFormat(editEntry.Date);
+              var success=  _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, loginUser, operation);
+                return Json(success, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return Json(ex.Message,JsonRequestBehavior.AllowGet);
+                //throw ex;
+            }
+        }
+        public JsonResult DeleteEntrie(EditEntry editEntry)
+        {
+            try
+            {
+                var operation = "DELETE";
+                var loginUser = "ABC";
+                var time = editEntry.TimeHH + editEntry.TimeMM + "00";
+                var terminal = editEntry.TerminalID;
+                var empId = editEntry.EmployeeID;
+                var name = editEntry.Name;
+                var mode = editEntry.Mode;
+                var remarks = editEntry.Remark;
+
+                var sDate = TASUtility.GetStringDateFormat(editEntry.Date);
+                var success = _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, loginUser, operation);
+                return Json(success, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public JsonResult LoadErrorDetails(DateTime date, int empId)
+        {
+            try
+            {
+                var sDate = TASUtility.GetStringDateFormat(date);
+                var errorDetails = _context.SP_Load_Error_Details(sDate, empId);
+                if (errorDetails != null)
+                {
+                    return Json(errorDetails, JsonRequestBehavior.AllowGet);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {

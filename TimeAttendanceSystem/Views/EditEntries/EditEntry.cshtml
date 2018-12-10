@@ -23,15 +23,15 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.deptID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.DeptId, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.deptID, (SelectList)ViewBag.Departments, "Select All", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.deptID, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(model => model.DeptId, (SelectList)ViewBag.Departments, "Select All", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DeptId, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button class="btn btn-primary" onclick="Error();" id="btnError">Show</button>
+                        <button class="btn btn-primary" id="btnError">Show</button>
                     </div>
                 </div>
 
@@ -58,22 +58,24 @@
             <div class="form-horizontal">
                 <div class="form-group">
                     @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @*@Html.DropDownListFor(model => model.EmployeeID, (SelectList)ViewBag.Employees, htmlAttributes: new { @class = "form-control" })*@
+                    <div class="col-md-4">
                         @Html.EditorFor(model => model.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.TerminalID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.DropDownListFor(model => model.TerminalID, (SelectList)ViewBag.Terminals, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.TerminalID, "", new { @class = "text-danger" })
                     </div>
-                </div>
-                <div class="form-group">
                     @Html.LabelFor(model => model.Mode, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.DropDownListFor(model => model.Mode, new SelectList(ViewBag.Mode, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Mode, "", new { @class = "text-danger" })
                     </div>
@@ -81,15 +83,12 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.TimeHH, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.DropDownListFor(model => model.TimeHH, new SelectList(ViewBag.TimeHH, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.TimeHH, "", new { @class = "text-danger" })
                     </div>
-                </div>
-
-                <div class="form-group">
                     @Html.LabelFor(model => model.TimeMM, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.DropDownListFor(model => model.TimeMM, new SelectList(ViewBag.TimeMM, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.TimeMM, "", new { @class = "text-danger" })
                     </div>
@@ -97,21 +96,37 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @*<div class="form-group">*@
+                    @Html.LabelFor(model => model.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                    </div>
+                    @*</div>*@
+                    @Html.LabelFor(model => model.SendMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.SendMail)
+                            @Html.ValidationMessageFor(model => model.SendMail, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-1">
-                        <input type="submit" value="Add" class="btn btn-primary" />
+                        <input type="button" id="btnAdd" value="Add" class="btn btn-primary" />
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" value="Delete" class="btn btn-primary" />
+                        <input type="button" id="btnDelete" value="Delete" class="btn btn-primary" />
                     </div>
                     <div class="col-md-0">
-                        <input type="submit" value="Recompile" class="btn btn-primary" />
+                        <input type="button" id="btnRecompile" value="Recompile" class="btn btn-primary" />
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -147,72 +162,274 @@
             </div>
         </div>
     </div>
+    @*<div id="loading" style="position: absolute; display: none; opacity: 0.5; width: 100%;
+        padding-left: 10%; background-color: Black">
+        <img src="~/Images/loader-2.gif" />
+    </div>*@
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
     $("#btnError").click(function () {
-
-
-
-        var date = $('#ErrorDate').val();
-        var empNumber = $('#EmployeeId').val();
-        var colNames = "Name,Count";
-        var array = colNames.split(',');
-        var deleteCol = '';
-        var updateColName = 'EmpID';
-        var updateClassName = "Editbuttons";
-        var vieworUpdateColName = "EMPID";
-        var gridID = '#location';
-        //var selectedVal = $('#Department').val();
-        //var update = "Update";
-        //var  = "";
-        //var  = "";
-        //var gridId = "";
-        //var empId = 0;
-        //var id = selectedVal; 
 
         if ($("#ErrorDate").val() == "") {
             alert("Please Enter the date to Show the Data");
             return false;
         }
         else {
-            //alert('Normal')
-            $.ajax({
+            var date = $('#ErrorDate').val();
+            var empNumber = $('#EmployeeId').val();
+            var colNames = "Name,Count";
+            var array = colNames.split(',');
+            var deleteCol = '';
+            var updateColName = 'EMPID';
+            var updateClassName = "Editbuttons";
+            var gridId = '#location';
+            var update = "Update";
+            var delete1 = '';
+            var DeleteClassname = '';
+            var DeleteColName = '';
+            var ID = empNumber;
+
+             $.ajax({
                 type: 'GET',
                 contentType: 'application/json',
                 url: '@Url.Action("LoadError")' + '?date=' + date,
                 success: function (data) {
-
-                    //alert(data)
-                    $(gridId).append(data);
-                    //var trHTML = '';
-                    //var td = "";
-                    //$(data).each(function (key, value) {
-                    //    var obj = '';
-                    //    for (var i = 0; i < array.length; i++) {
-                    //        obj += '<td>' + value[array[i]] + '</td>';
-                    //    }
-                    //    if (update == "Update") {
-                    //        obj += '<td><input class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT" /></td>';
-                    //    }
-                    //    trHTML += '<tr>' + obj + '</tr>';
-                    //});
-                    //$(gridId).find("tr:gt(0)").remove();
-                    //if (trHTML != '') {
-                    //    $(gridId).css("display", "block");
-                    //    $(gridId).append(trHTML);
-                    //}
-                    //else {
-                    //    $(gridId).css("display", "none");
-                    //    alert("There is no Record on the Selected Date");
-                    //}
+                    var trHTML = '';
+                    var td = "";
+                    $(data).each(function (key, value) {
+                        var obj = '';
+                        if (delete1 == "Delete") {
+                            obj += '<td><input  class="' + DeleteClassname + '" type="button" id=' + value[DeleteColName] + ' value="DELETE"/></td>';
+                        }
+                        for (var i = 0; i < array.length; i++) {
+                            obj += '<td>' + value[array[i]] + '</td>';
+                        }
+                        if (update == "Update") {
+                            obj += '<td><input class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT" /></td>';
+                        }
+                        trHTML += '<tr>' + obj + '</tr>';
+                    });
+                    $(gridId).find("tr:gt(0)").remove();
+                    if (trHTML != '') {
+                        $(gridId).css("display", "block");
+                        $(gridId).append(trHTML);
+                    }
+                    else {
+                        $(gridId).css("display", "none");
+                        alert("There is no Record on the Selected Date");
+                    }
                 },
                 error: function (e) {
-                    alert(e);
+                    alert('Error has occurred');
                 }
             });
         }
     });
+
+
+    //Save record to Manual Entry Sp
+    $(document).ready(function () {
+
+        $('#btnAdd').click(function () {
+            if ($('#EmployeeID').val() == "") {
+                alert("Employee Id Cannot be Empty");
+                return false;
+            }
+            else if ($('#Name').val() == "") {
+                alert("Name Cannot be Empty");
+                return false;
+            }
+            else if ($('#Mode').val() == "" || $('#Mode').val() == null) {
+                alert("Mode Cannot be Empty");
+                return false;
+            }
+            else if ($('#TerminalID').val() == "" || $('#TerminalID').val() == null) {
+                alert("Terminal Cannot be Empty");
+                return false;
+            }
+            else if ($('#Date').val() == "" || $('#Date').val() == null) {
+                alert("Date Cannot be Empty");
+                return false;
+            }
+
+            var SendMailOption = "";
+            if ($('#SendMail').is(":checked")) {
+                SendMailOption = "Yes";
+            }
+            else {
+                SendMailOption = "No";
+            }
+
+            var editEntry = new Object();
+            editEntry.Date = $('#Date').val();
+            editEntry.TimeHH = $('#TimeHH').val();
+            editEntry.TimeMM = $('#TimeMM').val();
+            editEntry.TerminalID = $('#TerminalID').val();
+            editEntry.EmployeeID = $('#EmployeeID').val();
+            editEntry.Name = $('#Name').val();
+            editEntry.Mode = $('#Mode').val();
+            editEntry.Remark = $('#Remark').val();
+            editEntry.SendMail = $('#SendMail').val();
+
+            $.ajax({
+                type: "POST",
+                    contenttype: "application/json",
+                    url: '@Url.Action("SaveEntries")',
+                data: JSON.stringify(editEntry),
+                success: function (data) {
+                    if (data.status == true) {
+                        if (operation == "INSERT") { alert("Manual Punch added Successfully!!"); }
+                        else { alert("Deleted Successfully!!"); }
+
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                },
+                error: function (err) {
+                    alert("Error has occurred.");
+                }
+            });
+
+        });
+    });
+
+ $(document).ready(function () {
+        $('#btnDelete').click(function () {
+            if ($('#EmployeeID').val() == "") {
+                alert("Employee Id Cannot be Empty");
+                return false;
+            }
+            else if ($('#Name').val() == "") {
+                alert("Name Cannot be Empty");
+                return false;
+            }
+            else if ($('#Mode').val() == "" || $('#Mode').val() == null) {
+                alert("Mode Cannot be Empty");
+                return false;
+            }
+            else if ($('#TerminalID').val() == "" || $('#TerminalID').val() == null) {
+                alert("Terminal Cannot be Empty");
+                return false;
+            }
+            else if ($('#Date').val() == "" || $('#Date').val() == null) {
+                alert("Date Cannot be Empty");
+                return false;
+            }
+
+            var SendMailOption = "";
+            if ($('#SendMail').is(":checked")) {
+                SendMailOption = "Yes";
+            }
+            else {
+                SendMailOption = "No";
+            }
+
+            var editEntry = new Object();
+            editEntry.Date = $('#Date').val();
+            editEntry.TimeHH = $('#TimeHH').val();
+            editEntry.TimeMM = $('#TimeMM').val();
+            editEntry.TerminalID = $('#TerminalID').val();
+            editEntry.EmployeeID = $('#EmployeeID').val();
+            editEntry.Name = $('#Name').val();
+            editEntry.Mode = $('#Mode').val();
+            editEntry.Remark = $('#Remark').val();
+            editEntry.SendMail = $('#SendMail').val();
+
+            $.ajax({
+                type: "POST",
+                contenttype: "application/json",
+                url: '@Url.Action("DeleteEntrie")',
+                data: JSON.stringify(editEntry),
+                success: function (data) {
+                    if (data.status == true) {
+                        if (operation == "INSERT") { alert("Manual Punch added Successfully!!"); }
+                        else { alert("Deleted Successfully!!"); }
+
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                },
+                error: function (err) {
+                    alert("Error has occurred.");
+                }
+            });
+        });
+
+ });
+
+    $(document).ready(function () {
+        $('#btnRecompile').click(function () {
+            $('#loading').show();
+        });
+
+    });
+
+    function Recompile(VDate) {
+
+        $.ajax({
+            type: "Get",
+            Contenttype: "application/json",
+            url: '@Url.Action("")' "Handler.ashx?method=Recompile&VDate=" + VDate,
+            cache: false,
+            success: function (data) {
+                if (data.status == true) {
+                    $('#loading').hide();
+                    alert("Compiled Successfully");
+                    var selectedVal = $('#MainContent_ddlDepartment option:selected').attr('value');
+                    FrmErrors_LoadGrid("SP_Load_Error", "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", $("#MainContent_txtCompileDate").val(), selectedVal, 0, "#location");
+                }
+                else {
+                    alert(data.d);
+
+                }
+            }
+        });
+
+    }
+
+
+    //$(document).on('click', ".Editbuttons", function (event) {
+    //    //------------------------------------------ Before filling clear the Data-----------------------------
+    //    $('#EmployeeID').val("");
+    //    $('#Name').val("");
+    //    $('#Mode').val(0);
+    //    $('#TerminalID').val(0);
+    //    $('#Date').val("");
+    //    //------------------------------------------  Calling the FrmErrors.Js------------------------
+    //    //------------------------------------------ To Load the Next Grid-----------------------------
+    //    //FrmErrors_LoadGrid("SP_Load_Error_Details", "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", $("#MainContent_txtCompileDate").val(), 0, this.id, "#Details");
+    //});
+
+    //------------------------------------------ Populate the Data from table Button click-----------------------------
+    //$(document).on('click', ".EditErrorDetails", function (event) {
+
+    //    var cells = $(this).closest("tr").children("td");
+    //    var cell1 = cells.eq(0).text();
+    //    var cell2 = cells.eq(1).text();
+    //    var cell3 = cells.eq(2).text();
+    //    var cell4 = cells.eq(3).text();
+    //    var cell5 = cells.eq(4).text();
+
+    //    var HR = cell4.substring(0, 2);
+    //    var MIN = cell4.substring(2, 4);
+    //    var MS = cell4.substring(4, 6);
+
+    //    $('#MainContent_txtMS').val(MS);
+
+    //    $('#EmployeeID').val(cell1);
+    //    $('#Name').val(cell3);
+    //    $('#Mode').val(cell5);
+    //    $('#TerminalID').val(cell2);
+    //    $('#TimeHH).val(HR);
+    //    $('#TimeMM').val(MIN);
+    //    var array = $("#ErrorDate").val().split('/');
+    //    $('#Date').val(array[2] + array[1] + array[0]);
+    //});
 </script>
+
+
 
 

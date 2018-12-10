@@ -10,7 +10,7 @@ using TimeAttendanceSystem.Models;
 
 namespace TimeAttendanceSystem.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AttendanceMailsController : Controller
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -54,7 +54,7 @@ namespace TimeAttendanceSystem.Controllers
             {
                 //db.AttendanceMails.Add(attendanceMail);
                 //db.SaveChanges();
-                return RedirectToAction("Index");
+                return View();
             }
 
             return View(attendanceMail);

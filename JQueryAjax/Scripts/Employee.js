@@ -29,17 +29,17 @@ function loadData() {
 }
 
 //Add Employee Function
-function AddEmployee() {
+function addEmployee() {
     var res = validate();
     if (res==false) {
         return false;
     }
     var empObj = {
-        Id: $('#Id').val(),
+        //Id: $('#employeeId').val(),
         Name: $('#empName').val(),
-        Position: $('#position').val(),
-        Office: $('#office').val(),
-        Salary: $('#salary').val()
+        Position: $('#empPosition').val(),
+        Office: $('#empOffice').val(),
+        Salary: $('#empSalary').val()
     };
     $.ajax({
         url: 'Employees/AddEmployee',
@@ -60,21 +60,21 @@ function AddEmployee() {
 
 //Get Employee By Id
 function getEmployeeById(empId) {
-    $('#Name').css('border-color', 'lightgrey');
-    $('#position').css('border-color', 'lightgrey');
-    $('#office').css('border-color', 'lightgrey');
-    $('#salary').css('border-color', 'lightgrey');
+    $('#empName').css('border-color', 'lightgrey');
+    $('#empPosition').css('border-color', 'lightgrey');
+    $('#empOffice').css('border-color', 'lightgrey');
+    $('#empSalary').css('border-color', 'lightgrey');
     $.ajax({
         url: 'Employess/GetEmployeeById' + empId,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
         dataType:'json',
         success: function (result) {
-            $('#Id').val(result.Id);
-            $('#Name').val(result.Name);
-            $('#position').val(result.Position);
-            $('#office').val(result.Office);
-            $('#salary').val(result.Salary);
+            $('#employeeId').val(result.Id);
+            $('#empName').val(result.Name);
+            $('#empPosition').val(result.Position);
+            $('#empOffice').val(result.Office);
+            $('#empSalary').val(result.Salary);
             $('#myModal').modal('show');
             $('#btnUpdate').show();
             $('#btnAdd').hide();
@@ -93,10 +93,10 @@ function updateEmployee() {
         return false;
     }
     var empObj = {
-        Name: $('#Name').val(),
-        Position: $('#position').val(),
-        Office: $('#office').val(),
-        Salary: $('#salary').val()
+        Name: $('#empName').val(),
+        Position: $('#empPosition').val(),
+        Office: $('#empOffice').val(),
+        Salary: $('#empSalary').val()
     };
     $.ajax({
         url: 'Employees/UpdateEmployee',
@@ -107,11 +107,11 @@ function updateEmployee() {
         success: function (result) {
             loadData();
             $('#myModal').modal('hide');
-            $('#Id').val("");
-            $('#Name').val("");
-            $('#position').val("");
-            $('#office').val("");
-            $('#salary').val("");
+            $('#employeeId').val("");
+            $('#empName').val("");
+            $('#empPosition').val("");
+            $('#empOffice').val("");
+            $('#empSalary').val("");
         },
         error: function (err) {
             alert(err.responseText);
@@ -139,48 +139,48 @@ function deleteEmployee(id){
 
 //Function to clear Textboxes
 function clearTextBoxes() {
-    $('#Id').val("");
-    $('#Name').val("");
-    $('#position').val("");
-    $('#office').val("");
-    $('#salary').val("");
+    $('#employeeId').val("");
+    $('#empName').val("");
+    $('#empPosition').val("");
+    $('#empOffice').val("");
+    $('#empSalary').val("");
     $('#btnUpdate').hide();
     $('#btnAdd').show();
-    $('#Name').css('border-color', 'lightgrey');
-    $('#position').css('border-color', 'lightgrey');
-    $('#office').css('border-color', 'lightgrey');
-    $('#salary').css('border-color', 'lightgrey');
+    $('#empName').css('border-color', 'lightgrey');
+    $('#empPosition').css('border-color', 'lightgrey');
+    $('#empOffice').css('border-color', 'lightgrey');
+    $('#empSalary').css('border-color', 'lightgrey');
 }
 
 //Function for validating entries
 function validate() {
     var isValide = true;
-    if ($('#Name').val().trim() == "") {
-        $('#Name').css('border-color', 'Red');
+    if ($('#empName').val().trim() == "") {
+        $('#empName').css('border-color', 'Red');
         isValid = false;
     }
     else {
-        $('#Name').css('border-color', 'lightgrey');
+        $('#empName').css('border-color', 'lightgrey');
     }
-    if ($('#position').val().trim() == "") {
-        $('#position').css('border-color', 'Red');
+    if ($('#empPosition').val().trim() == "") {
+        $('#empPosition').css('border-color', 'Red');
         isValide = false;
     }
     else {
-        $('#position').css('border-color', 'lightgrey');   
+        $('#empPosition').css('border-color', 'lightgrey');   
     }
-    if ($('#position').val().trim() == "") {
-        $('#position').css('border-color', 'Red');
+    if ($('#empOffice').val().trim() == "") {
+        $('#empOffice').css('border-color', 'Red');
         isValide = false;
     }
     else {
-        $('#position').css('border-color', 'lightgrey');
+        $('#empOffice').css('border-color', 'lightgrey');
     }
-    if ($('#salary').val().trim() == "") {
-        $('#salary').css('border-color', 'Red');
+    if ($('#empSalary').val().trim() == "") {
+        $('#empSalary').css('border-color', 'Red');
         isValide = false;
     }
     else {
-        $('#salary').css('border-color', 'lightgrey');
+        $('#empSalary').css('border-color', 'lightgrey');
     }
 }

@@ -35,7 +35,7 @@ function addEmployee() {
         return false;
     }
     var empObj = {
-        //Id: $('#employeeId').val(),
+        Id: $('#employeeId').val(),
         Name: $('#empName').val(),
         Position: $('#empPosition').val(),
         Office: $('#empOffice').val(),

@@ -35,21 +35,24 @@ namespace TimeAttendanceSystem.Controllers
         //        return HttpNotFound();
         //    }
         //    return View(rollBack);
-        //}
+        ////}
 
-        // GET: RollBacks/Create
-        public ActionResult Create()
+        //// GET: RollBacks/Create
+        //public ActionResult Create()
+        //{
+           
+        //}
+        string msg = string.Empty;
+
+        public ActionResult Rollback()
         {
             ViewBag.LastCompiledDate = TASUtility.GetLastCompiledDate();
             return View();
         }
-        string msg = string.Empty;
-        // POST: RollBacks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,LastCompiled,SelectDate")] RollBack rollBack)
+        public ActionResult Rollback([Bind(Include = "Id,LastCompiled,SelectDate")] RollBack rollBack)
         {
             if (ModelState.IsValid)
             {
@@ -64,16 +67,15 @@ namespace TimeAttendanceSystem.Controllers
                 catch (Exception ex)
                 {
 
-                    ViewBag.Message=ex.Message;
+                    ViewBag.Message = ex.Message;
                 }
-                
-                
+
+
             }
             ViewBag.Message = "Error has occured. Check and try again.";
 
             return PartialView("~/Views/_MessagePartialView.cshtml");
         }
-
         // GET: RollBacks/Edit/5
         //public ActionResult Edit(int? id)
         //{

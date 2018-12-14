@@ -1493,6 +1493,11 @@
     <Content Include="Views\ErrorManagement\EntryCheck.cshtml" />
     <Content Include="Views\EditEntries\EditEntry.cshtml" />
     <Content Include="Views\Compiles\CompileAttendace.cshtml" />
+    <Content Include="Views\ErrorCorrections\AutoErrorCorrection.cshtml" />
+    <Content Include="Views\Employees\GetEmployee.cshtml" />
+    <Content Include="Views\ManualEntries\ManualEntry.cshtml" />
+    <Content Include="Views\Individuals\CompileIndividual.cshtml" />
+    <Content Include="Views\RollBacks\Rollback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

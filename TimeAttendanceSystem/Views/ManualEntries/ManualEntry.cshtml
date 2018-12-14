@@ -1,0 +1,203 @@
+﻿@model TimeAttendanceSystem.Models.ManualEntry
+
+@{
+    ViewBag.Title = "Manual Entry";
+}
+<link href="~/Content/css/select2.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="alert-heading">
+        <h2 style="text-align:center; color:#0094ff">Manual Attendance Entry</h2>
+    </div>
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.EmployeeID, (SelectList)ViewBag.Employees, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TerminalID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TerminalID, (SelectList)ViewBag.Terminals, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TerminalID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Mode, new SelectList(ViewBag.Mode, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Mode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeHH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TimeHH, new SelectList(ViewBag.TimeHH, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TimeHH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeMM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TimeMM, new SelectList(ViewBag.TimeMM, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TimeMM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control date-picker" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" id="btnSave" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        &nbsp;
+        <input type="hidden" id="hdnSessionValue" value="" />
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="form-group">
+                    <div class="table-responsive">
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="overflow-y: auto;max-height: 225px;">
+                            <table id="TenterDetails" border='0' style="display: none" class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th style="width: 8%">
+                                            EMPID
+                                        </th>
+                                        <th style="width: 25%">
+                                            NAME
+                                        </th>
+                                        <th style="width: 8%">
+                                            TIME
+                                        </th>
+                                        <th style="width: 8%">
+                                            DATE
+                                        </th>
+                                        <th style="width: 15%">
+                                            REMARKS
+                                        </th>
+                                        <th style="width: 10%">
+                                            TERMINAL
+                                        </th>
+                                        <th style="width: 8%">
+                                            MODE
+                                        </th>
+                                        <th style="width: 8%">
+                                            USER
+                                        </th>
+                                        <th style="width: 8%">
+                                            MODIFIED
+                                        </th>
+                                        <th style="width: 5%">
+                                            ACTION
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/select2.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    $('#EmployeeID').select2({
+        //placeholder: "---Select Employee---",
+        allowClear: true
+
+    });
+
+    $(function).ready(function () {
+        $("#btnSave").blur(function () {
+            LoadGridDetails('@Url.Action("GetManualEntry")', "EMPID,Name,Time,Date,Remarks,TerminalName,ModeName,User,Modified", "Update", "EMPID", "#TenterDetails")
+        });
+    });
+
+    function LoadGridDetails(MethodName, ColNames, VieworUpdate, VieworUpdateColName,GridID) {
+        try {
+            var array = ColNames.split(',');
+
+            $.ajax({
+                type: "GET",
+                url: MethodName,
+                contentType: "application/json",
+                //cache: false,
+                success: function (data) {
+                    var trHTML = '';
+                    var td = "";
+                    $((GridID) + " tbody").remove();
+
+                    $(data.response).each(function (key, value) {
+                        var obj = '';
+
+                        for (var i = 0; i < array.length; i++) {
+                            obj += '<td style="height:30px;vertical-align: middle;">' + value[array[i]] + '</td>';
+                        }
+                        if (VieworUpdate == "Update") {
+                            obj += '<td style="height:30px;vertical-align: middle;"><input  class="Editbuttons btn btn-primary" type="button" id=' + value[VieworUpdateColName] + ' value="UPDATE"/></td>';
+                        }
+                        if (VieworUpdate == "View") {
+                            obj += '<td style="height:30px;vertical-align: middle;"><input  class="Viewbuttons btn btn-primary" type="button" id=' + value[VieworUpdateColName] + ' value="VIEW"/></td>';
+                        }
+                        //if (Delete == "Delete") {
+                        //    obj += '<td style="height:30px;vertical-align: middle;"><input  class="Deletebuttons btn btn-primary" type="button" id=' + value[DeleteColName] + ' value="DELETE"/></td>';
+                        //}
+
+
+                        trHTML += '<tr>' + obj + '</tr>';
+                    });
+
+                    $(GridID).find("tr:gt(0)").remove();
+                    if (trHTML != '') {
+                        $(GridID).css("display", "block");
+                        $(GridID).append(trHTML);
+                    }
+                    else {
+                        $(GridID).css("display", "block");
+                        $(GridID).append("<tbody><tr><td colspan=" + array.length + 1 + ">No Found Data.!</td></tr></tbody>");
+                        //alert("There is no Record on the Selected Date");
+                    }
+                }
+            });
+        }
+        catch (e) {
+
+        }
+    }
+
+</script>
+
+

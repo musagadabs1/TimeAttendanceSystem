@@ -4,10 +4,8 @@
     ViewBag.Title = "Update Employee";
 }
 <link href="~/Content/css/select2.css" rel="stylesheet" />
-<link href="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
-<link href="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.structure.css" rel="stylesheet" />
-<link href="~/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" />
-
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css" rel="stylesheet" />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -31,8 +29,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.Employees, "---Select Employee---", htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.Employees, "---Select Employee---", htmlAttributes: new { @class = "form-control" })*@
                 @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -122,14 +120,15 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+<script src="~/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="~/Scripts/select2.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function () {
-
-        $('#MachineId').on("change",function () {
+    $('#MachineId').autocomplete({
+        source: '@Url.Action("GetEmployeeName")'
+    });
+        @*$('#MachineId').on("change",function () {
 
             $.ajax({
                 type: 'GET',
@@ -173,11 +172,8 @@
                     alert('Error')
                 }
             });
-        });
-    });
-
-
-    $(document).ready(function () {
+        });*@
+  
         $('#Department').on('change', function () {
             $.ajax({
                 type: 'GET',
@@ -192,13 +188,9 @@
                 }
             });
         });
-    });
+    
+    
 
-    $(document).ready(function () {
-        $('#MachineId').autocomplete({
-            source: '@Url.Action("GetEmployeeName")'// + '?prefix=' + $('#MachineId').val(),
-        })
-    });
     //$('#MachineId').select2({
     //    //placeholder: "---Select Employee---",
     //    allowClear:true

@@ -89,11 +89,11 @@ namespace TimeAttendanceSystem.Controllers
             return Json(shfDetails,JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetEmployeeName(string prefix)
+        public JsonResult GetEmployeeName(string term)
         {
             try
             {
-                var name = _context.SP_GetEmployee(prefix).FirstOrDefault();
+                var name = _context.SP_GetEmployee(term);
                 if (name !=null && name.Count()>0)
                 {
                     return Json(name, JsonRequestBehavior.AllowGet);

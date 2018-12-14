@@ -1492,6 +1492,7 @@
     <Content Include="Views\Reports\MonthlyWeekWise.cshtml" />
     <Content Include="Views\ErrorManagement\EntryCheck.cshtml" />
     <Content Include="Views\EditEntries\EditEntry.cshtml" />
+    <Content Include="Views\Compiles\CompileAttendace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

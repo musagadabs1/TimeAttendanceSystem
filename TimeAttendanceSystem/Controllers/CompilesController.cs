@@ -54,24 +54,35 @@ namespace TimeAttendanceSystem.Controllers
         }
 
         // GET: Compiles/Create
-        public ActionResult Create()
-        {
-            ViewBag.LastCompiledDate = TASUtility.GetLastCompiledDate();
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Compiles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,SelectDate,LastCompiled")] Compile compile)
+        //{
+        //    return View();
+        //}
+
+        public ActionResult CompileAttendace()
+        {
+            ViewBag.LastCompiledDate = TASUtility.GetLastCompiledDate();
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SelectDate,LastCompiled")] Compile compile)
+        public ActionResult CompileAttendace([Bind(Include = "Id,SelectDate,LastCompiled")] Compile compile)
         {
             if (ModelState.IsValid)
             {
                 //string dateSelected;
                 var selectedDate = compile.SelectDate.Date;
-                var oDate =TASUtility.GetStringDateFormat(compile.SelectDate);
+                var oDate = TASUtility.GetStringDateFormat(compile.SelectDate);
                 var vDate = TASUtility.GetStringDateFormat(compile.SelectDate);
 
                 //is the chosen date already compiled and finalized?

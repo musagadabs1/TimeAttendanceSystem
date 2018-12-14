@@ -50,74 +50,20 @@ namespace TimeAttendanceSystem.Controllers
         //}
         string msg = string.Empty;
         // GET: Employees/Create
-        public ActionResult Create()
-        {
-            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
-            ViewBag.Designations = new SelectList(_context.SP_Designation(), "Id", "Designation");
-            ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
-            ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
-            //ViewBag.EmployeeNames = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "MachineCode", "EmpData");
-            ViewBag.Employees = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "Id", "EmpData");
-            var staffType = new List<SelectListItem>
-            {
-                new SelectListItem {Value = "Staff", Text = "Staff" },
-                new SelectListItem{Value = "Faculty", Text = "Faculty"},
-                new SelectListItem{Value = "Other", Text = "Other"}
-            };
-            ViewBag.StaffType = staffType;
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+            
+           
+        //}
         // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,IsActive,MachineId,FirstName,MiddleName,LastName,Department,Designation,StaffType,Company,Shift")] Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var status = "N";
-                    if (employee.IsActive==true)
-                    {
-                        status = "Y";
-                    }
-                    var staffType = "S";
-                    
-                    var branch = 1;
-                    var saveRecord = _context.SP_Update_save_EmployeeMaster(employee.Department, employee.Designation,branch, employee.Shift, staffType, status, employee.FirstName, employee.MiddleName, employee.LastName,  int.Parse(employee.MachineId));
-
-                    if (saveRecord.FirstOrDefault()== "Success!!")
-                    {
-                        msg = "Employee Record Updated Successfully.";
-                        //_context.SaveChanges();
-                        ViewBag.Message = msg;
-                        return PartialView("~/Views/_MessagePartialView.cshtml");
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Error has occured. Check and try again.";
-                        return PartialView("~/Views/_MessagePartialView.cshtml");
-                    }
-
-        
-                }
-                catch (Exception ex)
-                {
-
-                    ViewBag.Message = ex.Message;
-                    return PartialView("~/Views/_MessagePartialView.cshtml");
-                }
-
-
-                //db.Employees.Add(employee);
-                //db.SaveChanges();
-                //return RedirectToAction("Create");
-            }
-
-            return View(employee);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create()
+        //{
+            
+        //}
         public JsonResult GetShiftDetail(int? shiftId)
         {
             //var tasUtility = new TASUtility();
@@ -214,6 +160,65 @@ namespace TimeAttendanceSystem.Controllers
 
                 throw ex;
             }
+        }
+
+        public ActionResult GetEmployee()
+        {
+            ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
+            ViewBag.Designations = new SelectList(_context.SP_Designation(), "Id", "Designation");
+            ViewBag.Companies = new SelectList(_context.SP_CompanyDetails(), "company_id", "company_name");
+            ViewBag.Shifts = new SelectList(_context.SP_Shift(), "Shift_ID", "Shift_Type");
+            //ViewBag.EmployeeNames = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "MachineCode", "EmpData");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployeeNameAndMachineAndEmpNumber(), "Id", "EmpData");
+            var staffType = new List<SelectListItem>
+            {
+                new SelectListItem {Value = "Staff", Text = "Staff" },
+                new SelectListItem{Value = "Faculty", Text = "Faculty"},
+                new SelectListItem{Value = "Other", Text = "Other"}
+            };
+            ViewBag.StaffType = staffType;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetEmployee([Bind(Include = "Id,IsActive,MachineId,FirstName,MiddleName,LastName,Department,Designation,StaffType,Company,Shift")] Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var status = "N";
+                    if (employee.IsActive == true)
+                    {
+                        status = "Y";
+                    }
+                    var staffType = "S";
+
+                    var branch = 1;
+                    var saveRecord = _context.SP_Update_save_EmployeeMaster(employee.Department, employee.Designation, branch, employee.Shift, staffType, status, employee.FirstName, employee.MiddleName, employee.LastName, int.Parse(employee.MachineId));
+
+                    if (saveRecord.FirstOrDefault() == "Success!!")
+                    {
+                        msg = "Employee Record Updated Successfully.";
+                        //_context.SaveChanges();
+                        ViewBag.Message = msg;
+                        return PartialView("~/Views/_MessagePartialView.cshtml");
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Error has occured. Check and try again.";
+                        return PartialView("~/Views/_MessagePartialView.cshtml");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    ViewBag.Message = ex.Message;
+                    return PartialView("~/Views/_MessagePartialView.cshtml");
+                } //return RedirectToAction("Create");
+            }
+
+            return View(employee);
         }
 
         // GET: Employees/Edit/5

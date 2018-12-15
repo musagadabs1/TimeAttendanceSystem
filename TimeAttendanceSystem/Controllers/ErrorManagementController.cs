@@ -164,6 +164,18 @@ namespace TimeAttendanceSystem.Controllers
             }
             
         }
+        public JsonResult LoadError(int deptId,DateTime date,int empId=0)
+        {
+            try
+            {
+                string sDate = TASUtility.GetStringDateFormat(date);
+                return Json(_context.SP_Load_Error(deptId, sDate, empId), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
     }
 }

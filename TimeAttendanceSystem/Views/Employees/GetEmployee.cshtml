@@ -128,12 +128,17 @@
     $('#MachineId').autocomplete({
         source: '@Url.Action("GetEmployeeName")'
     });
-        @*$('#MachineId').on("change",function () {
+        $('#MachineId').on("change",function () {
+
+            var stringMachineCode = $('#MachineId').val();
+
+            var array = stringMachineCode.split('-');
+            var machineCode = array[2];
 
             $.ajax({
                 type: 'GET',
                 contentType: 'application/json',
-                url: '@Url.Action("GetEmployeeDetailsByMachineCode")' + '?machineCode=' + $('#MachineId').val(),
+                url: '@Url.Action("GetEmployeeDetailsByMachineCode")' + '?machineCode=' + machineCode,
                 success: function (data) {
                     $("#Department").append($("<option></option>").val("0").html("Select"));
                         $('#MachineId').val(data.MachineCode);
@@ -145,19 +150,12 @@
                         $("#Designation").select2().val(data.DesignationId);
                     if (data.EmployeeType == "S") {
                         $("#StaffType").val("Staff");
-                        //$("#EmployeeShifttr").css("display", "none");
                     }
                     else if (data.EmployeeType == "P") {
-                        //$("#MainContent_RadPartTime").prop('checked', true);
-                        //$("#MainContent_RadFullTime").prop('checked', false);
                         $("#StaffType").val("Faculty");
-                        //$("#EmployeeShifttr").css("display", "block");
                     }
                     else if (data.EmployeeType == "F") {
-                        //$("#MainContent_RadPartTime").prop('checked', false);
-                        //$("#MainContent_RadFullTime").prop('checked', true);
                         $("#StaffType").val("Faculty");
-                        //$("#EmployeeShifttr").css("display", "block");
                     }
                     $("#Shift").select2().val(data.ShiftId);
 
@@ -172,7 +170,7 @@
                     alert('Error')
                 }
             });
-        });*@
+        });
   
         $('#Department').on('change', function () {
             $.ajax({

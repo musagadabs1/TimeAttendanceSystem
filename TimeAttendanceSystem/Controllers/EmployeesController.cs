@@ -15,55 +15,8 @@ namespace TimeAttendanceSystem.Controllers
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
         private UNISEntities _context = new UNISEntities();
-        //private PayrollEntities _PayRollContext = new PayrollEntities();
-
-        //GET: Employees
-        public ActionResult Index()
-        {
-
-            return View();
-        }
-        //private long aVeryBigSum(long[] ar)
-        //{
-        //    long result = 0;
-        //    for (var i = 0; i < ar.Length; i++)
-        //    {
-        //        result += ar[i];
-        //    }
-        //    return result;
-
-        //}
-
-        // GET: Employees/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Employee employee = db.Employees.Find(id);
-        //    if (employee == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(employee);
-        //}
+        
         string msg = string.Empty;
-        // GET: Employees/Create
-        //public ActionResult Create()
-        //{
-            
-           
-        //}
-        // POST: Employees/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create()
-        //{
-            
-        //}
         public JsonResult GetShiftDetail(int? shiftId)
         {
             //var tasUtility = new TASUtility();
@@ -93,7 +46,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             try
             {
-                var name = _context.SP_GetEmployee(term);
+                var name = _context.SP_GetEmployee(term).ToList();
                 if (name !=null && name.Count()>0)
                 {
                     return Json(name, JsonRequestBehavior.AllowGet);
@@ -220,64 +173,6 @@ namespace TimeAttendanceSystem.Controllers
 
             return View(employee);
         }
-
-        // GET: Employees/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Employee employee = db.Employees.Find(id);
-        //    if (employee == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(employee);
-        //}
-
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,IsActive,MachineId,FirstName,MiddleName,LastName,Department,Designation,StaffType,Company,Shift")] Employee employee)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(employee).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(employee);
-        //}
-
-        // GET: Employees/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Employee employee = db.Employees.Find(id);
-        //    if (employee == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(employee);
-        //}
-
-        // POST: Employees/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Employee employee = db.Employees.Find(id);
-        //    db.Employees.Remove(employee);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

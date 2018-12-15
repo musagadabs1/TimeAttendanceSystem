@@ -135,7 +135,8 @@ namespace TimeAttendanceSystem.Controllers
         {
             return View();
         }
-        public JsonResult GetManualEntry(DateTime date,string time,int terminal,string empId,int mode)
+        [HttpPost]
+        public JsonResult GetManualEntry(DateTime date,string time,int terminal,string empId,int mode,string operation)
         {
             try
             {
@@ -150,7 +151,7 @@ namespace TimeAttendanceSystem.Controllers
                 //var mode = entryCheck.Mode;
                 var remark = string.Empty;
 
-                var manualEntry = _context.SP_Manual_Entry(dateString,time,terminal,empId.ToString(),empName,mode,"Inserted","", "Insert");
+                var manualEntry = _context.SP_Manual_Entry(dateString,time,terminal,empId.ToString(),empName,mode,"Inserted","", operation);
                 if (manualEntry !=null)
                 {
                     return Json(manualEntry, JsonRequestBehavior.AllowGet);
@@ -164,12 +165,27 @@ namespace TimeAttendanceSystem.Controllers
             }
             
         }
-        public JsonResult LoadError(int deptId,DateTime date,int empId=0)
+        public JsonResult LoadError(DateTime date, int deptId=0, int empId=0)
         {
             try
             {
                 string sDate = TASUtility.GetStringDateFormat(date);
                 return Json(_context.SP_Load_Error(deptId, sDate, empId), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public JsonResult GetErrorDetail(DateTime date,int empId=0)
+        {
+            try
+            {
+                var sDate = TASUtility.GetStringDateFormat(date);
+                var errorDetails = _context.SP_Load_Error_Details(sDate, empId);
+
+                return Json(errorDetails, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

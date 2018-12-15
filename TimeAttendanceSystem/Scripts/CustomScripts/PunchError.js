@@ -1,11 +1,11 @@
-﻿function LoadGrid(methodName, colNames, update, updateColName, updateClassName,sDelete,deleteColName, deleteClassName, date, id, empId, gridId)
+﻿function LoadGrid(methodName, colNames, update, updateColName, updateClassName,sDelete,deleteColName, deleteClassName, gridId)
 {
     try
     {
         var array = colNames.split(',');
         $.ajax({
             type: 'GET',
-            url: methodName + "?date=" + date + "&id=" + id + "&empId=" + empId,
+            url: methodName, 
             datatype: 'json',
             contentType: 'application/json',
             success: function (data) {
@@ -13,19 +13,20 @@
                 var td = "";
                 $(data).each(function (key,value) {
                     var obj = '';
-                    if (sDelete == "Delete") {
+                    if (sDelete === "Delete") {
                         obj += '<td><input  class="' + deleteClassName + '" type="button" id=' + value[deleteColName] + ' value="DELETE"/></td>';
                     }
                     for (var i = 0; i < array.length; i++) {
                         obj += '<td>' + value[array[i]] + '</td>';
                     }
-                    if (update == "Update") {
-                        obj += '<td><input  class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT"/></td>';
+                    if (update === "Update") {
+                        //obj += '<td><input  class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT"/></td>';
+                        obj += '<td><input  class="' + updateClassName + '" type="button" id=' +updateColName + ' value="EDIT"/></td>';
                     }
                     trHTML += '<tr>' + obj + '</tr >';
                 });
                 $(gridId).find("tr:gt(0)").remove();
-                if (trHTML != '') {
+                if (trHTML !== '') {
                     $(gridId).css("display", "block");
                     $(gridId).append(trHTML);
                 }
@@ -46,26 +47,27 @@
     }
 }
 
-function SaveData(method,vDate, etime, terminalId, empId, eName, mode, remark, loginUser, operation, sendMail)
+function SaveData(method,vDate, eTime ,terminalId, empId, mode,remark, sendMail,operation)
 {
     try
     {
         var data = {
             VDate: vDate,
-            Time: etime,
+            Time: eTime,
             Terminal: terminalId,
             EMPID: empId,
-            Name: eName,
+            //Name: eName,
             Mode: mode,
-            Remark: remark,
-            LoginUser: loginUser,
-            Operation: operation,
+            Operation:operation,
+            //Remark: remark,
+            //LoginUser: loginUser,
+            //Operation: operation,
             SendMail:sendMail
         };
         $.ajax({
             type: "POST",
             contentType: 'application/json',
-            url:method,// base_url + "Handler.ashx?method=SP_Manual_Entry",
+            url:method,
             data: JSON.stringify(data),
             success: function (content) {
                 if (content.success==true) {
@@ -91,7 +93,7 @@ function SaveData(method,vDate, etime, terminalId, empId, eName, mode, remark, l
     }
 }
 
-function Recompile(method,vDate,deptId,elementId) {
+function Recompile(vDate) {
     try
     {
         $.ajax({
@@ -101,8 +103,8 @@ function Recompile(method,vDate,deptId,elementId) {
             success: function (data) {
                 if (data.success==true) {
                     alert("Compiled Successfully");
-                    var deptId = $("#" + deptId + "'");
-                    LoadGrid(method, "Name,Count", "Update", "EmpID", "EditButtons", "", "", "", vDate, deptId, 0, "#" + elementId + "'");
+                    var deptId = $('#Department').val();
+                    LoadGrid(method, "Name,Count", "Update", "EmpID", "EditButtons", "", "", "", vDate, deptId, 0, "#location");
                 }
                 //else {
                    // alert(data.error);

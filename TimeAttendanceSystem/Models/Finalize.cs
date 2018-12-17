@@ -16,6 +16,8 @@ namespace TimeAttendanceSystem.Models
         public bool SendEmail { get; set; }
         [DisplayName("Att Date:")]
         public string AttendanceDate { get; set; }
+        [DisplayName("Date: ")]
+        public DateTime FinalizeDate { get; set; }
 
     }
 }

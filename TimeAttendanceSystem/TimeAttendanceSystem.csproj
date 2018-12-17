@@ -1448,31 +1448,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\ErrorCorrections\Create.cshtml" />
-    <Content Include="Views\ErrorCorrections\Delete.cshtml" />
-    <Content Include="Views\ErrorCorrections\Details.cshtml" />
-    <Content Include="Views\ErrorCorrections\Edit.cshtml" />
-    <Content Include="Views\ErrorCorrections\Index.cshtml" />
-    <Content Include="Views\Compiles\Create.cshtml" />
-    <Content Include="Views\Compiles\Delete.cshtml" />
-    <Content Include="Views\Compiles\Details.cshtml" />
-    <Content Include="Views\Compiles\Edit.cshtml" />
-    <Content Include="Views\Compiles\Index.cshtml" />
-    <Content Include="Views\ManualEntries\Create.cshtml" />
-    <Content Include="Views\ManualEntries\Delete.cshtml" />
-    <Content Include="Views\ManualEntries\Details.cshtml" />
-    <Content Include="Views\ManualEntries\Edit.cshtml" />
-    <Content Include="Views\ManualEntries\Index.cshtml" />
-    <Content Include="Views\RollBacks\Create.cshtml" />
-    <Content Include="Views\RollBacks\Delete.cshtml" />
-    <Content Include="Views\RollBacks\Details.cshtml" />
-    <Content Include="Views\RollBacks\Edit.cshtml" />
-    <Content Include="Views\RollBacks\Index.cshtml" />
-    <Content Include="Views\Individuals\Create.cshtml" />
-    <Content Include="Views\Individuals\Delete.cshtml" />
-    <Content Include="Views\Individuals\Details.cshtml" />
-    <Content Include="Views\Individuals\Edit.cshtml" />
-    <Content Include="Views\Individuals\Index.cshtml" />
     <Content Include="Views\AttendanceMails\Create.cshtml" />
     <Content Include="Views\AttendanceMails\Delete.cshtml" />
     <Content Include="Views\AttendanceMails\Details.cshtml" />
@@ -1489,17 +1464,7 @@
     <Content Include="Views\Errors\Edit.cshtml" />
     <Content Include="Views\Errors\Index.cshtml" />
     <Content Include="Views\Errors\_EditEntryPartialView.cshtml" />
-    <Content Include="Views\EditEntries\Create.cshtml" />
-    <Content Include="Views\EditEntries\Delete.cshtml" />
-    <Content Include="Views\EditEntries\Details.cshtml" />
-    <Content Include="Views\EditEntries\Edit.cshtml" />
-    <Content Include="Views\EditEntries\Index.cshtml" />
     <Content Include="Views\EditEntries\ErrorPartialView.cshtml" />
-    <Content Include="Views\Finalizes\Create.cshtml" />
-    <Content Include="Views\Finalizes\Delete.cshtml" />
-    <Content Include="Views\Finalizes\Details.cshtml" />
-    <Content Include="Views\Finalizes\Edit.cshtml" />
-    <Content Include="Views\Finalizes\Index.cshtml" />
     <Content Include="Views\Reports\Absentee.cshtml" />
     <Content Include="Views\Reports\PresenceReport.cshtml" />
     <Content Include="Views\Reports\DailyInOutReport.cshtml" />
@@ -1513,6 +1478,7 @@
     <Content Include="Views\ManualEntries\ManualEntry.cshtml" />
     <Content Include="Views\Individuals\CompileIndividual.cshtml" />
     <Content Include="Views\RollBacks\Rollback.cshtml" />
+    <Content Include="Views\Finalizes\Finalize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

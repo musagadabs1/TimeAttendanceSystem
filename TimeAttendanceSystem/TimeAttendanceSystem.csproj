@@ -1479,6 +1479,7 @@
     <Content Include="Views\Individuals\CompileIndividual.cshtml" />
     <Content Include="Views\RollBacks\Rollback.cshtml" />
     <Content Include="Views\Finalizes\Finalize.cshtml" />
+    <Content Include="Views\Finalizes\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

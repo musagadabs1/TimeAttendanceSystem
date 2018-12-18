@@ -14,7 +14,10 @@ namespace TimeAttendanceSystem.Controllers
     public class FinalizesController : Controller
     {
         private UNISEntities _context = new UNISEntities();
-
+        public ActionResult Show()
+        {
+            return View();
+        }
         // GET: Finalizes/Create
        string msg = string.Empty;
         public ActionResult Finalize()

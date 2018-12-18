@@ -17,10 +17,28 @@ namespace TimeAttendanceSystem.Controllers
         private UNISEntities _context = new UNISEntities();
         // GET: ManualEntries/Create
         //[Authorize]
-        public ActionResult Create()
+        //public ActionResult Create()
+        ////{
+            
+            
+        //}
+
+        string msg = string.Empty;
+        //readonly int[,] arr = new int[2,3];
+        
+        private string GetEmployeeNameByID(int id)
+        {
+            string empName = string.Empty;
+            empName = _context.SP_GetEmployeeName(id).FirstOrDefault();
+            //arr.GetLength(0);
+            return empName;
+
+        }
+
+        public ActionResult ManualEntry()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
-            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0,""), "id", "Employee_Name");
+            ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
 
             var mode = new List<SelectListItem>
             {
@@ -119,39 +137,21 @@ namespace TimeAttendanceSystem.Controllers
                 new SelectListItem{Value="57" ,Text="57"},
                 new SelectListItem{Value="58", Text="58"},
                 new SelectListItem{Value="59" ,Text="59"}
-                
+
             };
             ViewBag.TimeMM = timeMM;
             return View();
-            
         }
-
-        string msg = string.Empty;
-        //readonly int[,] arr = new int[2,3];
-        
-        private string GetEmployeeNameByID(int id)
-        {
-            string empName = string.Empty;
-            empName = _context.SP_GetEmployeeName(id).FirstOrDefault();
-            //arr.GetLength(0);
-            return empName;
-
-        }
-
-        // POST: ManualEntries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize]
-        public ActionResult Create([Bind(Include = "Id,EmployeeID,Name,TerminalID,Mode,TimeHH,TimeMM,Date,Remarks")] ManualEntry manualEntry)
+        public ActionResult ManualEntry([Bind(Include = "Id,EmployeeID,Name,TerminalID,Mode,TimeHH,TimeMM,Date,Remarks")] ManualEntry manualEntry)
         {
             if (ModelState.IsValid)
             {
                 var time = manualEntry.TimeHH + manualEntry.TimeMM + "00";
                 int empID = manualEntry.EmployeeID;
                 var empName = _context.SP_GetEmployeeName(empID).FirstOrDefault();
-                DateTime date =Convert.ToDateTime( manualEntry.Date);
+                DateTime date = Convert.ToDateTime(manualEntry.Date);
                 var dateString = TASUtility.GetStringDateFormat(date);
                 TASUtility.DateString = dateString;
                 var terminal = manualEntry.TerminalID;
@@ -169,13 +169,14 @@ namespace TimeAttendanceSystem.Controllers
                 catch (Exception ex)
                 {
 
-                    ViewBag.Message=ex.Message;
+                    ViewBag.Message = ex.Message;
                 }
-                
+
             }
             ViewBag.Message = "Error has occured. Check and try again.";
             return PartialView("~/Views/_MessagePartialView.cshtml");
         }
+        
 
         public JsonResult GetManualEntry()
         {

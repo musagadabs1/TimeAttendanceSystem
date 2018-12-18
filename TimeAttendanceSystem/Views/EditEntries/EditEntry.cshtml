@@ -163,271 +163,143 @@
         </div>
     </div>
     @*<div id="loading" style="position: absolute; display: none; opacity: 0.5; width: 100%;
-        padding-left: 10%; background-color: Black">
-        <img src="~/Images/loader-2.gif" />
-    </div>*@
+            padding-left: 10%; background-color: Black">
+            <img src="~/Images/loader-2.gif" />
+        </div>*@
 }
+<script src="~/Scripts/CustomScripts/PunchError.js"></script>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
+
 <script type="text/javascript">
-    $("#btnError").click(function () {
+    $('#btnError').click(function () {
 
         if ($("#ErrorDate").val() == "") {
             alert("Please Enter the date to Show the Data");
             return false;
         }
         else {
-            var date = $('#ErrorDate').val();
-            var empNumber = $('#EmployeeId').val();
-            var colNames = "Name,Count";
-            var array = colNames.split(',');
-            var deleteCol = '';
-            var updateColName = 'EMPID';
-            var updateClassName = "Editbuttons";
-            var gridId = '#location';
-            var update = "Update";
-            var delete1 = '';
-            var DeleteClassname = '';
-            var DeleteColName = '';
-            var ID = empNumber;
+            var deptId = $('#Department').val();
+            var date = $("#ErrorDate").val()
 
-             $.ajax({
-                type: 'GET',
-                contentType: 'application/json',
-                url: '@Url.Action("LoadError")' + '?date=' + date,
-                success: function (data) {
-                    var trHTML = '';
-                    var td = "";
-                    $(data).each(function (key, value) {
-                        var obj = '';
-                        if (delete1 == "Delete") {
-                            obj += '<td><input  class="' + DeleteClassname + '" type="button" id=' + value[DeleteColName] + ' value="DELETE"/></td>';
-                        }
-                        for (var i = 0; i < array.length; i++) {
-                            obj += '<td>' + value[array[i]] + '</td>';
-                        }
-                        if (update == "Update") {
-                            obj += '<td><input class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT" /></td>';
-                        }
-                        trHTML += '<tr>' + obj + '</tr>';
-                    });
-                    $(gridId).find("tr:gt(0)").remove();
-                    if (trHTML != '') {
-                        $(gridId).css("display", "block");
-                        $(gridId).append(trHTML);
-                    }
-                    else {
-                        $(gridId).css("display", "none");
-                        alert("There is no Record on the Selected Date");
-                    }
-                },
-                error: function (e) {
-                    alert('Error has occurred');
-                }
-            });
+            LoadGrid('@Url.Action("LoadError", "ErrorManagement")' + '?deptId=' + deptId + '&date=' + date, "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", "#location");
         }
     });
 
-
     //Save record to Manual Entry Sp
-    $(document).ready(function () {
+    $("#btnAdd").click(function () {
+        if ($('#EmployeeID').val() == "") {
+            alert("Employee Id Cannot be Empty");
+            return false;
+        }
+        else if ($('#Name').val() == "") {
+            alert("Name Cannot be Empty");
+            return false;
+        }
+        else if ($('#Mode').val() == "" || $('#Mode').val() == null) {
+            alert("Mode Cannot be Empty");
+            return false;
+        }
+        else if ($('#TerminalID').val() == "" || $('#TerminalID').val() == null) {
+            alert("Terminal Cannot be Empty");
+            return false;
+        }
+        else if ($('#Date').val() == "" || $('#Date').val() == null) {
+            alert("Date Cannot be Empty");
+            return false;
+        }
 
-        $('#btnAdd').click(function () {
-            if ($('#EmployeeID').val() == "") {
-                alert("Employee Id Cannot be Empty");
-                return false;
-            }
-            else if ($('#Name').val() == "") {
-                alert("Name Cannot be Empty");
-                return false;
-            }
-            else if ($('#Mode').val() == "" || $('#Mode').val() == null) {
-                alert("Mode Cannot be Empty");
-                return false;
-            }
-            else if ($('#TerminalID').val() == "" || $('#TerminalID').val() == null) {
-                alert("Terminal Cannot be Empty");
-                return false;
-            }
-            else if ($('#Date').val() == "" || $('#Date').val() == null) {
-                alert("Date Cannot be Empty");
-                return false;
-            }
+        var SendMailOption = "";
+        if ($('#SendMail').is(":checked")) {
+            SendMailOption = "Yes";
+        }
+        else {
+            SendMailOption = "No";
+        }
+        var date = $('#Date').val();
+        var timeHH = $('#TimeHH').val();
+        var timeMM = $('#TimeMM').val();
+        var terminalID = $('#TerminalID').val();
+        var employeeID = $('#EmployeeID').val();
+        var mode = $('#Mode').val();
+        var remark = $('#Remark').val();
+        var sendMail = $('#SendMail').val();
+        var operation="INSERT"
+        
 
-            var SendMailOption = "";
-            if ($('#SendMail').is(":checked")) {
-                SendMailOption = "Yes";
-            }
-            else {
-                SendMailOption = "No";
-            }
+        SaveData('@Url.Action("GetManualEntry")', date, timeHH + timeMM + '00', terminalID, employeeID, mode,remark, sendMail,operation);
 
-            var editEntry = new Object();
-            editEntry.Date = $('#Date').val();
-            editEntry.TimeHH = $('#TimeHH').val();
-            editEntry.TimeMM = $('#TimeMM').val();
-            editEntry.TerminalID = $('#TerminalID').val();
-            editEntry.EmployeeID = $('#EmployeeID').val();
-            editEntry.Name = $('#Name').val();
-            editEntry.Mode = $('#Mode').val();
-            editEntry.Remark = $('#Remark').val();
-            editEntry.SendMail = $('#SendMail').val();
-
-            $.ajax({
-                type: "POST",
-                    contenttype: "application/json",
-                    url: '@Url.Action("SaveEntries")',
-                data: JSON.stringify(editEntry),
-                success: function (data) {
-                    if (data.status == true) {
-                        if (operation == "INSERT") { alert("Manual Punch added Successfully!!"); }
-                        else { alert("Deleted Successfully!!"); }
-
-                    }
-                    else {
-                        alert(data.message);
-                    }
-                },
-                error: function (err) {
-                    alert("Error has occurred.");
-                }
-            });
-
-        });
+        LoadGrid('@Url.Action("GetErrorDetail")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
     });
 
- $(document).ready(function () {
-        $('#btnDelete').click(function () {
-            if ($('#EmployeeID').val() == "") {
-                alert("Employee Id Cannot be Empty");
-                return false;
-            }
-            else if ($('#Name').val() == "") {
-                alert("Name Cannot be Empty");
-                return false;
-            }
-            else if ($('#Mode').val() == "" || $('#Mode').val() == null) {
-                alert("Mode Cannot be Empty");
-                return false;
-            }
-            else if ($('#TerminalID').val() == "" || $('#TerminalID').val() == null) {
-                alert("Terminal Cannot be Empty");
-                return false;
-            }
-            else if ($('#Date').val() == "" || $('#Date').val() == null) {
-                alert("Date Cannot be Empty");
-                return false;
-            }
+    // Delete Entry
+    $("#btnDelete").click(function () {
 
-            var SendMailOption = "";
-            if ($('#SendMail').is(":checked")) {
-                SendMailOption = "Yes";
-            }
-            else {
-                SendMailOption = "No";
-            }
+        var date = $('#Date').val();
+        var timeHH = $('#TimeHH').val();
+        var timeMM = $('#TimeMM').val();
+        var terminalID = $('#TerminalID').val();
+        var employeeID = $('#EmployeeID').val();
+        var mode = $('#Mode').val();
+        var remark = $('#Remark').val();
+        var sendMail = $('#SendMail').val();
+        var operation = "DELETE"
 
-            var editEntry = new Object();
-            editEntry.Date = $('#Date').val();
-            editEntry.TimeHH = $('#TimeHH').val();
-            editEntry.TimeMM = $('#TimeMM').val();
-            editEntry.TerminalID = $('#TerminalID').val();
-            editEntry.EmployeeID = $('#EmployeeID').val();
-            editEntry.Name = $('#Name').val();
-            editEntry.Mode = $('#Mode').val();
-            editEntry.Remark = $('#Remark').val();
-            editEntry.SendMail = $('#SendMail').val();
+        var SendMailOption = "";
+        if ($('#SendMail').is(":checked")) {
+            SendMailOption = "Yes";
+        }
+        else {
+            SendMailOption = "No";
+        }
+            SaveData('@Url.Action("GetManualEntry")', date, timeHH + timeMM + '00', terminalID, employeeID, mode,remark, sendMail,operation);
 
-            $.ajax({
-                type: "POST",
-                contenttype: "application/json",
-                url: '@Url.Action("DeleteEntrie")',
-                data: JSON.stringify(editEntry),
-                success: function (data) {
-                    if (data.status == true) {
-                        if (operation == "INSERT") { alert("Manual Punch added Successfully!!"); }
-                        else { alert("Deleted Successfully!!"); }
+            LoadGrid('@Url.Action("GetErrorDetail")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
+    });
 
-                    }
-                    else {
-                        alert(data.message);
-                    }
-                },
-                error: function (err) {
-                    alert("Error has occurred.");
-                }
-            });
-        });
-
- });
-
-    $(document).ready(function () {
-        $('#btnRecompile').click(function () {
-            $('#loading').show();
-        });
+    $("#btnRecompile").click(function () {
+        var date = $('#Date').val();
+        Recompile(date);
 
     });
 
-    function Recompile(VDate) {
 
-        $.ajax({
-            type: "Get",
-            Contenttype: "application/json",
-            url: '@Url.Action("")' "Handler.ashx?method=Recompile&VDate=" + VDate,
-            cache: false,
-            success: function (data) {
-                if (data.status == true) {
-                    $('#loading').hide();
-                    alert("Compiled Successfully");
-                    var selectedVal = $('#MainContent_ddlDepartment option:selected').attr('value');
-                    FrmErrors_LoadGrid("SP_Load_Error", "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", $("#MainContent_txtCompileDate").val(), selectedVal, 0, "#location");
-                }
-                else {
-                    alert(data.d);
-
-                }
-            }
-        });
-
-    }
-
-
-    //$(document).on('click', ".Editbuttons", function (event) {
-    //    //------------------------------------------ Before filling clear the Data-----------------------------
-    //    $('#EmployeeID').val("");
-    //    $('#Name').val("");
-    //    $('#Mode').val(0);
-    //    $('#TerminalID').val(0);
-    //    $('#Date').val("");
-    //    //------------------------------------------  Calling the FrmErrors.Js------------------------
-    //    //------------------------------------------ To Load the Next Grid-----------------------------
-    //    //FrmErrors_LoadGrid("SP_Load_Error_Details", "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", $("#MainContent_txtCompileDate").val(), 0, this.id, "#Details");
-    //});
+    $(document).on('click', ".Editbuttons", function (event) {
+        //------------------------------------------ Before filling clear the Data-----------------------------
+      var empId=  $('#EmployeeID').val();
+        $('#Name').val();
+        $('#Mode').val();
+        $('#TerminalID').val();
+       var date= $('#Date').val();
+        //------------------------------------------  Calling the FrmErrors.Js------------------------
+        //------------------------------------------ To Load the Next Grid-----------------------------
+        LoadGrid('@Url.Action("GetErrorDetail")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, empId, "#Details");
+    });
 
     //------------------------------------------ Populate the Data from table Button click-----------------------------
-    //$(document).on('click', ".EditErrorDetails", function (event) {
+    $(document).on('click', ".EditErrorDetails", function (event) {
 
-    //    var cells = $(this).closest("tr").children("td");
-    //    var cell1 = cells.eq(0).text();
-    //    var cell2 = cells.eq(1).text();
-    //    var cell3 = cells.eq(2).text();
-    //    var cell4 = cells.eq(3).text();
-    //    var cell5 = cells.eq(4).text();
+        var cells = $(this).closest("tr").children("td");
+        var cell1 = cells.eq(0).text();
+        var cell2 = cells.eq(1).text();
+        var cell3 = cells.eq(2).text();
+        var cell4 = cells.eq(3).text();
+        var cell5 = cells.eq(4).text();
 
-    //    var HR = cell4.substring(0, 2);
-    //    var MIN = cell4.substring(2, 4);
-    //    var MS = cell4.substring(4, 6);
+        var HR = cell4.substring(0, 2);
+        var MIN = cell4.substring(2, 4);
+        var MS = cell4.substring(4, 6);
 
-    //    $('#MainContent_txtMS').val(MS);
+        //$('#MainContent_txtMS').val(MS);
 
-    //    $('#EmployeeID').val(cell1);
-    //    $('#Name').val(cell3);
-    //    $('#Mode').val(cell5);
-    //    $('#TerminalID').val(cell2);
-    //    $('#TimeHH).val(HR);
-    //    $('#TimeMM').val(MIN);
-    //    var array = $("#ErrorDate").val().split('/');
-    //    $('#Date').val(array[2] + array[1] + array[0]);
-    //});
+        $('#EmployeeID').val(cell1);
+        $('#Name').val(cell3);
+        $('#Mode').val(cell5);
+        $('#TerminalID').val(cell2);
+        $('#TimeHH').val(HR);
+        $('#TimeMM').val(MIN);
+        var array = $("#ErrorDate").val().split('/');
+        $('#Date').val(array[2] + array[1] + array[0]);
+    });
 </script>
 
 

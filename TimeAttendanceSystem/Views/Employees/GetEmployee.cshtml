@@ -1,0 +1,209 @@
+﻿@model TimeAttendanceSystem.Models.Employee
+
+@{
+    ViewBag.Title = "Update Employee";
+}
+<link href="~/Content/css/select2.css" rel="stylesheet" />
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="alert-heading">
+        <h2 style="text-align:center; color:#0094ff">Update Employee Details</h2>
+    </div>
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MachineId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MachineId, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.DropDownListFor(model => model.MachineId, (SelectList)ViewBag.Employees, "---Select Employee---", htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.MachineId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Department, (SelectList)ViewBag.Departments, "---Select Department---", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(model => model.Designation, (SelectList)ViewBag.Designations, "---Select Designation---", htmlAttributes: new { @class = "form-control" })*@
+                <select id="designationId" name="designationID" class="form-control"></select>
+                @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="rdbGroup">
+            @Html.LabelFor(model => model.StaffType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StaffType, new SelectList(ViewBag.StaffType, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                @*<input type="radio"  name="rdbStaff" title="Staff" checked="checked" class="form-control" />
+                    <input type="radio" name="rdbFaculty" title="Faculty" class="form-control" />
+                    <input type="radio" name="rdbOther" title="Other"  class="form-control" />*@
+                @*@Html.RadioButtonFor(model => model.StaffType,htmlAttributes: new { @class="form-control"})*@
+                @Html.ValidationMessageFor(model => model.StaffType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Company, (SelectList)ViewBag.Companies, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Shift, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Shift, (SelectList)ViewBag.Shifts, htmlAttributes: new { @class = "form-control", @id = "ddlShift" })
+                @Html.ValidationMessageFor(model => model.Shift, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-1">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+                <div class="col-md-4 col-md-2">
+                    <input type="button" value="Cancel" class="btn btn-primary" onclick="reset();" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+<script src="~/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="~/Scripts/select2.js"></script>
+<script type="text/javascript">
+
+    $('#MachineId').autocomplete({
+        source: '@Url.Action("GetEmployeeName")'
+    });
+        $('#MachineId').on("change",function () {
+
+            var stringMachineCode = $('#MachineId').val();
+
+            var array = stringMachineCode.split('-');
+            var machineCode = array[2];
+
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '@Url.Action("GetEmployeeDetailsByMachineCode")' + '?machineCode=' + machineCode,
+                success: function (data) {
+                    $("#Department").append($("<option></option>").val("0").html("Select"));
+                        $('#MachineId').val(data.MachineCode);
+                        $('#FirstName').val(data.FirstName);
+                        $('#MiddleName').val(data.MiddleName);
+                        $('#LastName').val(data.LastName);
+                        $("#Department").select2().val(data.DepartmentId);
+                        $("#Company").select2().val(data.BranchId);
+                        $("#Designation").select2().val(data.DesignationId);
+                    if (data.EmployeeType == "S") {
+                        $("#StaffType").val("Staff");
+                    }
+                    else if (data.EmployeeType == "P") {
+                        $("#StaffType").val("Faculty");
+                    }
+                    else if (data.EmployeeType == "F") {
+                        $("#StaffType").val("Faculty");
+                    }
+                    $("#Shift").select2().val(data.ShiftId);
+
+                        if (data.Status == "Y") {
+                            $("#IsActive").prop('checked', true);
+                        }
+                        else {
+                            $("#IsActive").prop('checked', false);
+                        }
+                },
+                error: function () {
+                    alert('Error')
+                }
+            });
+        });
+  
+        $('#Department').on('change', function () {
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '@Url.Action("GetDesignationByDeptId")' + '?deptId=' + $('#Department').val(),
+                success: function (data) {
+                    var items = '<option>Select a Designation</option>';
+                    $.each(data, function (i, design) {
+                        items += "<option value='" + design.id + "'>" + design.Designation + "</option>";
+                    });
+                    $('#designationId').html(items);
+                }
+            });
+        });
+    
+    
+
+    //$('#MachineId').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear:true
+    //});
+
+    //$('#Department').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear: true
+
+    //});
+    //$('#Designation').select2({
+    //    //placeholder: "---Select Employee---",
+    //    allowClear: true
+
+    //});
+</script>
+
+

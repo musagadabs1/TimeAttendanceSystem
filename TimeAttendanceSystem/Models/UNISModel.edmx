@@ -2557,6 +2557,9 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         </Function>
         <Function Name="SP_Get_LastCompiledDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Get_LastFinalizedDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetAllCompiledAttendanceForADate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SP_GetDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GETEMIRATES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GetEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -6388,6 +6391,9 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="deptId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetDepartmentWithDeptId" ReturnType="Collection(UNISModel.GetDepartmentWithDeptId_Result)" />
+          <FunctionImport Name="SP_GetAllCompiledAttendanceForADate" ReturnType="Collection(UNISModel.SP_GetAllCompiledAttendanceForADate_Result)">
+            <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -7346,6 +7352,17 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         <ComplexType Name="GetDepartmentWithDeptId_Result">
           <Property Type="String" Name="deptID" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Department" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GetAllCompiledAttendanceForADate_Result">
+          <Property Type="String" Name="EMPID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="InDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="OutDate" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Worked_Hrs_" Nullable="true" />
+          <Property Type="Int32" Name="Worked_min_" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -10524,6 +10541,21 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
               <ComplexTypeMapping TypeName="UNISModel.GetDepartmentWithDeptId_Result">
                 <ScalarProperty Name="deptID" ColumnName="deptID" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetAllCompiledAttendanceForADate" FunctionName="UNISModel.Store.SP_GetAllCompiledAttendanceForADate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UNISModel.SP_GetAllCompiledAttendanceForADate_Result">
+                <ScalarProperty Name="EMPID" ColumnName="EMPID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="Worked_Hrs_" ColumnName="Worked(Hrs)" />
+                <ScalarProperty Name="Worked_min_" ColumnName="Worked(min)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

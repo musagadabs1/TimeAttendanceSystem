@@ -120,14 +120,13 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li>@Html.ActionLink("Employee Management", "Create", "Employees")</li>
-                            <li>@Html.ActionLink("Auto Error Correction", "Create", "ErrorCorrections")</li>
-                            <li>@Html.ActionLink("Compile Attendance", "Create", "Compiles")</li>
-                            <li>@Html.ActionLink("RollBack Finalize", "Create", "RollBacks")</li>
-                            <li>@Html.ActionLink("Manual Entry", "Create", "ManualEntries")</li>
-                            <li><a href="#">RFID No Entry</a></li>
+                            <li>@Html.ActionLink("Employee Management", "GetEmployee", "Employees")</li>
+                            <li>@Html.ActionLink("Auto Error Correction", "AutoErrorCorrection", "ErrorCorrections")</li>
+                            <li>@Html.ActionLink("Compile Attendance", "CompileAttendace", "Compiles")</li>
+                            <li>@Html.ActionLink("RollBack Finalize", "Rollback", "RollBacks")</li>
+                            <li>@Html.ActionLink("Manual Entry", "ManualEntry", "ManualEntries")</li>
                             <li>@Html.ActionLink("Late Attendance Mail", "Create", "AttendanceMails")</li>
-                            <li>@Html.ActionLink("Compile Individual", "Create", "Individuals")</li>
+                            <li>@Html.ActionLink("Compile Individual", "CompileIndividual", "Individuals")</li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -139,7 +138,7 @@ desired effect
                         </a>
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink("Punch Errors", "EditEntry", "EditEntries")</li>
-                            <li>@Html.ActionLink("Finalize", "Create", "Finalizes")</li>
+                            <li>@Html.ActionLink("Finalize", "Finalize", "Finalizes")</li>
                             <li>@Html.ActionLink("Check Entry", "EntryCheck", "ErrorManagement")</li>
                         </ul>
                     </li>

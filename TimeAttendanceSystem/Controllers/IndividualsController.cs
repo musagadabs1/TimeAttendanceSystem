@@ -37,19 +37,14 @@ namespace TimeAttendanceSystem.Controllers
         //    return View(individual);
         //}
 
-        // GET: Individuals/Create
-        public ActionResult Create()
+        public ActionResult CompileIndividual()
         {
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
             return View();
         }
-
-        // POST: Individuals/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EmployeeID,FromDate,ToDate")] Individual individual)
+        public ActionResult CompileIndividual([Bind(Include = "Id,EmployeeID,FromDate,ToDate")] Individual individual)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +56,7 @@ namespace TimeAttendanceSystem.Controllers
                     var endDate = individual.ToDate;
 
 
-                    if (startDate.Date != null && endDate.Date !=null && startDate.Date > endDate.Date)
+                    if (startDate.Date != null && endDate.Date != null && startDate.Date > endDate.Date)
                     {
                         msg = "Please ensure that the End Date is greater than or equal to the Start Date.";
                         ViewBag.Message = msg;
@@ -70,7 +65,7 @@ namespace TimeAttendanceSystem.Controllers
                     var fromDate = TASUtility.GetStringDateFormat(startDate);
                     var toDate = TASUtility.GetStringDateFormat(endDate);
 
-                  var result=  _context.RRcompilebyIndividualempid(staffId, fromDate, toDate);
+                    var result = _context.RRcompilebyIndividualempid(staffId, fromDate, toDate);
 
                     if (result.FirstOrDefault() == "Recompiled Successfully!!!!!!!!!!!!")
                     {
@@ -93,12 +88,17 @@ namespace TimeAttendanceSystem.Controllers
                     ViewBag.Message = ex.Message;
                     throw;
                 }
-                
+
             }
             ViewBag.Message = "Error Occured. Check and try again.";
 
             return PartialView("~/Views/_MessagePartialView.cshtml");
         }
+
+        // POST: Individuals/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
 
         // GET: Individuals/Edit/5
         //public ActionResult Edit(int? id)

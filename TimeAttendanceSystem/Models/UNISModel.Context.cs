@@ -3250,5 +3250,14 @@ namespace TimeAttendanceSystem.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDepartmentWithDeptId_Result>("GetDepartmentWithDeptId");
         }
+    
+        public virtual ObjectResult<SP_GetAllCompiledAttendanceForADate_Result> SP_GetAllCompiledAttendanceForADate(string date)
+        {
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetAllCompiledAttendanceForADate_Result>("SP_GetAllCompiledAttendanceForADate", dateParameter);
+        }
     }
 }

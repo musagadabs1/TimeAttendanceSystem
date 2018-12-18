@@ -229,6 +229,7 @@
     </Compile>
     <Compile Include="Models\Absentee.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AttendanceCompile.cs" />
     <Compile Include="Models\AttendanceMail.cs" />
     <Compile Include="Models\attendance_finalize_department_MHS.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
@@ -528,6 +529,9 @@
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_ForwardingStatistics_COEC_AbsentReport_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GetAllCompiledAttendanceForADate_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_GetDepartment_Result.cs">
@@ -1480,6 +1484,7 @@
     <Content Include="Views\RollBacks\Rollback.cshtml" />
     <Content Include="Views\Finalizes\Finalize.cshtml" />
     <Content Include="Views\Finalizes\Show.cshtml" />
+    <Content Include="Views\Finalizes\CompileFinalize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

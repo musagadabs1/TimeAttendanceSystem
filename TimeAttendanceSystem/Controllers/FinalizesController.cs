@@ -23,8 +23,8 @@ namespace TimeAttendanceSystem.Controllers
         ReportDocument[] Rptdocuments001 = new ReportDocument[5];
         ReportDocument CR_reportDocument = new ReportDocument();
 
-        //int errorflag = 0;
-        //string errormess;
+        int errorflag = 0;
+        string errormess;
 
         string[] pdfs = new string[5];
         string[] pdfs001 = new string[5];

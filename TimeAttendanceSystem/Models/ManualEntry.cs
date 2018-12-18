@@ -29,7 +29,7 @@ namespace TimeAttendanceSystem.Models
         public string Terminal { get; set; }
         public string TerminalName { get; set; }
         public string ModeName { get; set; }
-        [Display(Name ="Remarks")]
+        [Display(Name ="Reason"),Required(ErrorMessage ="Reason for manual Entry must be stated.")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
     }

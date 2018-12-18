@@ -42,6 +42,7 @@ namespace TimeAttendanceSystem.Controllers
                     });
                 }
                 ViewBag.Attendance = attendances;
+                //return View("Show.cshtml");
             }
             catch (Exception ex)
             {
@@ -68,10 +69,11 @@ namespace TimeAttendanceSystem.Controllers
             //return View();
         }
         [HttpPost]
-        public ActionResult Finalize(Finalize finalize)
+        public ActionResult Finalize(Finalize finalize,string buttonValue)
         {
             if (ModelState.IsValid)
             {
+
               string  errorMsg = "";
                 string vdate = TASUtility.GetStringDateFormat(finalize.FinalizeDate);
                var oDate = System.DateTime.Now;
@@ -99,7 +101,7 @@ namespace TimeAttendanceSystem.Controllers
                 ViewBag.Message = msg;
                 return PartialView("~/Views/_MessagePartialView.cshtml");
             }
-            return View("CompileFinalize.cshtml");
+            return View();
         }
         private List<string> GetAllFinalizedAttendance()
         {
@@ -151,12 +153,6 @@ namespace TimeAttendanceSystem.Controllers
 
                     throw ex;
                 }
-
-
-                //db.Finalizes.Add(finalize);
-                //db.SaveChanges();
-
-                
             }
             ViewBag.Message = "Error has occurred. Check and continue.";
             return PartialView("~/Views/_MessagePartialView.cshtml");

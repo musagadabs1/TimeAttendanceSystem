@@ -438,7 +438,7 @@ namespace TimeAttendanceSystem.Controllers
             //string country = "Nigeria";
             string days = "WA";
             fromDate = TASUtility.GetStringDateFormat(dailyInOutReport.FromDate.Date);
-            if (TASUtility.isCompiled(fromDate))
+            if (TASUtility.IsCompiled(fromDate))
             {
                 string toDate = string.Empty;
                 toDate = TASUtility.GetStringDateFormat(dailyInOutReport.FromDate.Date);

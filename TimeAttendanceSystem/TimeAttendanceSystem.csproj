@@ -928,6 +928,12 @@
       <DependentUpon>DailyInoutShiftwise.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyINOUTShiftWise_NEW.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyINOUTShiftWise_NEW.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\DailyPresentReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1555,6 +1561,10 @@
     <EmbeddedResource Include="Reports\DailyInoutShiftwise.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyInoutShiftwise.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyINOUTShiftWise_NEW.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyINOUTShiftWise_NEW.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\DailyPresentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

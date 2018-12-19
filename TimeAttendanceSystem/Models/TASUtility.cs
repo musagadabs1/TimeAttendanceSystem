@@ -178,7 +178,7 @@ namespace TimeAttendanceSystem.Models
                     
         }
         public static string DateString { get; set; }
-        public static bool isCompiled(string date)
+        public static bool IsCompiled(string date)
         {
             try
             {
@@ -297,19 +297,14 @@ namespace TimeAttendanceSystem.Models
                 string Path = HttpContext.Current.Server.MapPath(Convert.ToString(ReportName));
                 Path = Path.Substring(0, Path.LastIndexOf('\\'));
                 Path = Path.Substring(0, Path.LastIndexOf('\\'));
-                Path = Path + "\\ReportFiles\\" + Convert.ToString(ReportName);
+                Path = Path + "\\Reports\\" + Convert.ToString(ReportName);
                 cryRpt.Load(Path);
                 cryRpt.SetDataSource(source);
                 return cryRpt;
             }
-            catch (Exception)
+            catch (Exception ex )
             {
-                return null;
-            }
-            finally
-            {
-                //cryRpt.Close();
-                //cryRpt.Dispose();
+                throw ex;
             }
         }
         public static void PushLogDepartment(string vDate, string vNewDate)

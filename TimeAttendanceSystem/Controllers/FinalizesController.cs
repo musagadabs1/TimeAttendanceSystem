@@ -167,7 +167,7 @@ namespace TimeAttendanceSystem.Controllers
                 {
                     errorMsg = "You can not finalize today`s attendance.";
                 }
-                else if (!TASUtility.isCompiled(vdate))
+                else if (!TASUtility.IsCompiled(vdate))
                 {
                     errorMsg = "You can not finalize data for this date as it is not compiled yet.";
                     ViewBag.Message = errorMsg;
@@ -368,7 +368,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             try
             {
-                string date1 = date;// dtpick_finalizedate.CalendarDate.ToString("yyyyMMdd");
+                string date1 =TASUtility.GetStringDateFormat(Convert.ToDateTime(date));// dtpick_finalizedate.CalendarDate.ToString("yyyyMMdd");
 
                 string path = @"D:\\SkylineERP\\TimeAttendanceNew\\TmpArchieve\\" + date1;
                 if (!Directory.Exists(path))
@@ -394,11 +394,9 @@ namespace TimeAttendanceSystem.Controllers
                     myReportDocument.SetParameterValue("@Weekend", "WA");
 
                 }
-
-
-                if (orderno == 1)
-                    myReportDocument.SetDatabaseLogon("unisuser", "unisamho");
-                else
+                //if (orderno == 1)
+                //    myReportDocument.SetDatabaseLogon("unisuser", "unisamho");
+                //else
                     myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
 
                 byte[] byteArray = null;
@@ -417,9 +415,9 @@ namespace TimeAttendanceSystem.Controllers
                     {
                         System.IO.Directory.Delete(@"D:\\SkylineERP\\TimeAttendanceNew\\TmpArchieve\\" + date1 + "\\" + reprotnamepdf, true);
                     }
-                    catch (Exception E)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine(E.Message);
+                        throw ex;
                     }
                 }
                 // Write out PDF from memory stream. 
@@ -432,12 +430,12 @@ namespace TimeAttendanceSystem.Controllers
             }
 
 
-            catch (Exception Ex)
+            catch (Exception ex)
             {
                 //ErrorMsg.Text = "Try again";
                 errorflag = 1;
-                errormess = reprotname + Ex.ToString();
-                return;
+                errormess = reprotname + ex.ToString();
+                throw ex;
             }
 
         }

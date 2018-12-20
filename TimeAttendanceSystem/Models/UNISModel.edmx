@@ -5,8 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UNISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.attendance_finalize_department_MHS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="attendance_finalize_department_MHS">
           <Key>
             <PropertyRef Name="id" />
@@ -78,8 +76,6 @@ warning 6002: The table/view 'UNIS.dbo.cAccessGroup' does not have a primary key
           <Property Name="L_Flag" Type="int" />
           <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.cAccessTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cAccessTime">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -232,8 +228,6 @@ warning 6002: The table/view 'UNIS.dbo.compilestatus' does not have a primary ke
           <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
           <Property Name="L_ZoneOut" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.cPost' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cPost">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -353,8 +347,6 @@ warning 6002: The table/view 'UNIS.dbo.iCantTerminal' does not have a primary ke
           <Property Name="C_MealTime2" Type="nvarchar" MaxLength="5" />
           <Property Name="C_StatsDate" Type="nvarchar" MaxLength="8" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.iMealPay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="iMealPay">
           <Key>
             <PropertyRef Name="L_MealType" />
@@ -582,8 +574,6 @@ warning 6002: The table/view 'UNIS.dbo.tAuditTerminal' does not have a primary k
           <Property Name="deptid" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="nchar" MaxLength="1" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.Tb_EmployeeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Tb_EmployeeMaster">
           <Key>
             <PropertyRef Name="E_ID" />
@@ -895,8 +885,6 @@ warning 6002: The table/view 'UNIS.dbo.TBL_RFID_CARDENTRY_LOG' does not have a p
           <Property Name="CREATED_IP" Type="varchar" MaxLength="100" />
           <Property Name="OPERATION" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.tblEmirates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblEmirates">
           <Key>
             <PropertyRef Name="Id" />
@@ -1127,8 +1115,6 @@ warning 6002: The table/view 'UNIS.dbo.tEnter_OUTDOOR' does not have a primary k
           <Property Name="L_Trans" Type="int" />
           <Property Name="upload" Type="char" MaxLength="1" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.TESTING_COMP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TESTING_COMP">
           <Key>
             <PropertyRef Name="id" />
@@ -1212,8 +1198,6 @@ warning 6002: The table/view 'UNIS.dbo.tMealInfo' does not have a primary key de
           <Property Name="C_Code1" Type="nvarchar" MaxLength="4" Nullable="false" />
           <Property Name="C_Code2" Type="nvarchar" MaxLength="4" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.tMealType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tMealType">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -1366,8 +1350,6 @@ warning 6002: The table/view 'UNIS.dbo.tMealType' does not have a primary key de
           <Property Name="C_MustChgPwd" Type="nvarchar" MaxLength="1" />
           <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.tVisitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tVisitor">
           <Key>
             <PropertyRef Name="L_UID" />
@@ -1384,8 +1366,6 @@ warning 6002: The table/view 'UNIS.dbo.tVisitor' does not have a primary key def
           <Property Name="C_Address" Type="nvarchar" MaxLength="255" />
           <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.tWiegand' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tWiegand">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -1395,8 +1375,6 @@ warning 6002: The table/view 'UNIS.dbo.tWiegand' does not have a primary key def
           <Property Name="L_Type" Type="int" />
           <Property Name="B_FormatData" Type="image" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.tWorkType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tWorkType">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -1603,8 +1581,6 @@ warning 6002: The table/view 'UNIS.dbo.wSpecialShift' does not have a primary ke
           <Property Name="C_Remark" Type="nvarchar" MaxLength="255" />
           <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'UNIS.dbo.wWorkShift' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="wWorkShift">
           <Key>
             <PropertyRef Name="C_Code" />
@@ -2557,6 +2533,9 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         </Function>
         <Function Name="SP_Get_LastCompiledDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Get_LastFinalizedDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetAllCompiledAttendanceForADate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SP_GetDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GETEMIRATES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GetEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2896,14 +2875,18 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         </Function>
         <Function Name="Vw_Manual_Entry_tenter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="UNISModelStoreContainer">
+          <EntitySet Name="attendance_finalize_department_MHS" EntityType="Self.attendance_finalize_department_MHS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cAccessArea" EntityType="Self.cAccessArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cAccessTime" EntityType="Self.cAccessTime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cAuthority" EntityType="Self.cAuthority" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cPassback" EntityType="Self.cPassback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cPost" EntityType="Self.cPost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cTimezone" EntityType="Self.cTimezone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HR_AccessDetails" EntityType="Self.HR_AccessDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HR_AccessMaster" EntityType="Self.HR_AccessMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iMeal" EntityType="Self.iMeal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iMealPay" EntityType="Self.iMealPay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iPassback" EntityType="Self.iPassback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iUserCard" EntityType="Self.iUserCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iUserFace" EntityType="Self.iUserFace" Schema="dbo" store:Type="Tables" />
@@ -2917,6 +2900,7 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <EntitySet Name="Tb_Company" EntityType="Self.Tb_Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_department" EntityType="Self.tb_department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_designation" EntityType="Self.tb_designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_EmployeeMaster" EntityType="Self.Tb_EmployeeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_EmpRemarks" EntityType="Self.Tb_EmpRemarks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_FinaliseError_Log" EntityType="Self.tb_FinaliseError_Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_LoginUser" EntityType="Self.Tb_LoginUser" Schema="dbo" store:Type="Tables" />
@@ -2928,42 +2912,27 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <EntitySet Name="Tb_StaticValues" EntityType="Self.Tb_StaticValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_Submenu" EntityType="Self.TB_Submenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_UserRole" EntityType="Self.Tb_UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmirates" EntityType="Self.tblEmirates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEmployeeShift" EntityType="Self.tblEmployeeShift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tCmdDown" EntityType="Self.tCmdDown" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tCommandDown" EntityType="Self.tCommandDown" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tEmploye" EntityType="Self.tEmploye" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tEnter" EntityType="Self.tEnter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TESTING_COMP" EntityType="Self.TESTING_COMP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tMapImage" EntityType="Self.tMapImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tMealEnter" EntityType="Self.tMealEnter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMealType" EntityType="Self.tMealType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tMoney" EntityType="Self.tMoney" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tTerminal" EntityType="Self.tTerminal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tTerminalStateLog" EntityType="Self.tTerminalStateLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tUser" EntityType="Self.tUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tVisitor" EntityType="Self.tVisitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tWiegand" EntityType="Self.tWiegand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tWorkType" EntityType="Self.tWorkType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wTempWorkResult" EntityType="Self.wTempWorkResult" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wWorkResult" EntityType="Self.wWorkResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wWorkShift" EntityType="Self.wWorkShift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wWorkSummary" EntityType="Self.wWorkSummary" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="attendance_finalize_department_MHS" EntityType="Self.attendance_finalize_department_MHS" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [attendance_finalize_department_MHS].[id] AS [id], 
-    [attendance_finalize_department_MHS].[e_date] AS [e_date], 
-    [attendance_finalize_department_MHS].[e_id] AS [e_id], 
-    [attendance_finalize_department_MHS].[e_name] AS [e_name], 
-    [attendance_finalize_department_MHS].[in] AS [in], 
-    [attendance_finalize_department_MHS].[out] AS [out], 
-    [attendance_finalize_department_MHS].[outdate] AS [outdate], 
-    [attendance_finalize_department_MHS].[deptid] AS [deptid], 
-    [attendance_finalize_department_MHS].[lout] AS [lout], 
-    [attendance_finalize_department_MHS].[lin] AS [lin], 
-    [attendance_finalize_department_MHS].[workedhrs] AS [workedhrs], 
-    [attendance_finalize_department_MHS].[workedmts] AS [workedmts], 
-    [attendance_finalize_department_MHS].[lunchhrs] AS [lunchhrs], 
-    [attendance_finalize_department_MHS].[lunchmts] AS [lunchmts], 
-    [attendance_finalize_department_MHS].[tte] AS [tte], 
-    [attendance_finalize_department_MHS].[ttd] AS [ttd], 
-    [attendance_finalize_department_MHS].[ttuid] AS [ttuid], 
-    [attendance_finalize_department_MHS].[extratime] AS [extratime]
-    FROM [dbo].[attendance_finalize_department_MHS] AS [attendance_finalize_department_MHS]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="attendance_log_department_MHS" EntityType="Self.attendance_log_department_MHS" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [attendance_log_department_MHS].[id] AS [id], 
@@ -2993,23 +2962,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [cAccessGroup].[C_Remark] AS [C_Remark]
     FROM [dbo].[cAccessGroup] AS [cAccessGroup]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="cAccessTime" EntityType="Self.cAccessTime" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cAccessTime].[C_Code] AS [C_Code], 
-    [cAccessTime].[C_Name] AS [C_Name], 
-    [cAccessTime].[L_Flag] AS [L_Flag], 
-    [cAccessTime].[C_Holiday] AS [C_Holiday], 
-    [cAccessTime].[C_Sun] AS [C_Sun], 
-    [cAccessTime].[C_Mon] AS [C_Mon], 
-    [cAccessTime].[C_The] AS [C_The], 
-    [cAccessTime].[C_Wed] AS [C_Wed], 
-    [cAccessTime].[C_Thu] AS [C_Thu], 
-    [cAccessTime].[C_Fri] AS [C_Fri], 
-    [cAccessTime].[C_Sat] AS [C_Sat], 
-    [cAccessTime].[C_Hol] AS [C_Hol], 
-    [cAccessTime].[C_Remark] AS [C_Remark]
-    FROM [dbo].[cAccessTime] AS [cAccessTime]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="cHoliday" EntityType="Self.cHoliday" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [cHoliday].[C_Code] AS [C_Code], 
@@ -3030,12 +2982,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [compilestatus].[deptid] AS [deptid], 
     [compilestatus].[compdate] AS [compdate]
     FROM [dbo].[compilestatus] AS [compilestatus]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="cPost" EntityType="Self.cPost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cPost].[C_Code] AS [C_Code], 
-    [cPost].[C_Name] AS [C_Name]
-    FROM [dbo].[cPost] AS [cPost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="cStaff" EntityType="Self.cStaff" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3067,15 +3013,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [iCantTerminal].[L_UID] AS [L_UID], 
     [iCantTerminal].[L_TID] AS [L_TID]
     FROM [dbo].[iCantTerminal] AS [iCantTerminal]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="iMealPay" EntityType="Self.iMealPay" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [iMealPay].[L_MealType] AS [L_MealType], 
-    [iMealPay].[L_Menu1] AS [L_Menu1], 
-    [iMealPay].[L_Menu2] AS [L_Menu2], 
-    [iMealPay].[L_Menu3] AS [L_Menu3], 
-    [iMealPay].[L_Menu4] AS [L_Menu4]
-    FROM [dbo].[iMealPay] AS [iMealPay]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="iTerminalAdmin" EntityType="Self.iTerminalAdmin" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3117,54 +3054,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [tAuditTerminal].[L_UserID] AS [L_UserID], 
     [tAuditTerminal].[C_UserName] AS [C_UserName]
     FROM [dbo].[tAuditTerminal] AS [tAuditTerminal]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Tb_EmployeeMaster" EntityType="Self.Tb_EmployeeMaster" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Tb_EmployeeMaster].[E_ID] AS [E_ID], 
-    [Tb_EmployeeMaster].[E_BRANCH_ID] AS [E_BRANCH_ID], 
-    [Tb_EmployeeMaster].[E_DEPT_ID] AS [E_DEPT_ID], 
-    [Tb_EmployeeMaster].[E_DES_ID] AS [E_DES_ID], 
-    [Tb_EmployeeMaster].[L_UID] AS [L_UID], 
-    [Tb_EmployeeMaster].[E_SHIFT_ID] AS [E_SHIFT_ID], 
-    [Tb_EmployeeMaster].[E_CODE] AS [E_CODE], 
-    [Tb_EmployeeMaster].[E_NATIONAL_ID] AS [E_NATIONAL_ID], 
-    [Tb_EmployeeMaster].[E_TITLE] AS [E_TITLE], 
-    [Tb_EmployeeMaster].[E_FIRST_NAME] AS [E_FIRST_NAME], 
-    [Tb_EmployeeMaster].[E_MIDDLE_NAME] AS [E_MIDDLE_NAME], 
-    [Tb_EmployeeMaster].[E_LAST_NAME] AS [E_LAST_NAME], 
-    [Tb_EmployeeMaster].[E_GENDER_ID] AS [E_GENDER_ID], 
-    [Tb_EmployeeMaster].[E_AGE] AS [E_AGE], 
-    [Tb_EmployeeMaster].[E_DATE_OF_BIRTH] AS [E_DATE_OF_BIRTH], 
-    [Tb_EmployeeMaster].[E_PLACE_OF_BIRTH] AS [E_PLACE_OF_BIRTH], 
-    [Tb_EmployeeMaster].[E_REGION_OF_BIRTH] AS [E_REGION_OF_BIRTH], 
-    [Tb_EmployeeMaster].[E_COUNTRY_OF_BIRTH] AS [E_COUNTRY_OF_BIRTH], 
-    [Tb_EmployeeMaster].[E_STATUS] AS [E_STATUS], 
-    [Tb_EmployeeMaster].[E_EFFECTIVE_FROM] AS [E_EFFECTIVE_FROM], 
-    [Tb_EmployeeMaster].[E_EFFECTIVE_TO] AS [E_EFFECTIVE_TO], 
-    [Tb_EmployeeMaster].[E_REJOIN] AS [E_REJOIN], 
-    [Tb_EmployeeMaster].[E_REASON_END] AS [E_REASON_END], 
-    [Tb_EmployeeMaster].[E_MARITAL_STATUS_ID] AS [E_MARITAL_STATUS_ID], 
-    [Tb_EmployeeMaster].[E_EType] AS [E_EType], 
-    [Tb_EmployeeMaster].[ATTRIBUTE2] AS [ATTRIBUTE2], 
-    [Tb_EmployeeMaster].[ATTRIBUTE3] AS [ATTRIBUTE3], 
-    [Tb_EmployeeMaster].[ATTRIBUTE4] AS [ATTRIBUTE4], 
-    [Tb_EmployeeMaster].[ATTRIBUTE5] AS [ATTRIBUTE5], 
-    [Tb_EmployeeMaster].[ATTRIBUTE6] AS [ATTRIBUTE6], 
-    [Tb_EmployeeMaster].[ATTRIBUTE7] AS [ATTRIBUTE7], 
-    [Tb_EmployeeMaster].[ATTRIBUTE8] AS [ATTRIBUTE8], 
-    [Tb_EmployeeMaster].[ATTRIBUTE9] AS [ATTRIBUTE9], 
-    [Tb_EmployeeMaster].[ATTRIBUTE10] AS [ATTRIBUTE10], 
-    [Tb_EmployeeMaster].[E_NOTICEDATE] AS [E_NOTICEDATE], 
-    [Tb_EmployeeMaster].[E_CREATED_BY_ID] AS [E_CREATED_BY_ID], 
-    [Tb_EmployeeMaster].[E_CREATION_TIME] AS [E_CREATION_TIME], 
-    [Tb_EmployeeMaster].[E_UPDATED_BY_ID] AS [E_UPDATED_BY_ID], 
-    [Tb_EmployeeMaster].[E_UPDATION_TIME] AS [E_UPDATION_TIME], 
-    [Tb_EmployeeMaster].[E_PERSONPHOTO] AS [E_PERSONPHOTO], 
-    [Tb_EmployeeMaster].[E_REMARKS] AS [E_REMARKS], 
-    [Tb_EmployeeMaster].[E_CREATEDON] AS [E_CREATEDON], 
-    [Tb_EmployeeMaster].[E_HOST_N] AS [E_HOST_N], 
-    [Tb_EmployeeMaster].[E_ALLOWTOREGISTER] AS [E_ALLOWTOREGISTER]
-    FROM [dbo].[Tb_EmployeeMaster] AS [Tb_EmployeeMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tb_location" EntityType="Self.tb_location" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3266,15 +3155,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [TBL_RFID_CARDENTRY_LOG].[OPERATION] AS [OPERATION]
     FROM [dbo].[TBL_RFID_CARDENTRY_LOG] AS [TBL_RFID_CARDENTRY_LOG]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblEmirates" EntityType="Self.tblEmirates" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblEmirates].[Id] AS [Id], 
-    [tblEmirates].[Emirates] AS [Emirates], 
-    [tblEmirates].[CreatedBy] AS [CreatedBy], 
-    [tblEmirates].[CreatedDate] AS [CreatedDate], 
-    [tblEmirates].[Status] AS [Status]
-    FROM [dbo].[tblEmirates] AS [tblEmirates]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblEmployeeShiftDtl" EntityType="Self.tblEmployeeShiftDtl" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblEmployeeShiftDtl].[EMPSHIFTDtlID] AS [EMPSHIFTDtlID], 
@@ -3363,27 +3243,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [tEnter_OUTDOOR].[upload] AS [upload]
     FROM [dbo].[tEnter_OUTDOOR] AS [tEnter_OUTDOOR]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="TESTING_COMP" EntityType="Self.TESTING_COMP" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TESTING_COMP].[id] AS [id], 
-    [TESTING_COMP].[e_date] AS [e_date], 
-    [TESTING_COMP].[e_id] AS [e_id], 
-    [TESTING_COMP].[e_name] AS [e_name], 
-    [TESTING_COMP].[in] AS [in], 
-    [TESTING_COMP].[out] AS [out], 
-    [TESTING_COMP].[outdate] AS [outdate], 
-    [TESTING_COMP].[deptid] AS [deptid], 
-    [TESTING_COMP].[lout] AS [lout], 
-    [TESTING_COMP].[lin] AS [lin], 
-    [TESTING_COMP].[workedhrs] AS [workedhrs], 
-    [TESTING_COMP].[workedmts] AS [workedmts], 
-    [TESTING_COMP].[lunchhrs] AS [lunchhrs], 
-    [TESTING_COMP].[lunchmts] AS [lunchmts], 
-    [TESTING_COMP].[InVariance] AS [InVariance], 
-    [TESTING_COMP].[OutVariance] AS [OutVariance], 
-    [TESTING_COMP].[Status] AS [Status]
-    FROM [dbo].[TESTING_COMP] AS [TESTING_COMP]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tHourlyCount" EntityType="Self.tHourlyCount" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tHourlyCount].[C_Date] AS [C_Date], 
@@ -3402,139 +3261,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [tMealInfo].[C_Code1] AS [C_Code1], 
     [tMealInfo].[C_Code2] AS [C_Code2]
     FROM [dbo].[tMealInfo] AS [tMealInfo]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tMealType" EntityType="Self.tMealType" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tMealType].[C_Code] AS [C_Code], 
-    [tMealType].[C_Name] AS [C_Name], 
-    [tMealType].[L_DayLimit] AS [L_DayLimit], 
-    [tMealType].[L_MonthLimit] AS [L_MonthLimit], 
-    [tMealType].[C_Period] AS [C_Period]
-    FROM [dbo].[tMealType] AS [tMealType]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tVisitor" EntityType="Self.tVisitor" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tVisitor].[L_UID] AS [L_UID], 
-    [tVisitor].[C_Office] AS [C_Office], 
-    [tVisitor].[C_Post] AS [C_Post], 
-    [tVisitor].[C_Target] AS [C_Target], 
-    [tVisitor].[C_Goal] AS [C_Goal], 
-    [tVisitor].[C_Company] AS [C_Company], 
-    [tVisitor].[C_Info] AS [C_Info], 
-    [tVisitor].[C_Phone] AS [C_Phone], 
-    [tVisitor].[C_Email] AS [C_Email], 
-    [tVisitor].[C_Address] AS [C_Address], 
-    [tVisitor].[C_Remark] AS [C_Remark]
-    FROM [dbo].[tVisitor] AS [tVisitor]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tWiegand" EntityType="Self.tWiegand" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tWiegand].[C_Code] AS [C_Code], 
-    [tWiegand].[C_Name] AS [C_Name], 
-    [tWiegand].[L_Type] AS [L_Type], 
-    [tWiegand].[B_FormatData] AS [B_FormatData]
-    FROM [dbo].[tWiegand] AS [tWiegand]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tWorkType" EntityType="Self.tWorkType" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tWorkType].[C_Code] AS [C_Code], 
-    [tWorkType].[C_Name] AS [C_Name], 
-    [tWorkType].[C_BasicDay] AS [C_BasicDay], 
-    [tWorkType].[C_HoliCode] AS [C_HoliCode], 
-    [tWorkType].[L_SpinCount] AS [L_SpinCount], 
-    [tWorkType].[C_ShiftCode] AS [C_ShiftCode], 
-    [tWorkType].[C_HoliShift] AS [C_HoliShift], 
-    [tWorkType].[L_WT1Unit] AS [L_WT1Unit], 
-    [tWorkType].[L_WT1AddTime] AS [L_WT1AddTime], 
-    [tWorkType].[L_WT1AddCondi] AS [L_WT1AddCondi], 
-    [tWorkType].[L_WT1DelTime] AS [L_WT1DelTime], 
-    [tWorkType].[L_WT1DelCondi] AS [L_WT1DelCondi], 
-    [tWorkType].[L_WT1Min] AS [L_WT1Min], 
-    [tWorkType].[L_WT1Max] AS [L_WT1Max], 
-    [tWorkType].[L_WT1Rate] AS [L_WT1Rate], 
-    [tWorkType].[L_WT2Unit] AS [L_WT2Unit], 
-    [tWorkType].[L_WT2AddTime] AS [L_WT2AddTime], 
-    [tWorkType].[L_WT2AddCondi] AS [L_WT2AddCondi], 
-    [tWorkType].[L_WT2DelTime] AS [L_WT2DelTime], 
-    [tWorkType].[L_WT2DelCondi] AS [L_WT2DelCondi], 
-    [tWorkType].[L_WT2Min] AS [L_WT2Min], 
-    [tWorkType].[L_WT2Max] AS [L_WT2Max], 
-    [tWorkType].[L_WT2Rate] AS [L_WT2Rate], 
-    [tWorkType].[L_WT3Unit] AS [L_WT3Unit], 
-    [tWorkType].[L_WT3AddTime] AS [L_WT3AddTime], 
-    [tWorkType].[L_WT3AddCondi] AS [L_WT3AddCondi], 
-    [tWorkType].[L_WT3DelTime] AS [L_WT3DelTime], 
-    [tWorkType].[L_WT3DelCondi] AS [L_WT3DelCondi], 
-    [tWorkType].[L_WT3Min] AS [L_WT3Min], 
-    [tWorkType].[L_WT3Max] AS [L_WT3Max], 
-    [tWorkType].[L_WT3Rate] AS [L_WT3Rate], 
-    [tWorkType].[L_WT4Unit] AS [L_WT4Unit], 
-    [tWorkType].[L_WT4AddTime] AS [L_WT4AddTime], 
-    [tWorkType].[L_WT4AddCondi] AS [L_WT4AddCondi], 
-    [tWorkType].[L_WT4DelTime] AS [L_WT4DelTime], 
-    [tWorkType].[L_WT4DelCondi] AS [L_WT4DelCondi], 
-    [tWorkType].[L_WT4Min] AS [L_WT4Min], 
-    [tWorkType].[L_WT4Max] AS [L_WT4Max], 
-    [tWorkType].[L_WT4Rate] AS [L_WT4Rate], 
-    [tWorkType].[L_WT5Unit] AS [L_WT5Unit], 
-    [tWorkType].[L_WT5AddTime] AS [L_WT5AddTime], 
-    [tWorkType].[L_WT5AddCondi] AS [L_WT5AddCondi], 
-    [tWorkType].[L_WT5DelTime] AS [L_WT5DelTime], 
-    [tWorkType].[L_WT5DelCondi] AS [L_WT5DelCondi], 
-    [tWorkType].[L_WT5Min] AS [L_WT5Min], 
-    [tWorkType].[L_WT5Max] AS [L_WT5Max], 
-    [tWorkType].[L_WT5Rate] AS [L_WT5Rate], 
-    [tWorkType].[L_WT6Unit] AS [L_WT6Unit], 
-    [tWorkType].[L_WT6AddTime] AS [L_WT6AddTime], 
-    [tWorkType].[L_WT6AddCondi] AS [L_WT6AddCondi], 
-    [tWorkType].[L_WT6DelTime] AS [L_WT6DelTime], 
-    [tWorkType].[L_WT6DelCondi] AS [L_WT6DelCondi], 
-    [tWorkType].[L_WT6Min] AS [L_WT6Min], 
-    [tWorkType].[L_WT6Max] AS [L_WT6Max], 
-    [tWorkType].[L_WT6Rate] AS [L_WT6Rate], 
-    [tWorkType].[L_ST1AddTime] AS [L_ST1AddTime], 
-    [tWorkType].[L_ST1AddCondi] AS [L_ST1AddCondi], 
-    [tWorkType].[L_ST1DelTime] AS [L_ST1DelTime], 
-    [tWorkType].[L_ST1DelCondi] AS [L_ST1DelCondi], 
-    [tWorkType].[L_ST1Min] AS [L_ST1Min], 
-    [tWorkType].[L_ST1Max] AS [L_ST1Max], 
-    [tWorkType].[L_ST1Trans] AS [L_ST1Trans], 
-    [tWorkType].[L_ST2AddTime] AS [L_ST2AddTime], 
-    [tWorkType].[L_ST2AddCondi] AS [L_ST2AddCondi], 
-    [tWorkType].[L_ST2DelTime] AS [L_ST2DelTime], 
-    [tWorkType].[L_ST2DelCondi] AS [L_ST2DelCondi], 
-    [tWorkType].[L_ST2Min] AS [L_ST2Min], 
-    [tWorkType].[L_ST2Max] AS [L_ST2Max], 
-    [tWorkType].[L_ST2Trans] AS [L_ST2Trans], 
-    [tWorkType].[L_ST3AddTime] AS [L_ST3AddTime], 
-    [tWorkType].[L_ST3AddCondi] AS [L_ST3AddCondi], 
-    [tWorkType].[L_ST3DelTime] AS [L_ST3DelTime], 
-    [tWorkType].[L_ST3DelCondi] AS [L_ST3DelCondi], 
-    [tWorkType].[L_ST3Min] AS [L_ST3Min], 
-    [tWorkType].[L_ST3Max] AS [L_ST3Max], 
-    [tWorkType].[L_ST3Trans] AS [L_ST3Trans], 
-    [tWorkType].[L_ST4AddTime] AS [L_ST4AddTime], 
-    [tWorkType].[L_ST4AddCondi] AS [L_ST4AddCondi], 
-    [tWorkType].[L_ST4DelTime] AS [L_ST4DelTime], 
-    [tWorkType].[L_ST4DelCondi] AS [L_ST4DelCondi], 
-    [tWorkType].[L_ST4Min] AS [L_ST4Min], 
-    [tWorkType].[L_ST4Max] AS [L_ST4Max], 
-    [tWorkType].[L_ST4Trans] AS [L_ST4Trans], 
-    [tWorkType].[L_ST5AddTime] AS [L_ST5AddTime], 
-    [tWorkType].[L_ST5AddCondi] AS [L_ST5AddCondi], 
-    [tWorkType].[L_ST5DelTime] AS [L_ST5DelTime], 
-    [tWorkType].[L_ST5DelCondi] AS [L_ST5DelCondi], 
-    [tWorkType].[L_ST5Min] AS [L_ST5Min], 
-    [tWorkType].[L_ST5Max] AS [L_ST5Max], 
-    [tWorkType].[L_ST5Trans] AS [L_ST5Trans], 
-    [tWorkType].[L_ST6AddTime] AS [L_ST6AddTime], 
-    [tWorkType].[L_ST6AddCondi] AS [L_ST6AddCondi], 
-    [tWorkType].[L_ST6DelTime] AS [L_ST6DelTime], 
-    [tWorkType].[L_ST6DelCondi] AS [L_ST6DelCondi], 
-    [tWorkType].[L_ST6Min] AS [L_ST6Min], 
-    [tWorkType].[L_ST6Max] AS [L_ST6Max], 
-    [tWorkType].[L_ST6Trans] AS [L_ST6Trans]
-    FROM [dbo].[tWorkType] AS [tWorkType]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="wExceptRecord" EntityType="Self.wExceptRecord" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3562,93 +3288,6 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
     [wSpecialShift].[L_UID] AS [L_UID], 
     [wSpecialShift].[C_ShiftCode] AS [C_ShiftCode]
     FROM [dbo].[wSpecialShift] AS [wSpecialShift]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="wWorkShift" EntityType="Self.wWorkShift" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [wWorkShift].[C_Code] AS [C_Code], 
-    [wWorkShift].[C_Name] AS [C_Name], 
-    [wWorkShift].[L_InoutMode] AS [L_InoutMode], 
-    [wWorkShift].[L_RangeTime1] AS [L_RangeTime1], 
-    [wWorkShift].[L_RangeTime2] AS [L_RangeTime2], 
-    [wWorkShift].[L_IgnoreAbsent] AS [L_IgnoreAbsent], 
-    [wWorkShift].[L_MultiRange] AS [L_MultiRange], 
-    [wWorkShift].[L_LateTime] AS [L_LateTime], 
-    [wWorkShift].[L_LackTime] AS [L_LackTime], 
-    [wWorkShift].[L_AutoInTime] AS [L_AutoInTime], 
-    [wWorkShift].[L_AutoOutTime] AS [L_AutoOutTime], 
-    [wWorkShift].[L_Range1TM1] AS [L_Range1TM1], 
-    [wWorkShift].[L_Range1TM2] AS [L_Range1TM2], 
-    [wWorkShift].[L_Range2TM1] AS [L_Range2TM1], 
-    [wWorkShift].[L_Range2TM2] AS [L_Range2TM2], 
-    [wWorkShift].[L_Range3TM1] AS [L_Range3TM1], 
-    [wWorkShift].[L_Range3TM2] AS [L_Range3TM2], 
-    [wWorkShift].[L_Range4TM1] AS [L_Range4TM1], 
-    [wWorkShift].[L_Range4TM2] AS [L_Range4TM2], 
-    [wWorkShift].[L_ExceptExit] AS [L_ExceptExit], 
-    [wWorkShift].[L_ExceptRtnMode] AS [L_ExceptRtnMode], 
-    [wWorkShift].[L_ExceptOut] AS [L_ExceptOut], 
-    [wWorkShift].[L_ExceptInMode] AS [L_ExceptInMode], 
-    [wWorkShift].[L_Except1TM1] AS [L_Except1TM1], 
-    [wWorkShift].[L_Except1TM2] AS [L_Except1TM2], 
-    [wWorkShift].[L_Except2TM1] AS [L_Except2TM1], 
-    [wWorkShift].[L_Except2TM2] AS [L_Except2TM2], 
-    [wWorkShift].[L_Except3TM1] AS [L_Except3TM1], 
-    [wWorkShift].[L_Except3TM2] AS [L_Except3TM2], 
-    [wWorkShift].[L_Except4TM1] AS [L_Except4TM1], 
-    [wWorkShift].[L_Except4TM2] AS [L_Except4TM2], 
-    [wWorkShift].[L_Except5TM1] AS [L_Except5TM1], 
-    [wWorkShift].[L_Except5TM2] AS [L_Except5TM2], 
-    [wWorkShift].[L_SF1Work] AS [L_SF1Work], 
-    [wWorkShift].[L_SF1Type] AS [L_SF1Type], 
-    [wWorkShift].[L_SF1Time1] AS [L_SF1Time1], 
-    [wWorkShift].[L_SF1Time2] AS [L_SF1Time2], 
-    [wWorkShift].[L_SF1Range] AS [L_SF1Range], 
-    [wWorkShift].[L_SF1AutoOut] AS [L_SF1AutoOut], 
-    [wWorkShift].[L_SF1Unit] AS [L_SF1Unit], 
-    [wWorkShift].[L_SF1Min] AS [L_SF1Min], 
-    [wWorkShift].[L_SF1Max] AS [L_SF1Max], 
-    [wWorkShift].[L_SF1Rate] AS [L_SF1Rate], 
-    [wWorkShift].[L_SF2Work] AS [L_SF2Work], 
-    [wWorkShift].[L_SF2Type] AS [L_SF2Type], 
-    [wWorkShift].[L_SF2Time1] AS [L_SF2Time1], 
-    [wWorkShift].[L_SF2Time2] AS [L_SF2Time2], 
-    [wWorkShift].[L_SF2Range] AS [L_SF2Range], 
-    [wWorkShift].[L_SF2AutoOut] AS [L_SF2AutoOut], 
-    [wWorkShift].[L_SF2Unit] AS [L_SF2Unit], 
-    [wWorkShift].[L_SF2Min] AS [L_SF2Min], 
-    [wWorkShift].[L_SF2Max] AS [L_SF2Max], 
-    [wWorkShift].[L_SF2Rate] AS [L_SF2Rate], 
-    [wWorkShift].[L_SF3Work] AS [L_SF3Work], 
-    [wWorkShift].[L_SF3Type] AS [L_SF3Type], 
-    [wWorkShift].[L_SF3Time1] AS [L_SF3Time1], 
-    [wWorkShift].[L_SF3Time2] AS [L_SF3Time2], 
-    [wWorkShift].[L_SF3Range] AS [L_SF3Range], 
-    [wWorkShift].[L_SF3AutoOut] AS [L_SF3AutoOut], 
-    [wWorkShift].[L_SF3Unit] AS [L_SF3Unit], 
-    [wWorkShift].[L_SF3Min] AS [L_SF3Min], 
-    [wWorkShift].[L_SF3Max] AS [L_SF3Max], 
-    [wWorkShift].[L_SF3Rate] AS [L_SF3Rate], 
-    [wWorkShift].[L_SF4Work] AS [L_SF4Work], 
-    [wWorkShift].[L_SF4Type] AS [L_SF4Type], 
-    [wWorkShift].[L_SF4Time1] AS [L_SF4Time1], 
-    [wWorkShift].[L_SF4Time2] AS [L_SF4Time2], 
-    [wWorkShift].[L_SF4Range] AS [L_SF4Range], 
-    [wWorkShift].[L_SF4AutoOut] AS [L_SF4AutoOut], 
-    [wWorkShift].[L_SF4Unit] AS [L_SF4Unit], 
-    [wWorkShift].[L_SF4Min] AS [L_SF4Min], 
-    [wWorkShift].[L_SF4Max] AS [L_SF4Max], 
-    [wWorkShift].[L_SF4Rate] AS [L_SF4Rate], 
-    [wWorkShift].[L_SF5Work] AS [L_SF5Work], 
-    [wWorkShift].[L_SF5Type] AS [L_SF5Type], 
-    [wWorkShift].[L_SF5Time1] AS [L_SF5Time1], 
-    [wWorkShift].[L_SF5Time2] AS [L_SF5Time2], 
-    [wWorkShift].[L_SF5Range] AS [L_SF5Range], 
-    [wWorkShift].[L_SF5AutoOut] AS [L_SF5AutoOut], 
-    [wWorkShift].[L_SF5Unit] AS [L_SF5Unit], 
-    [wWorkShift].[L_SF5Min] AS [L_SF5Min], 
-    [wWorkShift].[L_SF5Max] AS [L_SF5Max], 
-    [wWorkShift].[L_SF5Rate] AS [L_SF5Rate]
-    FROM [dbo].[wWorkShift] AS [wWorkShift]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vAttendanceCompiled" EntityType="Self.vAttendanceCompiled" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -6388,6 +6027,9 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
           <Parameter Name="deptId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetDepartmentWithDeptId" ReturnType="Collection(UNISModel.GetDepartmentWithDeptId_Result)" />
+          <FunctionImport Name="SP_GetAllCompiledAttendanceForADate" ReturnType="Collection(UNISModel.SP_GetAllCompiledAttendanceForADate_Result)">
+          <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -7346,6 +6988,17 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
         <ComplexType Name="GetDepartmentWithDeptId_Result">
           <Property Type="String" Name="deptID" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Department" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GetAllCompiledAttendanceForADate_Result">
+          <Property Type="String" Name="EMPID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="InDate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="OutDate" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Worked_Hrs_" Nullable="true" />
+          <Property Type="Int32" Name="Worked_min_" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -10524,6 +10177,21 @@ warning 6002: The table/view 'UNIS.dbo.vtuser' does not have a primary key defin
               <ComplexTypeMapping TypeName="UNISModel.GetDepartmentWithDeptId_Result">
                 <ScalarProperty Name="deptID" ColumnName="deptID" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetAllCompiledAttendanceForADate" FunctionName="UNISModel.Store.SP_GetAllCompiledAttendanceForADate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UNISModel.SP_GetAllCompiledAttendanceForADate_Result">
+                <ScalarProperty Name="EMPID" ColumnName="EMPID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="Worked_Hrs_" ColumnName="Worked(Hrs)" />
+                <ScalarProperty Name="Worked_min_" ColumnName="Worked(min)" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

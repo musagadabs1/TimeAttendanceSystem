@@ -16,7 +16,7 @@ namespace TimeAttendanceSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ManualEntries", action = "Create", id = UrlParameter.Optional }
+                defaults: new { controller = "ManualEntries", action = "ManualEntry", id = UrlParameter.Optional }
             );
         }
     }

@@ -229,6 +229,7 @@
     </Compile>
     <Compile Include="Models\Absentee.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AttendanceCompile.cs" />
     <Compile Include="Models\AttendanceMail.cs" />
     <Compile Include="Models\attendance_finalize_department_MHS.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
@@ -528,6 +529,9 @@
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_ForwardingStatistics_COEC_AbsentReport_Result.cs">
+      <DependentUpon>UNISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GetAllCompiledAttendanceForADate_Result.cs">
       <DependentUpon>UNISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SP_GetDepartment_Result.cs">
@@ -924,6 +928,12 @@
       <DependentUpon>DailyInoutShiftwise.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DailyINOUTShiftWise_NEW.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailyINOUTShiftWise_NEW.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\DailyPresentReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1264,6 +1274,15 @@
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\my-login.js" />
     <Content Include="Images\loader-2.gif" />
+    <Content Include="jquery-ui-1.12.1.custom\AUTHORS.txt" />
+    <Content Include="jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\index.html" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\AUTHORS.txt" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />
@@ -1282,6 +1301,15 @@
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\LICENSE.txt" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.structure.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.structure.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\LICENSE.txt" />
     <Content Include="Models\UNISModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UNISModel.edmx</DependentUpon>
@@ -1320,9 +1348,11 @@
       <DependentUpon>UNISModel.edmx</DependentUpon>
     </Content>
     <Content Include="jquery-ui-1.12.1.custom\jquery-ui-1.12.1.custom\package.json" />
+    <Content Include="jquery-ui-1.12.1.custom\package.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CustomScripts\CustomScripts.js" />
     <Content Include="Scripts\CustomScripts\EntryCheck.js" />
+    <Content Include="Scripts\CustomScripts\PunchError.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -1428,36 +1458,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\ErrorCorrections\Create.cshtml" />
-    <Content Include="Views\ErrorCorrections\Delete.cshtml" />
-    <Content Include="Views\ErrorCorrections\Details.cshtml" />
-    <Content Include="Views\ErrorCorrections\Edit.cshtml" />
-    <Content Include="Views\ErrorCorrections\Index.cshtml" />
-    <Content Include="Views\Compiles\Create.cshtml" />
-    <Content Include="Views\Compiles\Delete.cshtml" />
-    <Content Include="Views\Compiles\Details.cshtml" />
-    <Content Include="Views\Compiles\Edit.cshtml" />
-    <Content Include="Views\Compiles\Index.cshtml" />
-    <Content Include="Views\ManualEntries\Create.cshtml" />
-    <Content Include="Views\ManualEntries\Delete.cshtml" />
-    <Content Include="Views\ManualEntries\Details.cshtml" />
-    <Content Include="Views\ManualEntries\Edit.cshtml" />
-    <Content Include="Views\ManualEntries\Index.cshtml" />
-    <Content Include="Views\RollBacks\Create.cshtml" />
-    <Content Include="Views\RollBacks\Delete.cshtml" />
-    <Content Include="Views\RollBacks\Details.cshtml" />
-    <Content Include="Views\RollBacks\Edit.cshtml" />
-    <Content Include="Views\RollBacks\Index.cshtml" />
-    <Content Include="Views\Individuals\Create.cshtml" />
-    <Content Include="Views\Individuals\Delete.cshtml" />
-    <Content Include="Views\Individuals\Details.cshtml" />
-    <Content Include="Views\Individuals\Edit.cshtml" />
-    <Content Include="Views\Individuals\Index.cshtml" />
     <Content Include="Views\AttendanceMails\Create.cshtml" />
     <Content Include="Views\AttendanceMails\Delete.cshtml" />
     <Content Include="Views\AttendanceMails\Details.cshtml" />
@@ -1474,17 +1474,7 @@
     <Content Include="Views\Errors\Edit.cshtml" />
     <Content Include="Views\Errors\Index.cshtml" />
     <Content Include="Views\Errors\_EditEntryPartialView.cshtml" />
-    <Content Include="Views\EditEntries\Create.cshtml" />
-    <Content Include="Views\EditEntries\Delete.cshtml" />
-    <Content Include="Views\EditEntries\Details.cshtml" />
-    <Content Include="Views\EditEntries\Edit.cshtml" />
-    <Content Include="Views\EditEntries\Index.cshtml" />
     <Content Include="Views\EditEntries\ErrorPartialView.cshtml" />
-    <Content Include="Views\Finalizes\Create.cshtml" />
-    <Content Include="Views\Finalizes\Delete.cshtml" />
-    <Content Include="Views\Finalizes\Details.cshtml" />
-    <Content Include="Views\Finalizes\Edit.cshtml" />
-    <Content Include="Views\Finalizes\Index.cshtml" />
     <Content Include="Views\Reports\Absentee.cshtml" />
     <Content Include="Views\Reports\PresenceReport.cshtml" />
     <Content Include="Views\Reports\DailyInOutReport.cshtml" />
@@ -1492,6 +1482,15 @@
     <Content Include="Views\Reports\MonthlyWeekWise.cshtml" />
     <Content Include="Views\ErrorManagement\EntryCheck.cshtml" />
     <Content Include="Views\EditEntries\EditEntry.cshtml" />
+    <Content Include="Views\Compiles\CompileAttendace.cshtml" />
+    <Content Include="Views\ErrorCorrections\AutoErrorCorrection.cshtml" />
+    <Content Include="Views\Employees\GetEmployee.cshtml" />
+    <Content Include="Views\ManualEntries\ManualEntry.cshtml" />
+    <Content Include="Views\Individuals\CompileIndividual.cshtml" />
+    <Content Include="Views\RollBacks\Rollback.cshtml" />
+    <Content Include="Views\Finalizes\Finalize.cshtml" />
+    <Content Include="Views\Finalizes\Show.cshtml" />
+    <Content Include="Views\Finalizes\CompileFinalize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1562,6 +1561,10 @@
     <EmbeddedResource Include="Reports\DailyInoutShiftwise.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailyInoutShiftwise.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyINOUTShiftWise_NEW.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailyINOUTShiftWise_NEW.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\DailyPresentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -1,0 +1,38 @@
+﻿@model TimeAttendanceSystem.Models.Finalize
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Staff Worked hours</h2>
+
+<table class="table table-bordered table-condensed table-responsive table-striped">
+    <thead>
+        <tr>
+            <th>EMPID</th>
+            <th>NAME</th>
+            <th>DEPARTMENT</th>
+            <th>TIME IN</th>
+            <th>IN DATE</th>
+            <th>TIME OUT</th>
+            <th>OUT DATE</th>
+            <th>WORKED(HRS)</th>
+            <th>WORKED(MIN)</th>
+        </tr>
+    </thead>
+    @foreach (var item in ViewBag.Attendance)
+    {
+    <tr>
+        <td>@item.EmpId</td>
+        <td>@item.Name</td>
+        <td>@item.Department</td>
+        <td>@item.TimeIn</td>
+        <td>@item.InDate</td>
+        <td>@item.TimeOut</td>
+        <td>@item.OutDate</td>
+        <td>@item.WorkedH</td>
+        <td>@item.WorkedM</td>
+    </tr>
+    }
+</table>
+

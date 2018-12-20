@@ -1,12 +1,30 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 
 namespace TimeAttendanceSystem.Models
 {
     public static class TASUtility
     {
+        private static string _constr;
+        public static string ConnectionString
+        {
+            get
+            { _constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString; return _constr;
+            }
+            set
+            {
+                _constr = value;
+            }
+        }
         private static UNISEntities _context = new UNISEntities();
         public static List<CommonData> GetShiftSchedule(int? ID)
         {
@@ -160,7 +178,7 @@ namespace TimeAttendanceSystem.Models
                     
         }
         public static string DateString { get; set; }
-        public static bool isCompiled(string date)
+        public static bool IsCompiled(string date)
         {
             try
             {
@@ -208,6 +226,145 @@ namespace TimeAttendanceSystem.Models
 
                 throw ex;
             }
+        }
+        public static bool SendEmail(string pGmailEmail, string pGmailPassword, string pTo, string pSubject, string pBody, System.Web.Mail.MailFormat pFormat, ReportDocument[] Rpt1, string[] pdfs, string cc1, string cc2, string cc3, string cc4, string cc5, string cc6, string date)
+        {
+            try
+            {
+                string fromEmail = "developer@sun.edu.ng";
+                string fromPassword = "Xdirsun202034";
+
+                //pGmailEmail = "noreply@skylineuniversity.ac.ae";
+                SmtpClient SmtpServer = new SmtpClient();
+                MailMessage mail = new MailMessage();
+                System.Text.StringBuilder mailbody = new System.Text.StringBuilder();
+                SmtpServer.Port = 587;
+                SmtpServer.Host = "smtp.office365.com";
+                SmtpServer.Credentials = new NetworkCredential("smtp.office365.com\\" + fromEmail, fromPassword);
+                //SmtpServer.Credentials = new NetworkCredential("smtp.office365.com\\noreply@skylineuniversity.ac.ae", "Sucsky2017");
+                SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                SmtpServer.EnableSsl = true;
+
+
+                mail.From = new MailAddress(fromEmail);
+                //mail.From = new MailAddress(pGmailEmail);
+                mail.To.Add(pTo);
+                mail.Subject = pSubject;
+                if (cc1 != "")
+                    mail.CC.Add(cc1);
+                mail.CC.Add(cc2);
+                mail.CC.Add(cc3);
+                mail.CC.Add(cc4);
+                mail.CC.Add(cc5);
+                mail.CC.Add(cc6);
+                //mail.CC.Add(cc7);
+                //mail.CC.Add(cc8);
+                //mail.CC.Add(cc9);
+                //mail.CC.Add(cc10);
+                mail.IsBodyHtml = false;
+                pBody = "Dear Sir," + Environment.NewLine + Environment.NewLine + "Kindly find the attached daily attendance report." + Environment.NewLine + Environment.NewLine + Environment.NewLine + "Thanks and Regards," + Environment.NewLine + Environment.NewLine + "Human Resource Department";
+
+                mailbody.Append(pBody);
+
+                mail.Body = mailbody.ToString();
+
+
+                for (int i = 0; i < Rpt1.Length; i++)
+                {
+                    if (!string.IsNullOrEmpty(Convert.ToString(pdfs[i])))
+                    {
+
+                        mail.Attachments.Add(new Attachment(@"D:\\SkylineERP\\TimeAttendanceNew\\TmpArchieve\\" + date + "\\" + pdfs[i]));
+
+                    }
+                }
+
+                SmtpServer.Send(mail);
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static ReportDocument SendReports(string ReportName, DataTable source)
+        {
+            ReportDocument cryRpt;
+            cryRpt = new ReportDocument();
+            try
+            {
+                string Path = HttpContext.Current.Server.MapPath(Convert.ToString(ReportName));
+                Path = Path.Substring(0, Path.LastIndexOf('\\'));
+                Path = Path.Substring(0, Path.LastIndexOf('\\'));
+                Path = Path + "\\Reports\\" + Convert.ToString(ReportName);
+                cryRpt.Load(Path);
+                cryRpt.SetDataSource(source);
+                return cryRpt;
+            }
+            catch (Exception ex )
+            {
+                throw ex;
+            }
+        }
+        public static void PushLogDepartment(string vDate, string vNewDate)
+        {
+
+
+            SqlConnection cn = new SqlConnection(GetConnectionSql());
+            cn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cn;
+            cmd.CommandText = "RRcompile";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter p = default(SqlParameter);
+            p = cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@vDate", SqlDbType.VarChar, 8));
+            p.Value = vDate;
+
+            p = cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@nDate", SqlDbType.VarChar, 8));
+            p.Value = vNewDate;
+
+
+            cmd.CommandTimeout = 0;
+            cmd.ExecuteNonQuery();
+
+            cn.Close();
+            cmd = null;
+            cn = null;
+        }
+        public static void CreateDataTable(DataTable DT, string StrSql, bool IsStoredProcedure = false, ArrayList pa = null, ArrayList pv = null)
+        {
+            try
+            {
+                DT.Rows.Clear();
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConnectionString;
+                con.Open();
+                SqlDataAdapter adaptor = new SqlDataAdapter(StrSql, con);
+
+                if (IsStoredProcedure == true)
+                {
+                    adaptor.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adaptor.SelectCommand.CommandTimeout = 0;
+                    for (int count = 0; count < pa.Count; count++)
+                    {
+                        // pa[count] = pv[count];
+                        adaptor.SelectCommand.Parameters.AddWithValue(pa[count].ToString(), pv[count]);
+                    }
+                }
+                adaptor.Fill(DT);
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static string GetConnectionSql()
+        {
+            return "server=LAPTOP-HSLHPTC2\\SQLEXPRESS;Initial Catalog=UNIS; User ID=software; Password=DelFirMENA$idea;";
+
         }
     }
 }

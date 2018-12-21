@@ -15,58 +15,13 @@ namespace TimeAttendanceSystem.Controllers
     {
         private UNISEntities _context = new UNISEntities();
        private ReportDocument myReportDocument = new ReportDocument();
-        // GET: Reports
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Reports/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+               
         string msg = string.Empty;
-        // GET: Reports/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+      
         private void AbsenteeReportFromCrystal(string fromDate,string toDate,int deptNo,string weekend)
         {
             try
             {
-                /*
-                 System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
-                string Path = Server.MapPath(Convert.ToString(Session["ReportName"]));
-                Path = Path.Substring(0, Path.LastIndexOf('\\'));
-                Path = Path.Substring(0, Path.LastIndexOf('\\'));
-                Path = Path + "\\ReportFiles\\" + Convert.ToString(Session["ReportName"]);
-                myReportDocument.Load(Path);
-                myReportDocument.SetDataSource((DataTable)Session["ReportSource"]);
-                myReportDocument.SetDatabaseLogon("software", "DelFirMENA$idea");
-
-                System.IO.Stream oStream = null;
-                byte[] byteArray = null;
-                oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                byteArray = new byte[oStream.Length];
-                oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
-                Response.ClearContent();
-                Response.ClearHeaders();
-                Response.ContentType = "application/pdf";
-                Response.BinaryWrite(byteArray);
-                Response.Flush();
-                Response.Close();
-                 
-                 
-                 */
-                    //Response.ClearContent();
-                    //Response.ClearHeaders();
-                    //Response.ContentType = "application/pdf";
-                    //Response.BinaryWrite(byteArray);
-                    //Response.Flush();
-                    //Response.Close();
-
                 
             }
             catch ( Exception ex)
@@ -325,14 +280,9 @@ namespace TimeAttendanceSystem.Controllers
 
                 if (empWise)
                 {
-                     //var result = _context.sp_DailyPresentEmpTypeWise(fromDate,toDate,empType,fromTime, toTime, days);
-                    
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReportEmpWise.rpt");
-
-
                     myReportDocument.Load(Path);
-                    //myReportDocument.SetDataSource(result.ToList());
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
                     myReportDocument.SetParameterValue("@EmpId", employeeId);
@@ -345,8 +295,6 @@ namespace TimeAttendanceSystem.Controllers
                     oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     byteArray = new byte[oStream.Length];
                     oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
-
-                    //Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     oStream.Seek(0, SeekOrigin.Begin);
                     return File(oStream, "application/pdf", string.Format("Presence{0}.pdf", DateTime.Now.ToLongTimeString()));
                 }
@@ -354,10 +302,8 @@ namespace TimeAttendanceSystem.Controllers
                 {
 
                     var result = _context.sp_DailyPresentEmpTypeWise(fromDate, toDate, empType, fromTime, toTime, days);
-                    //AbsenteeReportFromCrystal(fromDate, toDAte, departmentId, days);
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/PresentReportEmpTypeWise.rpt");
-                    //string Path = Server.MapPath("~/ReportFiles/AbsenteesReportnew.rpt");
                     myReportDocument.Load(Path);
                     myReportDocument.SetDataSource(result.ToList());
                     myReportDocument.SetParameterValue("@vDate", fromDate);
@@ -374,21 +320,14 @@ namespace TimeAttendanceSystem.Controllers
                     oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     byteArray = new byte[oStream.Length];
                     oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
-
-                    //Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     oStream.Seek(0, SeekOrigin.Begin);
                     return File(oStream, "application/pdf", string.Format("Presence{0}.pdf", DateTime.Now.ToLongTimeString()));
                 }
                 else
                 {
-                   // var result = _context.sp_DailyPresent_Test_Nisha(fromDate,toDate, departmentId,fromTime, toTime, days);
-
-                    //AbsenteeReportFromCrystal(fromDate, toDAte, departmentId, days);
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReport001.rpt");
-                    //string Path = Server.MapPath("~/ReportFiles/AbsenteesReportnew.rpt");
                     myReportDocument.Load(Path);
-                    //myReportDocument.SetDataSource(result);
                     myReportDocument.SetParameterValue("@vDate", fromDate);
                     myReportDocument.SetParameterValue("@vEdate", toDate);
                     myReportDocument.SetParameterValue("@deptno", departmentId);
@@ -403,8 +342,6 @@ namespace TimeAttendanceSystem.Controllers
                     oStream = myReportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     byteArray = new byte[oStream.Length];
                     oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
-
-                    //Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                     oStream.Seek(0, SeekOrigin.Begin);
                     return File(oStream, "application/pdf", string.Format("Presence{0}.pdf", DateTime.Now.ToLongTimeString()));
                 }
@@ -454,8 +391,6 @@ namespace TimeAttendanceSystem.Controllers
 
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/DailyPresentReportEmpWise.rpt");
-
-                    //var dataSourceLoad = _context.sp_compiledreportEmpWise11(fromDate, toDate, empId,days, country);
 
                     myReportDocument.Load(Path);
                     myReportDocument.SetParameterValue("@vDate", fromDate);
@@ -548,12 +483,8 @@ namespace TimeAttendanceSystem.Controllers
                 string month = weekEndSummary.Month;
                 int type = weekEndSummary.StaffType;
 
-                //int empId = dailyInOutReport.Employee;
-
                 System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                 string Path = Server.MapPath("~/Reports/MonthlyWeekendAttendance.rpt");
-
-                //var dataSourceLoad = _context.sp_compiledreportEmpWise11(fromDate, toDate, empId,days, country);
 
                 myReportDocument.Load(Path);
                 myReportDocument.SetParameterValue("@Type", type);
@@ -566,16 +497,6 @@ namespace TimeAttendanceSystem.Controllers
                 oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
                 oStream.Seek(0, SeekOrigin.Begin);
                 return File(oStream, "application/pdf", string.Format("MonthlyWeekendAttendance{0}.pdf", DateTime.Now.ToLongTimeString()));
-
-                //if (hdnMonth.Value != "0" && hdnYear.Value != "0" && hdnType.Value != "0")
-                //{
-                //    string Month = hdnYear.Value + hdnMonth.Value + "01";
-                //    Session["ReportName"] = "MonthlyWeekendAttendance.rpt";
-                //    Session["ReportSource"] = CGernealFunctions.fillDataWithProceduremonthly("GetMonthlyAttendanceWeekend", Convert.ToInt32(hdnType.Value), Month);
-                //    Session["Type"] = Convert.ToInt32(hdnType.Value);
-                //    Session["Month"] = Month;
-                //    Response.Redirect("~/Report/frmReportViewer1.aspx?ss=1", false);
-                //}
             }
             catch (Exception)
 
@@ -673,65 +594,6 @@ namespace TimeAttendanceSystem.Controllers
 
             { }
             return View();
-        }
-        // POST: Reports/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Reports/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Reports/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Reports/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Reports/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

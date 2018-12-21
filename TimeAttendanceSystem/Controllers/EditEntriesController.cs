@@ -191,11 +191,15 @@ namespace TimeAttendanceSystem.Controllers
                 throw ex;
             }
         }
-        public JsonResult LoadErrorDetails(DateTime date, int empId)
+        public JsonResult LoadErrorDetails(DateTime date, int? empId)
         {
             try
             {
                 var sDate = TASUtility.GetStringDateFormat(date);
+                if (empId==null)
+                {
+                    empId = 0;
+                }
                 if (sDate ==null)
                 {
                     sDate = TASUtility.GetStringDateFormat(DateTime.Today);

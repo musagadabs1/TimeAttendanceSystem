@@ -34,7 +34,7 @@ namespace TimeAttendanceSystem.Controllers
         {
             try
             {
-                var result = _context.sp_AbsentiesEmpWise(fromDate, toDate, deptId, days);
+                //var result = _context.sp_AbsentiesEmpWise(fromDate, toDate, deptId, days);
 
                 //return  result;
             }
@@ -71,15 +71,15 @@ namespace TimeAttendanceSystem.Controllers
                 bool deptWise = absentee.DepartmentWise;
                 bool empWise = absentee.EmployeeWise;
                 string days = absentee.Days;
-                //vDate = absentee.FromDate.Date;
-                //vEDate = absentee.ToDate.Date;
+               DateTime vDate = absentee.FromDate.Date;
+              DateTime  vEDate = absentee.ToDate.Date;
                 var fromDate = TASUtility.GetStringDateFormat(absentee.FromDate.Date);
                 var toDate = TASUtility.GetStringDateFormat(absentee.ToDate.Date);
                 //var days = absentee.Days;
 
                 if (empWise)
                 {
-                    var result= _context.sp_AbsentiesEmpWise(fromDate, toDate, departmentId, days);
+                    var result= _context.sp_AbsentiesEmpWise(vDate, vEDate, departmentId, days);
                     
 
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
@@ -274,6 +274,9 @@ namespace TimeAttendanceSystem.Controllers
                 var fromDate = TASUtility.GetStringDateFormat(presence.FromDate.Date);
                 var toDate = TASUtility.GetStringDateFormat(presence.ToDate.Date);
 
+                DateTime vDate = presence.FromDate.Date;
+                DateTime vEDate = presence.ToDate.Date;
+
                 int fromTime = int.Parse( (presence.AfterH + presence.AfterM + "00"));
                 int toTime =int.Parse( (presence.BeforeH + presence.BeforeM + "00"));
                 //var days = absentee.Days;
@@ -301,13 +304,13 @@ namespace TimeAttendanceSystem.Controllers
                 else if(empTypeCheck)
                 {
 
-                    var result = _context.sp_DailyPresentEmpTypeWise(fromDate, toDate, empType, fromTime, toTime, days);
+                    var result = _context.sp_DailyPresentEmpTypeWise(vDate, vEDate, empType, fromTime, toTime, days);
                     System.IO.MemoryStream stream1 = new System.IO.MemoryStream();
                     string Path = Server.MapPath("~/Reports/PresentReportEmpTypeWise.rpt");
                     myReportDocument.Load(Path);
                     myReportDocument.SetDataSource(result.ToList());
-                    myReportDocument.SetParameterValue("@vDate", fromDate);
-                    myReportDocument.SetParameterValue("@vEdate", toDate);
+                    myReportDocument.SetParameterValue("@vDate", vDate);
+                    myReportDocument.SetParameterValue("@vEdate", vEDate);
                     myReportDocument.SetParameterValue("@EmpType", departmentId);
                     myReportDocument.SetParameterValue("@FromTime", toTime);
                     myReportDocument.SetParameterValue("@ToTime", toTime);

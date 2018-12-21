@@ -1121,15 +1121,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Absentiesbackup_Result>("sp_Absentiesbackup", vDateParameter, vEdateParameter, deptnoParameter, weekendParameter);
         }
     
-        public virtual ObjectResult<sp_AbsentiesEmpWise_Result> sp_AbsentiesEmpWise(string vDate, string vEdate, Nullable<int> deptno, string weekend)
+        public virtual ObjectResult<sp_AbsentiesEmpWise_Result> sp_AbsentiesEmpWise(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, Nullable<int> deptno, string weekend)
         {
-            var vDateParameter = vDate != null ?
+            var vDateParameter = vDate.HasValue ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(string));
+                new ObjectParameter("vDate", typeof(System.DateTime));
     
-            var vEdateParameter = vEdate != null ?
+            var vEdateParameter = vEdate.HasValue ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(string));
+                new ObjectParameter("vEdate", typeof(System.DateTime));
     
             var deptnoParameter = deptno.HasValue ?
                 new ObjectParameter("deptno", deptno) :
@@ -1691,15 +1691,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DAILYABSENTIES_Result>("SP_DAILYABSENTIES", dateParameter);
         }
     
-        public virtual ObjectResult<sp_DailyPresent_Result> sp_DailyPresent(string vDate, string vEdate, Nullable<int> deptno, Nullable<int> fromTime, Nullable<int> toTime, string days)
+        public virtual ObjectResult<sp_DailyPresent_Result> sp_DailyPresent(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, Nullable<int> deptno, Nullable<int> fromTime, Nullable<int> toTime, string days)
         {
-            var vDateParameter = vDate != null ?
+            var vDateParameter = vDate.HasValue ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(string));
+                new ObjectParameter("vDate", typeof(System.DateTime));
     
-            var vEdateParameter = vEdate != null ?
+            var vEdateParameter = vEdate.HasValue ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(string));
+                new ObjectParameter("vEdate", typeof(System.DateTime));
     
             var deptnoParameter = deptno.HasValue ?
                 new ObjectParameter("deptno", deptno) :
@@ -1791,15 +1791,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DailyPresent_Test_saravana", vDateParameter, vEdateParameter, deptnoParameter, fromTimeParameter, toTimeParameter, daysParameter);
         }
     
-        public virtual ObjectResult<sp_DailyPresentEmpTypeWise_Result> sp_DailyPresentEmpTypeWise(string vDate, string vEdate, string empType, Nullable<int> fromTime, Nullable<int> toTime, string weekend)
+        public virtual ObjectResult<sp_DailyPresentEmpTypeWise_Result> sp_DailyPresentEmpTypeWise(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, string empType, Nullable<int> fromTime, Nullable<int> toTime, string weekend)
         {
-            var vDateParameter = vDate != null ?
+            var vDateParameter = vDate.HasValue ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(string));
+                new ObjectParameter("vDate", typeof(System.DateTime));
     
-            var vEdateParameter = vEdate != null ?
+            var vEdateParameter = vEdate.HasValue ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(string));
+                new ObjectParameter("vEdate", typeof(System.DateTime));
     
             var empTypeParameter = empType != null ?
                 new ObjectParameter("EmpType", empType) :
@@ -1820,15 +1820,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DailyPresentEmpTypeWise_Result>("sp_DailyPresentEmpTypeWise", vDateParameter, vEdateParameter, empTypeParameter, fromTimeParameter, toTimeParameter, weekendParameter);
         }
     
-        public virtual ObjectResult<sp_DailyPresentEmpWise_Result> sp_DailyPresentEmpWise(string vDate, string vEdate, Nullable<int> empId, Nullable<int> fromTime, Nullable<int> toTime, string weekend)
+        public virtual ObjectResult<sp_DailyPresentEmpWise_Result> sp_DailyPresentEmpWise(Nullable<System.DateTime> vDate, Nullable<System.DateTime> vEdate, Nullable<int> empId, Nullable<int> fromTime, Nullable<int> toTime, string weekend)
         {
-            var vDateParameter = vDate != null ?
+            var vDateParameter = vDate.HasValue ?
                 new ObjectParameter("vDate", vDate) :
-                new ObjectParameter("vDate", typeof(string));
+                new ObjectParameter("vDate", typeof(System.DateTime));
     
-            var vEdateParameter = vEdate != null ?
+            var vEdateParameter = vEdate.HasValue ?
                 new ObjectParameter("vEdate", vEdate) :
-                new ObjectParameter("vEdate", typeof(string));
+                new ObjectParameter("vEdate", typeof(System.DateTime));
     
             var empIdParameter = empId.HasValue ?
                 new ObjectParameter("EmpId", empId) :
@@ -3258,6 +3258,15 @@ namespace TimeAttendanceSystem.Models
                 new ObjectParameter("date", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetAllCompiledAttendanceForADate_Result>("SP_GetAllCompiledAttendanceForADate", dateParameter);
+        }
+    
+        public virtual ObjectResult<string> SP_GetMachineCodeByEmpName(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_GetMachineCodeByEmpName", nameParameter);
         }
     }
 }

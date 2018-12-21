@@ -23,7 +23,7 @@ namespace TimeAttendanceSystem.Controllers
         ReportDocument[] Rptdocuments001 = new ReportDocument[5];
         ReportDocument CR_reportDocument = new ReportDocument();
 
-        int errorflag = 0;
+        //int errorflag = 0;
         string errormess;
 
         string[] pdfs = new string[5];
@@ -361,7 +361,7 @@ namespace TimeAttendanceSystem.Controllers
             catch (Exception Ex)
             {
                 //ErrorMsg.Text = "Try again";
-                errorflag = 1;
+                //errorflag = 1;
                 errormess = reprotname + Ex.ToString();
                 return;
             }
@@ -436,7 +436,7 @@ namespace TimeAttendanceSystem.Controllers
             catch (Exception ex)
             {
                 //ErrorMsg.Text = "Try again";
-                errorflag = 1;
+                //errorflag = 1;
                 errormess = reprotname + ex.ToString();
                 throw ex;
             }

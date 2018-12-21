@@ -191,11 +191,16 @@ namespace TimeAttendanceSystem.Controllers
                 throw ex;
             }
         }
-        public JsonResult LoadErrorDetails(DateTime date, int empId)
+        public JsonResult LoadErrorDetails(DateTime date, string name)
         {
             try
             {
                 var sDate = TASUtility.GetStringDateFormat(date);
+                int empId = 0;
+                if (name== null)
+                {
+                    empId =Convert.ToInt32( _context.SP_GetMachineCodeByEmpName(name));
+                }
                 if (sDate ==null)
                 {
                     sDate = TASUtility.GetStringDateFormat(DateTime.Today);

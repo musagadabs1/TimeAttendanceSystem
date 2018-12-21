@@ -264,14 +264,19 @@
 
     $(document).on('click', ".Editbuttons", function (event) {
         //------------------------------------------ Before filling clear the Data-----------------------------
-      var empId=  $('#EmployeeID').val();
-        $('#Name').val();
-        $('#Mode').val();
-        $('#TerminalID').val();
-       var date= $('#Date').val();
+        var errorDate = $('#ErrorDate').val();
+        //var empId = $('#EmployeeID').val("");
+
+        var cells = $(this).closest("tr").children("td");
+        var name = cells.eq(0).text();
+        $('#Name').val("");
+        $('#Mode').val(0);
+        $('#TerminalID').val(0);
+        var date = $('#Date').val("");
+
         //------------------------------------------  Calling the FrmErrors.Js------------------------
         //------------------------------------------ To Load the Next Grid-----------------------------
-        LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, empId, "#Details");
+        LoadGrid('@Url.Action("LoadErrorDetails", "EditEntries")' + '?date=' + errorDate + '&name=' + name, "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "","#Details");
     });
 
     //------------------------------------------ Populate the Data from table Button click-----------------------------

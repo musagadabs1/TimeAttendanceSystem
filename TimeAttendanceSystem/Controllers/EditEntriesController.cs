@@ -127,14 +127,6 @@ namespace TimeAttendanceSystem.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult EditEntry(EditEntry editEntry)
-        //{
-        //    //loadErrorViewModel.Date = TASUtility.GetStringDateFormat(editEntry.ErrorDate.Date);
-        //    //loadErrorViewModel.DepartmentId = Convert.ToInt32(editEntry.Department);
-        //    //ViewBag.Message = "It's functioning but not hiting JS";
-        //    return View();
-        //}
         public JsonResult LoadError(DateTime date)
         {
             try
@@ -204,6 +196,10 @@ namespace TimeAttendanceSystem.Controllers
             try
             {
                 var sDate = TASUtility.GetStringDateFormat(date);
+                if (sDate ==null)
+                {
+                    sDate = TASUtility.GetStringDateFormat(DateTime.Today);
+                }
                 var errorDetails = _context.SP_Load_Error_Details(sDate, empId);
                 if (errorDetails != null)
                 {

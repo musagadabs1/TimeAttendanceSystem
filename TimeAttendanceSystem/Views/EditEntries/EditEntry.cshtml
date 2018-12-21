@@ -227,7 +227,7 @@
 
         SaveData('@Url.Action("GetManualEntry")', date, timeHH + timeMM + '00', terminalID, employeeID, mode,remark, sendMail,operation);
 
-        LoadGrid('@Url.Action("GetErrorDetail")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
+        LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
     });
 
     // Delete Entry
@@ -252,7 +252,7 @@
         }
             SaveData('@Url.Action("GetManualEntry")', date, timeHH + timeMM + '00', terminalID, employeeID, mode,remark, sendMail,operation);
 
-            LoadGrid('@Url.Action("GetErrorDetail")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
+            LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
     });
 
     $("#btnRecompile").click(function () {
@@ -271,7 +271,7 @@
        var date= $('#Date').val();
         //------------------------------------------  Calling the FrmErrors.Js------------------------
         //------------------------------------------ To Load the Next Grid-----------------------------
-        LoadGrid('@Url.Action("GetErrorDetail")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, empId, "#Details");
+        LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, empId, "#Details");
     });
 
     //------------------------------------------ Populate the Data from table Button click-----------------------------

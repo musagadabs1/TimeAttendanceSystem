@@ -15,19 +15,20 @@ namespace TimeAttendanceSystem.Controllers
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
         private UNISEntities _context = new UNISEntities();
-       private LoadErrorViewModel loadErrorViewModel = new LoadErrorViewModel();
+       //private LoadErrorViewModel loadErrorViewModel = new LoadErrorViewModel();
 
         public ActionResult EditEntry()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
             ViewBag.Employees = new SelectList(_context.SP_GetEmployee_Names(0, ""), "id", "Employee_Name");
             ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
-            //ViewBag.Departments = new SelectList(_context.GetDepartmentWithDeptId(), "deptID", "Department");
-
             var mode = new List<SelectListItem>
             {
-                new SelectListItem {Value = "01", Text = "DAY-IN" },
-                new SelectListItem{Value = "02", Text = "DAY-OUT"}
+                new SelectListItem {Value = "1", Text = "1" },
+                new SelectListItem{Value = "2", Text = "2"},
+                new SelectListItem{Value = "3", Text = "3"},
+                new SelectListItem{Value = "4", Text = "4"},
+                new SelectListItem{Value = "5", Text = "5"}
             };
             ViewBag.Mode = mode;
             var timeHH = new List<SelectListItem>
@@ -196,10 +197,10 @@ namespace TimeAttendanceSystem.Controllers
             try
             {
                 var sDate = TASUtility.GetStringDateFormat(date);
-                int empId = 0;
-                if (name== null)
+                var empId = Convert.ToInt32(_context.SP_GetMachineCodeByEmpName(name).FirstOrDefault());
+                if (name!= null)
                 {
-                    empId =Convert.ToInt32( _context.SP_GetMachineCodeByEmpName(name));
+                    empId =Convert.ToInt32(empId);
                 }
                 if (sDate ==null)
                 {

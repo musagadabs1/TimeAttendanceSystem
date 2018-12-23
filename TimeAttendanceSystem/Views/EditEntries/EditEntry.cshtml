@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                    <table id="location" class="table table-bordered" style="width: 100%;max-height: 125px; overflow-y: scroll; display:none">
+                    <table id="location" class="table table-bordered table-condensed table-responsive" style="width: 100%;max-height: 125px; margin:5px; overflow-y: scroll; display:none">
                         <tr>
 
                             <th>
@@ -130,8 +130,8 @@
                 </div>
                 <div class="table-responsive">
                     <div class="form-group">
-                        <table id="Details" border='1' class="table table-striped jambo_table bulk_action"
-                               style="width: 100%; max-height: 250px; overflow-y: scroll;">
+                        <table id="Details" class="table table-striped table-bordered"
+                               style="width: 100%; margin:5px; max-height: 250px; overflow-y: scroll;">
                             <tr>
                                 <th>
                                     EMPID
@@ -252,7 +252,7 @@
         }
             SaveData('@Url.Action("GetManualEntry")', date, timeHH + timeMM + '00', terminalID, employeeID, mode,remark, sendMail,operation);
 
-            LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
+        LoadGrid('@Url.Action("LoadErrorDetails", "EditEntries")' + '?date=' + errorDate + '&name=' + name, "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "","#Details");
     });
 
     $("#btnRecompile").click(function () {
@@ -301,8 +301,9 @@
         $('#TerminalID').val(cell2);
         $('#TimeHH').val(HR);
         $('#TimeMM').val(MIN);
-        var array = $("#ErrorDate").val().split('/');
-        $('#Date').val(array[2] + array[1] + array[0]);
+        //var array = $("#ErrorDate").val().split('/');
+        //$('#Date').val(array[2] + array[1] + array[0]);
+        $('#Date').val($('#ErrorDate').val());
     });
 </script>
 

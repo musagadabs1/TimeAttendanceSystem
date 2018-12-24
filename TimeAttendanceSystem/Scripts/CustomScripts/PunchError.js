@@ -47,7 +47,7 @@
     }
 }
 
-function SaveData(method,vDate, eTime ,terminalId, empId, mode,remark, sendMail,operation)
+function SaveData(methodName,vDate, eTime ,terminalId, empId,name,mode,remark, sendMail,operation)
 {
     try
     {
@@ -56,18 +56,21 @@ function SaveData(method,vDate, eTime ,terminalId, empId, mode,remark, sendMail,
             Time: eTime,
             Terminal: terminalId,
             EMPID: empId,
+            Name: name,
             Mode: mode,
-            Operation:operation,
-            SendMail:sendMail
+            LoginUser: '',
+            Remark:remark,
+            SendMail: sendMail,
+            Operation: operation
         };
         $.ajax({
             type: "POST",
             contentType: 'application/json',
-            url:method,
+            url: methodName,
             data: JSON.stringify(data),
             success: function (content) {
                 if (content.success==true) {
-                    if (operation=='Insert') {
+                    if (operation =='INSERT') {
                         alert("Manual Punch added Successfully!!");
                     }
                     else {
@@ -79,7 +82,7 @@ function SaveData(method,vDate, eTime ,terminalId, empId, mode,remark, sendMail,
                 }
             },
             error: function (err) {
-                alert(err);
+                alert(err.message);
             }
         });
     }
@@ -102,12 +105,9 @@ function Recompile(vDate) {
                     var deptId = $('#Department').val();
                     LoadGrid(method, "Name,Count", "Update", "EmpID", "EditButtons", "", "", "", vDate, deptId, 0, "#location");
                 }
-                //else {
-                   // alert(data.error);
-                //}
             },
             error: function (err) {
-                alert(err);
+                alert(err.message);
             }
         });
     }

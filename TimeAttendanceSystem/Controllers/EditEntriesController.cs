@@ -13,10 +13,7 @@ namespace TimeAttendanceSystem.Controllers
     [Authorize]
     public class EditEntriesController : Controller
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
         private UNISEntities _context = new UNISEntities();
-       //private LoadErrorViewModel loadErrorViewModel = new LoadErrorViewModel();
-
         public ActionResult EditEntry()
         {
             ViewBag.Terminals = new SelectList(_context.SP_GetTerminal(), "L_id", "c_name");
@@ -145,21 +142,17 @@ namespace TimeAttendanceSystem.Controllers
             }
         }
         [HttpPost]
-        public JsonResult SaveEntries(EditEntry editEntry)
+        public JsonResult SaveEntries(DateTime date,string time,int terminal,int empId,string name,int mode,string remark,string sendMail, string operation)
         {
+            if (sendMail=="Yes")
+            {
+                //TODO: Send Mail logic here
+            }
             try
             {
-                var operation = "INSERT";
-                var loginUser = "ABC";
-                var time = editEntry.TimeHH + editEntry.TimeMM + "00";
-                var terminal = editEntry.TerminalID;
-                var empId = editEntry.EmployeeID;
-                var name = editEntry.Name;
-                var mode = editEntry.Mode;
-                var remarks = editEntry.Remark;
 
-                var sDate = TASUtility.GetStringDateFormat(editEntry.Date);
-              var success=  _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, loginUser, operation);
+                var sDate = TASUtility.GetStringDateFormat(date);
+              var success=  _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode,remark,"", operation);
                 return Json(success, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

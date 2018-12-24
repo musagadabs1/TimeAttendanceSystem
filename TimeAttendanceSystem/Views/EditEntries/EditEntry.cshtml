@@ -239,9 +239,11 @@
         var terminalID = $('#TerminalID').val();
         var employeeID = $('#EmployeeID').val();
         var mode = $('#Mode').val();
+        var name = $('#Name').val();
         var remark = $('#Remark').val();
         var sendMail = $('#SendMail').val();
         var operation = "DELETE"
+        var errorDate = $('#ErrorDate').val();
 
         var SendMailOption = "";
         if ($('#SendMail').is(":checked")) {
@@ -250,8 +252,8 @@
         else {
             SendMailOption = "No";
         }
-            SaveData('@Url.Action("GetManualEntry")', date, timeHH + timeMM + '00', terminalID, employeeID, mode,remark, sendMail,operation);
-
+        @*var methodName = '@Url.Action("SaveEntries")?date=' + date + '&time=' + timeHH + timeMM + '00' + '&terminal=' + terminalID + '&empId=' + employeeID + '&name=' + name + '&mode=' + mode + '&remark=' + remark + '&sendMail='sendMail + '&operation=' + operation;*@
+        SaveData('@Url.Action("SaveEntries")', date, timeHH + timeMM + '00', terminalID, employeeID, mode, remark, sendMail, operation);
         LoadGrid('@Url.Action("LoadErrorDetails", "EditEntries")' + '?date=' + errorDate + '&name=' + name, "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "","#Details");
     });
 

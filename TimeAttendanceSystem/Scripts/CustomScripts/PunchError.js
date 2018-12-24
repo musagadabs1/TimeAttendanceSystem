@@ -56,12 +56,8 @@ function SaveData(method,vDate, eTime ,terminalId, empId, mode,remark, sendMail,
             Time: eTime,
             Terminal: terminalId,
             EMPID: empId,
-            //Name: eName,
             Mode: mode,
             Operation:operation,
-            //Remark: remark,
-            //LoginUser: loginUser,
-            //Operation: operation,
             SendMail:sendMail
         };
         $.ajax({

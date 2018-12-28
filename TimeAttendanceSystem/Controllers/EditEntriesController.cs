@@ -142,9 +142,20 @@ namespace TimeAttendanceSystem.Controllers
             }
         }
         [HttpPost]
-        public JsonResult SaveEntries(DateTime date,string time,int terminal,int empId,string name,int mode,string remark,string sendMail, string operation)
+        public JsonResult SaveEntries(EditEntry editEntry)
         {
-            if (sendMail=="Yes")
+            var operation = "DELETE";
+            //var loginUser = "ABC";
+            //LoginUser: '',
+            var time = editEntry.TimeHH + editEntry.TimeMM + "00";
+            var terminal = editEntry.TerminalID;
+            var empId = editEntry.EmployeeID;
+            var name = editEntry.Name;
+            var date = editEntry.Date;
+            var mode = editEntry.Mode;
+            var remarks = editEntry.Remark;
+            var sendMail = editEntry.SendMail;
+            if (sendMail)
             {
                 //TODO: Send Mail logic here
             }
@@ -152,7 +163,7 @@ namespace TimeAttendanceSystem.Controllers
             {
 
                 var sDate = TASUtility.GetStringDateFormat(date);
-              var success=  _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode,remark,"", operation);
+              var success=  _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode,remarks,"", operation);
                 return Json(success, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

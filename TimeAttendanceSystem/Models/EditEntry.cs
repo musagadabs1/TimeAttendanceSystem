@@ -32,6 +32,7 @@ namespace TimeAttendanceSystem.Models
         public string Remark { get; set; }
         [Display(Name="Send mail ?")]
         public bool SendMail { get; set; }
+        public string operation { get; set; }
 
     }
 }

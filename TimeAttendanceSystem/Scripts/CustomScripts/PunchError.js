@@ -47,27 +47,26 @@
     }
 }
 
-function SaveData(methodName,vDate, eTime ,terminalId, empId,name,mode,remark, sendMail,operation)
+function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,remark, sendMail,operation)
 {
     try
     {
-        var data = {
-            VDate: vDate,
-            Time: eTime,
-            Terminal: terminalId,
-            EMPID: empId,
-            Name: name,
-            Mode: mode,
-            LoginUser: '',
-            Remark:remark,
-            SendMail: sendMail,
-            Operation: operation
-        };
+        var editEntry = {};
+        editEntry.Date= vDate;
+        editEntry.TimeHH= eTime;
+        editEntry.TimeMM = eTimeM;
+        editEntry.TerminalID = terminalId;
+        editEntry.EmployeeID = empId;
+        editEntry.Name = name;
+        editEntry.Mode = mode;
+        editEntry.Remark = remark;
+        editEntry.SendMail = sendMail;
+        editEntry.Operation = operation;
         $.ajax({
             type: "POST",
             contentType: 'application/json',
             url: methodName,
-            data: JSON.stringify(data),
+            data: '{editEntry:' + JSON.stringify(editEntry) + '}',
             success: function (content) {
                 if (content.success==true) {
                     if (operation =='INSERT') {

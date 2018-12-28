@@ -144,7 +144,7 @@ namespace TimeAttendanceSystem.Controllers
         [HttpPost]
         public JsonResult SaveEntries(EditEntry editEntry)
         {
-            var operation = "DELETE";
+            //var operation = "DELETE";
             //var loginUser = "ABC";
             //LoginUser: '',
             var time = editEntry.TimeHH + editEntry.TimeMM + "00";
@@ -155,6 +155,7 @@ namespace TimeAttendanceSystem.Controllers
             var mode = editEntry.Mode;
             var remarks = editEntry.Remark;
             var sendMail = editEntry.SendMail;
+            var operation = editEntry.operation;
             if (sendMail)
             {
                 //TODO: Send Mail logic here

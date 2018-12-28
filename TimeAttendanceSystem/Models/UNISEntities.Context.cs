@@ -719,11 +719,6 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Error_Entry_Check_NewtimeAttendance", oDateParameter, oNewDateParameter);
         }
     
-        public virtual ObjectResult<string> GetAllFinalizedDates()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetAllFinalizedDates");
-        }
-    
         public virtual int GetCountOfDaysByDayNameInAMonth(Nullable<System.DateTime> currentDate, string flag)
         {
             var currentDateParameter = currentDate.HasValue ?
@@ -737,13 +732,9 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetCountOfDaysByDayNameInAMonth", currentDateParameter, flagParameter);
         }
     
-        public virtual ObjectResult<string> GetEmployeeById(Nullable<int> empId)
+        public virtual ObjectResult<GetDepartmentWithDeptId_Result> GetDepartmentWithDeptId()
         {
-            var empIdParameter = empId.HasValue ?
-                new ObjectParameter("EmpId", empId) :
-                new ObjectParameter("EmpId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetEmployeeById", empIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDepartmentWithDeptId_Result>("GetDepartmentWithDeptId");
         }
     
         public virtual ObjectResult<GETLevel_Result> GETLevel(Nullable<int> degreeid)
@@ -2183,6 +2174,15 @@ namespace TimeAttendanceSystem.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Get_LastFinalizedDate_Result>("SP_Get_LastFinalizedDate");
         }
     
+        public virtual ObjectResult<SP_GetAllCompiledAttendanceForADate_Result> SP_GetAllCompiledAttendanceForADate(string date)
+        {
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetAllCompiledAttendanceForADate_Result>("SP_GetAllCompiledAttendanceForADate", dateParameter);
+        }
+    
         public virtual ObjectResult<SP_GetDepartment_Result> SP_GetDepartment()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetDepartment_Result>("SP_GetDepartment");
@@ -2253,6 +2253,15 @@ namespace TimeAttendanceSystem.Models
                 new ObjectParameter("empid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_getexamdays", currentDateParameter, flagParameter, empidParameter);
+        }
+    
+        public virtual ObjectResult<string> SP_GetMachineCodeByEmpName(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_GetMachineCodeByEmpName", nameParameter);
         }
     
         public virtual ObjectResult<SP_GetManuelEntry_Result> SP_GetManuelEntry(string vdate, string userType)
@@ -3235,38 +3244,6 @@ namespace TimeAttendanceSystem.Models
         public virtual int Vw_Manual_Entry_tenter()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Vw_Manual_Entry_tenter");
-        }
-    
-        public virtual ObjectResult<GetDesignationByDeptId_Result> GetDesignationByDeptId(Nullable<int> deptId)
-        {
-            var deptIdParameter = deptId.HasValue ?
-                new ObjectParameter("deptId", deptId) :
-                new ObjectParameter("deptId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDesignationByDeptId_Result>("GetDesignationByDeptId", deptIdParameter);
-        }
-    
-        public virtual ObjectResult<GetDepartmentWithDeptId_Result> GetDepartmentWithDeptId()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDepartmentWithDeptId_Result>("GetDepartmentWithDeptId");
-        }
-    
-        public virtual ObjectResult<SP_GetAllCompiledAttendanceForADate_Result> SP_GetAllCompiledAttendanceForADate(string date)
-        {
-            var dateParameter = date != null ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetAllCompiledAttendanceForADate_Result>("SP_GetAllCompiledAttendanceForADate", dateParameter);
-        }
-    
-        public virtual ObjectResult<string> SP_GetMachineCodeByEmpName(string name)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_GetMachineCodeByEmpName", nameParameter);
         }
     }
 }

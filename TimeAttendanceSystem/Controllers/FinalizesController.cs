@@ -256,7 +256,7 @@ namespace TimeAttendanceSystem.Controllers
 
 #pragma warning disable 0612, 0618
                     //Main Mail Sending Line -15/09/2018
-                    TASUtility.SendEmail("developer@sun.edu.ng", "", "head.hr@sun.edu.ng", "Reports - Automatic", "", System.Web.Mail.MailFormat.Text, Rptdocuments001, pdfs001, "hr@sun.edu.ng", "head.it@sun.edu.ng", "software@sun.edu.ng", "vc@sun.edu.ng", "director.operations@sun.edu.ng", "prochancellor@sun.edu.ng", date);
+                    TASUtility.SendEmail("suntas@sun.edu.ng", "", "head.hr@sun.edu.ng", "Reports - Automatic", "", System.Web.Mail.MailFormat.Text, Rptdocuments001, pdfs001, "hr@sun.edu.ng", "head.it@sun.edu.ng", "software@sun.edu.ng", "vc@sun.edu.ng", "director.operations@sun.edu.ng", "prochancellor@sun.edu.ng","developer@sun.edu.ng", date);
 #pragma warning restore 0612, 0618
                 }
                 //  ErrorMsg.Text = "Mail sent successfully!";

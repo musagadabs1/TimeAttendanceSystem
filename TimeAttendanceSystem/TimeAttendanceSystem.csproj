@@ -296,6 +296,9 @@
     <Compile Include="Models\GetDepartmentWithDeptId_Result.cs">
       <DependentUpon>UNISEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetDesignationByDeptId_Result.cs">
+      <DependentUpon>UNISEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GETEXTRADUTYDTL_Result.cs">
       <DependentUpon>UNISEntities.tt</DependentUpon>
     </Compile>

@@ -224,9 +224,10 @@
         var sendMail = $('#SendMail').val();
         var name = $('#Name').val();
         var operation = "INSERT";
-        
 
-        SaveData('@Url.Action("SaveEntries", "EditEntries")', date, timeHH, timeMM, terminalID, employeeID, mode,remark, sendMail,operation);
+        //function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,remark, sendMail,operation)
+
+        SaveData('@Url.Action("SaveEntries", "EditEntries")', date, timeHH, timeMM, terminalID, employeeID,name, mode,remark, sendMail,operation);
 
         LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
     });

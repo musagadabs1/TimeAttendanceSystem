@@ -53,7 +53,7 @@ function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,r
     {
         var editEntry = {};
         editEntry.Date= vDate;
-        editEntry.TimeHH= eTime;
+        editEntry.TimeHH= eTimeH;
         editEntry.TimeMM = eTimeM;
         editEntry.TerminalID = terminalId;
         editEntry.EmployeeID = empId;

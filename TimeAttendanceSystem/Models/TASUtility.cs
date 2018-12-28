@@ -227,12 +227,16 @@ namespace TimeAttendanceSystem.Models
                 throw ex;
             }
         }
-        public static bool SendEmail(string pGmailEmail, string pGmailPassword, string pTo, string pSubject, string pBody, System.Web.Mail.MailFormat pFormat, ReportDocument[] Rpt1, string[] pdfs, string cc1, string cc2, string cc3, string cc4, string cc5, string cc6, string date)
+        public static bool SendEmail(string pGmailEmail, string pGmailPassword, string pTo, string pSubject, string pBody, System.Web.Mail.MailFormat pFormat, ReportDocument[] Rpt1, string[] pdfs, string cc1, string cc2, string cc3, string cc4, string cc5, string cc6,string cc7, string date)
         {
             try
             {
-                string fromEmail = "developer@sun.edu.ng";
-                string fromPassword = "Xdirsun202034";
+#pragma warning disable 0612, 0618
+                // Your code that calls obsolete functions
+                // ...
+#pragma warning restore 0612, 0618
+                string fromEmail = "suntas@sun.edu.ng";
+                string fromPassword = "Hsau!@0909";
 
                 //pGmailEmail = "noreply@skylineuniversity.ac.ae";
                 SmtpClient SmtpServer = new SmtpClient();
@@ -257,7 +261,7 @@ namespace TimeAttendanceSystem.Models
                 mail.CC.Add(cc4);
                 mail.CC.Add(cc5);
                 mail.CC.Add(cc6);
-                //mail.CC.Add(cc7);
+                mail.CC.Add(cc7);
                 //mail.CC.Add(cc8);
                 //mail.CC.Add(cc9);
                 //mail.CC.Add(cc10);

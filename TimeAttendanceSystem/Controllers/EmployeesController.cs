@@ -99,8 +99,8 @@ namespace TimeAttendanceSystem.Controllers
                     {
                         designationViews.Add(new DesignationViewModel
                         {
-                            id=item.id,
-                            Designation=item.Designation
+                            id=item.Id,
+                            Designation=item.designation
                         });
                     }
 

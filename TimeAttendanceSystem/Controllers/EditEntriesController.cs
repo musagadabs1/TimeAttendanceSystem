@@ -188,7 +188,7 @@ namespace TimeAttendanceSystem.Controllers
                 var remarks = editEntry.Remark;
 
                 var sDate = TASUtility.GetStringDateFormat(editEntry.Date);
-                var success = _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, loginUser, operation);
+                var success = _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, "", operation);
                 return Json(success, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

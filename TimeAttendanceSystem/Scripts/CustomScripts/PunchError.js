@@ -1,4 +1,6 @@
-﻿function LoadGrid(methodName, colNames, update, updateColName, updateClassName,sDelete,deleteColName, deleteClassName, gridId)
+﻿import { url } from "inspector";
+
+function LoadGrid(methodName, colNames, update, updateColName, updateClassName,sDelete,deleteColName, deleteClassName, gridId)
 {
     try
     {
@@ -91,19 +93,19 @@ function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,r
     }
 }
 
-function Recompile(vDate) {
+function Recompile(methodName,vDate) {
     try
     {
         $.ajax({
             type: 'GET',
             contentType: 'application/json',
-            url:"Recompile?date=" + vDate,
+            url: methodName,
             success: function (data) {
-                if (data.success==true) {
+                //if (data.success==true) {
                     alert("Compiled Successfully");
                     var deptId = $('#Department').val();
                     LoadGrid(method, "Name,Count", "Update", "EmpID", "EditButtons", "", "", "", vDate, deptId, 0, "#location");
-                }
+                //}
             },
             error: function (err) {
                 alert(err.message);

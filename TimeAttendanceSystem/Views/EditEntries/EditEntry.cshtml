@@ -260,7 +260,7 @@
 
     $("#btnRecompile").click(function () {
         var date = $('#Date').val();
-        Recompile(date);
+        Recompile('@Url.Action("Recompile", "EditEntries")',date);
 
     });
     $(document).on('click', ".Editbuttons", function (event) {

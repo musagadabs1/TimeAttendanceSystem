@@ -174,28 +174,34 @@ namespace TimeAttendanceSystem.Controllers
                 //throw ex;
             }
         }
-        public JsonResult DeleteEntrie(EditEntry editEntry)
+        //public JsonResult DeleteEntrie(EditEntry editEntry)
+        //{
+        //    try
+        //    {
+        //        var operation = "DELETE";
+        //        var loginUser = "ABC";
+        //        var time = editEntry.TimeHH + editEntry.TimeMM + "00";
+        //        var terminal = editEntry.TerminalID;
+        //        var empId = editEntry.EmployeeID;
+        //        var name = editEntry.Name;
+        //        var mode = editEntry.Mode;
+        //        var remarks = editEntry.Remark;
+
+        //        var sDate = TASUtility.GetStringDateFormat(editEntry.Date);
+        //        var success = _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, "", operation);
+        //        return Json(success, JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw ex;
+        //    }
+        //}
+        public JsonResult Recompile(DateTime date)
         {
-            try
-            {
-                var operation = "DELETE";
-                var loginUser = "ABC";
-                var time = editEntry.TimeHH + editEntry.TimeMM + "00";
-                var terminal = editEntry.TerminalID;
-                var empId = editEntry.EmployeeID;
-                var name = editEntry.Name;
-                var mode = editEntry.Mode;
-                var remarks = editEntry.Remark;
-
-                var sDate = TASUtility.GetStringDateFormat(editEntry.Date);
-                var success = _context.SP_Manual_Entry(sDate, time, terminal, empId.ToString(), name, mode, remarks, "", operation);
-                return Json(success, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            var sDate = TASUtility.GetStringDateFormat(date);
+            var success = "Compiled Successfully.";
+            return Json(success, JsonRequestBehavior.AllowGet);
         }
         public JsonResult LoadErrorDetails(DateTime date, string name)
         {

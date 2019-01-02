@@ -225,8 +225,6 @@
         var name = $('#Name').val();
         var operation = "INSERT";
 
-        //function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,remark, sendMail,operation)
-
         SaveData('@Url.Action("SaveEntries", "EditEntries")', date, timeHH, timeMM, terminalID, employeeID,name, mode,remark, sendMail,operation);
 
         LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
@@ -260,13 +258,13 @@
 
     $("#btnRecompile").click(function () {
         var date = $('#Date').val();
-        Recompile('@Url.Action("Recompile", "EditEntries")',date);
+        Recompile('@Url.Action("RecompileForDate", "EditEntries")',date);
 
     });
+
     $(document).on('click', ".Editbuttons", function (event) {
         //------------------------------------------ Before filling clear the Data-----------------------------
         var errorDate = $('#ErrorDate').val();
-        //var empId = $('#EmployeeID').val("");
 
         var cells = $(this).closest("tr").children("td");
         var name = cells.eq(0).text();
@@ -275,12 +273,11 @@
         $('#TerminalID').val(0);
         var date = $('#Date').val("");
 
-        //------------------------------------------  Calling the FrmErrors.Js------------------------
-        //------------------------------------------ To Load the Next Grid-----------------------------
+       //------------------------------------------ To Load the Next Grid-----------------------------
         LoadGrid('@Url.Action("LoadErrorDetails", "EditEntries")' + '?date=' + errorDate + '&name=' + name, "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "","#Details");
     });
 
-    //------------------------------------------ Populate the Data from table Button click-----------------------------
+    //----------------------------------- Populate the Data from table Button click-----------------------------
     $(document).on('click', ".EditErrorDetails", function (event) {
 
         var cells = $(this).closest("tr").children("td");

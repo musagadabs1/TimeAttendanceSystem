@@ -1,4 +1,4 @@
-﻿import { url } from "inspector";
+﻿//import { url } from "inspector";
 
 function LoadGrid(methodName, colNames, update, updateColName, updateClassName,sDelete,deleteColName, deleteClassName, gridId)
 {
@@ -114,6 +114,6 @@ function Recompile(methodName,vDate) {
     }
     catch (e)
     {
-        alert(e);
+        alert(e.message);
     }
 }

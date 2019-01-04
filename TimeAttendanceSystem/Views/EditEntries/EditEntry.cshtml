@@ -228,6 +228,8 @@
         SaveData('@Url.Action("SaveEntries", "EditEntries")', date, timeHH, timeMM, terminalID, employeeID,name, mode,remark, sendMail,operation);
 
         LoadGrid('@Url.Action("LoadErrorDetails")', "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", date, 0, employeeID, "#Details");
+
+        FrmErrors_LoadGrid("SP_Load_Error_Details", "EMPID,Terminal,Name,Time,Mode,Status", "Update", "EMPID", "EditErrorDetails", "", "", "", $("#MainContent_txtCompileDate").val(), 0, $('#MainContent_TxtEmpID').val(), "#Details");
     });
 
     // Delete Entry

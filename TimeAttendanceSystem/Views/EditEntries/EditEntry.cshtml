@@ -257,8 +257,17 @@
     });
 
     $("#btnRecompile").click(function () {
-        var date = $('#Date').val();
-        Recompile('@Url.Action("RecompileForDate", "EditEntries")',date);
+        if ($("#ErrorDate").val() == "") {
+            alert("Please Enter the date to Show the Data");
+            return false;
+        }
+        var deptId = $('#Department').val();
+        var date = $('#ErrorDate').val();
+        Recompile('@Url.Action("RecompileForDate", "EditEntries")', date);
+
+        LoadGrid('@Url.Action("LoadError", "EditEntries")' + '?deptId=' + deptId + '&date=' + date, "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", "#location");
+
+        FrmErrors_LoadGrid("SP_Load_Error", "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", $("#MainContent_txtCompileDate").val(), selectedVal, 0, "#location");
 
     });
 

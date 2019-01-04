@@ -15,13 +15,13 @@ function LoadGrid(methodName, colNames, update, updateColName, updateClassName,s
                 var td = "";
                 $(data).each(function (key,value) {
                     var obj = '';
-                    if (sDelete === "Delete") {
+                    if (sDelete == "Delete") {
                         obj += '<td><input  class="' + deleteClassName + '" type="button" id=' + value[deleteColName] + ' value="DELETE"/></td>';
                     }
                     for (var i = 0; i < array.length; i++) {
                         obj += '<td>' + value[array[i]] + '</td>';
                     }
-                    if (update === "Update") {
+                    if (update == "Update") {
                         //obj += '<td><input  class="' + updateClassName + '" type="button" id=' + value[updateColName] + ' value="EDIT"/></td>';
                         obj += '<td><input  class="' + updateClassName + '" type="button" id=' +updateColName + ' value="EDIT"/></td>';
                     }
@@ -93,7 +93,7 @@ function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,r
     }
 }
 
-function Recompile(methodName,vDate) {
+function Recompile(methodName,vDate,deptId) {
     try
     {
         $.ajax({
@@ -103,7 +103,7 @@ function Recompile(methodName,vDate) {
             success: function (data) {
                 //if (data.success==true) {
                     alert("Compiled Successfully");
-                    var deptId = $('#Department').val();
+                    //var deptId = $('#Department').val();
                     LoadGrid(method, "Name,Count", "Update", "EmpID", "EditButtons", "", "", "", vDate, deptId, 0, "#location");
                 //}
             },

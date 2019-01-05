@@ -1,5 +1,4 @@
-﻿//import { url } from "inspector";
-
+﻿
 function LoadGrid(methodName, colNames, update, updateColName, updateClassName,sDelete,deleteColName, deleteClassName, gridId)
 {
     try

@@ -269,8 +269,6 @@
 
         LoadGrid('@Url.Action("LoadError", "EditEntries")' + '?deptId=' + deptId + '&date=' + date, "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", "#location");
 
-        FrmErrors_LoadGrid("SP_Load_Error", "Name,Count", "Update", "EMPID", "Editbuttons", "", "", "", $("#MainContent_txtCompileDate").val(), selectedVal, 0, "#location");
-
     });
 
     $(document).on('click', ".Editbuttons", function (event) {

@@ -70,17 +70,12 @@ function SaveData(methodName,vDate, eTimeH, eTimeM,terminalId, empId,name,mode,r
             url: methodName,
             data: '{editEntry:' + JSON.stringify(editEntry) + '}',
             success: function (content) {
-                //if (content.success==true) {
                     if (operation =='INSERT') {
                         alert("Manual Punch added Successfully!!");
                     }
                     else {
                         alert("Deleted Successfully!!");
                     }
-               // }
-                //else {
-                    //alert(content.message);
-                //}
             },
             error: function (err) {
                 alert(err.message);
